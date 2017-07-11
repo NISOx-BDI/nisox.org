@@ -13,6 +13,10 @@ notitle: true
   </p>
 </div>
 
+<table width="100%">
+
+<tr>
+<td width="70%" style="vertical-align: top;">
 <h2>News</h2>
 <ul class="news list-unstyled">
 {% for post in site.posts limit: site.front_page_news %}
@@ -33,3 +37,9 @@ notitle: true
 {% if numposts >= site.front_page_news %}
 <p><a href="{{ site.base }}/blog/">Older posts&hellip;</a></p>
 {% endif %}
+</td>
+<td width="30%">
+    <a class="twitter-timeline" data-width="220" data-height="300" data-dnt="true" href="https://twitter.com/ten_photos">Tweets by ten_photos</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</td>
+</tr>
+</table>
