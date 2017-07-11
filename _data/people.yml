@@ -1,29 +1,67 @@
-profx:
-    display_name: "Professor X"
-    webpage: "http://en.wikipedia.org/wiki/Professor_X"
-    github: profx
-    role: faculty
-    bio: |
-        Professor X is the leader and founder of X-Men. 
-melody:
-    display_name: "Scott Summers"
-    webpage: "http://en.wikipedia.org/wiki/Cyclops_(comics)"
-    role: staff
-    bio: |
-        Scott, also known as Cyclops, shoots lasers from his eyes, which makes him the perfect administrative assistant.
-
-wolverine:
-    display_name: "Wolverine"
-    webpage: "http://en.wikipedia.org/wiki/Wolverine_%28comics%29"
-    github: wolverine
+soroosh:
+    display_name: "Soroosh Afyouni"
+    github: asoroosh
     role: postdoc
+    bio: |
+        Soroosh Afyouni is a PhD student at the Institute of Digital Healthcare at the University of Warwick. He is supervised by Professor Thomas Nichols and Professor Theodoros Aravanitis in collaboration with Dr. Andrew Bagshaw at the University of Birmingham. Soroosh is currently working on resting-state functional connectivity of the human brain and its graph theoretical modelling. He graduated in electronic engineering from University of Birmingham in 2012. His MEng dissertation was on Bloch-equation based simulation of spin-echo sequences in magnetic resonance imaging.
 
-storm:
-    display_name: "Storm"
-    webpage: "http://en.wikipedia.org/wiki/Storm_%28Marvel_Comics%29"
+simon:
+    display_name: "Simon Schwab"
+    webpage: "https://schw4b.github.io/"
+    github: schw4b
+    role: postdoc
+    bio: |
+        Simon Schwab is a Visiting Fellow in Neuroimaging Statistics with Prof. Thomas Nichols at the Institute of Digital Healthcare, University of Warwick, funded for the duration of 18 months by the Swiss National Science foundation (SNSF). He is currently working on a new method of effective connectivity and its validation using the state-of-the-art data from the Human Connectome Project. Before joining the University of Warwick he worked as a Postdoctoral Fellow at the Psychiatric Neuroimaging Unit at the University Hospital of Psychiatry in Bern, Switzerland. He received his Ph.D. in neuroscience (2013) and his M.Sc. in psychology and computer science (2008) from the University of Bern.
+camille:
+    display_name: "Camille Maumet"
+    webpage: "http://camillemaumet.com"
+    github: cmaumet
+    role: postdoc
+    bio: |
+        Camille Maumet is a postdoctoral research fellow in the Institute of Digital Healthcare at the University of Warwick. She is currently working on developing standard practices for data sharing and meta-analysis in neuroimaging as part of a project titled "Transforming Statistical Methodology for Neuroimaging Meta-Analysis” funded by the Wellcome Trust and led by Prof. Thomas Nichols. Camille received her PhD in computer science from the University of Rennes 1 (France) in 2013 where she focused on the analysis of Arterial Spin Labelling under the supervision of Dr. Christian Barillot and Dr. Pierre Maurel. Before completing her PhD, Camille was a software engineer in image processing for Magnetic Resonance Imaging at Inria (France). In 2008, she received a M.Sc. in Computer Science from INSA Lyon (France). Her primary research interest are in functional neuroimaging and neuroinformatics.
+
+alex:
+    display_name: "Alex Bowring"
+    github: AlexBowring
     role: grad
+    bio: |
+        Alex Bowring is a research assistant in the Institute of Digital Healthcare at the University of Warwick. His primary role is to assist Camille Maumet and Thomas Nichols in developing standard practices for data sharing and meta-analysis in neuroimaging as part of the project "Transforming Statistical Methodology for Neuroimaging Meta-Analysis”. Additionally he is also applying newly developed statistical methods to obtain precise confidence statements about where activaiton occurs in the brain. In 2015 Alex completed his BSc. in Mathematics from the University of Warwick. In summer 2015 he undertook a project entitled “Visualising the brain - Developing viewers of standardised fMRI results”.
 
-jean:
-    display_name: "Jean Grey"
+jessie:
+    display_name: "Zhangdaihong (Jessie) Liu"
+    role: grad
+    bio: |
+        Zhangdaihong (Jessie) Liu is a first year PhD student at the CDT of Mathematics for Real-world Systems at University of Warwick. She is jointly supervised by Prof. Thomas Nichols and Prof. Jianfeng Feng. Jessie is currently working on linking brain connectivity, demographics and behaviour using HCP data. She completed the MathSys MSc in 2015. Before University of Warwick, she obtained a MSc in Mathematical Finance at Loughborough University and a BSc in Mathematics at Shandong University, China.
+
+ruth:
+    display_name: "Ruth Harbord"
+    role: grad
+    bio: |
+        Ruth Harbord is a PhD student with the MOAC Doctoral Training Centre, University of Warwick, supervised by Thomas Nichols. She is continuing the work of Dr. Lilia Costa on effective connectivity using fMRI data and graphical models. She completed the MOAC DTC MSc in Mathematical Biology and Biophysical Chemistry in 2013 and a BSc (Hons) in Physical Science from The Open University in 2011.
+
+anderson:
+    display_name: "Anderson Winkler"
     role: alum
-    bio: "Ph.D., 2013. Now at Microsoft Research."
+    bio: "Ph.D., 2017. Now at XXX."
+
+bernd:
+    display_name: "Bernd Taschler"
+    role: alum
+    bio: "Ph.D., 2017. Now at XXX."
+
+silvia:
+    display_name: "Silvia Montagna"
+    role: alum
+    bio: "Post.doc., 2013-2016. Now at University of Kent."
+
+
+habib:
+    display_name: "Habib Ganjgahi"
+    role: alum
+    bio: "Ph.D., 2016. Now at University of Oxford."
+
+pantelis:
+    display_name: "Pantelis Samartsidis"
+    role: alum
+    bio: "Ph.D., 2016. Now at XXX."
+
