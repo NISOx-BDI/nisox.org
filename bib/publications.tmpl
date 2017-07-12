@@ -7,12 +7,17 @@
 			<span class="date">
 				{% if entry.fields['year'] != prev_year %}
 				<big><strong>{{ entry.fields['year'] }}</strong></big><br />
+				{%- set prev_type = 'none' %}
 				{% endif %}
 				{%- set prev_year = entry.fields['year'] %}
-				{{ entry.fields['month']|monthname }}
 			</span>
 		</td>
 		<td class="publication">
+			<!-- {{entry|sortkey}} -->
+			{% if entry.type != prev_type %}
+			<big><strong>{{ entry|type}}</strong></big><br />
+			{% endif %}
+			{%- set prev_type = entry.type %}
 			<span class="pubtitle">
 				{%- set url = entry|main_url %}
 				{%- if url %}
