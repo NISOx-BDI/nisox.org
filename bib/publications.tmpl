@@ -1,23 +1,20 @@
 <table class="table">
 <tbody>
-	{%- set prev_year = 1900 %}
-	{%- for entry in entries %}
+
+	{%- for entry, prev_year, prev_type in entries %}
 	<tr>
 		<td>
 			<span class="date">
-				{% if entry.fields['year'] != prev_year %}
+				{%- if entry.fields['year'] != prev_year -%}
 				<big><strong>{{ entry.fields['year'] }}</strong></big><br />
-				{%- set prev_type = 'none' %}
-				{% endif %}
-				{%- set prev_year = entry.fields['year'] %}
+				{% endif %}		
 			</span>
 		</td>
 		<td class="publication">
 			<!-- {{entry|sortkey}} -->
-			{% if entry.type != prev_type %}
+			{%- if entry.type != prev_type -%}
 			<big><strong>{{ entry|type}}</strong></big><br />
 			{% endif %}
-			{%- set prev_type = entry.type %}
 			<span class="pubtitle">
 				{%- set url = entry|main_url %}
 				{%- if url %}
