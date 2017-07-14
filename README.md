@@ -5,7 +5,7 @@ Website of the NISOx research group at the Oxford Big Data Institute based on [J
 Preview is available at: https://nisox-bdi.github.io/.
 
 ## How to update the website?
-Except for the page including the publication list that has to be manually create (cf. below), any new change pushed to the `master` branch of the current repository will automatically be reflected on the website. 
+Except for the page including the publication list (cf. below), any new change pushed to the `master` branch of the current repository will automatically be reflected on the website. 
 
 ## How to update the publication list?
 Every time the `bib/pubs.bib` file is updated, the corresponding HTML page (located in `_includes/pubs.html`) has to be updated with:
