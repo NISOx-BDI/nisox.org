@@ -1,19 +1,27 @@
-Research Group Web Site Template
-================================
+# NISOx website
 
-This is a [Jekyll][]-based Web site intended for research groups. Your group should be able to get up and running with minimal fuss.
+Website of the NISOx research group at the Oxford Big Data Institute based on [Jekyll](https://jekyllrb.com/) and [Github-pages](https://pages.github.com/) and [Pybtex][] to generate the publication list. 
 
-<p align="center">
-<img src="screenshot.png" width="387" height="225" alt="screenshot of the template">
-</p>
+Preview is available at: https://nisox-bdi.github.io/.
 
-This project originated at the University of Washington.  You can see the machinery working live at [our site][sampa].
+## How to update the website?
+Except for the page including the publication list that has to be manually create (cf. below), any new change pushed to the `master` branch of the current repository will automatically be reflected on the website. 
 
-This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License][license].
+## How to update the publication list?
+Every time the `bib/pubs.bib` file is updated, the corresponding HTML page (located in `_includes/pubs.html`) has to be updated with:
+```
+make
+```
 
-[sampa]: http://sampa.cs.washington.edu/
-[license]: https://creativecommons.org/licenses/by-nc/4.0/
+Note that `bib/pubs.bib` cannot contain any non-ASCII character or `make` will fail. To identify non-ASCII character in a document, you can use on Mac `pcregrep --color='auto' -n "[\x80-\xFF]" bib/test.bib ` (cf. [this post](https://stackoverflow.com/questions/24939813/recursively-search-in-files-for-a-range-of-unicode-characters)).
 
+## Acknowlegments
+
+This website was built using the [Research Group Web Site Template](https://github.com/uwsampa/research-group-web) developed by [Computer Architecture Lab @ University of Washington](https://github.com/uwsampa). This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
+
+## Template documentation
+
+This is an exerp of the template documentation. The full documentation is available in the [original repository]().
 
 Features
 --------
@@ -98,13 +106,6 @@ The requirements for building the site are:
 directory. To preview the site, run `jekyll serve`` and head to
 http://0.0.0.0:4000.
 
-
-Deploying to Your Sever
------------------------
-
-To set up deployments, edit the Makefile and look for the lines where `HOST` and `DIR` are defined. Change these to the host where your HTML files should be copied to.
-
-To upload a new version of the site via rsync over ssh, type `make deploy`. A web hook does this automatically when you push to GitHub. Be aware that the Makefile is configured to have rsync delete stray files from the destination directory.
 
 [Jekyll]: http://jekyllrb.com/
 [bibble]: https://github.com/sampsyo/bibble/
