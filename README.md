@@ -23,9 +23,7 @@ This website was built using the [Research Group Web Site Template](https://gith
 
 This is an exerp of the template documentation. The full documentation is available in the [original repository]().
 
-Features
---------
-
+### Features
 * Thanks to [Jekyll][], content is just text files. So even faculty should be able to figure it out.
 * Publications list generated from BibTeX.
 * Personnel list. Organize your professors, students, staff, and alumni.
@@ -36,8 +34,7 @@ Features
 [Bootstrap]: http://getbootstrap.com/
 
 
-Setup
------
+### Setup
 
 1. Install the dependencies. You will need [Python][], [Pybtex][] (`pip install pybtex`), and [Jekyll][] (`gem install jekyll`).
 2. [Fork][] this repository on GitHub.
@@ -52,14 +49,12 @@ Setup
 [Fork]: https://github.com/uwsampa/research-group-web/fork
 
 
-Publication List
-----------------
+### Publication List
 
 The list of publications is in `bib/pubs.bib`. Typing `make` will generate `pubs.html`, which contains a pretty, sorted HTML-formatted list of papers. The public page, `publications.html`, also has a link to download the original BibTeX.
 
 
-News Items and Blog Posts
--------------------------
+### News Items and Blog Posts
 
 For both long-form blog posts and short news updates, we use Jekyll's blogging system. To post a new item of either type, you create a file in the `_posts` directory using the naming convention `YYYY-MM-DD-title-for-url.md`. The date part of the filename always matters; the title part is currently only used for full blog posts (but is still required for news updates).
 
@@ -82,16 +77,14 @@ And concoct a page title for your post. The body of the post goes after the `---
 [yfm]: http://jekyllrb.com/docs/frontmatter/
 
 
-Personnel
----------
+### Personnel
 
 People are listed in a [YAML][] file in `_data/people.yml`. You can list the name, link, bio, and role of each person. Roles (e.g., "Faculty", "Staff", and "Students") are defined in `_config.yml`.
 
 [YAML]: https://en.wikipedia.org/wiki/YAML
 
 
-Building
---------
+### Building
 
 The requirements for building the site are:
 
