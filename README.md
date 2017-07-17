@@ -10,6 +10,8 @@ Because we are using a submodule, the repository has to be cloned with the recur
 git clone --recursive git@github.com:NISOx-BDI/NISOx-BDI.github.io.git
 ```
 
+To run the website locally, you will also need to install the dependencies: [Python][], [Pybtex][] (`pip install pybtex`), and [Jekyll][] (`gem install jekyll`).
+
 ## How to update the website?
 Except for the page including the publication list (cf. [below](#how-to-update-the-publication-list)), any new change pushed to the `master` branch of the current repository will automatically be reflected on the website. It is stronly advised to preview the changes locally before pushing to GitHub (cf. [section 'building'](#building)).
 
@@ -39,20 +41,7 @@ This is an exerp of the template documentation. The full documentation is availa
 
 [Bootstrap]: http://getbootstrap.com/
 
-
-### Setup
-
-1. Install the dependencies. You will need [Python][], [Pybtex][] (`pip install pybtex`), and [Jekyll][] (`gem install jekyll`).
-2. [Fork][] this repository on GitHub.
-3. Clone the fork (along with its submodules) to your own machine: `git clone --recursive git@github.com:yourgroup/research-group-web.git`.
-4. Add an "upstream" remote for the original repository so you can stay abreast of bugfixes: `git remote add upstream git://github.com/uwsampa/research-group-web.git`.
-5. Customize. Start with the `_config.yml` file, where you enter the name of the site and its URL.
-6. Type `make` to build the site and then run `jekyll serve -w` to view your site.
-7. Keep adding content. See below for instructions for each of the various sections.
-8. Periodically pull from the upstream repository: `git pull upstream master`.
-
 [Python]: https://www.python.org/
-[Fork]: https://github.com/uwsampa/research-group-web/fork
 
 
 ### Publication List
