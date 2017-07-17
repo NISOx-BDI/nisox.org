@@ -4,6 +4,12 @@ Website of the NISOx research group at the Oxford Big Data Institute based on [J
 
 Preview is available at: https://nisox-bdi.github.io/.
 
+## How to get a local copy?
+Because we are using a submodule, the repository has to be cloned with the recursive option:
+```
+git clone --recursive git@github.com:NISOx-BDI/NISOx-BDI.github.io.git
+```
+
 ## How to update the website?
 Except for the page including the publication list (cf. [below](#how-to-update-the-publication-list)), any new change pushed to the `master` branch of the current repository will automatically be reflected on the website. It is stronly advised to preview the changes locally before pushing to GitHub (cf. [section 'building'](#building)).
 
