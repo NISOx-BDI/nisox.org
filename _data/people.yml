@@ -7,6 +7,7 @@ soroosh:
 
 simon:
     display_name: "Simon Schwab"
+    image: "/img/simon.jpg"
     webpage: "https://schw4b.github.io/"
     github: schw4b
     role: postdoc

@@ -20,6 +20,9 @@ title: People
       </dt>
       <dd>
         {% if person.bio %}
+          {% if person.image %}
+            <p style = "float:left;margin-right:1em;"><img src="{{ person.image }}" alt="{{ person.display_name }}" height="150" width="150"></p>
+          {% endif %}
           {{ person.bio | markdownify }}
         {% endif %}
       </dd>
