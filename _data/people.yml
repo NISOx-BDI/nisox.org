@@ -17,7 +17,7 @@ petya:
     display_name: "Petya Kindalova"
     role: grad
     bio: |
-    Petya comes from Bulgaria where she attended the National High School of Mathematics and Natural Sciences. In 2011, Petya moved to Scotland to study at the University of Glasgow and in 2016 she successfully graduated Integrated Masters programme in Statistics with a year in industry. Working as an information analyst for a year in the National Health Service Scotland inspired her to do a DPhil in Statistics with application in public health. In particular, Petya is interested in Bayesian statistics and Genetics which led to her dissertation being focussed on identifying an appropriate model for correlated data suitable for data generated from experiments to study DNA methylation.
+        Petya comes from Bulgaria where she attended the National High School of Mathematics and Natural Sciences. In 2011, Petya moved to Scotland to study at the University of Glasgow and in 2016 she successfully graduated Integrated Masters programme in Statistics with a year in industry. Working as an information analyst for a year in the National Health Service Scotland inspired her to do a DPhil in Statistics with application in public health. In particular, Petya is interested in Bayesian statistics and Genetics which led to her dissertation being focussed on identifying an appropriate model for correlated data suitable for data generated from experiments to study DNA methylation.
 
 sam:
     display_name: Sam Davenport
@@ -32,7 +32,7 @@ alex:
         Alex Bowring is a research assistant in the Institute of Digital Healthcare at the University of Warwick. His primary role is to assist Camille Maumet and Thomas Nichols in developing standard practices for data sharing and meta-analysis in neuroimaging as part of the project "Transforming Statistical Methodology for Neuroimaging Meta-Analysis”. Additionally he is also applying newly developed statistical methods to obtain precise confidence statements about where activaiton occurs in the brain. In 2015 Alex completed his BSc. in Mathematics from the University of Warwick. In summer 2015 he undertook a project entitled “Visualising the brain - Developing viewers of standardised fMRI results”.
 
 camille:
-    display_name: "Camille Maumet ---"
+    display_name: "Camille Maumet"
     webpage: "http://camillemaumet.com"
     github: cmaumet
     role: alum

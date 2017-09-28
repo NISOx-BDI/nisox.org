@@ -30,7 +30,13 @@ navigation:
       link: /
     - title: People
       link: /people.html
+    - title: Research
+      link: /research.html
     - title: Publications
       link: /publications.html
+    - title: Presentations
+      link: /Presentations.html
     - title: Code
       link: /code.html
+    - title: Blog
+      link: /blog.html
