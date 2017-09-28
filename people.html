@@ -22,7 +22,7 @@ title: People
         {% if person.bio %}
           {% if person.image %}
             <br>
-            <p style = "float:left;margin-right:1em;"><img src="{{ person.image }}" alt="{{ person.display_name }}" height="150" width="150"></p>
+            <p style = "float:left;margin-right:1em;padding-bottom:5px;"><img src="{{ person.image }}" alt="{{ person.display_name }}" height="140" width="140"></p>
           {% endif %}
           {{ person.bio | markdownify }}
           <br>
