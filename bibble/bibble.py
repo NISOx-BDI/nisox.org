@@ -32,7 +32,7 @@ def _author_Shorten(authorList):
             #Count the number of commas.
             if authorList[currentLetter] == ',':
                 commaCount = commaCount +1
-            #Move onto next letter
+            #Move onto next letter.
             currentLetter = currentLetter + 1
             #If we have 6 author names (and therefore 6 commas) change the remaining names to et al.
             if commaCount == 6:
