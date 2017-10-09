@@ -17,7 +17,7 @@ petya:
     display_name: "Petya Kindalova"
     role: grad
     bio: |
-    Petya comes from Bulgaria where she attended the National High School of Mathematics and Natural Sciences. In 2011, Petya moved to Scotland to study at the University of Glasgow and in 2016 she successfully graduated Integrated Masters programme in Statistics with a year in industry. Working as an information analyst for a year in the National Health Service Scotland inspired her to do a DPhil in Statistics with application in public health. In particular, Petya is interested in Bayesian statistics and Genetics which led to her dissertation being focussed on identifying an appropriate model for correlated data suitable for data generated from experiments to study DNA methylation.
+        Petya comes from Bulgaria where she attended the National High School of Mathematics and Natural Sciences. In 2011, Petya moved to Scotland to study at the University of Glasgow and in 2016 she successfully graduated Integrated Masters programme in Statistics with a year in industry. Working as an information analyst for a year in the National Health Service Scotland inspired her to do a DPhil in Statistics with application in public health. In particular, Petya is interested in Bayesian statistics and Genetics which led to her dissertation being focussed on identifying an appropriate model for correlated data suitable for data generated from experiments to study DNA methylation.
 
 sam:
     display_name: Sam Davenport
