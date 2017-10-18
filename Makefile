@@ -10,7 +10,7 @@ _site/index.html _site/wacas14/index.html:
 	jekyll build $(BUILDARGS)
 
 _includes/pubs.html: bib/pubs.bib bib/publications.tmpl
-	mkdir -p _includes
+	mkdir _includes
 	$(PYTHON) bibble/bibble.py $+ > $@
 
 _site/index.html: $(wildcard *.html) _includes/pubs.html _config.yml \
