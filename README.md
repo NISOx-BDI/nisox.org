@@ -29,8 +29,6 @@ Every time one of the `_data/conferences.yml`, `_data/courses.yml`, `_data/poste
 make
 ```
 
-(This will also have to be done when the repository is first cloned.)
-
 Note that none of the YAML files cannot contain any non-ASCII character or `make` will fail. To identify non-ASCII character in a document, you can use on Mac `pcregrep --color='auto' -n "[\x80-\xFF]" <write filename here> ` (cf. [this post](https://stackoverflow.com/questions/24939813/recursively-search-in-files-for-a-range-of-unicode-characters)).
 
 ## Acknowlegments
