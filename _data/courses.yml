@@ -1,3 +1,4 @@
+#======================================================================================================================================
 # This YAML file contains all data for courses listed on the NISOx website. Data written in this file takes 
 # the following fields:
 #
@@ -32,6 +33,7 @@
 #        To include colons and question marks in field entries, wrap said field entries in speech marks - "".
 #
 # Author: Tom Maullin (23/10/17)
+#======================================================================================================================================
 
 - name: Skept2017
   conf: OHBM2017

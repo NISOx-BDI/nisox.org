@@ -1,38 +1,65 @@
+#================================================================================================
+# This python script uses the templates in the layouts folder to generate all presentation
+# pages using the YAML files in the data folder.
+#
+# Author: Tom Maullin (23/10/17)
+#================================================================================================
+
 import yaml
 import io
 import os
 from jinja2 import Environment, FileSystemLoader
 import jinja2.sandbox
 
+# Set up the path and template environment.
 PATH = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE_ENVIRONMENT = Environment(
     autoescape=False,
     loader=FileSystemLoader(os.path.join(PATH, '..', '_layouts')),
     trim_blocks=False)
  
- 
+# This function renders the template "template_filename" using the "context" structure.
 def render_template(template_filename, context):
     return TEMPLATE_ENVIRONMENT.get_template(template_filename).render(context)
  
- 
+# This function creates a HTML file using the "context" structure. The variable "outputInstruct"
+# takes the values 'conf' for a conference page, 'pres' for the main presentations page or 'course'
+# for a course page.
 def create_index_html(context, outputInstruct):
 
+    #Creating a conference page.
     if outputInstruct == 'conf':
         conf = context['conference']
+        
+        #If the output directory doesn't exist, create it.
         if not os.path.isdir(os.path.join(os.path.dirname(PATH), 'presentations', conf['name'])):
             os.mkdir(os.path.join(os.path.dirname(PATH), 'presentations', conf['name']))
+
+        #Create the name of the output file.
         fname = os.path.join(os.path.dirname(PATH), 'presentations', conf['name'], 'index.html')
+
+        #Render the template and output.
         with open(fname, 'w') as f:
             html = render_template('confTemplate.html',context)
             f.write(html)
-            
+
+    #Creating the main presentations page.  
     if outputInstruct == 'pres':
+        
+        #Render template and print (output is decided by makefile.
         html = render_template('presTemplate.html',context)
         print(html)
 
+    #Creating a course page.
     if outputInstruct == 'course':
+
+        #Obtain the course from the context.
         course = context['course']
+
+        #Create the name of the output file.
         fname = os.path.join(os.path.dirname(PATH), 'presentations', course['conf'], course['name'] + '.html')
+
+        #Render the template and output.
         with open(fname, 'w') as f:
             html = render_template('courseTemplate.html',context)
             f.write(html)

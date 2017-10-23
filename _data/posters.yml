@@ -1,3 +1,4 @@
+#===================================================================================================================================
 # This YAML file contains all data for posters listed on the NISOx website. Data written in this file takes 
 # the following fields:
 #
@@ -22,6 +23,7 @@
 #        to display Code and Day the corresponding format field in conferences.yml must be set to True.
 #
 # Author: Tom Maullin (23/10/17)
+#===================================================================================================================================
 
 - name: ClusterFailure-Eklund-OHBM2016
   Displaytitle: "Cluster failure: Why fMRI inferences for spatial extent have inflated false positive rate"
