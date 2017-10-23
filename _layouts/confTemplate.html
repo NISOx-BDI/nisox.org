@@ -121,6 +121,8 @@ Author: Tom Maullin (23/10/17)
       {% if poster.Authors %}
         Authors: {{poster.Authors}}.
       {% endif %}
+      <!--Give the posters doi-->
+      doi:{{poster.URL | replace("https://doi.org/", "") }}
 
       </li>
 

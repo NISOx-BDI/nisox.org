@@ -58,6 +58,9 @@ Listed below are all available talks from the {{course.conf_displaytitle}} "{{co
 				{% if talk.Authors %}
 					Authors: {{talk.Authors}}.
 				{% endif %}
+				
+				<!--Give the talks doi-->
+            	doi:{{talk.URL | replace("https://doi.org/", "") }}
 
 			</li>
 		</div>
