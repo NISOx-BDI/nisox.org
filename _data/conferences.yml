@@ -1,0 +1,167 @@
+# This YAML file contains all data for conferences listed on the NISOx website. Data written in this file takes 
+# the following fields:
+#
+# - name: (Mandatory) A machine readable name which will be used to create the URL for this conferences page. This is also used
+#         to determine which conference data in the talks.yml, courses.yml and posters.yml belong to.
+#
+# - displayname: (Mandatory) This is the name that will be used when referring to this conference in the text of the website.
+#
+# - descrip: (Optional) This is a description of the conference. If not filled in, sections where it would normally be displayed
+#            will appear blank.
+#
+# - sections: (Mandatory) This consists of 3 boolean variables (talks, courses and posters) referring to whether or not there is
+#             corresponding data for this conference in the talks.yml, courses.yml and posters.yml files respectively. (I.e. are 
+#             there any talks stored from this conference? Are there any courses? Are there any posters?)
+#
+# - format: (Mandatory if there are posters stored for this conference) This consists of one boolean variable, posterDaysAvailable,
+#           which tells us if there is information about which day/stand posters were presented on/at at this conference. (I.e. if
+#           posters.yml has code and day data stored for posters for this conference, posterDaysAvailable should be true).
+#
+# Notes: Fieldnames are case sensitive and entries with colons, question marks or obscure unicode charactors may error.
+#        To include colons and question marks in field entries, wrap said field entries in speech marks - "".
+#
+# Author: Tom Maullin (23/10/17)
+
+- name: OHBM2017 
+  displayname: OHBM 2017
+  descrip: | 
+    This collection organizes a number of different talks from NISOx and NISOx collaborators at the 2017 Organization for Human Brain Mapping (OHBM) in Vancouver, 25-29 June.
+  sections: 
+    talks: True  
+    posters: False
+    courses: True
+
+- name: OHBM2016 
+  displayname: OHBM 2016
+  descrip: |
+    This collection organizes a number of different posters and talks from NISOx and NISOx collaborators at the 2016 Organization for Human Brain Mapping (OHBM) in Geneva, 26-30 June.
+  sections:
+    talks: True 
+    posters: True 
+    courses: False
+  format:
+    posterDaysAvailable: True
+
+- name: OHBM2015  
+  displayname: OHBM 2015
+  descrip: |
+    This collection organizes a number of different posters and talks from NISOx and NISOx collaborators at the 2015 Organization for Human Brain Mapping (OHBM) in Hawaii, 14-18 June.
+  sections: 
+    talks: True
+    posters: True  
+    courses: True
+  format:
+    posterDaysAvailable: True    
+
+- name: OHBM2014
+  displayname: OHBM 2014
+  descrip: |
+    This collection organizes a number of different posters and talks from NISOx and NISOx collaborators at the 2014 Organization for Human Brain Mapping (OHBM) in Hamburg, 8-12 June.
+  sections: 
+    talks: True
+    posters: True  
+    courses: True 
+  format:
+    posterDaysAvailable: True  
+
+- name: NeuroStatWar 
+  displayname: Neuroimaging Statistics Research at Warwick
+  descrip: |
+    This collection organizes all available talks by the NeuroStatistics at Warwick group during the years 2014-2017.
+  sections: 
+    talks: True
+    posters: False 
+    courses: False 
+
+- name: GSK2014
+  displayname: "GlaxoSmithKline 2014 Neurophysics Workshop on Skeptical Neuroimaging"
+  descrip: |
+    Talks from the 14 January 2014 ''GlaxoSmithKline - Neurophysics Workshop on Skeptical Neuroimaging'', an activity hosted at Imperial College and coordinated with the Neurophysics Marie Curie Initial Training Network of which GSK is a participant.
+  sections: 
+    talks: True
+    posters: False 
+    courses: False
+
+- name: Misc2014
+  displayname: "Miscellaneous Talks 2014"
+  descrip: |
+    Miscellaneous talks given in the year 2014.
+  sections: 
+    talks: False
+    posters: True  
+    courses: False
+  format:
+    posterDaysAvailable: False
+
+- name: OHBM2013
+  displayname: OHBM 2013
+  descrip: |
+    This collection organizes a number of different posters and talks from NISOx and NISOx collaborators at the 2013 Organization for Human Brain Mapping (OHBM) in Seattle, 16-20 June.
+  sections: 
+    talks: True
+    posters: True  
+    courses: True 
+  format:
+    posterDaysAvailable: False  
+
+- name: OHBM2012
+  displayname: OHBM 2012
+  descrip: |
+    This collection organizes a number of different posters and talks from NISOx and NISOx collaborators at the 2012 Organization for Human Brain Mapping (OHBM) in Beijing, 10-14 June.
+  sections: 
+    talks: True
+    posters: True  
+    courses: True 
+  format:
+    posterDaysAvailable: False  
+
+- name: GSK2012
+  displayname: "GlaxoSmithKline 2012 Neurophysics Workshop on Pharmacological MRI"
+  descrip: |
+    Talks from the 23 & 24 January 2012 ''GlaxoSmithKline - Neurophysics Workshop on Pharmacological MRI'', an activity hosted at Warwick University and coordinated with the Neurophysics Marie Curie Initial Training Network of which GSK is a participant.
+  sections: 
+    talks: True
+    posters: False  
+    courses: False
+  format:
+    posterDaysAvailable: False
+
+- name: OHBM2011
+  displayname: OHBM 2011
+  descrip: |
+    This collection organizes a number of different posters and talks from NISOx and NISOx collaborators at the 2011 Organization for Human Brain Mapping (OHBM) in Quebec City, June 10-14.
+  sections: 
+    talks: True
+    posters: True  
+    courses: True  
+  format:
+    posterDaysAvailable: False
+
+- name: OHBM2010
+  displayname: OHBM 2010
+  descrip: |
+    This collection organizes a number of different posters and talks from NISOx and NISOx collaborators at the 2010 Organization for Human Brain Mapping (OHBM) in Barcelona.
+  sections: 
+    talks: False
+    posters: True  
+    courses: True  
+  format:
+    posterDaysAvailable: False
+
+- name: FMRI2010
+  displayname: Applied Neuroimaging fMRI Mini-Course 2010
+  descrip: |
+    This collection organizes all available talks given during the 2010 Applied Neuroimaging fMRI Mini-Course.
+  sections: 
+    talks: True
+    posters: False  
+    courses: False
+
+- name: OHBM2009
+  displayname: OHBM 2009
+  descrip: |
+    This collection organizes a number of different talks from NISOx and NISOx collaborators at the 2009 Organization for Human Brain Mapping (OHBM) in San Francisco.
+  sections: 
+    talks: False
+    posters: False  
+    courses: True

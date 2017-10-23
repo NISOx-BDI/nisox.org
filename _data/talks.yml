@@ -1,0 +1,427 @@
+# This YAML file contains all data for talks listed on the NISOx website. Data written in this file takes 
+# the following fields:
+#
+# - name: (Optional) A machine readable name for this presentation. Currently only included for completeness.
+#
+# - displaytitle: (Mandatory) This is the name that will be used when referring to this presentation in the text of the website.
+#
+# - URL: (Mandatory) This must be a doi URL for the presentation.
+#
+# - Author/Authors: (Optional) Who wrote the presentation. If neither an Author or Authors field is provided the website will 
+#                   leave this blank.
+#
+# - conf: (Mandatory) This tells the website which page to list the presentation under. It must match the machine readable 'name'
+#         field of a conference in conferences.yml.
+#
+# - Context: (Optional) An extra sentence or two describing where the talk came from.
+#
+# - img: (Optional) An image of the presentation. Missing images will not cause any display errors or empty spaces.
+#
+# - date: (Optional) If the date is not clear from the conference it may be desirable to include a date for each presentation
+#         individually.
+#
+# Notes: Fieldnames are case sensitive and entries with colons, question marks or obscure unicode charactors may error.
+#        To include colons and question marks in field entries, wrap said field entries in speech marks - "".
+#
+# Author: Tom Maullin (23/10/17)
+
+- name: Nichols_DVARS
+  Displaytitle: DVARS - Statistical and Practial Significance.
+  URL: https://doi.org/10.6084/m9.figshare.5473150.v1
+  Author: Thomas Nichols
+  conf: OHBM2017
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9465736/thumb.png
+  Context: "Hackathon Unconference"
+
+- name: Nichols_MetaMethods
+  Displaytitle: Overview of Meta-Analysis Approaches.
+  URL: https://doi.org/10.6084/m9.figshare.5473162.v1
+  Author: Thomas Nichols
+  Context: Neuroimaging Meta-Analysis Educational Course
+  conf: OHBM2017
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9465748/thumb.png
+
+- name: mfiecas_dc
+  Displaytitle: "Neural correlates of the LSD experience revealed by multimodal neuroimaging."
+  URL: https://doi.org/10.6084/m9.figshare.5443540.v1
+  Author: Mark Fiecas
+  conf: NeuroStatWar
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9411118/thumb.png
+  date: 28th April 2016
+
+- name: slides_camille
+  Displaytitle: "Neuroanatomical diversity of corpus callosum and brain volume in autism: meta-analysis, analysis of the Autism Brain Imaging Data Exchange (Abide) project, and simulation."
+  URL: https://doi.org/10.6084/m9.figshare.5443570.v1
+  Author: Camille Maumet
+  conf: NeuroStatWar
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9411133/thumb.png
+  date: 26th February 2015
+
+- name: slides_ruth
+  Displaytitle: "Corticocortical evoked potentials reveal projectors and integrators in human brain networks."
+  URL: https://doi.org/10.6084/m9.figshare.5443594.v1
+  Author: Ruth Harbord
+  conf: NeuroStatWar
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9411160/thumb.png
+  date: 19 February 2015
+
+- name: SGPP
+  Displaytitle: "SGPP - spatial Gaussian predictive process models for neuroimaging data."
+  URL: https://doi.org/10.6084/m9.figshare.5443543.v1
+  Author: Silvia Montagna
+  conf: NeuroStatWar
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9411121/thumb.png
+  date: 5th February 2015
+
+- name: slides_pantelis2
+  Displaytitle: "Identifying functional co-activation patterns in neuroimaging studies via Poisson graphical models."
+  URL: https://doi.org/10.6084/m9.figshare.5443588.v1
+  Author: Pantelis Samartsidis
+  conf: NeuroStatWar
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9411157/thumb.png
+  date: 29th January 2015
+
+- name: slides_habib
+  Displaytitle: "Warped linear mixed models for the genetic analysis of transformed phenotypes."
+  URL: https://doi.org/10.6084/m9.figshare.5443582.v1
+  Author: Habib Ganjgahi
+  conf: NeuroStatWar
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9411145/thumb.png
+  date: 22nd January 2015
+
+- name: slides_chop_sir_cytao_20160121
+  Displaytitle: "Let's chop them up! A brief survey on SIR techniques."
+  URL: https://doi.org/10.6084/m9.figshare.5443579.v1
+  Author: Chenyang Tao
+  conf: NeuroStatWar
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9411139/thumb.png
+  date: 21st January 2015
+
+- name: slides_ahmed
+  Displaytitle: MRI texture analysis for the characterisation of childhood brain tumours.
+  URL: https://doi.org/10.6084/m9.figshare.5443555.v1
+  Author: Ahmed Fetit
+  conf: NeuroStatWar
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9411130/thumb.png
+  date: 4th December 2014
+
+- name: slides_silvia
+  Displaytitle: "Functional Bayesian point process model for neuroimaging meta-analysis data."
+  URL: https://doi.org/10.6084/m9.figshare.5443600.v1
+  Author: Silvia Montagna
+  conf: NeuroStatWar
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9411166/thumb.png
+  date: 27 November 2014
+
+- name: anis
+  Displaytitle: "Spatial Bayesian Variable Selection Models on Functional Magnetic Resonance Imaging Time-Series Data."
+  URL: https://doi.org/10.6084/m9.figshare.5443522.v1
+  Author: Pantelis Samartsidis
+  conf: NeuroStatWar
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9411103/thumb.png
+  date: 16th October 2014
+
+- name: Life_in_a_Shell(2)
+  Displaytitle: "Life in a shell (2): Getting the Most Out of Linux/Unix."
+  URL: https://doi.org/10.6084/m9.figshare.5443612.v1
+  Author: Thomas Nichols
+  conf: NeuroStatWar
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9415735/thumb.png
+  date: 9th October 2014
+
+- name: Life_in_a_Shell
+  Displaytitle: "Life in a shell: Getting the Most Out of Linux/Unix."
+  URL: https://doi.org/10.6084/m9.figshare.5443606.v1
+  Author: Thomas Nichols
+  conf: NeuroStatWar
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9415738/thumb.png
+  date: 25th September 2014
+
+- name: Maumet-IBMAedu-OHBM2016
+  Displaytitle: Practical Intensity-Based Meta-Analysis
+  URL: https://doi.org/10.6084/m9.figshare.5473165.v1
+  Context: Neuroimaging Meta-Analysis Educational Course
+  Author: Camille Maumet
+  conf: OHBM2016
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9465766/thumb.png 
+
+- name: Nichols-FastHerit-OHBM2015
+  Displaytitle: "Fast, accurate methods for heritability and association highdimensional connectomics data"
+  URL: https://doi.org/10.6084/m9.figshare.5478373.v1
+  Context: "Genetics of the Connectome Morning Workshop"
+  Author: Thomas Nichols
+  conf: OHBM2015
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474868/thumb.png
+
+- name: Nichols-IBMAedu-OHBM2015
+  Displaytitle: Practical Image-Based Meta-Analysis
+  URL: https://doi.org/10.6084/m9.figshare.5478376.v1
+  Context: "Neuroimaging Meta-Analysis Educational Course"
+  Authors: "Camille Maumet, Thomas Nichols"
+  conf: OHBM2015
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474871/thumb.png
+
+- name: Nichols-MDMCon-OHBM2015
+  Displaytitle: Modelling Time-varying effective Brain Connectivity using Multiregression Dynamic Models
+  URL: https://doi.org/10.6084/m9.figshare.5478379.v1
+  Context: "Estimating Time Varying Connectivity Morning Workshop"
+  Author: Thomas Nichols
+  conf: OHBM2015
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474877/thumb.png
+
+- name: Nichols-MetaMethods-OHBM2015
+  Displaytitle: Overview of MetaAnalysis Approaches
+  URL: https://doi.org/10.6084/m9.figshare.5478409.v1
+  Author: Thomas Nichols
+  conf: OHBM2015
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474904/thumb.png
+  Context: "Neuroimaging Meta-Analysis Educational Course"
+
+- name: Nichols-ReprodPower-OHBM2015
+  Displaytitle: Reproducibility and Power
+  URL: https://doi.org/10.6084/m9.figshare.5478418.v1
+  Author: Thomas Nichols
+  conf: OHBM2015
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474919/thumb.png
+  Context: "Reproducible Neuroimaging Educational Course"
+
+- name: Nichols-FamilyStruct-HCPcourse2015
+  Displaytitle: Family Structure and Heritability
+  URL: https://doi.org/10.6084/m9.figshare.5478367.v1
+  Author: Thomas Nichols
+  conf: OHBM2015
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474868/thumb.png
+
+- name: Nichols-ModInfPred-HCPcourse2015
+  Displaytitle: "Regression, permutation & prediction analyses"
+  URL: https://doi.org/10.6084/m9.figshare.5478412.v1
+  Author: Thomas Nichols
+  conf: OHBM2015
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474910/thumb.png
+
+- name: Nichols-NMA-MetaMethods-OHBM2014
+  Displaytitle: Overview of Meta-Analysis Approaches
+  URL: https://doi.org/10.6084/m9.figshare.5484061.v1
+  Author: Thomas Nichols
+  conf: OHBM2014
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485593/thumb.png
+  Context: "Neuroimaging Meta-Analysis"
+
+- name: Nichols-AdvfMRI-Inference-OHBM2014
+  Displaytitle: Advances in thresholding and multiple comparisons
+  URL: https://doi.org/10.6084/m9.figshare.5484058.v1
+  Author: Thomas Nichols
+  conf: OHBM2014
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485590/thumb.png
+  Context: "Advanced fMRI Course"
+
+- name: Chen-ClusterHerit-OHBM2013-talk
+  URL: https://doi.org/10.6084/m9.figshare.5484373.v1
+  Displaytitle: Voxel-wise and Cluster-based Heritability Inference for fMRI Data
+  Authors: "Xu Chen, Gabriella Blokland, Lachlan Strike, Thomas Nichols"
+  conf: OHBM2013
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485995/thumb.png
+  Context: "Selected for oral presentation and first author was travel award winner"
+
+- name: Ge-MSlesions-OHBM2013-talk
+  Displaytitle: Analysis of Multiple Sclerosis Lesions via Spatially Varying Coefficients
+  URL: https://doi.org/10.6084/m9.figshare.5484379.v1
+  Authors: "Tian Ge, Nicole Muller-Lenke, Kerstin Bendfeldt, Thomas Nichols, Timothy D. Johnson"
+  conf: OHBM2013
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486001/thumb.png
+  Context: "Selected for oral presentation and first author was travel award winner"
+
+- name: Nichols_MetaMethods_2013
+  Displaytitle: Overview of Meta-Analysis Approaches
+  URL: https://doi.org/10.6084/m9.figshare.5484382.v1
+  Author: Thomas Nichols
+  conf: OHBM2013
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486004/thumb.png
+  Context: "Neuroimaging Meta-Analysis"
+
+- name: Nichols_Thresholding_2012
+  Displaytitle: New and best-practice approaches to thresholding
+  URL: https://doi.org/10.6084/m9.figshare.5484736.v1
+  Author: Thomas Nichols
+  conf: OHBM2012
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486376/thumb.png
+  Context: Talk from the Advanced fMRI course
+
+- name: Nichols_MulvarImgGen
+  Displaytitle: From Univariate to Multivariate imaging Genetic Analyses
+  URL: https://doi.org/10.6084/m9.figshare.5484982.v1
+  Authors: "Thomas Nichols, Maria Vounou, Giovanni Montana"
+  conf: OHBM2011
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486637/thumb.png
+  Context: "Talk from the ''Imaging Genetics: Multivariate Analyses for Neural and Genetic Circuitry'' morning workshop" 
+
+- name: Nichols_PowerCircInf
+  Displaytitle: "Finding Activations: Power, Specificity, and Selection Bias"
+  URL: https://doi.org/10.6084/m9.figshare.5485015.v1
+  Authors: "Thomas Nichols, Jeanette Mumford"
+  conf: OHBM2011
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486664/thumb.png
+  Context: "Talk from the Advanced fMRI course"
+
+- name: Nichols-Thresholding-2010
+  Displaytitle: "Inference on SPMs: Random Field Theory & Alternatives"
+  URL: https://doi.org/10.6084/m9.figshare.5492845.v1
+  Author: Thomas Nichols
+  conf: FMRI2010
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9500830/thumb.png
+  date: 18th March 2010
+
+- name: feat1_part2
+  Displaytitle: FMRI Pre-Processing and ModelBased Statistics (2)
+  URL: https://doi.org/10.6084/m9.figshare.5492842.v1
+  Author: Thomas Nichols
+  conf: FMRI2010
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9500827/thumb.png
+  date: 28th January 2010
+
+- name: feat1_part1
+  Displaytitle: FMRI Pre-Processing and ModelBased Statistics
+  URL: https://doi.org/10.6084/m9.figshare.5492767.v1
+  Author: Thomas Nichols
+  conf: FMRI2010
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9500752/thumb.png
+  date: 14th January 2010
+
+- name: Chen-Zaumner_PharmacolModApptoImaging
+  Displaytitle: Principles of pharmacological modelling relevant to applications of imaging endpoints
+  URL: https://doi.org/10.6084/m9.figshare.5487208.v1
+  Authors: "Chao Chen, Stefano Zamuner"
+  conf: GSK2012
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9491257/thumb.png
+
+- name: Duff_fMRIscreening
+  Displaytitle: Identifying fMRI signatures of drug action for the screening of novel compounds
+  URL: https://doi.org/10.6084/m9.figshare.5488873.v1
+  Author: Eugene Duff
+  conf: GSK2012
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9493372/thumb.png
+
+- name: Ginestet_WeightedNetworkAnalysis
+  Displaytitle: "Weighted Network Analysis for Groups: Separating Differences in Cost from Differences in Topology"
+  URL: https://doi.org/10.6084/m9.figshare.5488876.v1
+  Author: Cedric E. Ginestet
+  conf: GSK2012
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9493375/thumb.png
+
+- name: Guillaume_Longitudinal-fMRI
+  Displaytitle: Analysis of longitudinal imaging data
+  URL: https://doi.org/10.6084/m9.figshare.5488879.v1
+  Author: Bryan Guillaume
+  conf: GSK2012
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9493378/thumb.png
+
+- name: Gunn_PhrmacoDirectIndirect
+  Displaytitle: Model Based Analyses Direct and Indirect PK-PD modelling
+  URL: https://doi.org/10.6084/m9.figshare.5488882.v1
+  Author: Roger Gunn
+  conf: GSK2012
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9493414/thumb.png
+
+- name: Morris_Multimodal-pHMRI
+  Displaytitle: Multimodal approaches to functional neuroimaging
+  URL: https://doi.org/10.6084/m9.figshare.5491330.v1
+  Author: Peter Morris
+  conf: GSK2012
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9496618/thumb.png
+
+- name: Minas_AdaptiveOutcome
+  Displaytitle: Detecting Global Treatment Effects Across ROI
+  URL: https://doi.org/10.6084/m9.figshare.5488900.v1
+  Authors: "George Minas, Fabio Rigat, Thomas Nichols, John Aston, Nigel Stallard"
+  conf: GSK2012
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9493444/thumb.png
+
+- name: Matthews_HaemodynamicCoupling
+  Displaytitle: Principles of Haemodynamic Coupling for fMRI
+  URL: https://doi.org/10.6084/m9.figshare.5488897.v1
+  Author: Paul M. Matthews
+  conf: GSK2012
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9493423/thumb.png
+
+- name: Kelly_ASLmethods
+  Displaytitle: ASL Methods and Potential for pHMRI
+  URL: https://doi.org/10.6084/m9.figshare.5488885.v1
+  Author: Michael Kelly
+  conf: GSK2012
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9493417/thumb.png
+
+- name: Newbould_BOLD_measurement
+  Displaytitle: BOLD contrast and its measurement
+  URL: https://doi.org/10.6084/m9.figshare.5491336.v1
+  Author: Rexford Newbould
+  conf: GSK2012
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9496633/thumb.png
+
+- name: Ridgway_sDCMfor-rsfMRI
+  Displaytitle: Stochastic Dynamic Causal Modelling for resting-state fMRI
+  URL: https://doi.org/10.6084/m9.figshare.5492731.v1
+  Author: Ged Ridgway
+  conf: GSK2012
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9500716/thumb.png
+
+- name: Vertes_GraphTheory
+  Displaytitle: Network analyses for fMRI
+  URL: https://doi.org/10.6084/m9.figshare.5492734.v1
+  Author: Petra Vertes 
+  conf: GSK2012
+
+- name: Wise_phFMRI
+  Displaytitle: "Pharmacological FMRI: principles and confounds"
+  URL: https://doi.org/10.6084/m9.figshare.5492737.v1
+  Author: Richard Wise
+  conf: GSK2012
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9500725/thumb.png
+
+- name: 1-Matthews-Overview
+  Displaytitle: "Why should we be Skeptical Neuroscientists?"
+  URL: https://doi.org/10.6084/m9.figshare.5487175.v1
+  Author: Paul Matthews
+  conf: GSK2014
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9491224/thumb.png
+
+- name: 2-Duff-Connectivity
+  Displaytitle: Overcoming confounds and improving the interpretability of connectivity analyses
+  URL: https://doi.org/10.6084/m9.figshare.5487181.v1
+  Author: Eugene Duff
+  conf: GSK2014
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9491230/thumb.png
+
+- name: 3-Radua-NeuroMetaAnalysis
+  Displaytitle: Meta-analytic methods for neuroimaging data
+  URL: https://doi.org/10.6084/m9.figshare.5487184.v1
+  Author: Joaquim Radua
+  conf: GSK2014
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9491233/thumb.png
+
+- name: 4-Nichols_MetaSpatBayes
+  Displaytitle: "Advanced spatial Bayesian models for meta-analysis & reverse inference"
+  URL: https://doi.org/10.6084/m9.figshare.5487187.v1
+  Authors: "Thomas Nichols, Timothy Johnson"
+  conf: GSK2014
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9491236/thumb.png
+
+- name: 5-Maumet-Neuroinformatics
+  Displaytitle: "Neuroinformatic techniques for provenance & data sharing"
+  URL: https://doi.org/10.6084/m9.figshare.5487190.v1
+  Author: Camille Maumet
+  conf: GSK2014
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9491242/thumb.png
+
+- name: 6-Gorgolewski-DataSharing
+  Displaytitle: "NeuroVault and the vision for data sharing in neuroimaging"
+  URL: https://doi.org/10.6084/m9.figshare.5487193.v1
+  Author: Chris Gorgolewski
+  conf: GSK2014
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9491239/thumb.png
+
+- name: 7-Bzdok-ALE
+  Displaytitle: "Meta-analytic approaches to mapping the brain, its functions and connectivity"
+  URL: https://doi.org/10.6084/m9.figshare.5487196.v1
+  Author: Simon Eickhoff
+  conf: GSK2014
+  img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9491245/thumb.png
