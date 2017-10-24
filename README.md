@@ -13,7 +13,7 @@ git clone --recursive git@github.com:NISOx-BDI/NISOx-BDI.github.io.git
 To run the website locally, you will also need to install the dependencies: [Python][], [Pybtex][] (`pip install pybtex`), and [Jekyll][] (`gem install jekyll`).
 
 ## How to update the website?
-Except for the page including the publication list  and the presentation pages (cf. [below](#how-to-update-the-publication-list)), any new change pushed to the `master` branch of the current repository will automatically be reflected on the website. It is stronly advised to preview the changes locally before pushing to GitHub (cf. [section 'building'](#building)).
+Except for the page including the publication list (cf. [below](#how-to-update-the-publication-list))  and the presentation pages (cf. [section 'How to update the presentations pages?'](#How to update the presentations pages?)), any new change pushed to the `master` branch of the current repository will automatically be reflected on the website. It is stronly advised to preview the changes locally before pushing to GitHub (cf. [section 'building'](#building)).
 
 ## How to update the publication list?
 Every time the `bib/pubs.bib` file is updated, the corresponding HTML page (located in `_includes/pubs.html`) has to be updated with:
@@ -58,7 +58,7 @@ The list of publications is in `bib/pubs.bib`. Typing `make` will generate `pubs
 
 ### Presentation Pages
 
-When new presentations need to be added to the website update the corresponding `_data/conferences.yml`, `_data/courses.yml`, `_data/posters.yml` or `_data/talks.yml` files (full instructions of how to do this can be found in the comments at the top of each of these files). 
+To add new presentations to the website update the `_data/conferences.yml` (if a new conference needs to be added - e.g. OHBM2018), `_data/courses.yml` (if a new course needs to be added - e.g. OHBM 2018 Introduction to imaging genetics), `_data/posters.yml` (if a new poster needs to be added) or `_data/talks.yml` (if new talks need to be added) files (full instructions of how to do this can be found in the comments at the top of each of these files). 
 
 ### News Items and Blog Posts
 
