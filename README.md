@@ -94,6 +94,7 @@ People are listed in a [YAML][] file in `_data/people.yml`. You can list the nam
 
 The requirements for building the site are:
 
+* Python 2.7: many of the following modules were built on python 2.7 and thus no guarentee is made that the website can run on later python versions.
 * [Jekyll][]: run `gem install jekyll`
 * [Pybtex][]: run `pip install pybtex`
 * [bibble][]: included as a submodule. Because git is cruel, you need to use
