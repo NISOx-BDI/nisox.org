@@ -5,30 +5,30 @@
 	<tr>
 		<td>
 			<span class="date">
-				{%- if entry.fields['year'] != prev_year -%}
+				{%- if entry.fields['year'] != prev_year -%} 
 				<big><strong>{{ entry.fields['year'] }}</strong></big><br />
 				{% endif %}		
 			</span>
-		</td>
+		</td> 
 		<td class="publication">
 			<!-- {{entry|sortkey}} -->
 			{%- if entry.type != prev_type -%}
 			<big><strong>{{ entry|type}}</strong></big><br />
 			{% endif %}
 			<span class="pubtitle">
-				{%- set url = entry|main_url %}
+				{%- set url = entry|main_url %} 
 				{%- if url %}
 				<img src="img/pdficon_small.png" width="16"
 					height="16" alt="PDF" />
-				<a href="{{ url|escape }}">{{ entry|title }}</a>.
+				<a href="{{ url|escape }}">{{ entry|title }}</a>
 				{%- else %}
-				<b>{{ entry|title }}</b>.
+				<b>{{ entry|title }}</b>
 				{%- endif %}
 			</span><br />
 			<span class="authors">
 				{{ entry.persons['author']|author_list }}.
-			</span><br />
-			<span class="venuetype">{{ entry|venue_type -}}</span><span class="venue">{{ entry|venue -}}</span>.
+			</span><br /> 
+			<span class="venuetype">{{ entry|venue_type -}}</span><span class="venue">{{ entry|venue}}</span>.
 			{%- if entry.fields['note'] %}
 			<span class="note">
 			{{ entry.fields['note']|escape }}.

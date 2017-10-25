@@ -4,6 +4,11 @@ import jinja2
 import jinja2.sandbox
 import re
 from calendar import month_name
+import codecs
+import latexcodec
+import os
+
+parser = bibtex.Parser()
 
 _months = {
     'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 'jun': 6,
@@ -15,8 +20,14 @@ _pubtypes = {
      'misc': 6, 'inproceedings': 5,
 }
 
+def translate_remove_brackets(to_translate, translate_to=u''):
+    brackets = u'{}'
+    translate_table = dict((ord(char), translate_to) for char in brackets)
+    return to_translate.translate(translate_table)
+
 def _author_fmt(author):
-    return u' '.join(author.first() + author.middle() + author.last())
+    author = u' '.join(author.first() + author.middle() + author.last())
+    return translate_remove_brackets(author)
 
 def _author_Shorten(authorList):
     #This function takes in a list of authors and if there are more than 6, outputs the first 6 authors and et al.
@@ -50,14 +61,15 @@ def _andlist(ss, sep=', ', seplast=', and ', septwo=' and '):
         return sep.join(ss[:-1]) + seplast + ss[-1]
 
 def _author_list(authors):
-    return _author_Shorten(_andlist(map(_author_fmt, authors)))
+    authorList = _author_Shorten(_andlist(map(_author_fmt, authors)))
+    return authorList
 
 def _venue_type(entry):
     venuetype = ''
     if entry.type == 'inbook':
-        venuetype = 'Chapter in '
+        venuetype = 'Chapter in'
     elif entry.type == 'techreport':
-        venuetype = 'Technical Report '
+        venuetype = 'Technical Report'
     elif entry.type == 'phdthesis':
         venuetype = 'Ph.D. thesis, {}'.format(entry.fields['school'])
     return venuetype
@@ -80,30 +92,30 @@ def _type(entry):
 
 def _venue(entry):
     f = entry.fields
-    venue = ''
+    venue = u''
     if entry.type == 'article':
         venue = f['journal']
         try:
             if f['volume'] and f['number']:
-                venue += ' {0}({1})'.format(f['volume'], f['number'])
+                venue += u' {0}({1})'.format(f['volume'], f['number'])
         except KeyError:
             pass
     elif entry.type == 'inproceedings':
         venue = f['booktitle']
         try:
             if f['series']:
-                venue += ' ({})'.format(f['series'])
+                venue += u' ({})'.format(f['series'])
         except KeyError:
             pass
     elif entry.type == 'inbook':
         venue = f['title']
     elif entry.type == 'techreport':
         if 'number' in f and 'institution' in f:
-            venue = '{0}, {1}'.format(f['number'], f['institution'])
+            venue = u'{0}, {1}'.format(f['number'], f['institution'])
         else:
-            venue = ''
+            venue = u''
     elif entry.type == 'phdthesis':
-        venue = ''
+        venue = u''
     elif entry.type == 'unpublished':
         venue = f['journal']
     else:
@@ -117,14 +129,15 @@ def _title(entry):
         title = entry.fields['title']
 
     # remove curlies from titles -- useful in TeX, not here
-    title = title.translate(None, '{}')
+    title = translate_remove_brackets(title)
     return title
 
 def _main_url(entry):
     urlfields = ('url', 'ee')
     for f in urlfields:
         if f in entry.fields:
-            return entry.fields[f]
+            urlList = entry.fields[f]
+            return urlList.split(' ', 1)[0]
     return None
 
 def _extra_urls(entry):
@@ -159,6 +172,7 @@ def _sortkey(entry):
     return year + '{:04d}'.format(_pubtypes[entry.type])
 
 def main(bibfile, template):
+
     # Load the template.
     tenv = jinja2.sandbox.SandboxedEnvironment()
     tenv.filters['author_fmt'] = _author_fmt
@@ -175,8 +189,8 @@ def main(bibfile, template):
         tmpl = tenv.from_string(f.read())
 
     # Parse the BibTeX file.
-    with open(bibfile) as f:
-        db = bibtex.Parser().parse_stream(f)
+    with codecs.open(bibfile, encoding="latex") as stream:
+        db = parser.parse_stream(stream)
 
     # Include the bibliography key in each entry.
     for k, v in db.entries.items():
@@ -188,13 +202,23 @@ def main(bibfile, template):
     entries = [(bib_sorted[0], None, None)]
     prev_year = bib_sorted[0].fields['year']
     prev_type = bib_sorted[0].type
+
+    #We already have the first entry (bib_sorted[0]).
+    isFirst = True
+
     for bib in bib_sorted:
-        entries.append((bib, prev_year, prev_type))
-        prev_year = bib.fields['year']
-        prev_type = bib.type
+
+        #Append all entries after the first.
+        if isFirst:
+            isFirst = False
+        else:
+            entries.append((bib, prev_year, prev_type))
+            prev_year = bib.fields['year']
+            prev_type = bib.type
+
 
     out = tmpl.render(entries=entries)
-    print(out)
+    print(out.encode("utf-8")) 
 
 if __name__ == '__main__':
     main(*sys.argv[1:])
