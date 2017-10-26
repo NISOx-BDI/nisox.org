@@ -147,7 +147,7 @@ def _main_url(entry):
     for f in urlfields:
         if f in entry.fields:
             urlList = entry.fields[f]
-            return urlList.split(' ', 1)[0]
+            return translate_remove_brackets(urlList.split(' ', 1)[0])
     return None
 
 def _extra_urls(entry):
