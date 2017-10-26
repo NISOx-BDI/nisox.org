@@ -67,9 +67,9 @@ def _author_list(authors):
 def _venue_type(entry):
     venuetype = ''
     if entry.type == 'inbook':
-        venuetype = 'Chapter in'
+        venuetype = 'Chapter in '
     elif entry.type == 'techreport':
-        venuetype = 'Technical Report'
+        venuetype = 'Technical Report '
     elif entry.type == 'phdthesis':
         venuetype = 'Ph.D. thesis, {}'.format(entry.fields['school'])
     return venuetype
@@ -89,6 +89,12 @@ def _type(entry):
 
     return pub_type
 
+def _pageno(entry):
+    f = entry.fields
+    pageno = u''
+    if 'pages' in f:
+        pageno = f['pages']
+    return translate_remove_brackets(pageno)
 
 def _venue(entry):
     f = entry.fields
@@ -112,6 +118,8 @@ def _venue(entry):
     elif entry.type == 'techreport':
         if 'number' in f and 'institution' in f:
             venue = u'{0}, {1}'.format(f['number'], f['institution'])
+        elif 'booktitle' in f:
+            venue = f['booktitle']
         else:
             venue = u''
     elif entry.type == 'phdthesis':
@@ -119,7 +127,9 @@ def _venue(entry):
     elif entry.type == 'unpublished':
         venue = f['journal']
     else:
-        venue = 'Unknown venue (type={})'.format(entry.type)
+        venue = u'Unknown venue (type={})'.format(entry.type)
+
+    venue = translate_remove_brackets(venue)
     return venue
 
 def _title(entry):
@@ -185,6 +195,7 @@ def main(bibfile, template):
     tenv.filters['monthname'] = _month_name
     tenv.filters['type'] = _type
     tenv.filters['sortkey'] = _sortkey
+    tenv.filters['pageno'] = _pageno
     with open(template) as f:
         tmpl = tenv.from_string(f.read())
 

@@ -12,8 +12,8 @@
 		</td> 
 		<td class="publication">
 			<!-- {{entry|sortkey}} -->
-			{%- if entry.type != prev_type -%}
-			<big><strong>{{ entry|type}}</strong></big><br />
+			{%- if entry.type != prev_type -%} 
+			<big><strong>{{ entry|type}}</strong></big><br/>
 			{% endif %}
 			<span class="pubtitle">
 				{%- set url = entry|main_url %} 
@@ -28,7 +28,10 @@
 			<span class="authors">
 				{{ entry.persons['author']|author_list }}.
 			</span><br /> 
-			<span class="venuetype">{{ entry|venue_type -}}</span><span class="venue">{{ entry|venue}}</span>.
+			<span class="venuetype">{{ entry|venue_type -}}</span><span class="venue">{{ entry|venue}}</span>. 
+			{% if entry|pageno != '' %}
+				Pages: {{ entry | pageno }}.
+			{% endif %}
 			{%- if entry.fields['note'] %}
 			<span class="note">
 			{{ entry.fields['note']|escape }}.
