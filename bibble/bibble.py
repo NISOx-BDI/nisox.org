@@ -96,6 +96,13 @@ def _pageno(entry):
         pageno = f['pages']
     return translate_remove_brackets(pageno)
 
+def _doi(entry):
+    f = entry.fields
+    doi = u''
+    if 'doi' in f:
+        doi = f['doi']
+    return translate_remove_brackets(doi) 
+
 def _venue(entry):
     f = entry.fields
     venue = u''
@@ -196,6 +203,7 @@ def main(bibfile, template):
     tenv.filters['type'] = _type
     tenv.filters['sortkey'] = _sortkey
     tenv.filters['pageno'] = _pageno
+    tenv.filters['doi'] = _doi
     with open(template) as f:
         tmpl = tenv.from_string(f.read())
 

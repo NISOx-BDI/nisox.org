@@ -30,7 +30,10 @@
 			</span><br /> 
 			<span class="venuetype">{{ entry|venue_type -}}</span><span class="venue">{{ entry|venue}}</span>. 
 			{% if entry|pageno != '' %}
-				Pages: {{ entry | pageno }}.
+				Pages: {{ entry | pageno }}.<br>
+			{% endif %}
+			{% if entry|doi != '' %}
+				doi: {{ entry | doi}}.
 			{% endif %}
 			{%- if entry.fields['note'] %}
 			<span class="note">
