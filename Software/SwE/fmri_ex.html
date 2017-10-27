@@ -1,0 +1,190 @@
+---
+layout: default
+title: "Software: SwE"
+---
+
+<div class="layout layout-100">
+                        <div class="column-1"><div class="column-1-content">
+                            
+                                
+<h3> Worked Example</h3>                                    
+
+<p>In this section, we analyze with the SwE toolbox a reapeated-measures fMRI dataset from</p>
+
+<p>Henson, R.N.A, Shallice, T., Gorno-Tempini, M.-L. &amp; Dolan, R.J (2002). Face repetition effects in implicit and explicit memory tests as measured by fMRI. Cerebral Cortex, 12, 178-186.</p>
+
+<p>The same dataset has also been analyzed by SPM in Section 30.4 of the SPM8 manual (the manual and the dataset can be found <a href="http://www.fil.ion.ucl.ac.uk/spm/data/face_rfx/">here</a>). More precisely, the dataset consists of 36 contrast images obtained after using an "informed" basis set (consisting of the canonical HRF and its two partial derivatives with respect to time and dispersion) in single-subject fMRI analyses applied on 12 subject fMRI scans.</p>
+
+<hr>
+<h2>The analysis with the SwE toolbox</h2>
+
+<p>Here, we assume that the SwE toolbox has already been downloaded and installed correctly (see the <a href="User_guide">manual</a> if it is not the case).</p>
+
+<p>To start the toolbox, type <code>swe</code> in the MATLAB command window and the following GUI should appear:<img border="0" alt="swe_gui.png" src="/fac/sci/statistics/staff/academic-research/nichols/software/swe/man/swe_gui.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+
+<p>Press the "Specify model" button of the SwE GUI and the following batch system with the SwE module "Data &amp; Design" already loaded should appear:</p>
+
+<p><img border="0" alt="Batch" src="batch.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+
+<p>Highlight the field "Directory", press the button "Select files" and select the directory where the files of the analysis will be created.</p>
+
+<p>Highlight the field "Scan", press the button "Select files" and select in numerical order the 36 contrasts images (con_0003.img, con_0004.img,..., con_0038.img) that can be found in the folder "cons_informed" of the downloaded file "face_rfx.zip". Note that the ordering of the scans is important as other variables (Groups, Visits and Subjects) must follow the same ordering. The correspondance of each of these scans is shown in the following table:</p>
+
+<p>
+  </p><table border="1" cellspacing="0" cellpadding="0" align="center" style="max-width: 100%;">
+    <tbody>
+      <tr>
+        <td width="69" valign="top" style="text-align: right;">&nbsp;</td>
+        <td width="128" valign="top" style="text-align: center;">Canonical HRF</td>
+        <td width="128" valign="top" style="text-align: center;">Temporal derivative</td>
+        <td width="128" valign="top" style="text-align: center;">Dispersion derivative</td>
+      </tr>
+      <tr>
+        <td width="69" valign="top" style="text-align: right;">Subject 1</td>
+        <td width="128" valign="top" style="text-align: center;">con_0003.img</td>
+        <td width="128" valign="top" style="text-align: center;">con_0015.img</td>
+        <td width="128" valign="top" style="text-align: center;">con_0027.img</td>
+      </tr>
+      <tr>
+        <td width="69" valign="top" style="text-align: right;">Subject 2</td>
+        <td width="128" valign="top" style="text-align: center;">con_0004.img</td>
+        <td width="128" valign="top" style="text-align: center;">con_0016.img</td>
+        <td width="128" valign="top" style="text-align: center;">con_0028.img</td>
+      </tr>
+      <tr>
+        <td width="69" valign="top" style="text-align: right;">…</td>
+        <td width="128" valign="top" style="text-align: center;">…</td>
+        <td width="128" valign="top" style="text-align: center;">…</td>
+        <td width="128" valign="top" style="text-align: center;">…</td>
+      </tr>
+      <tr>
+        <td width="69" valign="top" style="text-align: right;">Subject 12</td>
+        <td width="128" valign="top" style="text-align: center;">con_0014.img</td>
+        <td width="128" valign="top" style="text-align: center;">con_0026.img</td>
+        <td width="128" valign="top" style="text-align: center;">con_0038.img</td>
+      </tr>
+    </tbody>
+  </table>
+
+<p></p>
+
+<p>For our example, we may assume that all the subjects share a common covariance matrix. Therefore, highlight the field "SwE type" and select the "modified SwE". Then, highlight the field "Groups", press the "Edit value" button and enter a vector of 1 by, for example, using the MATLAB command <code>ones(36,1)</code>.</p>
+
+<p>Highlight the field "Visits", press the "Edit value" button and enter a vector of visit/repeated-measure categories. For our example, there are 3 repeated-measures categories corresponding to the canonical HRF, the temporal derivative and the dispersion derivative. This can be specified by using the MATLAB command <code>kron((1:3),ones(1,12))</code>.</p>
+
+<p>Highlight the field "Small sample adjustments" and select the type of bias corrective factor to be applied to the residuals prior their use in the estimation of the SwE. As the simulations in Guillaume et al. (in submission) tend to show that the "type 3" is generally preferable, select "type 3" in the menu.</p>
+
+<p>Highlight the field "Degrees of freedom type" and select the "approx" option.</p>
+
+<p>Highlight the field "Subjects", press the "Edit value" button and specify the vector of subjects. In our example, this can be done by using the MATLAB command <code>kron(ones(1,3),1:12)</code>.</p>
+
+<p>Highlight the field "Covariates", press "New: Covariate", highlight the field "Vector", press the "edit value" button and enter your first covariate. Then, highlight the field "Name", press the "edit value" button and enter a name for your first covariate. This process can be repeated several times to add all the covariates needed to construct the design matrix. In our example, 3 covariates defining the canonical HRF, the temporal derivative and the dispersion derivative can be specified by entering the following MATLAB commands: <code>kron([1 0 0],ones(1,12))</code>, <code>kron([0 1 0],ones(1,12))</code> and <code>kron([0 1 0],ones(1,12))</code>, respectively.</p>
+
+<p>The remaining fields are similar to a classic SPM batch job and can be let unchanged for our example. The batch window should then look like this:</p>
+
+<p><img border="0" alt="Bath final" src="batch_final.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+
+<p>Finally, push the green "Run Batch" button. An <code>SwE.mat</code> file containing all the information related to the data and design should then be created in the specified working directory and the following window showing the design matrix should appear:</p>
+
+<p><img border="0" alt="Design matrix" src="design_matrix.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+
+<p>To start estimating the parameters of this specified model, press the button "Run model" of the SwE GUI and select the <code>SwE.mat</code> file just created. The toolbox should then compute all the estimates needed for the analysis and update the <code>SwE.mat</code> file.</p>
+
+<p>Once the computation is done, press the "Results" button of the SwE GUI and select the updated <code>SwE.mat</code> file. The toolbox should then open the following SwE contrast manager allowing the test of several contrasts:</p>
+
+<p style="text-align: left;"><img border="0" alt="SwE contrast manager" src="swe_contrast_manager.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+
+<p style="text-align: left;">In the contrast manager, press "Define new contrast", select F-contrast in the "type" section, enter the MATLAB command <code>eye(3)</code> in the "contrast" section, enter "Faces vs Baseline: Informed" in the "name" section and press the "OK" button. This contrast will reveal voxels that exhibit some form of event-related responses captured by at least one of the three basis functions.</p>
+
+<p style="text-align: left;">Now, press the "Done" button in the SwE contrast manager, press the "none" button (section "apply masking"), accept "Faces vs Baseline: Informed" as title for comparison and the toolbox will compute the inferences images (i.e. the F-score image <code>spmF_0001.img</code>, the equivalent chi-squared-score image <code>spmX_0001.img</code> and the degrees of freedom image <code>edf_0001.img</code>) in the working directory. Note that it can take several minutes for F-contrasts with a rank superior to 1, like it is the case here.</p>
+
+<p style="text-align: left;">Once the computation is done, press the "FDR" button, validate "0.05" as a FDR p-value, validate "0" as extent threshold and the toolbox should display the following result:</p>
+
+<p style="text-align: left;"><img border="0" alt="result1" src="result1.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+
+<p style="text-align: left;">Note that, like this, it is difficult to visualise where the effects are exactly. Therefore, in order to see better which areas of the brain are activated, you can press the "whole brain" button and a list summarising the most important activations in the brain should appear:</p>
+
+<p style="text-align: left;"><img border="0" alt="result2" src="result2.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+
+<p style="text-align: left;">You can also select "sections" in the "overlay" menu and select the image <code>single_subj_T1.nii</code> situated in the subfolder "canonical" of your SPM8 or SPM12 main folder. You should then get the following display:</p>
+
+<p style="text-align: left;"><img border="0" alt="result3" src="result3.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+
+<p style="text-align: left;">You can navigate through it in order to see more pricesely the areas of activation. Note that you may also want to impose a more restrective threshold. To do so, go into "Contrasts" &gt; "Significance level" &gt; "Change..." as shown below:</p>
+
+<p style="text-align: left;"><img border="0" alt="result4" src="result4.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+
+<p style="text-align: left;">Then, you can reselect an FDR correction (button "FDR"), change the significance level (e.g., 0.01) and eventually the extent threshold (e.g., 10 voxels) or select an uncorrected threshold instead (button "none").</p>
+
+<p style="text-align: left;">Similarly to the SPM analysis in Section 30.4 of the SPM manual, you can test contrasts only focused on one basis function. To do so, go into "Contrasts" &gt; "New Contrast..." and you will go back to the SwE contrast manager. There, you can specify the following contrasts:</p>
+
+<ul>
+  <li>t-contrast [1 0 0] (i.e. positive effects on the canonical HRF)</li>
+  <li>F-contrast [0 1 0] (i.e. positive or negative effects on the temporal derivative)</li>
+  <li>F-contrast [0 0 1] (i.e. positive or negative effects on the dispersion derivative)</li>
+</ul>
+
+<p>and restart the procedure to compute the inference images and display the results for each new contrast.</p>
+
+<p>Testing the three new contrasts and using a FDR correction at 0.05 level of significance, you should get the three following displays:</p>
+
+<p><img border="0" alt="canonical" src="can.png?maxWidth=300" style="float: left;"><img border="0" alt="temporal" src="temp.png?maxWidth=300" style="float: left;"><img border="0" alt="dispersion" src="disp.png?maxWidth=300" style="float: left;"></p>
+
+<p><br>
+  </p>
+
+<p><br>
+  </p>
+
+<p><br>
+  </p>
+
+<p><br>
+  </p>
+
+<p><br>
+  </p>
+
+<p><br>
+  </p>
+
+<p><br>
+  </p>
+
+<p><br>
+  </p>
+
+<p><br>
+  </p>
+
+<p><br>
+  </p>
+
+<p><br>
+  </p>
+
+<p><br>
+  </p>
+
+<p><br>
+  </p>
+
+<p><br>
+  </p>
+
+<p>Note here that, overall, the areas of activation obtained with the SwE method are similar to those obtained with the SPM procedure (see Section 30.4 of the SPM8 manual). Nevertheless, if we look more in details, we can observe differences between the two methods. This is mainly due to these three facts:</p>
+
+<ol>
+  <li>Here, FDR corrections are used while it was Random Field Theory corrections with the SPM procedure. Note that the FDR correction can be enabled in a classic SPM analysis by setting the SPM global variable <code>defaults.stats.topoFDR</code> to 0 instead of 1. Note also that, in order to make a more objective comparison, one can use an uncorrected threshold (with the same significance level) for both methods and compare the results.</li>
+  <li>The SPM procedure assumes and estimates a unique covariance structure for all the voxels in the brain. This can lead to invalid inferences in voxels where the true covariance structure is different from the one estimated. In contrast, the SwE estimates a different covariance matrix for each voxel, making the inferences valid for each voxel.</li>
+  <li>Due to the fact that the SwE procedure estimates a covariance matrix for each voxel in the brain, more degrees of freedom have to be used compared to the SPM procedure which estimates only one unique covariance structure for the whole brain. This makes the SwE procedure less powerful than the SPM procedure.</li>
+</ol>
+
+
+
+                                
+                                
+                            
+                        </div></div>
+                        
+                    </div>

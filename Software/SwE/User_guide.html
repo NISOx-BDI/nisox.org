@@ -1,0 +1,153 @@
+---
+layout: default
+title: "Software: SwE"
+---
+
+<h3> Manual </h3>
+
+<div class="id7-main-content">
+                    
+
+                    <div class="layout layout-100">
+                        <div class="column-1"><div class="column-1-content">
+                            
+                                
+                                    
+
+<p>The goal of this manual is to explain how to use the SwE toolbox. If something is unclear or if you think more explanations are needed, please do not hesitate to contact <a href="mailto:B.R.L.Guillaume@warwick.ac.uk">Bryan Guillaume</a> or <a href="mailto:thomas.nichols@bdi.ox.ac.uk">Tom Nichols</a>. The manual will be updated accordingly. Note that an example of the use of the toolbox on a real dataset can be found <a href="fmri_ex">here</a>. <span color="red">Note that this manual does not account for the new features of the last release of the toolbox. It will be updated soon.</span></p>
+
+<hr>
+<h2>Toolbox overview</h2>
+
+<p>The SwE toolbox implements the Sandwich Estimator (SwE) method described in Guillaume et al. (in submission) allowing the analysis of longitudinal and repeated measures data in neuroimaging. An analysis with the SwE toolbox can be decomposed into three stages:</p>
+
+<ol>
+  <li>Data &amp; design setup (<code>swe_design</code>)</li>
+  <li>Computation of the model parameters (<code>swe_cp</code>)</li>
+  <li>Post-processing &amp; display of results (<code>swe_result_ui</code>)</li>
+</ol>
+
+<p>Each stage is handled by a separate function, callable either from the command line or the SwE GUI, as described below. Interim communication between the stages is done via <code>SwE.mat</code> files, similar to <code>SPM.mat</code> files. The setup stage (<code>swe_design</code>) launches the batch system and saves the configuration information in a <code>SwE.mat</code>. Note that the filenames of the input and created images are coded into the <code>SwE.mat</code> file, so moving or deleting the images may cause issues. The computation stage (<code>swe_cp</code>) asks you to locate a <code>SwE.mat</code> file, computes the model parameters and updates the SwE.mat file. Finally the post-processing &amp; results stage (<code>swe_result_ui</code>) asks you to locate a <code>SwE.mat</code> file and launch an interface allowing you to make inferences and display the results.</p>
+
+<hr>
+<h2>Getting started</h2>
+
+<p>Prior to using the SwE toolbox, a version of SPM8 or SPM12 must be previously installed and launched at least once. To install and launch the SwE toolbox:</p>
+
+<ol>
+  <li>Unzip the <code>SwE.zip</code> file into a folder of your choice (e.g., <code>…/whatever</code>).</li>
+  <li>Start MATLAB and add the folder "SwE" into your path, either using:
+    <ul>
+      <li>For old MATLAB versions, File &gt; Set Path &gt; Add Folder</li>
+      <li>For recent MATLAB versions, HOME &gt; ENVIRONMENT &gt; Set Path &gt; Add Folder</li>
+      <li>MATLAB command <code>pathtool</code> &gt; Add Folder</li>
+      <li>MATLAB command <code>addpath …/whatever/SwE</code>      </li>
+    </ul>
+
+  </li>
+  <li>Launch the SwE toolbox by typing <code>swe</code> in the command window and the following GUI should appear:<img border="0" alt="swe_gui.png" src="swe_gui.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;">This SwE GUI has three buttons allowing to launch the three stages of an SwE analysis. Each of these stages is detailed below.</li>
+</ol>
+
+<hr>
+<h2>Data &amp; design setup</h2>
+
+<p>To start specifying the data and design, press the button "Specify model" in the SwE GUI. This will call the SPM batch system, add the SwE tab to it and load the SwE module "Data &amp; Design" (see image below).</p>
+
+<p><img border="0" alt="SwE batch" src="swe_batch.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+
+<p>This module contains several fields that have to be filled in:</p>
+
+<ul>
+  <li>Directory:
+    <ul>
+      <li>Select the directory where the files of the analysis will be created.</li>
+    </ul>
+
+  </li>
+  <li>Scans:
+    <ul>
+      <li>Select all the input images. Note that the ordering is important as other variables (Groups, Visits and Subjects) must follow the same ordering.</li>
+    </ul>
+
+  </li>
+  <li>SwE type:
+    <ul>
+      <li>Select between the classic or modified SwE. The classic SwE assumes that the subjects have all different covariance matrices. The modified SwE assumes that the subjects can be gathered into groups in which they share a common covariance matrix.</li>
+      <li>If the modified version is selected, a numerical vector of group categories must be specified in the ordering of the scans. It defines in which group the subjects belong and share a common covariance matrix.</li>
+      <li>If the modified version is selected, a numerical vector of visit (or repeated measures) categories must be specified in the ordering of the scans. For each group, the visit (or repeated measures) categories must be consistent across subjects.</li>
+      <li>For both versions, a small samples bias adjustment must be selected. The toolbox currently offers the choice between 4 types of adjustments:
+        <ul>
+          <li>Type 0: The raw residuals are used to compute the SwE (no adjustments used).</li>
+          <li>Type 1: The raw residuals multiplied by sqrt(N/(N-p)) are used to compute the SwE, where N is the total number of input images and p is the number of covariates in the model.</li>
+          <li>Type 2: The adjusted residuals e<sub>ik</sub>/sqrt(1-h<sub>ik</sub>) are used to compute the SwE, where e<sub>ik</sub> corresponds to the residuals of subject i at visit category k, and h<sub>ik</sub> is the diagonal element of the hat matrix H=X’(X’X)<sup>-1</sup>X corresponding to the residual e<sub>ik</sub>.</li>
+          <li>Type 3: The adjusted residuals e<sub>ik</sub>/(1-h<sub>ik</sub>) are used to compute the SwE.</li>
+        </ul>
+
+Note that the simulations in Guillaume et al. (in submission) seems to favour the use of the "Type 3" adjustment.</li>
+      <li>For both versions, a degrees of freedom estimation type must be selected. Before detailing the two options offered by the toolbox, it is important to note here that some design matrices can actually be separated into sub-design matrices such that their sets of all-zero columns are pairwise disjoints. This has an important impact on the degrees of freedom of the null distribution of the test statistics used in the SwE method and is taken into account by the toolbox for two types of estimation offered by the toolbox:
+        <ul>
+          <li>Naïve: The toolbox first detects the inseparable sub-design matrices involved in the contrast tested and then naïvely estimates the degrees of freedom by the number of subject present in the involved sub-design matrices minus the number of non-zero pure between covariates present in the involved sub-design matrices.</li>
+          <li>Approx: The estimate proposed in Guillaume et al. (in submission) is used.</li>
+        </ul>
+
+      </li>
+    </ul>
+
+Note that the simulations in Guillaume et al. (in submission) seems to show that the "Approx" option is the best option if the modified SwE is selected. Nevertheless, if the classic SwE is selected, the "Approx" option generally underestimates the degrees of freesom leading to conservative test and the option "Naïve" option may overestimate the degrees of freedom leading to liberal test. Note also that the "Approx" option requires saving a lot of images in the working directory, specifically if the classis SwE is selected, so make sure you have enough space available.</li>
+</ul>
+
+<ul>
+  <li>Subjects:
+    <ul>
+      <li>Enter the vector of subjects (numerical values) in the ordering of the scans.</li>
+    </ul>
+
+  </li>
+  <li>Covariates:
+    <ul>
+      <li>Allow the construction of the design matrix by entering several covariates in the ordering of the scans. Note that the toolbox does not currently offer an automatic construction of the design matrix. The entire design matrix must be specified by adding covariates one by one.</li>
+    </ul>
+
+  </li>
+  <li>Masking:
+    <ul>
+      <li>Similar to a SPM design.</li>
+    </ul>
+
+  </li>
+  <li>Global calculation:
+    <ul>
+      <li>Similar to a SPM design.</li>
+    </ul>
+
+  </li>
+  <li>Global normalisation:
+    <ul>
+      <li>Similar to a SPM design.</li>
+    </ul>
+
+  </li>
+</ul>
+
+<p>Once the model is specified, the SwE job can be run by pressing the green "Run Batch" button. The toolbox will then create a <code>SwE.mat</code> file containing all the configuration information needed for the estimation of the model parameters.</p>
+
+<hr>
+<h2>Computation of the model parameters</h2>
+
+<p>To start estimating the parameters of a specified model, press the button "Run model" of the SwE GUI and select the appropriate <code>SwE.mat</code> file. The toolbox should then compute all the estimates needed for the analysis. This may take several minutes.</p>
+
+<hr>
+<h2>Post-processing &amp; display of results</h2>
+
+<p>Once the computation is done, press the "Results" button of the SwE GUI and select the appropriate <code>SwE.mat</code> file. The toolbox should then open a SwE contrast manager allowing the test of several contrasts. Note that the SwE interface is very similar to the interface of a classic SPM analysis and can be used in a similar way. Nevertheless, there are some differences important to note. First, as the degrees of freedom with the SwE method may vary across voxels, for each contrast, the equivalent Z-score or chi-squared-score image are displayed instead of the traditional t-score or F-score image (note that, for each contrast, the t- or F-score image is saved in the working directory alongside the degrees of freedom image). Second, as Random Field Theory inferences have not been yet validated with the SwE method, only False Discovery Rate and uncorrected inferences are currently available in the SwE toolbox.</p>
+
+
+
+                                
+                                
+                            
+                        </div></div>
+                        
+                    </div>
+                    
+                </div>

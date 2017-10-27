@@ -1,0 +1,92 @@
+---
+layout: default
+title: "Software: APACE"
+---
+
+<h3> Accelerated Permutation inference for ACE models </h3>
+
+<div class="id7-main-content">
+                    
+
+                    <div class="layout layout-100">
+                        <div class="column-1"><div class="column-1-content">
+                            
+                                
+<br>
+  <p>Please direct any questions about this work to <a href="mailto:Xu.Chen@warwick.ac.uk">Xu Chen</a> &amp; <a href="mailto:thomas.nichols@bdi.ox.ac.uk">Tom Nichols</a>.</p> 
+  <ul> 
+   <li>Software -- <a href="https://github.com/nicholst/APACE/releases/latest">Latest Release on GitHub</a> <em>Beta release!</em> </li> 
+   <li>Quick start! Read <a href="README_APACE_intro.pdf">README_APACE_intro.pdf</a> and review the example code in <a href="WK_ParallelOutline.m">WK_ParallelOutline.m</a> (both in the ZIP file as well).</li> 
+   <li>All changes now on <a href="https://github.com/nicholst/APACE">Github</a>! Please follow the software there</li> 
+   <li>Changes of note before November 2014 
+    <ul> 
+     <li>APACE-20140709 
+      <ul> 
+       <li>Fixes possible crash when no windows are open.</li> 
+      </ul> </li> 
+     <li>APACE-20140630 
+      <ul> 
+       <li>Improves FDR P-value computation: Fixes cases where FDR-corrected P-values could be either greater than 1 or non-montonic (with respect to uncorrected P-values).</li> 
+       <li>Will now stop with an error if you ask for too many permutations (more than are possible for the number of MZ and DZ twins).</li> 
+      </ul> </li> 
+     <li>APACE-20140628 
+      <ul> 
+       <li>Quotes in the kinship CSV file are now ignored. E.g., before if a Parent ID was "123456" (i.e. with quotes), there would be an error. </li> 
+       <li>The FDR plot was showing the ordered <em>FDR-corrected P-values</em>, when usually the uncorrected P-values are shown. Now, the FDR plot shows both uncorrectd P-values in addition to the FDR-corrected P-values</li> 
+      </ul> </li> 
+     <li>APACE-20140508 
+      <ul> 
+       <li>Fix problem with rare case in AE model (or CE) where A (or E) parameter was essentially zero. Added more error checking on the family structure.</li> 
+      </ul> </li> 
+     <li>APACE-20140507 
+      <ul> 
+       <li>Small changes to make APACE work better with large images; improved clarity in WK_ParallelOutline.m; updated setting of Matlab random number seed (to rng, instead of rand).</li> 
+      </ul> </li> 
+     <li>APACE-20140214 
+      <ul> 
+       <li>Additional performance enhancements (by exact computation of matrix inversions). Now, setting nPerm and nBoot to 0 will (without error) result in a very fast run, just giving point estimates for all quantities (no inference). Also, APACEsummary now takes care to always use a .csv extension on its CSV output. "Steve's method" has been consistently renamed to AgHe (aggregate heritability).</li> 
+      </ul> </li> 
+     <li>APACE-20140106 
+      <ul> 
+       <li>Various performance enhancements (by precomputing a number of matrix inversions, a substantial speed-up was possible for the estimation of the parameters). Note that image-wise inference requires computation of the likelihood ratio statistic, which remains the slow (relatively); setting NoImg=1 will only provide the summary measures but will offer the fastest possible performance.</li> 
+      </ul> </li> 
+     <li>APACE-20140104 
+      <ul> 
+       <li>Updated to "LRSD_ACE_FAM.m" have better handling of exceptional badly behaved elements/voxels.</li> 
+      </ul> </li> 
+     <li>APACE-20140102 
+      <ul> 
+       <li>More normalisation options added, both for usual heritability and aggregate heritability ("Steve's method"). In particular, the default suggested "WK_ParallelOutline.m" how runs aggregate heritability two ways (with and without variance normalisation) and APACEsummary.m has been updated to show these results. Also minor changes to "LRSD_ACE_FAM.m" to suppress occasional warnings of rank deficient warnings.</li> 
+      </ul> </li> 
+     <li>APACE-20131227 
+      <ul> 
+       <li>APACEsummary.m now gracefully works with all possible configurations of ACEfit_Par.NoImg and ACEfit_Par.Vs.ClustInf (i.e. when image-wise computation and/or cluster-size inference are/are not used).</li> 
+      </ul> </li> 
+     <li>APACE-20131224 
+      <ul> 
+       <li>Steve's estimate was noisily reported by APACEsummary (due to the point estimate being estimated as the center of the CI instead of directly saved). This is now fixed.</li> 
+       <li>APACEsummary.m now reads the Voxel-wise FWE P-value from Pvals_MaxLRT_h2.mat instead of recomputing it.</li> 
+      </ul> </li> 
+     <li>APACE-20131220 
+      <ul> 
+       <li>FDR maps no longer thresholded. The FDR image, ACE_A_LRT_vox_FDRP.nii, was unintentionally thresholded before writing out the image, giving apparently empty (i.e. all-zero) images if no voxels were significant at FDRalpha=0.05. Now the FDR image shows, as intended, all FDR-corrected P-values after a -log10 transformation. </li> 
+       <li>Documentation update: -log10 P-value images. The documentation (README_APACE_outputs.docx) failed to mention that the images reporting P-values were actually -log10 P-values, <em>with the exception</em> of the two asymptotic P-value image (see next). The documentation has been updated.</li> 
+       <li>Asymptotic P-values images now -log10 P: Inconsistent with all other P-value images, the ACE_A_LRT_vox_Pasym.nii &amp; ACE_C_LRT_vox_Pasym.nii images were written as P-values, instead of -log10 P-values. Now these images are -log10 P. </li> 
+       <li> Parallel output name change. Previously, parallel results were written out with spaces in the names, e.g. "<tt>ACEfit_Parallel_ 3.mat</tt>". This was not intended, and has now been fixed, e.g. "<tt>ACEfit_Parallel_0003.mat</tt>". It <em>should</em> be backwards compatible (i.e. read the results with spaces); let me know if not.</li> 
+       <li>Voxel-wise FWE P-value was reported in the PDF figure but not saved; now it is saved in Pvals_MaxLRT_h2.mat. </li> 
+      </ul> </li> 
+     <!--  <li>A manual can be found <a href="http://www2.warwick.ac.uk/fac/sci/statistics/staff/academic-research/nichols/software/swe/man">here</a>.<br />
+     </li> --> 
+     <!--  <li>An example of the use of the SwE toolbox on a real repeated measures fMRI can be found <a href="http://www2.warwick.ac.uk/fac/sci/statistics/staff/academic-research/nichols/software/swe/fmri_ex">here</a>.</li> --> 
+    </ul> 
+    <ul></ul> </li> 
+  </ul> 
+ 
+                                
+                                
+                            
+                        </div></div>
+                        
+                    </div>
+                    
+                </div>
