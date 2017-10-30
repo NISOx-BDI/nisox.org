@@ -1,0 +1,34 @@
+To: spm@jiscmail.ac.uk
+Subject: S.V.C. with FDR
+From: "Thomas E. Nichols" <nichols@umich.edu>
+Date: Mon, 30 Sep 2002 14:48:54 -0400
+
+
+FDR users,
+
+Small volume corrected (SVC) inferences based on boxes or spheres
+have not been working correctly with FDR.  In particular, the 
+FDR-corrected p-values didn't change at all with SVC.
+
+If you use FDR please download this updated file
+
+	http://www.sph.umich.edu/~nichols/FDR/spm_VOI.m
+
+As an added bonus, your FWER-corrected p-values may be slightly
+smaller.  Previously, the SVC correction for a box or sphere was
+based solely on the geometric volume, ignoring the analysis mask.
+
+In this new version, voxels within the box or sphere but outside the
+brain do not count as part of the search volume.  This reduction in
+volume affects the Bonferroni results but not the RFT results.
+
+-Tom
+
+PS: Thanks to Ahmed Toosy for reporting this problem.
+
+
+    -- Thomas Nichols --------------------   Department of Biostatistics
+       http://www.sph.umich.edu/~nichols     University of Michigan
+       nichols@umich.edu                     1420 Washington Heights
+    --------------------------------------   Ann Arbor, MI 48109-2029
+

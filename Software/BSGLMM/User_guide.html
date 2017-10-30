@@ -195,7 +195,7 @@ title: "Software: BSGLMM"
   <p>NTYPES=2; NCOV=7 (i.e. 5 covariates + 2 types); GPU=1; DESIGN=data.dat; MASK=default; WM=none; MAXITER=10,000; BURNIN=5,000.<br> </p> 
   <p><br> </p> 
   <p>Here is an example screenshot of the terminal output after the first 500 iterations. The first few lines give some info about which GPU's are available and used; followed by diagnostic output for every 100 iterations:</p> 
-  <p><img alt="screenshot" src="bsglmm_screen.png" style="display: block; margin-left: auto; margin-right: auto;" border="0"></p> 
+  <p><img alt="screenshot" src="../../img/bsglmm/bsglmm_screen.png" style="display: block; margin-left: auto; margin-right: auto;" border="0"></p> 
   <p><br> </p> 
   <h4>Output files</h4> 
   <h4>Terminal output during runtime</h4> 
@@ -324,7 +324,7 @@ title: "Software: BSGLMM"
   <p><br> </p> 
   <h4>Example Output</h4> 
   <p>Below are example slices of some of the generated output files for the same slice position (voxel 34.6 40.1 50.9)</p> 
-  <p><img alt="screenshot_empir_prb_type1.png" src="screenshot_empir_prb_type1.png?maxWidth=400" border="0"> <img alt="screen_prb_type1" src="screenshot_prb_type1.png?maxWidth=400" border="0"></p> 
+  <p><img alt="screenshot_empir_prb_type1.png" src="../../img/bsglmm/screenshot_empir_prb_type1.png?maxWidth=400" width="45%" border="0"> <img alt="screen_prb_type1" src="../../img/bsglmm/screenshot_prb_type1.png?maxWidth=400" width="45%" border="0"></p> 
   <div style="text-align: left;">
    a)
    <em> empir_prb_type1.nii </em>          
@@ -337,8 +337,8 @@ title: "Software: BSGLMM"
    <br> 
   </div> 
   <div>
-   <img alt="screen_spatCoef_type1" src="screenshot_spatcoef_type1.png?maxWidth=400" border="0"> 
-   <img alt="screen_spatCoef_type2" src="screenshot_spatcoef_type2.png?maxWidth=400" border="0">
+   <img alt="screen_spatCoef_type1" src="../../img/bsglmm/screenshot_spatcoef_type1.png?maxWidth=400" width="45%" border="0"> 
+   <img alt="screen_spatCoef_type2" src="../../img/bsglmm/screenshot_spatcoef_type2.png?maxWidth=400" width="45%" border="0">
   </div> 
   <div style="text-align: left;">
    <em> c) spatCoef_type1.nii </em>         
@@ -353,7 +353,7 @@ title: "Software: BSGLMM"
   <p>For details please see Sec. 4.4 in the <a href="../BSGLMM">paper</a>.</p> 
   <p><br> </p> 
   <h4>Example Data</h4> 
-  <p>Download example data here (<img alt="(ZIP or other archive)" src="../../img/zip.gif" border="0"><a href="data_demo.dat.tar.gz">demo-data</a>) and extract the archive in a directory of your choice.</p> 
+  <p>Download example data here (<img alt="(ZIP or other archive)" src="../../img/zip.gif" border="0"><a href="../../files/tars/data_demo.dat.tar.gz">demo-data</a>) and extract the archive in a directory of your choice.</p> 
   <p>This dataset contains binary lesion data from 50 subjects (<em>binLesionData_&lt;subject_ID&gt;.nii.gz</em>) with multiple sclerosis. The subjects are categorised into two disease subtypes (25 relapsing-remitting MS, 25 secondary progressive MS).</p> 
   <p>The DESIGN file is called <em>data_demo.dat </em>and includes the following five demographic and clinical covariates: sex, age, disease duration, EDSS score, PASAT score.</p> 
   <p>Additionally, a whole-brain mask (<em>mask.nii.gz</em>) and a white matter mask (<em>avg152T1_white.nii.gz)</em> are provided.</p> 

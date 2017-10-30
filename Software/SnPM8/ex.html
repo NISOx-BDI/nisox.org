@@ -1,0 +1,403 @@
+---
+layout: default
+title: ""
+---
+
+<div class="column-1"><div class="column-1-content">
+                            
+                                
+                                    
+<p>&nbsp;<img alt="SnPM_Central" border="0" src="../../img/snpm8/snpm_central.gif"></p>
+
+<h2 align="center">SnPM</h2>
+
+<hr width="80%" size="4"> <!-- 
+<H1 ALIGN=CENTER>Statistical nonParametric Mapping</H1>
+<HR SIZE="4" WIDTH="80%">
+-->
+
+<h2 align="center">A Worked Example </h2>
+
+<p><br clear="all">
+   </p>
+
+<p align="center"><em>SnPM is an SPM toolbox developed by Andrew Holmes &amp; Tom Nichols</em> </p>
+
+<p>&nbsp;</p>
+
+<!-- U N D E R - C O N S T R U C T I O N                             -->
+<!-- <TABLE border=7 width="60%" cellspacing=0 cellpadding=0><TR valign="middle"><TD align="center" bgcolor="gray"><img src="../Construction.gif" _mce_src="../Construction.gif" ALIGN=center WIDTH=38 HEIGHT=38 BORDER=0 HSPACE=2 ALT="[Men@Work]"></TD><TD align="center"><font color="gray"><em>This area is under construction</em></font></TD><TD align="center" bgcolor="gray"><img src="../Construction.gif" _mce_src="../Construction.gif" ALIGN=center WIDTH=38 HEIGHT=38 BORDER=0 HSPACE=2 ALT="[Men@Work]"></TD></TR></TABLE></CENTER><BR> -->
+<!--  C N E > T B E b r e =   i t = 6 %   e l p c n =   e l a d n = > T   a i n " i d e > T   l g = c n e " b c l r " r y > i g s c " .-->
+<hr> 
+<p><br>
+   <a name="top"></a></p>
+
+<!--=================================================================-->
+<!-- N A V I G A T I O N - S I D E B A R - & - I N T R O  = = = = = = T   a i n "-->
+<table cellspacing="0" cols="2" cellpadding="0" width="100%" border="0" style="max-width: none;">
+  <tbody>
+    <tr>
+      <td valign="top" align="center" width="15%" bgcolor="#afafaf"><br>
+         <em>This page...</em>         <hr width="60%"> <a href="#intro">introduction</a>         <hr width="60%"> <a href="#thedata">example data</a>         <hr width="60%"> <a href="#exchngNperms">background</a>         <hr width="60%"> <a href="#setup">design setup</a>         <hr width="60%"> <a href="#compute">computation</a>         <hr width="60%"> <a href="#results">viewing results</a>         <hr width="60%"> <br>
+         <em>SnPM pages...</em>         <hr width="60%"> <a href="http://go.warwick.ac.uk/tenichols/software/snpm">SnPM</a>         <hr width="60%"> <a href="../man">manual</a>         <hr width="60%"> <a href="../ex.html"></a><strong>PET example</strong>         <hr width="60%"> <a href="../exnew">fMRI example</a>         <hr width="60%"> <a href="../fsl">FSL users</a>         <hr width="60%"> </td>
+      <td valign="top" width="3%">&nbsp;</td>
+      <td valign="top" width="82%"><!--                                                      = = = = = = T   a i n " i d e > T   l g = c n e " b c l r " r y > i g s c " .-->
+
+        <h2><a name="intro">SnPM example</a> </h2>
+
+ In this section we analyze a simple motor activation experiment with the SnPM software. The aim of this example is three-fold:         <ol type="i">
+          <li>Demonstrate the steps of an SnPM analysis </li>
+          <li>Explain and illustrate the key role of exchangeability </li>
+          <li>Provide a bench mark analysis for validation of an SnPM installation </li>
+        </ol>
+
+ Please read <a href="./#dox">existing publications</a>, in particaular Nichols &amp; Holmes (2001) provides an accessible presentation on the theory and thoughtful use of SnPM. This example also is a way to understand key concepts and practicalities of the SnPM toolbox. <!-- One note on the format of this document. Description of the software -->
+<!-- and configuring, running, and examining an analysis will be in this -->
+<!-- text style. -->
+<!-- <DL> -->
+<!--   <DD><i>Considerations independent of the software and explanations  -->
+<!--        of theoretical details will be indented and emphasized -->
+<!--        like this.</i> -->
+<!-- </DL> -->
+        <p>&nbsp;</p>
+
+<!--  / L   l k   h s &lt; i   e a l   i l b   n e t d a d e p a i e   t o s   i n " i d e > T   l g = c n e " b c l r " r y > i g s c " .-->
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<hr> 
+<h2><a name="thedata">The Example Data</a></h2>
+
+<!--=================================================================-->
+<p>This example will use data from a simple primary motor activation experiment. The motor stimulus was the simple finger opposition task. For the activation state subjects were instructed to touch their thumb to their index finger, then to their middle finger, to their ring finger, to their pinky, then repeat; they were to do this at a rate of 2 Hz, as guided by a visual cue. For baseline, there was no finger movement, but the visual cue was still present. There was no randomization and the task labeling used was </p>
+
+<dl>
+  <dd> <kbd>A B A B A B A B A B A B</kbd> </dd>
+</dl>
+<p style="text-align: left;">You can down load the data from <a href="ftp://www.fil.ion.ucl.ac.uk/spm/data/PET_motor.tar.gz">ftp://www.fil.ion.ucl.ac.uk/spm/data/PET_motor.tar.gz</a> or, in North America, from <a href="ftp://rowdy.pet.upmc.edu/pub/outgoing/PET_motor.tar.gz">ftp://rowdy.pet.upmc.edu/pub/outgoing/PET_motor.tar.gz</a>. We are indebted to Paul Kinahan and Doug Noll for sharing this data. See this reference for details: Noll D, Kinahan <em>et al.</em> (1996) "Comparison of activation response using functional PET and MRI" <cite>NeuroImage</cite> <strong>3(3)</strong>:S34. </p>
+
+<p style="text-align: left;">Currently this data is normalized with SPM94/95 templates, so the activation site will not map correctly to ICBM reference images. </p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<hr> 
+<h2><a name="exchngNperms">Before you touch the computer</a></h2>
+
+<!--=================================================================-->
+<p>The most important consideration when starting an analysis is the choice of exchangeability block size and the impact of that choice on the number of possible permutations. We don't assume that the reader is familiar with either exchangeability or permutation tests, so we'll attempt to motivate the permutation test through exchangeability, then address these central considerations. </p>
+
+<p style="text-align: left;"><strong>Exchangeability</strong> </p>
+
+<p style="text-align: left;"><!--  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = o s   i n " i d e > T   l g = c n e " b c l r " r y > i g s c " .-->
+ First we need some definitions. </p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<dl>
+  <dd><strong>Labels &amp; Labelings</strong> A designed experiment entails repeatedly collecting data under conditions that are as similar as possible except for changes in an experimental variable. We use the term <strong>labels</strong> to refer to individual values of the experimental variable, and <strong>labeling</strong> to refer to a particular assignment of these values to the data. In a randomized experiment the labeling used in the experiment comes from a random permutation of the labels; in a non-randomized experiment the labeling is manually chosen by the experimenter.     <p>&nbsp;</p>
+
+  </dd>
+  <dd><strong>Null Hypothesis</strong> The bulk of statistical inference is built upon what happens when the experimental variable has no effect. The formal statement of the "no effect" condition is the <strong>null hypothesis</strong>.     <p>&nbsp;</p>
+
+  </dd>
+  <dd><strong>Statistic</strong> We will need to use the term statistic in it's most general sense: A <strong>statistic</strong> is a function of observed data and a labeling, usually serving to summarize or describe some attribute of the data. Sample mean difference (for discrete labels) and the sample correlation (for continuous labels) are two examples of statistics. <!--   One of the -->
+<!--   reasons the nonparametric/permutation approach is so useful is -->
+<!--   that it allows for an arbitrary statistic to be used. -->
+</dd>
+</dl>
+<p>We can now make a concise statement of exchangeability. Observations are said to be <strong>exchangeable</strong> if their labels can be permuted with out changing the expected value of <em>any</em> statistic. We will always consider the exchangeability of observations under the null hypothesis. </p>
+
+<p style="text-align: left;">We'll make this concrete by defining these terms with our data, considering just one voxel (i.e 12 values). Our labels are 6 A's and 6 B's. A reasonable null hypothesis is ``The A observations have the same distribution as the B observations''. For a simple statistic we'll use the difference between the sample means of the A &amp; B observations. If we say that all 12 scans are exchangeable under the null hypothesis we are asserting that for any permutation of A's and B's applied to the data the expected value of the difference between A's &amp; B's would be zero. </p>
+
+<p style="text-align: left;">This should seem reasonable: If there is no experimental effect the labels A and B are arbitrary, and we should be able to shuffle them with out changing the expected outcome of a statistic. </p>
+
+<p style="text-align: left;">But now consider a confound. The most ubiquitous confound is time. Our example data took over two hours to collect, hence it is reasonable to suspect that the subject's mental state changed over that time. In particular we would have reason to think that difference between the sample means of the A's and B's for the labeling </p>
+
+<dl>
+  <dd> <kbd>A A A A A A B B B B B B</kbd> </dd>
+</dl>
+<p>would not be zero under the null because this labeling will be sensitive to early versus late effects. We have just argued, then, that in the presence of temporal confound all 12 scans are <em>not</em> exchangeable. </p>
+
+<p style="text-align: left;"><strong>Exchangeability Blocks</strong> </p>
+
+<p style="text-align: left;"><!--    h t i   l o s f r a   r i r r   t t s i   o b   s d   e u   s o s   i n " i d e > T   l g = c n e " b c l r " r y > i g s c " .-->
+ The permutation approach requires exchangeability under the null hypothesis. If all scans are not exchangeable we are not defeated, rather we can define exchangeability blocks (EBs), groups of scans which can be regarded as exchangeable, then only permute within EB. </p>
+
+<p style="text-align: left;">We've made a case for the <em>non-</em>exchangeability of all 12 scans, but what if we considered groups of 4 scans. While the temporal confound may not be eliminated its magnitude within the 4 scans will be smaller simply because less time elapses during those 4 scans. Hence if we only permute labels within blocks of 4 scans we can protect ourselves from temporal confounds. In fact, the most temporally confounded labeling possible with an EB size of 4 is </p>
+
+<dl>
+  <dd> <kbd>A A B B A A B B A A B B</kbd> </dd>
+</dl>
+<p><strong>Number of Permutations</strong></p>
+
+<p style="text-align: left;"><!--    h t i   l o s f r a   r i r r   t t s i   o b   s d   e u   s o s   i n " i d e > T   l g = c n e " b c l r " r y > i g s c " .-->
+ This brings us to the impact of EB size on the number of permutations. The table below shows how EB size affects the number of permutations for our 12 scan, 2 condition activation study. As the EB size gets smaller we have few possible permutations. </p>
+
+<table align="center" style="max-width: 100%;">
+  <tbody>
+    <tr align="middle">
+      <td>EB size </td>
+      <td>Num EB's </td>
+      <td colspan="3">Num Permutations </td>
+    </tr>
+    <tr align="middle">
+      <td>12 </td>
+      <td>1 </td>
+      <td><sub>12</sub><em>C</em><sub>6</sub> </td>
+      <td>= </td>
+      <td>924 </td>
+    </tr>
+    <tr align="middle">
+      <td>6 </td>
+      <td>2 </td>
+      <td>(<sub>6</sub><em>C</em><sub>3</sub>)<sup>2</sup> </td>
+      <td>= </td>
+      <td>400 </td>
+    </tr>
+    <tr align="middle">
+      <td>4 </td>
+      <td>3 </td>
+      <td>(<sub>4</sub><em>C</em><sub>2</sub>)<sup>3</sup> </td>
+      <td>= </td>
+      <td>216 </td>
+    </tr>
+    <tr align="middle">
+      <td>2 </td>
+      <td>6 </td>
+      <td>(<sub>2</sub><em>C</em><sub>1</sub>)<sup>6</sup> </td>
+      <td>= </td>
+      <td>64 </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This is important because the crux of the permutation approach is calculating a statistic for lots of labelings, creating a permutation distribution. The permutation distribution is used to calculate significance: the p-value of the experiment is the proportion of permutations with statistic values greater than or equal to that of the correct labeling. But if there are only, say, 20 possible relabelings and the most significant result possible will be 1/20=0.05 (which would occurs if the correctly labeled data yielded the largest statistic). </p>
+
+<p style="text-align: left;">Hence we have to make a trade off. We want small EBs to ensure exchangeability within block, but very small EBs yield insufficient numbers of permutations to describe the permutation distribution well, and hence assign significance finely. We usually will use the smallest EB that allows for at least hundreds of permutations (unless, of course, we were untroubled by temporal effects). </p>
+
+<p align="right" style="text-align: left;"><a href="#top">...to top</a> </p>
+
+<p>&nbsp;</p>
+
+<hr> 
+<h2><a name="setup">Design Setup</a></h2>
+
+<!--=================================================================-->
+<p>It is intended that you are actually sitting at a computer and are going through these steps with Matlab. We assume that you either have the <a href="#thedata">sample data</a> on hand or a similar, single subject 2 condition with replications data set. </p>
+
+<p style="text-align: left;">First, if you have a choice, choose a machine with lots of memory. We found that this example causes the Matlab process to grow to at least 90MB. </p>
+
+<p style="text-align: left;">Create a new directory where the results from this analysis will go. Either start Matlab in this directory, or cd to this directory in an existing Matlab session. </p>
+
+<p style="text-align: left;">Start SnPM by typing </p>
+
+<dl>
+  <dd> <kbd>snpm</kbd> </dd>
+</dl>
+<p>which will bring up the SnPM control panel (and the three SPM windows if you haven't started SPM already). Click on </p>
+
+<dl>
+  <dd> <kbd>Setup</kbd> </dd>
+</dl>
+<p>A popup menu will appear. Select the appropriate design type from the the menu. Our data conforms to </p>
+
+<dl>
+  <dd> <kbd>Single Subject: 2 Conditions, replications</kbd> </dd>
+</dl>
+<p>It then asks for </p>
+
+<dl>
+  <dd> <kbd># replications per conditions</kbd> </dd>
+</dl>
+<p>We have 6. </p>
+
+<p style="text-align: left;">Now we come to </p>
+
+<dl>
+  <dd> <kbd>Size of exchangeability block</kbd> </dd>
+</dl>
+<p>From the discussion above we know we don't want a 12-scan EB, so will use a EB size of 4, since this gives over 200 permutations yet is a small enough EB size to protect against severe temporal confounds. </p>
+
+<dl>
+  <dd><em>The help text for each SnPM plug in file gives a formula to calculate the number of possible permutations given the design of your data. Use the formula when deciding what size EB you should use.</em> </dd>
+</dl>
+<!-- I did some modification in the following paragraph. -->
+<p>It will now prompt you to select the image data files. In the prompted dialog box, you need to input the correct file directory, and then click on the image data files (.img) one by one. It is important that you enter them in time order. Or you can click on <em>All</em> button if you want to choose all the files. After you finish choosing all of the files, click on "Done". </p>
+
+<p style="text-align: left;">Next you need to enter the ``conditions index.'' This is a sequence of A's and B's (A's for activation, B's for baseline) that describe the labeling used in the experiment. Since this experiment was not randomized we have a nice neat arrangement: </p>
+
+<dl>
+  <dd> <kbd>A B A B A B A B A B A B</kbd> </dd>
+</dl>
+<p style="text-align: left;"><em>Exchangeability Business</em> </p>
+
+<p style="text-align: left;">Next you are asked about variance smoothing. If there are fewer than 20 degrees of freedom available to estimate the variance, variance smoothing is a good idea. If you have around 20 degrees of freedom you might look at at the variance from a SPM run (Soon we'll give a way to look at the variance images from any SPM run). This data has 12-2-1=9 degrees of freedom at each voxel, so we definately want to smooth the variance. </p>
+
+<p style="text-align: left;">It is our experience that the size of the variance smoothing is not critical, so we suggest 10 mm FWHM variance smoothing. Values smaller than 4 mm won't do much smoothing and smoothing probably won't buy you anything and will take more time. Specify 0 for no smoothing. </p>
+
+<p style="text-align: left;">The next question is "Collect Supra-Threshold stats?" The default statistic is the maximum intensity of the <em>t</em>-statistic image, or max pseudo-<em>t</em> if variance smoothing is used. If you would like to use the maximum supra-threshold cluster size statistic you have to collect extra data at the time of the analysis. <em>Beware</em>, this can take up a tremendous amount of disk space; the more permutations the more disk space required. This example generates a 70MB suprathreshold statistics mat file. Answer 'yes' to collect these stats. Or click on 'no' to save some disk space. </p>
+
+<p style="text-align: left;"><!-- I did some modification in the following paragraph. -->
+ The remaining questions are the standard SPM questions. You can choose global normalization (we choose 3, Ancova), choose 'global calculation' (we choose 2, mean voxel value), then choose 'Threshold masking' (we choose proportion), and keep 'Prop'nal threshod' as its default 0.8. Choose 'grand mean scaling' (we choose 1, scaling of overall grand mean) and keep 'scale overall grand mean' at its default 50. the gray matter threshold (we choose the default, 0.8) and the value for grand mean (again we choose the default, 50). </p>
+
+<p style="text-align: left;">Now SnPM will run a short while while it builds a configuration file that will completely specify the analysis. When finished it will display a page (or pages) with file names and design information. When it is finished you are ready to run the SnPM engine. </p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<hr> 
+<h2><a name="compute" style="width: 290px; height: 120px;">Computing the nonParametric permutation distributions</a></h2>
+
+<!--=================================================================-->
+<p>In the SnPM window click on </p>
+
+<dl>
+  <dd> <kbd>Compute</kbd> </dd>
+</dl>
+<p>You will be asked to find the configuration file SnPM has just created (It should be in the directory where you run matlab); it's called </p>
+
+<dl>
+  <dd> <kbd>SnPM_cfg.mat</kbd> </dd>
+</dl>
+<p>Some text messages will be displayed and the thermometer progress bar will also indicate progress. </p>
+
+<p style="text-align: left;">On fast new machines, like Sun Sparc Ultras or a Hewlett Packard C180, the computation of permutation should only take about 5 minutes. </p>
+
+<p style="text-align: left;">One of the reasons that SnPM is divided into 3 discrete operations (Configure, Compute, Results) is to allow the Compute operation to be run at a later time or in the background. To this end, the 'Compute' function does not need any the windows of SPM and can be run with out initializing SPM (though the MATLABPATH environment variable must be set). This maybe useful to remember if you have trouble with running out of memory </p>
+
+<p style="text-align: left;">To maximize the memory available for the 'Compute' step, and to see how to run it in batch mode, follow these steps. </p>
+
+<ol>
+  <li>If running, quit matlab </li>
+  <li>In the directory with the <kbd>SnPM_cfg.mat</kbd> file, start matlab </li>
+  <li>At the matlab prompt type 
+    <dl>
+      <dd> <kbd>snpm_cp .</kbd> </dd>
+    </dl>
+  </li>
+</ol>
+
+<p>This will 'Compute' just as before but there will be no progress bar. When it is finished you could type 'spm PET' to start SPM99, but since Matlab is not known for it's brilliant memory management it is best to quit, then restart matlab and SnPM. </p>
+
+<p style="text-align: left;">On a Sun UltraSPARC 167 MHz this took under 6 minutes. </p>
+
+<p align="right" style="text-align: left;"><a href="#top">...to top</a> </p>
+
+<p>&nbsp;</p>
+
+<hr> 
+<h2><a name="results">Results</a></h2>
+
+<!--=================================================================-->
+<p>In the SnPM window click on </p>
+
+<dl>
+  <dd> <kbd>Results</kbd> </dd>
+</dl>
+<p>You will be asked to find the configuration file SnPM has just created; it's called </p>
+
+<dl>
+  <dd> <kbd>SnPM.mat</kbd> </dd>
+</dl>
+<p>Next it will prompt for positive or negative effects. Positive corresponds to ``A-B'' and negative to ``B-A''. If you are interested in a two tailed test repeat this whole procedure twice but halve your p value threshold value in the next entry. </p>
+
+<p style="text-align: left;">Then, you will be asked questions such as 'Write filtered statistic img?' and 'Write FWE-corrected p-value img?'. You can choose 'no' for both of them. It will save time and won't change the final result. </p>
+
+<p style="text-align: left;">Next it will ask for a corrected p value for filtering. The uncorrected and FWE-corrected p-values are exact, meaning if the null hypothesis is true exactly 5% of the time you'll find a P-value 0.05 or smaller (assuming 0.05 is a possible nonparameteric P-value, as the permutaiton distribution is discrete and all p-values are multiples of 1/nPerm). FDR p-values are valid based on an assumption of positive dependence between voxels; this seems to be a reasonable assumption for image data. Note that SPM's corrected p values derived from the Gaussian random field theory are only approximate. </p>
+
+<p style="text-align: left;">Next, if you collected supra-threshold stats, it will ask if you want to assess spatial extent. For now, let's not assess spatial extent. </p>
+
+<p style="text-align: left;">You will be given the opportunity to write out the statistic image and the p-value image. Examining the location of activation on an atlas image or coregistered anatomical data is one of the best way to understand your data. </p>
+
+<p style="text-align: left;">Shortly the Results screen will first show the permutation distributions. </p>
+
+<p><img alt="SnPM Output First Page" border="1" src="../../img/snpm8/MotorOutFirst.gif" style="float: left;"></p>
+
+<p style="text-align: left;">You need to hit the ENTER button in the matlab main window to get the second page. The screen will show the a maximum intensity projection (MIP) image, the design matrix, and a summary of the significantly activated areas. </p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p><img alt="SnPM Output Top" border="1" src="../../img/snpm8/MotorOutputTop.gif"></p>
+
+<center></center>
+<p style="text-align: left;">The figure is titled ``SnPM{Pseudo-t}'' to remind you that the variance has been smoothed and hence the intensity values listed don't follow a t distribution. The tabular listing indicates that there are 68 voxels significant at the 0.05 level; the maximum pseudo-<em>t</em> is 6.61 and it occurs at (38, -28, 48). </p>
+
+<p><img alt="SnPM Output Bottom" align="center" border="1" src="../../img/snpm8/MotorOutputBot.gif" style="float: left;"> </p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p style="text-align: left;">This information at the bottom of the page documents the parameters of the analysis. The ``bhPerms=1'' is noting that only half of the permutations were calculated; this is because this simple A-B paradigm gives you two labelings for every calculation. For example, the maximum pseudo-<em>t</em> of the </p>
+
+<dl>
+  <dd> 
+    <p> <kbd>A A B B B B A A A A B B</kbd> </p>
+
+  </dd>
+</dl>
+<p>labeling is the minimum pseudo-<em>t</em> of the </p>
+
+<dl>
+  <dd> 
+    <p> <kbd>B B A A A A B B B B A A</kbd> </p>
+
+  </dd>
+</dl>
+<p>labeling. </p>
+
+<p style="text-align: left;">Now click again on </p>
+
+<p> Results</p>
+
+<p>proceeding as before but now answer <kbd>Yes</kbd> when it asks to assess spatial extent. Now you have to decide on a threshold. This is a perplexing issue which we don't have good suggestions for right now. Since we are working with the pseudo-t, we can't relate a threshold to a p-value, or we would suggest a threshold corresponding to, say, 0.01. </p>
+
+<dl></dl>
+<p style="text-align: left;">When SnPM saves supra-threshold stats, it saves all pseudo-<em>t</em> values above a given threshold for <em>all</em> permutations. The lower lower limit shown (it is 1.23 for the motor data) is this ``data collection'' threshold. The upper threshold is the pseudo-t value that corresponds to the corrected p-value threshold (4.98 for our data); there is no sense entering threshold above this value since any voxels above it are already significant by intensity alone. </p>
+
+<p style="text-align: left;">Trying a couple different thresholds, we found 2.5 to be a good threshold. This, though, is a problem. The inference is strictly only valid when the threshold is specified a priori. If this were a parametric <em>t</em> image (i.e. we had not smoothed the variance) we could specify a univariate p-value which would translate to specify a <em>t</em> threshold; since we are using a pseudo <em>t</em>, we have no parametric distributional results with which to convert a p-value into a pseudo <em>t</em>. The only strictly valid approach is to determine a threshold from one dataset (by fishing with as many thresholds as desired) and then applying that threshold to a different dataset. We are working to come up with guidelines which will assist in the threshold selection process. </p>
+
+<p style="text-align: left;">&nbsp;</p>
+
+<p><img alt="SnPM ST Output Top" border="1" src="../../img/snpm8/MotorOutputSTTop.gif"> </p>
+
+<center></center>
+<p style="text-align: left;">Now we see that we have identified one 562 voxel cluster as being significant at 0.005 (all significances must be multiples of 1 over the number of permutations, so this significance is really 1/216=0.0046). This means that when pseudo-<em>t</em> images from all the permutations were thresholded at 2.5, no permutation had a maximum cluster size greater than 562. </p>
+
+<p align="right" style="text-align: left;"><a href="#top">...to top</a> </p>
+
+<p>&nbsp;</p>
+
+<hr> 
+<ul>
+  <li> 
+    <p>Back to <a>main SnPM page</a> </p>
+
+<!--=================================================================-->
+    <hr> </li>
+  <li> 
+    <p><!--=================================================================-->
+<em>SnPM</em> by <a href="http://www.fil.ion.ucl.ac.uk/~andrew">Andrew Holmes</a> of the <a>Astra Zeneca</a><br>
+       &amp; <a href="http://www.sph.umich.edu/~nichols">Tom Nichols</a> of <a hrerf="http://www.sph.umich.edu/biostat">University of Michigan Biostatistics department</a> </p>
+
+  </li>
+</ul>
+
+<ul>
+  <li style="text-align: left;"> 
+    <p>SnPMauthors at &lt;<a href="mailto:snpm-authors at umich.edu">snpm-authors at umich.edu</a>&gt; </p>
+
+<!-- hhmts start -->
+    <p>Last modified: Mon Sep 26 12:21:19 EDT 2005 </p>
+
+<!-- hhmts end -->
+  </li>
+</ul>
+
+
+
+                                
+                                
+                            
+                        </div></div>

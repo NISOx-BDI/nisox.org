@@ -1,0 +1,155 @@
+---
+layout: default
+title: ""
+---
+
+<div class="column-1-content">
+                            
+                                
+                                    
+
+<p><img height="162" alt="[SnPM]" hspace="9" width="180" align="left" border="0" src="../../img/snpm8/SnPM_Central.gif"> </p>
+
+<h2 align="center">SnPM</h2>
+
+<h2 align="center">Second level SnPM analysis for FSL users<img border="0" src="../../img/snpm8/new.gif"></h2> 
+
+<hr width="80%" size="4"> <!-- 
+<H1 ALIGN=CENTER>Statistical nonParametric Mapping</H1>
+<HR SIZE="4" WIDTH="80%">
+-->
+
+
+<p><br clear="all">
+   </p>
+
+<p align="center"><em>SnPM is an SPM toolbox developed by Andrew Holmes &amp; Tom Nichols</em> </p>
+
+<p>&nbsp;</p>
+
+<h3 align="center"><a></a></h3>
+
+<!-- U N D E R - C O N S T R U C T I O N  m t i   a p n &lt; H > &lt; R S Z = 4   I T = 8 % >     -->
+<!--<CENTER><TABLE border=7 width="60%" cellspacing=0 cellpadding=0><TR valign="middle"><TD align="center" bgcolor="gray"><img src="../Construction.gif" _mce_src="../Construction.gif" ALIGN=center WIDTH=38 HEIGHT=38 BORDER=0 HSPACE=2 ALT="[Men@Work]"></TD><TD align="center"><font color="gray"><em>This area is under construction</em></font></TD><TD align="center" bgcolor="gray"><img src="../Construction.gif" _mce_src="../Construction.gif" ALIGN=center WIDTH=38 HEIGHT=38 BORDER=0 HSPACE=2 ALT="[Men@Work]"></TD></TR></TABLE></CENTER><BR> -->
+<!--  E T R &lt; A L   o d r 7 w d h " 0 " c l s a i g 0 c l p d i g 0 &lt; R v l g = m d l " &lt; D a i n " e t r   g o o = g a " &lt; m   r = . /-->
+<hr> 
+<p><br>
+   <a name="top"></a></p>
+
+<!--=================================================================-->
+<!-- N A V I G A T I O N - S I D E B A R - & - I N T R O  = = = = = = R v l g = m-->
+<table cellspacing="0" cols="2" cellpadding="0" width="100%" border="0" style="max-width: none;">
+  <tbody>
+    <tr>
+      <td valign="top" align="center" width="15%" bgcolor="#afafaf"><br>
+         <em>This page...</em>          <hr width="60%"> <a href="#intro">introduction</a>          <hr width="60%"> <a href="#thedata">example data</a>          <hr width="60%"> <a href="#exchngNperms">background</a>          <hr width="60%"> <a href="#setup">design setup</a>          <hr width="60%"> <a href="#compute">computation</a>          <hr width="60%"> <a href="#results">viewing results</a>          <hr width="60%"> <br>
+         <em>SnPM pages...</em>          <hr width="60%"> <a href="http://www2.warwick.ac.uk/fac/sci/statistics/staff/research/nichols/software/snpm/">SnPM</a>          <hr width="60%"> <a href="http://www2.warwick.ac.uk/fac/sci/statistics/staff/research/nichols/software/snpm/man">manual</a>          <hr width="60%"> <a href="http://www2.warwick.ac.uk/fac/sci/statistics/staff/research/nichols/software/snpm/ex">PET example</a>          <hr width="60%"> <a href="http://www2.warwick.ac.uk/fac/sci/statistics/staff/research/nichols/software/snpm/exnew">fMRI example</a>          <hr width="60%"> <strong>FSL users</strong>          <hr width="60%">  </td>
+      <td valign="top" width="3%">&nbsp;</td>
+      <td valign="top" width="82%"><!--                                                      = = = = = = R v l g = m d l " &lt; D a i n " e t r   g o o = g a " &lt; m   r = . /-->
+
+        <h2><a name="intro">Overview</a> </h2>
+
+ The purpose of this section is to supply the steps necessary to carry out a second level SnPM analysis using the results from an analysis carried out using the FMRIB Software Library (FSL). Specifically, instructions are given that will show the user how to select the contrasts of parameter estimates (copes) from FSL using SnPM. The individual copes can either be obtained from the individual analyses or from a group analyses that used all individuals of interest.         <p>If only the single subject analyses have been performed, the copes from all subjects must be registered to the same atlas space before reading into SnPM. </p>
+
+        <p>If a group analysis has already been performed, then the individual copes have been registered to the same atlas space. FSL 3.0 and 3.1, SPM2, and SPM99 read Analyze format. By default SPM2, though, only allows a single volume per Analyze file, while FSL routinely uses multiple volume files. This becomes a problem only if a SnPM analysis is applied to a 2nd level FEAT directory, as the multiple subject's copes are all stored in a single multivolume image file. If the copes are coming from separate single-subject first level FEAT analyses, then there is no need to read multivolume Analyze files. The details of how to deal with multivolume files are discussed below. </p>
+
+        <p>Note that FSL3.2beta creates <a href="http://nifti.nimh.nih.gov/dfwg">NIFTI</a> files, as does SPM5. Currently SnPM has no support for NIFTI files. </p>
+
+        <p><!--                                                      = = = = = = R v l g = m d l " &lt; D a i n " e t r   g o o = g a " &lt; m   r = . /-->
+</p>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<hr> 
+<h2>Using Single-Subject FEAT directories</h2>
+
+<!--                                                      = = = = = = R v l g = m d l " &lt; D a i n " e t r   g o o = g a " &lt; m   r = . /-->
+<p>If you would like to run your SnPM analysis using the original single-subject FEAT directories, you first need to create copies of the copes and varcopes that are in the standard atlas space. This can be done using the <tt>featregapply</tt> on each single-subject FEAT directory. </p>
+
+<p><tt>featregapply &lt;feat-directory-name&gt;</tt> creates a <tt>reg_standard</tt> directory in the feat directory. In <tt>reg_standard</tt> is a <tt>stat</tt> subdirectory that contains copies of the copes and varcopes in the standard atlas space, one for each contrast. </p>
+
+<h2>Reading in the data</h2>
+
+<p>Once you've run <tt>featregapply</tt> on all .feat directories of interest you are ready to run SnPM! You can follow the steps for an <a href="exnew">fMRI analysis</a> and when selecting cope images go to the *.feat/reg_standard/stats directory for each FEAT analysis and you will find the transformed copes and varcopes, as shown below. </p>
+
+<center><img alt="SPM gui" border="0" src="../../img/snpm8/data_select_feat.gif" style="border: black 1px solid;"> 
+  <p><!--                                                      = = = = = = R v l g = m d l " &lt; D a i n " e t r   g o o = g a " &lt; m   r = . /-->
+<br>
+     </p>
+
+  <hr> 
+  <h2>Using Group FEAT directories</h2>
+
+<!--                                                      = = = = = = R v l g = m d l " &lt; D a i n " e t r   g o o = g a " &lt; m   r = . /-->
+ After a group FEAT analysis is run a .gfeat directory is created which, among other things, includes a copy of the first-level copes for each subject in the form of a multivolume analyze volume.   <p>Each cope is located directly in the .gfeat directory and is labeled as cope#.img, where # is the number of the cope. The default settings of SPM are not set to recognize multiple volumes and hence if the cope#.img file is read into SPM without changing the defaults it will mistake the .img file as one subject instead of multiple subjects. The SPM defaults can either be changed for a single session or permanantly so that multivolume analyze volumes are recognized. </p>
+
+  <h2>Changing SPM settings to allow for multivolume analyze volumes</h2>
+
+  <center> 
+    <div class="indented"> 
+      <h3>Change for single session</h3>
+
+<!--                                                      = = = = = = R v l g = m d l " &lt; D a i n " e t r   g o o = g a " &lt; m   r = . /-->
+ To change the defaults for a single session, must select 'defaults' found on the bottom of the main SPM2 gui.       <p>You will then be asked which defaults area you are interested in and you want to select 'Miscellaneous Defaults'. Select the first two choices ('Log to file?' and 'Command Line input?') however you like. The third choice is 'Allow multi-volume Analyze files?' and for this you should select 'yes'. There is one more item to select after this and choose whatever value you like. </p>
+
+      <center><img alt="SPM gui" border="0" src="../../img/snpm8/allow_mva.gif" style="border: black 1px solid;"> 
+        <p>Note, this will only work for the current session of SPM. If you close and reopen SPM, you will need to reset the default to read multi-volume analyze files. </p>
+
+        <h3>Change Permanently</h3>
+
+ If you would rather change the SPM defaults so that it will always recognize multi-volume analyze files, you will need to alter the spm_defaults.m file directly. Within this file, find the 'File format specific' section (shown below) and change defaults.analyze.multivol=0 to defaults.analyze.multivol=1.         <dl>
+          <dd><pre> 
+% File format specific
+%=======================================================================
+defaults.analyze.multivol = 0;
+</pre>
+          </dd>
+        </dl>
+<!--                                                      = = = = = = R v l g = m d l " &lt; D a i n " e t r   g o o = g a " &lt; m   r = . /-->
+<br>
+         
+        <h2>Reading in the data</h2>
+
+ SPM will now recognize multiple volume data and you can follow the steps for a <a href="exnew.html">fMRI analysis</a>. When you want to select the images, look in the .gfeat directory and you will see that each cope has mutiple files, similar to what is shown below. If your cope#.img file is not follwed by comma and a number, first check that you did step 2 correctly and then check that your fsl analysis included all of the subjects you wanted.         <center><img alt="SPM gui" border="0" src="../../img/snpm8/data_select.gif" style="border: black 1px solid;"> 
+          <p>You may get an error message similar to the following, which may be ignored. </p>
+
+          <dl>
+            <dd><pre> 
+Warning: Assuming a scalefactor of 1 for "*/GroupRight.gfeat/cope1.img".
+</pre>
+<pre> 
+</pre>
+            </dd>
+          </dl>
+          <p align="right"><a href="#top">...to top</a> </p>
+
+          <p>&nbsp;</p>
+
+          <hr> Back to <a>main SnPM page</a> <!--=================================================================-->
+          <hr> 
+          <address><!--=================================================================-->
+<em>SnPM</em> by <a href="http://www.fil.ion.ucl.ac.uk/~andrew">Andrew Holmes</a> of <a>Astra Zeneca</a><br>
+             &amp; <a href="http://www.sph.umich.edu/~nichols">Tom Nichols</a> of <a hrerf="http://www.sph.umich.edu/biostat">University of Michigan Biostatistics department</a> </address>
+          <ul>
+            <li>SnPMauthors at &lt;<a href="mailto:snpm-authors at umich.edu">snpm-authors at umich.edu</a>&gt; <!-- hhmts start -->
+ Last modified: Sat Oct 8 16:32:54 EDT 2005 <!-- hhmts end -->
+</li>
+          </ul>
+
+        </center>
+      </center>
+    </div>
+
+  </center>
+</center>
+
+
+                                
+                                
+                            
+                        </div>

@@ -20,11 +20,11 @@ title: "Software: FDR"
    </center> 
    <br> 
    <br> 
-   <h2><a id="FDR.m" name="FDR.m">Software: FDR inference in Matlab</a> </h2> 
+   <h2>Software: FDR inference in Matlab </h2> 
    <hr> 
    <p>The following function will supply p-value thresholds which control the expected FDR at a specified rate. </p> 
    <menu> 
-    <li><a href="FDR.m"><tt>FDR.m</tt></a>&nbsp;<br> This function takes a vector of p-values and a FDR rate. It returns two p-value thresholds, one based on an assumption of independence or positive dependence, and one that makes no assumptions about how the tests are correlated. For imaging data, an assumption of positive dependence is reasonable, so it should be OK to use the first (more sensitive) threshold. <p>Here is one example of how to use this function with a T image.<br> <br> </p> <pre> 
+    <li><a href="../../files/matlab/FDR/FDR.m"><tt>FDR.m</tt></a>&nbsp;<br> This function takes a vector of p-values and a FDR rate. It returns two p-value thresholds, one based on an assumption of independence or positive dependence, and one that makes no assumptions about how the tests are correlated. For imaging data, an assumption of positive dependence is reasonable, so it should be OK to use the first (more sensitive) threshold. <p>Here is one example of how to use this function with a T image.<br> <br> </p> <pre> 
       Timg     = % read t image, with df degrees of freedom
       Timg(~isfinite(Timg(:))) = [];
  
@@ -38,17 +38,17 @@ title: "Software: FDR"
    </menu> 
    <br> 
    <br> 
-   <h2><a id="multFDR" name="multFDR">Software: FDR for multiple images</a> New! </h2> 
+   <h2>Software: FDR for multiple images </h2> 
    <hr> 
-   <p>Use this Matlab function, <a href="multFDR.m"><tt>multFDR.m</tt></a>, to find a common FDR threshold for a set of images. It will return a single common t threshold as well as a set of individual t thresholds for comparison. </p> 
+   <p>Use this Matlab function, <a href="../../files/matlab/FDR/multFDR.m"><tt>multFDR.m</tt></a>, to find a common FDR threshold for a set of images. It will return a single common t threshold as well as a set of individual t thresholds for comparison. </p> 
    <p>It requires SPM99 or SPM2, but can be used with any Analyze-format <em>T</em> image. </p> 
    <p><br> <br> </p> 
-   <h2><a id="FDRill" name="FDRill">Software: Illustrating the FDR threshold</a> </h2> 
+   <h2>Software: Illustrating the FDR threshold </h2> 
    <hr> 
-   <p>Use this Matlab function, <a href="FDRill.m"><tt>FDRill.m</tt></a>, to evaluate an image's t distribution and observe the PP-plot graph that determines the FDR threshold. </p> 
+   <p>Use this Matlab function, <a href="../../files/matlab/FDR/FDRill.m"><tt>FDRill.m</tt></a>, to evaluate an image's t distribution and observe the PP-plot graph that determines the FDR threshold. </p> 
    <p>It requires SPM99 or SPM2, but can be used with any Analyze-format <em>T</em> image. </p> 
    <p><br> <br> </p> 
-   <h2><a id="SPM99FDR" name="SPM99FDR">Software: Extending SPM99 for FDR inference</a> </h2> 
+   <h2>Software: Extending SPM99 for FDR inference</h2> 
    <hr> 
    <p><em>(Note: SPM2 already includes FDR, so no patches are needed.) </em> </p> 
    <p><a href="http://www.fil.ion.ucl.ac.uk/spm">SPM</a> provides corrected p-values based on Familywise (Type I) Error control; a Familywise Error (FWE) is one or more false positive anywhere in the brain. The following new and modified SPM m-files will add a column of FDR-corrected p-values to SPM output and allow for the specification of FDR-corrected thresholds. Otherwise it does not alter SPM's behavior<sup>*</sup>. </p> 
@@ -57,24 +57,24 @@ title: "Software: FDR"
 	path('/my/path/spm_fdr',path)
       </kbd>        </pre> 
    <kbd></kbd> 
-   <p>Please note changes to <tt>spm_VOI.m</tt> as of September 30, 2002. See <a href="Bug3.txt">this email</a>. Thanks to Ahmed Toosy for reporting this problem. </p> Download: 
-   <a href="spm_fdr.tar.gz">spm_fdr.tar.gz</a> (21KB) 
+   <p>Please note changes to <tt>spm_VOI.m</tt> as of September 30, 2002. See <a href="../../files/text/Bug3.txt">this email</a>. Thanks to Ahmed Toosy for reporting this problem. </p> Download: 
+   <a href="../../files/tars/spm_fdr.tar.gz">spm_fdr.tar.gz</a> (21KB) 
    <p>Files: </p> 
    <menu> 
-    <li><a href="spm_uc_FDR.m"><tt>spm_uc_FDR.m</tt></a>&nbsp;<br> This new function is the core of the FDR calculations. Based on a statistic image, it finds the FDR threshold for a given q; q is the upper bound on the expected FDR, and can be thought of as 'alpha'. </li> 
-    <li><a href="spm_P_FDR.m"><tt>spm_P_FDR.m</tt></a><br> This new function provides the inversion of spm_uc_FDR, providing a p-value for a given statistic value. Note, since FDR is based on the empirical distribution of the p-values, the natural "corrected p-values" are not necessarily monotonic; monotonicity is enforced, but sometimes this results in odd p-values (e.g. there might be many voxels with different statistic values that share the same p-value). <p>&nbsp;</p> </li> 
-    <li><a href="spm_list.m"><tt>spm_list.m</tt></a><br> This SPM function required the most substantial changes, as it generates the tabular output of statistic values and corrected and uncorrected p-values. There is now an additional column for FDR-corrected p-values, and the footer now reflects the FDR of the threshold and an upper bound on expected number of false positives (among the suprathreshold voxels, conditional on the number of suprathreshold voxels). </li> 
-    <li><a href="spm_VOI.m"><tt>spm_VOI.m</tt></a><br> This function required minor changes to pass on information about the mask used. </li> 
-    <li><a href="spm_getSPM.m"><tt>spm_getSPM.m</tt></a><br> This function required minor changes to pass on information about the (mapped) statistic image and the mask used. Also, it now asks for what type of corrected p-value (FWE or FDR) instead of just yes-no. <p>&nbsp;</p> </li> 
-    <li><a href="spm_P.m"><tt>spm_P.m</tt></a>, <a href="spm_P_Bonf.m"><tt>spm_P_Bonf.m</tt></a>, <a href="spm_P_RF.m"><tt>spm_P_RF.m</tt></a>, <a href="spm_uc.m"><tt>spm_uc.m</tt></a>, <a href="spm_uc_Bonf.m"><tt>spm_uc_Bonf.m</tt></a>, <a href="spm_uc_RF.m"><tt>spm_uc_RF.m</tt></a><br> This functions are a part of recent changes to the SPM code, and, as such, can be installed in your master SPM99 directory. These functions are not specifically FDR-related, but the FDR code assumes the presence of these updated files. </li> 
+    <li><a href="../../files/matlab/FDR/spm_uc_FDR.m"><tt>spm_uc_FDR.m</tt></a>&nbsp;<br> This new function is the core of the FDR calculations. Based on a statistic image, it finds the FDR threshold for a given q; q is the upper bound on the expected FDR, and can be thought of as 'alpha'. </li> 
+    <li><a href="../../files/matlab/FDR/spm_P_FDR.m"><tt>spm_P_FDR.m</tt></a><br> This new function provides the inversion of spm_uc_FDR, providing a p-value for a given statistic value. Note, since FDR is based on the empirical distribution of the p-values, the natural "corrected p-values" are not necessarily monotonic; monotonicity is enforced, but sometimes this results in odd p-values (e.g. there might be many voxels with different statistic values that share the same p-value). <p>&nbsp;</p> </li> 
+    <li><a href="../../files/matlab/FDR/spm_list.m"><tt>spm_list.m</tt></a><br> This SPM function required the most substantial changes, as it generates the tabular output of statistic values and corrected and uncorrected p-values. There is now an additional column for FDR-corrected p-values, and the footer now reflects the FDR of the threshold and an upper bound on expected number of false positives (among the suprathreshold voxels, conditional on the number of suprathreshold voxels). </li> 
+    <li><a href="../../files/matlab/FDR/spm_VOI.m"><tt>spm_VOI.m</tt></a><br> This function required minor changes to pass on information about the mask used. </li> 
+    <li><a href="../../files/matlab/FDR/spm_getSPM.m"><tt>spm_getSPM.m</tt></a><br> This function required minor changes to pass on information about the (mapped) statistic image and the mask used. Also, it now asks for what type of corrected p-value (FWE or FDR) instead of just yes-no. <p>&nbsp;</p> </li> 
+    <li><a href="spm_P.m"><tt>spm_P.m</tt></a>, <a href="../../files/matlab/FDR/spm_P_Bonf.m"><tt>spm_P_Bonf.m</tt></a>, <a href="../../files/matlab/FDR/spm_P_RF.m"><tt>spm_P_RF.m</tt></a>, <a href="../../files/matlab/FDR/spm_uc.m"><tt>spm_uc.m</tt></a>, <a href="../../files/matlab/FDR/spm_uc_Bonf.m"><tt>spm_uc_Bonf.m</tt></a>, <a href="../../files/matlab/FDR/spm_uc_RF.m"><tt>spm_uc_RF.m</tt></a><br> This functions are a part of recent changes to the SPM code, and, as such, can be installed in your master SPM99 directory. These functions are not specifically FDR-related, but the FDR code assumes the presence of these updated files. </li> 
    </menu> See this 
-   <a href="betacore.txt">note</a> on a bug fix to Matlab core function 
+   <a href="../../files/text/betacore.txt">note</a> on a bug fix to Matlab core function 
    <tt>betainc</tt>/
    <tt>betacore.</tt> The symptom is that SPM hangs when it's determing FDR p-values. 
    <p><sup>*</sup>This tar file includes new modifications to SPM that were released June 28, 2001, in the form of the last six functions listed above. These modifications modify the (FWE) corrected p-value procedures to always take the minimum of random field and Bonferroni results. As released, SPM99 only gives random field p-values and thresholds even if Bonferroni results are more powerful. This is a minor change will, at most, reduce corrected p-values and thresholds in certain situations (typically, low degrees of freedom analyses). </p> 
    <p>&nbsp;</p> 
-   <p>Changes to <tt>spm_P.m</tt> as of October 14, 2001. See <a href="Bug2.txt">this email</a>. </p> 
-   <p>Changes as of August 7, 2001. See <a href="Bug1.txt">this email</a>. </p> 
+   <p>Changes to <tt>spm_P.m</tt> as of October 14, 2001. See <a href="../../files/text/Bug2.txt">this email</a>. </p> 
+   <p>Changes as of August 7, 2001. See <a href="../../files/text/Bug1.txt">this email</a>. </p> 
    <br> 
    <br> 
    <h2>Article </h2> 
@@ -141,7 +141,7 @@ title: "Software: FDR"
     <li>Langers, D.R.M., Jansen, J.F.A. &amp; Backes, W.H. <br> Enhanced signal detection in neuroimaging by means of regional control of the global false discovery rate. <br> NeuroImage 38, 43-56 (2007). 
      <!-- developed local FDR --> </li> 
    </menu> If you know of other papers which have used FDR thresholds, please 
-   <a href="mailto:nichols@umich.edu">send me the reference</a>
+   <a href="mailto:thomas.nichols@bdi.ox.ac.uk">send me the reference</a>
    <a>! </a> 
   </div> 
   <div></div> 
