@@ -84,6 +84,8 @@ def _type(entry):
         pub_type = 'Preprints'
     elif entry.type == 'book' or entry.type == 'incollection':
         pub_type = 'Books & Chapters'
+    elif entry.type == 'inproceedings':
+        pub_type = 'In Proceedings'
     else:
         pub_type = entry.type
 
@@ -107,7 +109,7 @@ def _venue(entry):
     f = entry.fields
     venue = u''
     if entry.type == 'article':
-        venue = f['journal']
+        venue = u'<i>' + f['journal'] + u'</i>'
         try:
             if f['volume'] and f['number']:
                 venue += u' {0}({1})'.format(f['volume'], f['number'])
@@ -120,7 +122,7 @@ def _venue(entry):
                 venue += u' ({})'.format(f['series'])
         except KeyError:
             pass
-    elif entry.type == 'inbook':
+    elif entry.type == 'inbook' or entry.type == 'incollection':
         venue = f['title']
     elif entry.type == 'techreport':
         if 'number' in f and 'institution' in f:
