@@ -6,7 +6,7 @@
 #
 # - displaytitle: (Mandatory) This is the name that will be used when referring to this presentation in the text of the website.
 #
-# - URL: (Mandatory) This must be a doi URL for the presentation.
+# - URL: (Optional) This must be a doi URL for the presentation.
 #
 # - Author/Authors: (Optional) Who wrote the presentation. If neither an Author or Authors field is provided the website will 
 #                   leave this blank.

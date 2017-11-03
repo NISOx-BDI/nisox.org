@@ -22,12 +22,14 @@
 ##
 ##      - displaytitle: (Mandatory) This is the name that will be used when referring to this presentation in the text of the website.
 ##
-##      - URL: (Mandatory) This must be a doi URL for the presentation.
+##      - URL: (Optional) This must be a doi URL for the presentation.
 ## 
 ##      - Author/Authors: (Optional) Who wrote the presentation. If neither an Author or Authors field is provided the website will 
 ##                        leave this blank.
 ##
 ##       - img: (Optional) An image of the presentation. Missing images will not cause any display errors or empty spaces.
+##
+##       - time: (Optional) The time the presentation was given.
 #
 # Notes: Fieldnames are case sensitive and entries with colons, question marks or obscure unicode charactors may error.
 #        To include colons and question marks in field entries, wrap said field entries in speech marks - "".
@@ -540,11 +542,73 @@
     This course will introduce the fundamentals of "Imaging Genetics," the process of modeling and understanding genetic variation in brain image data. The course begins with a four-lecture genetics tutorial in the morning, designed to give imaging practitioners a quick overview of key genetics concepts and terminology. The remainder of the course covers how imagers can use genetic variables in their analyses. Specific topics include voxel-wise genome-wide models, joint multivariate modeling of imaging and genetic data, and heritability analyses of cortical surface and thickness data. The course concludes with two case studies highlighting current imaging genetics research.
   conf_displaytitle: "OHBM 2010"
   talks:
+   - name: Bakken
+     Displaytitle: Molecular Basis of Genetic Variation
+     Author: Trygve Bakken
+     time: "8:15 - 9:00"
+   - name: Macciardi
+     Displaytitle: Structure and Analysis of Genetic Variation
+     Author: Fabio Macciardi
+     time: "9:00 - 9:45"
+   - name: Glahn
+     Displaytitle:  "Quantitative Traits: Heritability, Linkage & Association"
+     Author: David Glahn
+     time: "10:00 - 10:45"
+   - name: Nicodemus
+     Displaytitle: "Epistasis: Machine Learning Approaches"
+     Author: Kristin Nicodemus
+     time: "10:45 - 11:30"
+   - name: Meyer-Lindenberg
+     Displaytitle: "What Brain Imaging Has to Offer Genetics, and Vice Versa"
+     Author: Andreas Meyer-Lindenberg
+     time: "11:30 - 12:00"
+   - name: Toro
+     Displaytitle: "Overview of Neuroimaging Phenotypes"
+     Author: Roberto Toro
+     time: "13:00 - 13:30"
+   - name: Stein
+     Displaytitle: "Univariate Approaches: Multiple Testing & Voxelwise WGA"
+     Author: Jason Stein
+     time: "13:30 - 14:05"
+   - name: Montana
+     Displaytitle: "Multivariate Approaches: Joint Modeling of Imaging & Genetic Data"
+     Author: Giovanni Montana
+     time: "14:05 - 14:40"
+   - name: Winkler
+     Displaytitle: " Heritability: Unique Genetic Contributions to Cortical Volume & Thickness"
+     Author: Anderson Winkler
+     time: "14:44 - 15:30"
    - name: Buechel(1)
-     Displaytitle: "Imaging genetics: Adventures in the dopaminergic system"
+     Displaytitle: "Case Study: Genetic Control of Reward System"
      URL: https://doi.org/10.6084/m9.figshare.5485030.v1
      img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486679/thumb.png
      Author: Christian Buchel
+     time: "15:30 - 16:00"
+   - name: Beck 
+     Displaytitle: "Case Study: Genetic Control of Aversive Processing in the Amygdala"
+     Author: Anne Beck
+     time: "16:00 - 16:30"
+
+- name: Skept2010
+  conf: OHBM2010
+  Displaytitle: "Why should I believe your Model? How to be a Skeptical Neuroimager"
+  Organizedby: Victor Solo
+  descrip: |
+    Despite the surge in graphical modeling for functional and structural brain imaging data, often researchers only consider one method and just a pair of competing network models. The purpose of this workshop is to educate neuroimaging users about the "Network of Network Methods" that exists, and show the relationships between the different methods used in imaging and in other disciplines. We also will discuss how to choose the appropriate method for the data and the question at hand, and how to search large space of models that can be fit to your data.
+  conf_displaytitle: "OHBM 2010"
+  talks:
+   - name: Henry
+     Displaytitle: "The Sound and Fury of Biostatistics"
+     Author: Roland Henry
+   - name: Nichols
+     Displaytitle: "To Estimate or Infer?"
+     Author: Thomas Nichols
+   - name: Lindquist
+     Displaytitle: "Modeling Neuroimaging Data - avoiding misspecification, bias and power loss"
+     Author: Martin Lindquist
+   - name: Woolrich
+     Displaytitle: "Getting Used to the Noise"
+     Author: Mark Woolrich
 
 - name: Imgen2009
   conf: OHBM2009
@@ -555,8 +619,20 @@
     This course will introduce the fundamentals of "Imaging Genetics," the process of modeling and understanding genetic variation in brain image data. The course begins with a four-lecture genetics tutorial in the morning, designed to give imaging practitioners a quick overview of key genetics concepts and terminology. The remainder of the course covers how imagers can use genetic variables in their analyses. Specific topics include voxel-wise genome-wide models, joint multivariate modeling of imaging and genetic data, and heritability analyses of cortical surface and thickness data. The course concludes with two case studies highlighting current imaging genetics research.
   conf_displaytitle: "OHBM 2009"
   talks:
+   - name: IntroImgGen-Tan
+     Displaytitle: "Motivation: Why Imaging Genetics?"
+     Author: Hao-Yang Tan
    - name: IntroImgGen-Freimer
      Displaytitle: "Genetics for Imagers: How Geneticists Model Quantitative Phenotypes"
      URL: https://doi.org/10.6084/m9.figshare.5487166.v1
      img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9491218/thumb.png
      Author: Nelson Freimer
+   - name: IntroImgGen-Poline
+     Displaytitle: "Databases for Managing Large Cohort Imaging Genetics Studies"
+     Author: Jean-Baptiste Poline
+   - name: IntroImgGen-Nichols
+     Displaytitle: Association Methods for Functional and Structural MRI
+     Author: Thomas Nichols
+   - name: IntroImgGen-Potkin
+     Displaytitle: "Case Study: Candidate Genes vs. GWAS for Imaging Genetics Studies of Schizophrenia"
+     Author: Steven Potkin

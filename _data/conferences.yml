@@ -148,7 +148,7 @@
     posters: True  
     courses: True  
   format:
-    posterDaysAvailable: False
+    posterDaysAvailable: True
 
 - name: FMRI2010
   displayname: Applied Neuroimaging fMRI Mini-Course 2010
@@ -162,8 +162,10 @@
 - name: OHBM2009
   displayname: OHBM 2009
   descrip: |
-    This collection organizes a number of different talks from NISOx and NISOx collaborators at the 2009 Organization for Human Brain Mapping (OHBM) in San Francisco.
+    This collection organizes a number of different talks and posters from NISOx and NISOx collaborators at the 2009 Organization for Human Brain Mapping (OHBM) in San Francisco.
   sections: 
     talks: False
-    posters: False  
+    posters: True  
     courses: True
+  format:
+    posterDaysAvailable: False

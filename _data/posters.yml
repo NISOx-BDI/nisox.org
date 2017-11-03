@@ -6,7 +6,7 @@
 #
 # - Displaytitle: (Mandatory) This is the name that will be used when referring to this presentation in the text of the website.
 #
-# - URL: (Mandatory) This must be a doi URL for the presentation.
+# - URL: (Optional) This must be a doi URL for the presentation.
 #
 # - Author/Authors: (Optional) Who wrote the presentation. If neither an Author or Authors field is provided the website will 
 #                   leave this blank.
@@ -451,23 +451,51 @@
 
 ######################################################################
 
-- name: nichols-ohbm2010-metabayes
-  Displaytitle: "Improving Precision and Interpretability of Meta Analysis with a Bayesian Hierarchical Spatial Model"
-  URL: https://doi.org/10.6084/m9.figshare.5487151.v1
-  Authors: "Jian Kang, et al"
+- name: nichols-ohbm2010-CoheritabilityClustering
+  Displaytitle: "Reliable Heritability Clustering - Finding Distinct Genetic Factors that Influence Cortical Thickness"
+  Authors: "Walton, R. (Rachel), Winkler, Anderson M., Blangero, John, Fox, Peter T., Glahn, David C. and Nichols, Thomas E."
   conf: OHBM2010
-
-- name: nichols-ohbm2010-networktriplets
-  Displaytitle: "Meta-analytic Functional Connectivity: Finding Brain Regions Multi-way Interactions"
-  URL: https://doi.org/10.6084/m9.figshare.5487154.v1
-  Authors: "Reza Salimi-Khorshidi, et al"
-  conf: OHBM2010
+  code: "741"
+  day: WTh
 
 - name: nichols-ohbm2010-vbmnonstationarity
   Displaytitle: "False Positives in Imaging Genetics Using Nonstationary Cluster-Size Inference"
   URL: https://doi.org/10.6084/m9.figshare.5487160.v1
   Authors: "Matt Silver, et al"
   conf: OHBM2010
+  code: "745"
+  day: WTh
+
+- name: nichols-ohbm2010-networktriplets
+  Displaytitle: "Meta-analytic Functional Connectivity: Finding Brain Regions Multi-way Interactions"
+  URL: https://doi.org/10.6084/m9.figshare.5487154.v1
+  Authors: "Reza Salimi-Khorshidi, et al"
+  conf: OHBM2010
+  code: "1015"
+  day: MT
+
+- name: nichols-ohbm2010-metabayes
+  Displaytitle: "Improving Precision and Interpretability of Meta Analysis with a Bayesian Hierarchical Spatial Model"
+  URL: https://doi.org/10.6084/m9.figshare.5487151.v1
+  Authors: "Jian Kang, et al"
+  conf: OHBM2010
+  code: "1064"
+  day: MT 
+
+- name: nichols-ohbm2010-gee
+  Displaytitle: "Accurate and Computationally Efficient Analysis of Longitudinal fMRI data"
+  URL: https://doi.org/10.6084/m9.figshare.5568673.v1
+  Authors: "Thomas Nichols, Lourens Waldorp"
+  conf: OHBM2010
+  code: "1219"
+  day: MT
+
+#####################################################################
+
+- name: Nichols_TwinSim_OHBM2009
+  Displaytitle: "Improving Heritability Estimates with Restricted Maximum Likelihood (ReML)"
+  Authors: "TE Nichols, KJ Friston, JP Roiser, E Viding"
+  conf: OHBM2009
 
 #####################################################################
 

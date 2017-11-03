@@ -15,7 +15,7 @@ Author: Tom Maullin (23/10/17)
 <br>
 
 <!--Describe the page-->
-Listed below are all available talks from the {{course.conf_displaytitle}} "{{course.Displaytitle}}" workshop.<br><br> 
+Listed below are talks from the {{course.conf_displaytitle}} "{{course.Displaytitle}}" workshop.<br><br> 
 
 
 <!--Add who organised it-->
@@ -42,14 +42,27 @@ Listed below are all available talks from the {{course.conf_displaytitle}} "{{co
 
 				<!--If there is a picture for the talk display it-->
 				{% if talk.img %}
+					{% if talk.URL %}
 					<a href="{{talk.URL}}">
 					<img src="{{talk.img}}" alt="{{talk.name}}" style="width:75px;height:56px;border:1px solid black;margin:0px 10px 10px 0px;float: left;">
 					</a>
+					{% else %}
+					<img src="{{talk.img}}" alt="{{talk.name}}" style="width:75px;height:56px;border:1px solid black;margin:0px 10px 10px 0px;float: left;">
+					{% endif %}
 				{% endif %}
 
+				{% if talk.time %}
+					{{talk.time}}:<br>
+				{% endif %}
+
+				{% if talk.URL %}
 				<!--List talk name and link-->
 				<a href="{{ talk.URL |escape }}">{{talk.Displaytitle}}</a> 
 				<br>
+				{% else %}
+				<b>{{talk.Displaytitle}}</b>
+				<br>
+				{% endif %}
 
 				<!--If the talk has authors list them-->
 				{% if talk.Author %}
@@ -59,8 +72,10 @@ Listed below are all available talks from the {{course.conf_displaytitle}} "{{co
 					Authors: {{talk.Authors}}.
 				{% endif %}
 				
+				{% if talk.URL %}
 				<!--Give the talks doi-->
             	doi:{{talk.URL | replace("https://doi.org/", "") }}
+            	{% endif %}
 
 			</li>
 		</div>
