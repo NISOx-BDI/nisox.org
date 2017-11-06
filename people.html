@@ -2,9 +2,14 @@
 layout: default
 title: People
 ---
-
+<br>
+Listed here are all collaborators, former members and current members of the <b>N</b>euro<b>I</b>maging <b>S</b>tatistics <b>Ox</b>ford (NISOx) group (formerly Neuroimaging Statistics at Warwick).
+<br>
+<br>
+<hr>
 {% for role in site.roles %}
   <h3>{{ role.name }}</h3>
+  <hr>
   <dl class="people">
   {% for item in site.data.people %}
     {% assign person = item[1] %}
@@ -22,14 +27,13 @@ title: People
         {% if person.bio %}
           {% if person.image %}
             <br>
-            <p style = "float:left;margin-right:1em;padding-bottom:5px;"><img src="{{ person.image }}" alt="{{ person.display_name }}" height="140" width="140"></p>
+            <p style = "float:left;margin-right:1em;padding-top:5px;"><img src="{{ person.image }}" alt="{{ person.display_name }}" width="100"></p>
           {% endif %}
-          {{ person.bio | markdownify }}
-          <br>
+          <div style="column-count:1;text-align:justify">{{ person.bio | markdownify }}</div>
         {% endif %}
       </dd>
+      <hr>
     {% endif %}
   {% endfor %}
   </dl>
-  <br>
 {% endfor %}

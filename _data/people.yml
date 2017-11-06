@@ -1,14 +1,14 @@
-
-tom_m:
-    display_name: "Tom Maullin"
-    image:
-    github: TomMaullin
-    role: staff
-    bio:
+tom_n:
+    display_name: Thomas Nichols
+    image: "/img/People/Thomas_Nichols.jpg"
+    github: nicholst
+    role: faculty
+    bio: |
+        Thomas Nichols is a Wellcome Trust Senior Research Fellow in Basic Biomedical Science and the Professor of Neuroimaging Statistics at the Oxford Big Data Institute. He previously was a Professor in the Warwick Department of Statistics and WMG, and before that the Director of Modelling & Genetics at the GlaxoSmithKline Clinical Imaging Centre at Hammersmith Hospital in London, where he worked on statistical methods for fMRI in the context of clinical trials, and integrating genetic data into brain image analyses. Before coming to the UK he was an Associate Professor of Biostatistics at the University of Michigan, and in 2001 received his Ph.D. in statistics from Carnegie Mellon University where he also trained in cognitive neuroscience. He has been active in the field of functional neuroimaging since 1992, when he worked at the University of Pittsburgh's PET Center as a programmer and statistician. Dr. Nichols' research focuses on modelling and inference of neuroimaging data, including PET, fMRI & M/EEG.
 
 soroosh:
     display_name: "Soroosh Afyouni"
-    image: "/img/Soroosh_Afyouni.jpg"
+    image: "/img/People/Soroosh_Afyouni.jpg"
     github: asoroosh
     role: postdoc
     bio: |
@@ -16,29 +16,44 @@ soroosh:
 
 simon:
     display_name: "Simon Schwab"
-    image: "/img/Simon_Schwab.jpg"
+    image: "/img/People/Simon_Schwab.jpg"
     webpage: "https://schw4b.github.io/"
     github: schw4b
     role: postdoc
     bio: |
         Simon Schwab is a Visiting Fellow in Neuroimaging Statistics with Prof. Thomas Nichols at Oxford University, funded for the duration of 12 months by the Swiss National Science Foundation (SNSF). He is currently working on a new method of effective connectivity and its validation using functional MRI data from the Human Connectome Project and the UK Biobank. Before joining the University of Oxford, he worked with Tom Nichols at Warwick University and before that as a Postdoctoral Fellow at the Psychiatric Neuroimaging Unit at the University Hospital of Psychiatry in Bern, Switzerland. He received his Ph.D. in neuroscience (2013) and his M.Sc. in psychology and computer science (2008) from the University of Bern.
 
+tom_m:
+    display_name: "Tom Maullin"
+    image: "/img/People/Tom_Maullin.png"
+    github: TomMaullin
+    role: staff
+    bio: |
+        Tom Maullin is a research assistant in the Big Data Institute at the University of Oxford. His primary role is to assist Thomas Nichols in developing standard practices for data sharing and meta-analysis in neuroimaging. In 2017 Tom completed his BSc. in Data Science from the University of Warwick. During his studies he undertook two software development projects, the first of which involved displaying standardised neuroimaging results and the second of which involved identifying sources of bias and heterogeneity within an image based meta-analysis.
 petya:
     display_name: "Petya Kindalova"
-    image: "/img/Petya_Kindalova.jpg"
+    image: "/img/People/Petya_Kindalova.jpg"
     role: grad
     bio: |
         Petya comes from Bulgaria where she attended the National High School of Mathematics and Natural Sciences. In 2011, Petya moved to Scotland to study at the University of Glasgow and in 2016 she successfully graduated Integrated Masters programme in Statistics with a year in industry. Working as an information analyst for a year in the National Health Service Scotland inspired her to do a DPhil in Statistics with application in public health. In particular, Petya is interested in Bayesian statistics and Genetics which led to her dissertation being focussed on identifying an appropriate model for correlated data suitable for data generated from experiments to study DNA methylation.
 
 sam:
     display_name: Sam Davenport
-    image: "/img/Sam_Davenport.jpg"
+    image: "/img/People/Sam_Davenport.jpg"
     role: grad
     bio: |
         Sam Davenport is a PhD student at the University of Oxford on the OxWaSP Program, supervised by Thomas Nichols and Chris Holmes. Sam is currently working on Selective Inference methods to correct for bias in fMRI that arising due to the Winner's Curse. He is also looking at methods for dealing with Missing Data. He did his undergraduate in Mathematics at Cambridge before going on to do the Part III mathematics masters course there specialising in Statistics. His masters dissertation was entitled "Statistical Analysis in Neuroimaging Structural Breaks" which involved identifying changes in the brain using bootstrapping techniques and looking at multiple hypothesis testing in tree structures.
+
+han: 
+    display_name: Han Bossier
+    image: "/img/People/Han_Bossier.jpg"
+    role: grad
+    bio: |
+        Han first graduated as a master of science in experimental psychology at Ghent University. He then obtained a master of science in Statistical Data Analysis at the same university. During this period, he did an internship on data-analytical stability of fMRI results. Furthermore, he worked on fitting Probabilistic Index Models on very large datasets. Currently, he is a PhD student at the department of Data Analysis at Ghent University. As his interests grew towards methodological research in neuroscience, he now focusses on meta-analytical models and procedures in fMRI data analysis. He tries to incorporate his findings and recommendations in a broader framework of reproducibility and reliability of neuroscience.
+
 alex:
     display_name: "Alex Bowring"
-    image: "/img/Alex_Bowring.jpg"
+    image: "/img/People/Alex_Bowring.jpg"
     github: AlexBowring
     role: grad
     bio: |
@@ -53,14 +68,14 @@ camille:
 
 jessie:
     display_name: "Zhangdaihong (Jessie) Liu"
-    image: "/img/Jessie_Liu.jpg"
+    image: "/img/People/Jessie_Liu.jpg"
     role: grad
     bio: |
         Zhangdaihong (Jessie) Liu is a third year PhD student at the CDT of Mathematics for Real-world Systems at University of Warwick, and is currently a enrichment student working at the Alan Turing Institute. She is jointly supervised by Prof. Thomas Nichols and Prof. Jianfeng Feng. Jessie is currently working on linking brain connectivity, demographics and behaviour using HCP data. She completed the MathSys MSc in 2015. Before University of Warwick, she obtained a MSc in Mathematical Finance at Loughborough University and a BSc in Mathematics at Shandong University, China.
 
 ruth:
     display_name: "Ruth Harbord"
-    image: "/img/Ruth_Harbord.jpg"
+    image: "/img/People/Ruth_Harbord.jpg"
     role: grad
     bio: |
         Ruth Harbord is a PhD student with the MOAC Doctoral Training Centre, University of Warwick, supervised by Thomas Nichols. She is continuing the work of Dr. Lilia Costa on effective connectivity using fMRI data and graphical models. She completed the MOAC DTC MSc in Mathematical Biology and Biophysical Chemistry in 2013 and a BSc (Hons) in Physical Science from The Open University in 2011.
