@@ -1,13 +1,18 @@
 
 tom_m:
+    display_name: "Tom Maullin"
+    image:
+    github: TomMaullin
+    role: staff
+    bio:
 
 soroosh:
-    display_name: "Soroosh Afyouni ---"
-    image: "img/Soroosh_Afyouni.jpg"
+    display_name: "Soroosh Afyouni"
+    image: "/img/Soroosh_Afyouni.jpg"
     github: asoroosh
     role: postdoc
     bio: |
-        Soroosh Afyouni is a PhD student at the Institute of Digital Healthcare at the University of Warwick. He is supervised by Professor Thomas Nichols and Professor Theodoros Aravanitis in collaboration with Dr. Andrew Bagshaw at the University of Birmingham. Soroosh is currently working on resting-state functional connectivity of the human brain and its graph theoretical modelling. He graduated in electronic engineering from University of Birmingham in 2012. His MEng dissertation was on Bloch-equation based simulation of spin-echo sequences in magnetic resonance imaging.
+        Soroosh Afyouni is a postdoctoral research fellow at the University of Oxford. He is currently developing methods for threshold-free cluster enhancement (TFCE) method and multiple testing methods for neuroimaging data-sets. He has joined Oxford after undertaking an early career fellowship at the Warwick Institute of Advanced Study. In 2016, Soroosh received his PhD in Engineering from the University of Warwick where he developed methods for serial-correlation and Stochastic Block Modelling in functional connectivity of the human brain. In 2012, he received his Master of Engineering in Electronic Engineering from University of Birmingham where he worked on simulating the Spin-Echo sequences in Magnetic Resonance Imaging. Soroosh’s primary research interest is in functional connectivity and population connectomics. 
 
 simon:
     display_name: "Simon Schwab"
