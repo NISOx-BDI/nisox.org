@@ -13,7 +13,7 @@ git clone --recursive git@github.com:NISOx-BDI/NISOx-BDI.github.io.git
 To run the website locally, you will also need to install the dependencies: [Python][], [Pybtex][] (`pip install pybtex`), and [Jekyll][] (`gem install jekyll`).
 
 ## How to update the website?
-Except for the page including the publication list (cf. [below](#how-to-update-the-publication-list)), any new change pushed to the `master` branch of the current repository will automatically be reflected on the website. It is stronly advised to preview the changes locally before pushing to GitHub (cf. [section 'building'](#building)).
+Except for the page including the publication list (cf. [below](#how-to-update-the-publication-list))  and the presentation pages (cf. [section 'How to update the presentations pages?'](#How to update the presentations pages?)), any new change pushed to the `master` branch of the current repository will automatically be reflected on the website. It is stronly advised to preview the changes locally before pushing to GitHub (cf. [section 'building'](#building)).
 
 ## How to update the publication list?
 Every time the `bib/pubs.bib` file is updated, the corresponding HTML page (located in `_includes/pubs.html`) has to be updated with:
@@ -22,6 +22,14 @@ make
 ```
 
 Note that `bib/pubs.bib` cannot contain any non-ASCII character or `make` will fail. To identify non-ASCII character in a document, you can use on Mac `pcregrep --color='auto' -n "[\x80-\xFF]" bib/test.bib ` (cf. [this post](https://stackoverflow.com/questions/24939813/recursively-search-in-files-for-a-range-of-unicode-characters)).
+
+## How to update the presentations pages?
+Every time one of the `_data/conferences.yml`, `_data/courses.yml`, `_data/posters.yml` or `_data/talks.yml` files are updated, the corresponding HTML pages (located in `presentations`) have to be updated with:
+```
+make
+```
+
+Note that none of the YAML files cannot contain any non-ASCII character or `make` will fail. To identify non-ASCII character in a document, you can use on Mac `pcregrep --color='auto' -n "[\x80-\xFF]" <write filename here> ` (cf. [this post](https://stackoverflow.com/questions/24939813/recursively-search-in-files-for-a-range-of-unicode-characters)).
 
 ## Acknowlegments
 
@@ -48,6 +56,9 @@ This is an exerp of the template documentation. The full documentation is availa
 
 The list of publications is in `bib/pubs.bib`. Typing `make` will generate `pubs.html`, which contains a pretty, sorted HTML-formatted list of papers. The public page, `publications.html`, also has a link to download the original BibTeX.
 
+### Presentation Pages
+
+To add new presentations to the website update the `_data/conferences.yml` (if a new conference needs to be added - e.g. OHBM2018), `_data/courses.yml` (if a new course needs to be added - e.g. OHBM 2018 Introduction to imaging genetics), `_data/posters.yml` (if a new poster needs to be added) or `_data/talks.yml` (if new talks need to be added) files. Full instructions of how to do this can be found in the comments at the top of each of these files. 
 
 ### News Items and Blog Posts
 
@@ -83,6 +94,7 @@ People are listed in a [YAML][] file in `_data/people.yml`. You can list the nam
 
 The requirements for building the site are:
 
+* Python 2.7: many of the following modules were built on python 2.7 and thus no guarentee is made that the website can run on later python versions.
 * [Jekyll][]: run `gem install jekyll`
 * [Pybtex][]: run `pip install pybtex`
 * [bibble][]: included as a submodule. Because git is cruel, you need to use

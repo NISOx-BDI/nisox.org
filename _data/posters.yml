@@ -1,0 +1,512 @@
+#===================================================================================================================================
+# This YAML file contains all data for posters listed on the NISOx website. Data written in this file takes 
+# the following fields:
+#
+# - name: (Optional) A machine readable name for this presentation. Currently only included for completeness.
+#
+# - Displaytitle: (Mandatory) This is the name that will be used when referring to this presentation in the text of the website.
+#
+# - URL: (Optional) This must be a doi URL for the presentation.
+#
+# - Author/Authors: (Optional) Who wrote the presentation. If neither an Author or Authors field is provided the website will 
+#                   leave this blank.
+#
+# - conf: (Mandatory) This tells the website which page to list the presentation under. It must match the machine readable 'name'
+#         field of a conference in conferences.yml.
+#
+# - code: (Optional) Code for where the poster was displayed.
+#
+# - day: (Optional) Letter or two letters indicating what day the poster was displayed (I.e. 'M', 'Tu', 'W', 'Th', 'F', 'Sa' or 'Su')
+#
+# Notes: Fieldnames are case sensitive and entries with colons, question marks or obscure unicode charactors may error.
+#        To include colons and question marks in field entries, wrap said field entries in speech marks - "". Also note that
+#        to display Code and Day the corresponding format field in conferences.yml must be set to True.
+#
+# Author: Tom Maullin (23/10/17)
+#===================================================================================================================================
+
+- name: ClusterFailure-Eklund-OHBM2016
+  Displaytitle: "Cluster failure: Why fMRI inferences for spatial extent have inflated false positive rate"
+  URL: https://doi.org/10.6084/m9.figshare.5473180.v1
+  Authors: "Thomas Nichols, et al"
+  conf: OHBM2016
+  code: "1605"
+  day: Tu
+
+- name: NIDM-Results-Maumet-OHBM2016
+  Displaytitle: "NIDM-Results: Standardized reporting of mass univariate neuroimaging results in SPM, FSL and AFNI"
+  URL: https://doi.org/10.6084/m9.figshare.5477782.v1
+  Authors: "Camille Maumet, et al"
+  conf: OHBM2016
+  code: "1851"
+  day: Tu
+
+- name: ConfSet-Bowring-OHBM2016
+  Displaytitle: Confidence Sets - Going Beyond Voxel-level and Cluster-level Null Hypothesis testing
+  URL: https://doi.org/10.6084/m9.figshare.5473189.v1
+  Authors: "Alex Bowring, et al"
+  conf: OHBM2016
+  code: "2075"
+  day: Tu
+
+- name: PermAccel-Winkler-OHBM2016
+  Displaytitle: Faster permutation inference in neuroimaging
+  URL: https://doi.org/10.6084/m9.figshare.5477797.v1
+  Authors: "Anderson M. Winkler, et al"
+  conf: OHBM2016
+  code: "2216"
+  day: M
+
+- name: Neuropower-Durnez-OHBM2016
+  Displaytitle: "Neuropower: a toolbox for fMRI sample size and power calculations"
+  URL: https://doi.org/10.6084/m9.figshare.5477779.v1
+  Authors: "Joke Durnez, et al"
+  conf: OHBM2016
+  code: "2221"
+  day: W
+
+- name: Heritability-Afyouni-OHBM2016
+  Displaytitle: Heritability of Global Architectural Features of the Functional Connectome of the Human Brain
+  URL: https://doi.org/10.6084/m9.figshare.5473195.v1
+  Authors: "Soroosh Afyouni, et al"
+  conf: OHBM2016
+  code: "3450"
+  day: W
+
+- name: NINGA-Ganjgahi-OHBM2016
+  Displaytitle: "Nonparametric Inference for Neuroimaging Genetics Analysis(NINGA): Fast & powerful regression and heritability for related subjects"
+  URL: https://doi.org/10.6084/m9.figshare.5477794.v1
+  Authors: "Habib Ganjgahi, et al"
+  conf: OHBM2016
+  code: "3462"
+  day: W
+
+- name: APACE-Chen-OHBM2016
+  Displaytitle: Faster Accelerated Permutation Inference for the ACE Model (APACE) with Parallelization
+  URL: https://doi.org/10.6084/m9.figshare.5473174.v1
+  Authors: "Xu Chen, et al"
+  conf: OHBM2016
+  code: "3463"
+  day: Th
+
+- name: imHPGRF-Taschler-OHBM2016
+  Displaytitle: A Bayesian Marked Hierarchical Spatial Point Process Model with Covariates for Lesion Data
+  URL: https://doi.org/10.6084/m9.figshare.5477740.v1
+  Authors: "Bernd Taschler, et al"
+  conf: OHBM2016
+  code: "3771"
+  day: Th
+
+- name: MDMsearch-Harbord-OHBM2016
+  Displaytitle: Scaling up Directed Graph Models for Resting-State fMRIwith Stepwise Regression
+  URL: https://doi.org/10.6084/m9.figshare.5477776.v1
+  Authors: "Ruth Harbord, et al"
+  conf: OHBM2016
+  code: "3885"
+  day: Th
+
+- name: RichBlock-Afyouni-OHBM2016
+  Displaytitle: Understanding Rich Club with a Stochastic Block Model
+  URL: https://doi.org/10.6084/m9.figshare.5477800.v1
+  Authors: "Soroosh Afyouni, et al"
+  conf: OHBM2016
+  code: "3973"
+  day: Th
+
+##############################################################################################################################################
+
+- name: Montagna-MetaPCA-OHBM2015.pdf
+  Displaytitle: "Spatial Bayesian Latent Factor Regression Modelling of Coordinate-Based Meta-Analysis Data"
+  URL: https://doi.org/10.6084/m9.figshare.5478280.v1
+  Authors: "Silvia Montagna, et al"
+  conf: OHBM2015
+  code: "2186"
+  day: M
+
+- name: Samartsidis-MetaLGCP-OHBM2015
+  Displaytitle: Spatial point process modelling of coordinate-based meta-analysis data
+  URL: https://doi.org/10.6084/m9.figshare.5478331.v1
+  Authors: "Pantelis Samartsidis, et al"
+  conf: OHBM2015
+  code: "2189"
+  day: Tu
+
+- name: Taschler-MSHPGRF-OHBM2015
+  Displaytitle: A Bayesian Hierarchical Spatial Point Process Model for MS Subtype Classification
+  URL: https://doi.org/10.6084/m9.figshare.5478343.v1
+  Authors: "Bernd Taschler, et al"
+  conf: OHBM2015
+  code: "2192"
+  day: M
+
+- name: Chen-ERVinference-OHBM2015
+  Displaytitle: Accelerated Bivariate Heritability Inference Using the Endophenotype Ranking Value
+  URL: https://doi.org/10.6084/m9.figshare.5478199.v1
+  Authors: "Xu Chen, et al"
+  conf: OHBM2015
+  code: "3419"
+  day: Th
+
+- name: Ganjgahi-FPHI-OHBM2015
+  Displaytitle: "Accelerated Permutation Inference for Pedigree Heritability Inference with Family-Based Neuroimaging"
+  URL: https://doi.org/10.6084/m9.figshare.5478220.v1
+  Authors: "Habib Ganjgahi, et al"
+  conf: OHBM2015
+  code: "3421"
+  day: Th
+
+- name: Ge-MEGHA-OHBM2015
+  Displaytitle: Massively Expedited Genome-wide Heritability Analysis (MEGHA)
+  URL: https://doi.org/10.6084/m9.figshare.5478226.v1
+  Authors: "Tian Ge, et al"
+  conf: OHBM2015
+  code: "3422"
+  day: W
+
+- name: Winkler-HCPh2Iventory-OHBM2015
+  Displaytitle: Investigation into the heritabilities of some traits in the Human Connectome Project
+  URL: https://doi.org/10.6084/m9.figshare.5478364.v1
+  Authors: "Anderson M. Winkler, et al"
+  conf: OHBM2015
+  code: "3428"
+  day: W
+
+- name: Maumet-NIDMresults-OHBM2015
+  Displaytitle: "Standardized reporting of neuroimaging results with NIDM in SPM, FSL and AFNI"
+  URL: https://doi.org/10.6084/m9.figshare.5478259.v1
+  Authors: "Camille Maumet, et al"
+  conf: OHBM2015
+  code: "3521"
+  day: Th
+
+- name: Afyouni-RichBlock-OHBM2015
+  Displaytitle: "Rich Block: Rich Club Analysis with the Erdos-Renyi Mixture Model"
+  URL: https://doi.org/10.6084/m9.figshare.5478196.v1
+  Authors: "Soroosh Afyouni, et al"
+  conf: OHBM2015
+  code: "3754"
+  day: W
+
+- name: Harbord-MDMrsfMRI-OHBM2015
+  Displaytitle: Dynamic Effective Connectivity Modelling with Multiregression Dynamic Models
+  URL: https://doi.org/10.6084/m9.figshare.5478235.v1
+  Authors: "Ruth Harbord, et al"
+  conf: OHBM2015
+  code: "3801"
+  day: Th
+
+- name: Pavlovic-MultSubERMM-OHBM2015
+  Displaytitle: Generalised Linear Stochastic Blockmodelling and Inference in Multi-Subject Networks
+  URL: https://doi.org/10.6084/m9.figshare.5478319.v1
+  Authors: "Dragana M. Pavlovic, et al"
+  conf: OHBM2015
+  code: "3861"
+  day: Th
+
+- name: Durnez-PeakPower-OHBM2015
+  Displaytitle: "Prospective power estimation for peak inference with the toolbox neuropower"
+  URL: https://doi.org/10.6084/m9.figshare.5478211.v1
+  Authors: "Joke Durnez, et al"
+  conf: OHBM2015
+  code: "4033"
+  day: Th
+
+- name: Ganjgahi-TFCEagain-OHBM2015
+  Displaytitle: "Threshold-Free Cluster Enhancement revisited: Increasing Power and Spatial specificity of TFCE"
+  URL: https://doi.org/10.6084/m9.figshare.5478217.v1
+  Authors: "Habib Ganjgahi, et al"
+  conf: OHBM2015
+  code: "4034"
+  day: W
+
+- name: Guillaume-LongRepeatMeasWB-OHBM2015
+  Displaytitle: "Non-parametric Inference for Longitudinal and Repeated-Measures Neuroimaging Data with the Wild Bootstrap"
+  URL: https://doi.org/10.6084/m9.figshare.5478229.v1
+  Authors: "Bryan Guillaume, et al"
+  conf: OHBM2015
+  code: "4035"
+  day: Th
+
+- name: Maumet-IBMAunits-OHBM2015
+  Displaytitle: "Do the units matter? Validity of Intensity Based MetaAnalysis in the presence of unit mismatches"
+  URL: https://doi.org/10.6084/m9.figshare.5478253.v1
+  Authors: "Camille Maumet, et al"
+  conf: OHBM2015
+  code: "4036"
+  day: W
+
+- name: Samartsidis-fileDrawerEst-OHBM2015
+  Displaytitle: Estimating the prevalence of file drawer studies in coordinate-based meta-analysis
+  URL: https://doi.org/10.6084/m9.figshare.5478322.v1
+  Authors: "Pantelis Samartsidis, et al"
+  conf: OHBM2015
+  code: "4038"
+  day: W
+
+###############################################################################
+
+- name: Pavlovic-ERMM-GLM-OHBM2014
+  Displaytitle: "Estimation of Common Community Structures in Multi-Subject Brain Networks"
+  URL: https://doi.org/10.6084/m9.figshare.5484124.v1
+  Authors: "Dragana M. Pavlovic, et al" 
+  conf: OHBM2014
+  code: "1737"
+  day: T
+
+- name: Costa-MDMfMRI-OHBM2014 (1)
+  Displaytitle: "Studying the Effective Brain Connectivity using the Multiregression Dynamic Models"
+  URL: https://doi.org/10.6084/m9.figshare.5484082.v1
+  Authors: "Lilia Costa, et al" 
+  conf: OHBM2014
+  code: "1768"
+  day: M
+
+- name: Ge-FastGCTA-OHBM2014
+  Displaytitle: "Fast Accurate Heritability Screening Using Whole-genome Data"
+  URL: https://doi.org/10.6084/m9.figshare.5484091.v1
+  Authors: "Tian Ge, et al" 
+  conf: OHBM2014
+  code: "3403"
+  day: Th
+
+- name: Ganjgahi-HeritPerm-OHBM2014
+  Displaytitle: "Fast and Powerful Multiple Testing Inference in FamilyBased Heritability Studies"
+  URL: https://doi.org/10.6084/m9.figshare.5484088.v1
+  Authors: "Habib Ganjgahi, et al" 
+  conf: OHBM2014
+  code: "3404"
+  day: W
+
+- name: Chen-AggHe-OHBM2014
+  Displaytitle: "A Method for Fast Whole-brain Aggregate Heritability Estimation"
+  URL: https://doi.org/10.6084/m9.figshare.5484070.v1
+  Authors: "Xu Chen, et al" 
+  conf: OHBM2014
+  code: "3409"
+  day: Th
+
+- name: Chen-APACE-OHBM2014
+  Displaytitle: "APACE: Accelerated Permutation Inference for the ACE Model"
+  URL: https://doi.org/10.6084/m9.figshare.5484076.v1
+  Authors: "Xu Chen, et al" 
+  conf: OHBM2014
+  code: "3410"
+  day: W
+
+- name: Taschler-MSlesPredict-OHBM2014
+  Displaytitle: "Classification of Multiple Sclerosis Patients from the Geometry and Texture of White Matter Lesion"
+  URL: https://doi.org/10.6084/m9.figshare.5484130.v1
+  Authors: "Bernd Taschler, et al" 
+  conf: OHBM2014
+  code: "3434"
+  day: W
+
+- name: Samartsidis-ALERFX-OHBM2014
+  Displaytitle: "What is Random Effects Meta-Analysis?"
+  URL: https://doi.org/10.6084/m9.figshare.5484127.v1
+  Authors: "Pantelis Samartsidis, et al" 
+  conf: OHBM2014
+  code: "3534"
+  day: W
+
+- name: Winkler-GPermGLM-OHBM2014
+  Displaytitle: "Permutation Inference for the General Linear Model and the G-statistic"
+  URL: https://doi.org/10.6084/m9.figshare.5484139.v1
+  Authors: "Anderson M. Winkler, et al" 
+  conf: OHBM2014
+  code: "3601"
+  day: Th
+
+- name: Guillaume-SwEtool-OHBM2014
+  Displaytitle: "The SwE Toolbox: a Toolbox for the Analysis of Longitudinal and Repeated Measures Neuroimaging Data"
+  URL: https://doi.org/10.6084/m9.figshare.5484097.v1
+  Authors: "Bryan Guillaume, et al" 
+  conf: OHBM2014
+  code: "3603"
+  day: Th
+
+- name: Winkler-FamPerm-OHBM2014
+  Displaytitle: "Multi-level block permutation"
+  URL: https://doi.org/10.6084/m9.figshare.5484133.v1
+  Authors: "Anderson M. Winkler, et al" 
+  conf: OHBM2014
+  code: "3604"
+  day: W
+
+- name: Durnez-PeakPower-OHBM2014
+  Displaytitle: "Simplified power and sample size calculations using prevalence and magnitude of active peaks"
+  URL: https://doi.org/10.6084/m9.figshare.5484085.v1
+  Authors: "Joke Durnez, et al" 
+  conf: OHBM2014
+  code: "3607"
+  day: Th
+
+- name: Maumet-DIDM-SPM-OHBM2014
+  Displaytitle: "Extending NIDM to share the results and provenance of a neuroimaging study: an example with SPM"
+  URL: https://doi.org/10.6084/m9.figshare.5484115.v1
+  Authors: "Camille Maumet, et al" 
+  conf: OHBM2014
+  code: "3624"
+  day: W
+
+- name: Keator-DIDASH-OHBM2014
+  Displaytitle: "Developing and using the Neuroimaging and Data Sharing Data Model: the NIDASH Working Group"
+  URL: https://doi.org/10.6084/m9.figshare.5484103.v1
+  Authors: "David Keator, et al" 
+  conf: OHBM2014
+  code: "3629"
+  day: Th
+
+- name: Maumet-Zmeta-OHBM2014
+  Displaytitle: "Is Z enough? Impact of Meta-Analysis using only Z/T images in lieu of estimates and standard errors"
+  URL: https://doi.org/10.6084/m9.figshare.5484118.v1
+  Authors: "Camille Maumet, et al" 
+  conf: OHBM2014
+  code: "3634"
+  day: W
+
+#######################################################################
+
+- name: Chen-ClusterHerit-OHBM2013
+  Displaytitle: "Voxel-wise and Cluster-based Heritability Inferences of fMRI Data"
+  URL: https://doi.org/10.6084/m9.figshare.5484442.v1
+  Authors: "Xu Chen, et al"
+  conf: OHBM2013
+
+- name: Durnez_AlternativeHypTesting_OHBM2013
+  Displaytitle: "Alternative thresholding procedure with application to pre-surgical fMRI"
+  URL: https://doi.org/10.6084/m9.figshare.5484451.v1
+  Authors: "Joke Durnez, et al"
+  conf: OHBM2013
+
+- name: Durnez_PostHocClusterPower_OHBM2013
+  Displaytitle: "Post-hoc power estimation for topological inference in fMRI"
+  URL: https://doi.org/10.6084/m9.figshare.5484556.v1
+  Authors: "Joke Durnez, et al"
+  conf: OHBM2013
+
+- name: Ge-MSlesions-OHBM2013
+  Displaytitle: "Analysis of Multiple Sclerosis Lesions via Spatially Varying Coefficients"
+  URL: https://doi.org/10.6084/m9.figshare.5484565.v1
+  Authors: "Tian Ge, et al"
+  conf: OHBM2013
+
+- name: Guillaume-SwE_ADNI-OHBM2013
+  Displaytitle: "Fast and accurate modelling of longitudinal neuroimaging data: an application to ADNI data"
+  URL: https://doi.org/10.6084/m9.figshare.5484571.v1
+  Authors: "Bryan Guillaume, et al"
+  conf: OHBM2013
+
+- name: Pavlovic-ERMMcelegans-OHBM2013
+  Displaytitle: "Understanding the Mesoscale Structure of the C. elegans Brain Network"
+  URL: https://doi.org/10.6084/m9.figshare.5484574.v1
+  Authors: "Dragana M. Pavlovic, et al"
+  conf: OHBM2013
+
+- name: Winkler_CombInf_OHBM2013
+  Displaytitle: "Non-Parametric Combination for Analyses of Multi-Modal Imaging"
+  URL: https://doi.org/10.6084/m9.figshare.5484580.v1
+  Authors: "Anderson M. Winkler, et al"
+  conf: OHBM2013
+
+########################################################################
+
+- name: Chen_HeritabilityMapping
+  Displaytitle: "Heritability Estimation by Non-negative Least Squares for fMRI Data"
+  URL: https://doi.org/10.6084/m9.figshare.5484760.v1
+  Authors: "Xu Chen, et al"
+  conf: OHBM2012
+
+- name: Guillaume_LongitSandwichEst
+  Displaytitle: "Fast and accurate modelling of longitudinal neuroimaging data"
+  URL: https://doi.org/10.6084/m9.figshare.5484766.v1
+  Authors: "Bryan Guillaume, et al"
+  conf: OHBM2012
+
+- name: Pavlicovic-ERMM-OHBM2012
+  Displaytitle: "Erdos-Renyi Mixture Model for Finding Community Structure in Brain Networks"
+  URL: https://doi.org/10.6084/m9.figshare.5484769.v1
+  Authors: "Dragana M. Pavlovic, et al"
+  conf: OHBM2012
+
+########################################################################
+
+- name: Guillaume-OHBM2011-LongitudinalGEE
+  Displaytitle: "Accurate and Computationally Efficient Analysis of Longitudinal fMRI data"
+  URL: https://doi.org/10.6084/m9.figshare.5485018.v1
+  Authors: "Bryan Guillaume, et al"
+  conf: OHBM2011
+
+- name: Kang-OHBM2011-MetaClassification
+  Displaytitle: "Reverse-Inference for Meta-Analysis: Predicting Study Type with a Fully Bayesian Spatial Model"
+  URL: https://doi.org/10.6084/m9.figshare.5485024.v1
+  Authors: "Jian Kang, et al"
+  conf: OHBM2011
+
+- name: Salimi-OHBM2011-MetaGPR-sm
+  Displaytitle: "Bayesian Gaussian Processes for Coordinate-based Metaanalysis of Neuroimaging Reports"
+  URL: https://doi.org/10.6084/m9.figshare.5485027.v1
+  Authors: "Reza Salimi-Khorshidi, et al"
+  conf: OHBM2011
+
+######################################################################
+
+- name: nichols-ohbm2010-CoheritabilityClustering
+  Displaytitle: "Reliable Heritability Clustering - Finding Distinct Genetic Factors that Influence Cortical Thickness"
+  Authors: "Walton, R. (Rachel), Winkler, Anderson M., Blangero, John, Fox, Peter T., Glahn, David C. and Nichols, Thomas E."
+  conf: OHBM2010
+  code: "741"
+  day: WTh
+
+- name: nichols-ohbm2010-vbmnonstationarity
+  Displaytitle: "False Positives in Imaging Genetics Using Nonstationary Cluster-Size Inference"
+  URL: https://doi.org/10.6084/m9.figshare.5487160.v1
+  Authors: "Matt Silver, et al"
+  conf: OHBM2010
+  code: "745"
+  day: WTh
+
+- name: nichols-ohbm2010-networktriplets
+  Displaytitle: "Meta-analytic Functional Connectivity: Finding Brain Regions Multi-way Interactions"
+  URL: https://doi.org/10.6084/m9.figshare.5487154.v1
+  Authors: "Reza Salimi-Khorshidi, et al"
+  conf: OHBM2010
+  code: "1015"
+  day: MT
+
+- name: nichols-ohbm2010-metabayes
+  Displaytitle: "Improving Precision and Interpretability of Meta Analysis with a Bayesian Hierarchical Spatial Model"
+  URL: https://doi.org/10.6084/m9.figshare.5487151.v1
+  Authors: "Jian Kang, et al"
+  conf: OHBM2010
+  code: "1064"
+  day: MT 
+
+- name: nichols-ohbm2010-gee
+  Displaytitle: "Accurate and Computationally Efficient Analysis of Longitudinal fMRI data"
+  URL: https://doi.org/10.6084/m9.figshare.5568673.v1
+  Authors: "Thomas Nichols, Lourens Waldorp"
+  conf: OHBM2010
+  code: "1219"
+  day: MT
+
+#####################################################################
+
+- name: Nichols_TwinSim_OHBM2009
+  Displaytitle: "Improving Heritability Estimates with Restricted Maximum Likelihood (ReML)"
+  Authors: "TE Nichols, KJ Friston, JP Roiser, E Viding"
+  conf: OHBM2009
+
+#####################################################################
+
+- name: Taschler-MSlesPredict-AECTRIMS2014
+  Displaytitle: Classification of MS Patients from the Geometry and Texture of White Matter Lesion
+  URL: https://doi.org/10.6084/m9.figshare.5522224.v1
+  Authors: "Bernd Taschler, et al"
+  conf: Misc2014
+
+- name: Taschler-MSlesSpatModel-MICCAI2014
+  Displaytitle: Spatial Modeling of Multiple Sclerosis for Disease Subtype Prediction
+  URL: https://doi.org/10.6084/m9.figshare.5522227.v1
+  Authors: "Bernd Taschler, et al"
+  conf: Misc2014

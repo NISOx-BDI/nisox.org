@@ -35,8 +35,9 @@ navigation:
     - title: Publications
       link: /publications.html
     - title: Presentations
+      link: /presentations
       link: /Presentations.html
     - title: Software
       link: /Software
     - title: Blog
-      link: /blog.html
+      link: https://blog.nisox.org/
