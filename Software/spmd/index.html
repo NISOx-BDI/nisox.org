@@ -1,0 +1,182 @@
+---
+layout: default
+title: "SPMd"
+notitle: true
+---
+
+<div class="column-1-content">
+                            
+                                
+                                     
+  <table cellspacing="0" cellpadding="0" width="100%" border="0" style="max-width: none;"> 
+   <tbody> 
+    <tr> 
+     <td valign="top" align="left" width="20%"><img height="162" alt="[SPMd]" hspace="9" width="180" align="left" border="0" src="../../img/spmd/SPMd_Central.gif"> </td> 
+     <td valign="top" align="center" width="80%"> <h2 align="center">SPMd</h2> 
+      <hr width="80%" size="4"> <h2 align="center">Statistical Parametric Mapping Diagnosis</h2> 
+      <hr width="80%" size="4"> <h2 align="center">A toolbox for SPM</h2> <p align="center"><em>By Wen-Lin Luo, Hui Zhang &amp; Thomas Nichols</em> </p> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <p>&nbsp;</p> 
+  <hr> 
+  <table cellspacing="0" cellpadding="0" width="100%" border="0" style="max-width: none;"> 
+   <tbody> 
+    <tr> 
+     <td valign="top" align="center" width="15%" bgcolor="#afafaf"><br> <em>This page...</em> 
+      <hr width="60%"> <a href="#news">News</a> 
+      <hr width="60%"> <a href="#intro">Introduction</a> 
+      <hr width="60%"> <a href="#distrib">Distribution</a> 
+      <hr width="60%"> <a href="#dox">Documentation</a> 
+      <hr width="60%"> <a href="#support">Support</a> 
+      <hr width="60%"> <a href="#spmd5b">SPMd5b</a> 
+      <hr width="60%"> <a href="#spmd5bfix">SPMd5b bugs and fixes</a> 
+      <hr width="60%"> <a href="#spmd2">SPMd2 </a> 
+      <hr width="60%"> <a href="#spmd2fix">SPMd2 bugs and fixes</a> 
+      <hr width="60%"> <a href="./spmd_example">SPMd2 example for single condition</a> 
+      <hr width="60%"> <a href="./spmd_exss">SPMd2 example for multiple condition</a> 
+      <hr width="60%"> <a href="./spmd_exg">SPMd2 example for group data</a> 
+      <hr width="60%"> <a href="../../files/text/start.txt">SPMd99 manual</a> 
+      <hr width="60%"> <a href="#thanks">Thanks</a> 
+      <hr width="60%"> </td> 
+     <td valign="top" width="3%">&nbsp;</td> 
+     <td valign="top" width="82%">
+      <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * --> <h2><a name="news">News</a> </h2> 
+      <div align="left"> 
+       <dl> 
+        <dt style="margin-left: 12; margin-top: 6;">
+         SPMd for SPM5, SPMd5b, released October,2006!
+        </dt> 
+        <dd> 
+         <p>See <a href="#spmd5b">release notes </a>&nbsp;</p> 
+        </dd> 
+        <dt style="margin-left: 12;">
+         SPMd2, the latest SPMd toolbox for SPM2 is available
+        </dt> 
+        <dd> 
+         <p>See <a href="#spmd2">below</a> for details </p> 
+        </dd> 
+       </dl> 
+      </div> <h2><a name="intro">Introduction</a> </h2> 
+      <dl></dl> 
+      <div align="left"> 
+       <dl> 
+        <dt style="margin-left: 12;">
+         SPMd is a toolbox for 
+         <a href="http://www.fil.ion.ucl.ac.uk/spm">SPM</a> which you can use to establish the validity of inferences in fMRI modeling through diagnosis of linear model assumptions, 
+         <em>and</em> to characterize fMRI signal and artifacts through exploratory data analysis. 
+        </dt> 
+       </dl> 
+      </div> <p align="left">Currently there are two versions, SPMd99, a version for SPM99, which is no longer being developed, SPMd2, a version for SPM2. </p> <p>To download please fill out a brief <a href="spmdreg">registration form</a> so we can track SPMd usage. You will then be given a URL with an embedded keyword which will let you download the software. </p> <p>If you do download it and find it useful (or not!), or have any problems, please let us know, <a href="mailto:spmd-authors@umich.edu">spmd-authors@umich.edu</a> </p> 
+      <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * --> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <p>&nbsp;</p> 
+  <p><strong><a name="spmd5b">SPMd5b</a> - released October, 2006</strong> </p> 
+  <p>This is the SPMd toolbox for <a href="http://www.fil.ion.ucl.ac.uk/spm/software/spm5">SPM5</a>. While it has been tested in-house, it is still considered a beta release. </p> 
+  <p>SPMd5b has all the features for <a href="#spmd2">SPMd2</a> plus the same image read and write functionality as SPM5. </p> 
+  <p>In addition to using SPM5 library routines, the results output format is closer to the SPM5 format. Specifically, it will read Analyze and NIfTI images and write NIfTI images. </p> 
+  <p><a href="#distrib">Distribution and installation</a> instructions are given below. </p> 
+  <p>Please report bugs to &lt;<a href="mailto:spmd-authors@umich.edu">spmd-authors@umich.edu</a>&gt;. Peculiarities and general queries should be raised on the <a href="http://www.fil.ion.ucl.ac.uk/spm/help/">SPM <em>e</em>mail discussion list</a>. We will report patches to the list and make updates available if necessary. </p> 
+  <p>&nbsp;</p> 
+  <p align="right"><a href="#top">...to top</a> </p> 
+  <p>&nbsp;</p> 
+  <hr> 
+  <p><strong><a name="spmd2">SPMd2</a> - released 13th June, 2005</strong> </p> 
+  <ul> 
+   <li> <h4>SPM2 Compatibility</h4> <p>In addition to using SPM2 library routines, the results output format is closer to the SPM2 format. Also, SPMd2 has the 'click-to-see' feature of SPM2's results page. </p> <p>&nbsp;</p> </li> 
+  </ul> 
+  <p><a href="#distrib">Distribution and installation</a> instructions are given below. </p> 
+  <p>Please report bugs to &lt;<a href="mailto:spmd-authors@umich.edu">spmd-authors@umich.edu</a>&gt;. Peculiarities and general queries should be raised on the <a href="http://www.fil.ion.ucl.ac.uk/spm/help/">SPM <em>e</em>mail discussion list</a>. We will report patches to the list and make updates available if necessary. </p> 
+  <p>&nbsp;</p> 
+  <p align="right"><a href="#top">...to top</a> </p> 
+  <p>&nbsp;</p> 
+  <hr> 
+  <h2><a name="distrib">SPMd distribution &amp; installation</a></h2> 
+  <!-- ================================================================= --> 
+  <p>The SPMd toolbox is a small suite of MatLab functions and M-files that integrate with <a href="http://www.fil.ion.ucl.ac.uk/spm/">SPM</a> routines. Thus, to use SPMd2 you must have already installed SPM2, and to use SPMd5b you must have already installed SPM5. See the <a href="http://www.fil.ion.ucl.ac.uk/spm/distrib.html">SPM distribution page</a> for SPM hardware &amp; software requirements, downloading &amp; installation instructions, and conditions of distribution. You should be familiar with SPM2 before using SPMd. </p> 
+  <!-- <div  _mce_tmp="1">The software is available via FTP, but first we ask you to complete --> 
+  <!-- a brief registration form.  <em>Temporary:</em> Currently the form is --> 
+  <!-- unavailble; please email <a --> 
+  <!-- href="mailto:SPMd-request@umich.edu">SPMd-request@umich.edu</a> with --> 
+  <!-- your name, institution and number of expected users.   You will be --> 
+  <!-- then sent the download location, via a --> 
+  <!-- <strong><code>keyword</code></strong> enabled FTP URL.  --> 
+  <p>The software is available via FTP, but we ask you to complete a brief <a href="spmdreg">registration form</a> prior to downloading. Having completed the form, you will be directed to the download location, via a <strong><code>keyword</code></strong> enabled FTP URL. You should also periodically check the <a href="#spmd5bfix">SPM5b bugs &amp; fixes </a>area and <a href="#spmd2fix">SPM2 bugs &amp; fixes</a> area. </p> 
+  <p>
+   <!-- <div  _mce_tmp="1">The SPMd software is available via anonymous FTP as a gzipped tar archive. The base URL for all SPM distributions is <A --> 
+   <!-- HREF="ftp://ftp.fil.ion.ucl.ac.uk/spm">ftp://ftp.fil.ion.ucl.ac.uk/spm</A>. --> 
+   <!-- <UL><LI>SPMd2 is at <A --> 
+   <!-- HREF="ftp://ftp.fil.ion.ucl.ac.uk/spm/SPMd2.tar.gz">ftp://ftp.fil.ion.ucl.ac.uk/spm/SPMd2.tar.gz</A> --> 
+   <!-- </UL> --> Note SPMd99 is still availble. Use the same <a href="spmdreg">registration form</a> to request the SPMd99 FTP URL. </p> 
+  <p>Installation is relatively straightforward. Download the gzipped tar file and unzip it in a location where you want the SPMd5b or SPMd2 directory. Then, add the full pathname of this directory to your MATLABPATH. (You can check this by typing <code>which spm</code> in MatLab and examining the path, or try <code>spm ver</code>.) </p> 
+  <p>You should also download any <a href="#spmd5bfix">SPMd5b fixes </a>or <a href="#spmd2fix">SPMd2 fixes</a>, and replace older files shipped in the standard distribution. </p> 
+  <p>For step by step instructions on downloading and installing SPM distributions, refer to the <a href="http://www.fil.ion.ucl.ac.uk/spm/distrib.html# Download">SPM distribution page</a>. </p> 
+  <p align="right"><a href="#top">...to top</a> </p> 
+  <p>&nbsp;</p> 
+  <hr> 
+  <h2><a name="dox">Documentation</a></h2> 
+  In addition to the main <a href="http://www.fil.ion.ucl.ac.uk/spm/dox.html">SPM documentation</a>, you are encouraged to read:
+  <ul> 
+   <li>The SPMd99 <a href="../../files/text/start.txt">manual page</a>, duplicated in the SPMd online help facility. </li> 
+   <li>The <a href="./spmd_example">example page</a>. </li> 
+  </ul> 
+  <p><strong>References</strong> </p> 
+  <p>There are currently two versions of one paper available on the methods mbodied in SPMd. The published manuscript is available at the NeuroImage website (or <a href="mailto:thomas.nichols@bdi.ox.ac.uk">email</a> for a PDF), while the full version, as submitted is available freely on the web: </p> 
+  <menu> 
+   <li>Wen-Lin Luo and Thomas E. Nichols<br> Diagnosis and exploration of massively univariate neuroimaging models.<br> <a href="http://www.sciencedirect.com/science/journal/10538119">NeuroImage</a> 19:1014-1032, 2003.<br> </li> 
+   <li>Wen-Lin Luo and Thomas E. Nichols<br> Diagnosis and Exploration of Massively Univariate 4D Spatiotemporal Models.<br> Technical Report. <strong>Download:</strong> <a href="https://doi.org/10.6084/m9.figshare.5572459.v1">SPMd.pdf</a> </li> 
+  </menu> 
+  <p>The essential difference between the two versions is that the submitted version has detailed appendicies on the derivation of the various diagnostic statistics used. </p> 
+  <p align="right"><a href="#top">...to top</a> </p> 
+  <hr> 
+  <h2><a name="support">Support</a></h2> 
+  <!-- ================================================================= --> 
+  <p>SPMd is being made freely available to the functional Neuroimaging community in the same spirit as SPM. As with SPM, SPMd may be considered academic shareware. It is supplied as is, and no formal support or maintenance is provided or implied. </p> 
+  <p>General SPMd issues and idiosyncrasies should be raised on the <a href="http://www.fil.ion.ucl.ac.uk/spm/help/">SPM <em>e</em>mail discussion list</a>, at &lt;<a href="mailto:spm_at_jiscmail.ac.uk">spm_at_jiscmail.ac.uk</a>&gt;, which the authors monitor. Direct queries to the authors will usually be answered to the whole list. </p> 
+  <p>The SPMd authors may be contacted at &lt;<a href="mailto:spmd-authors@umich.edu">spmd-authors@umich.edu</a>&gt;. Please report bugs to the authors direct. Suggestions for improvement are welcome, particularly those substantiated with code! Requests for specific design PlugIns will be considered, but necessarily as invitations for collaborative work. </p> 
+  <p>See the <a href="http://www.fil.ion.ucl.ac.uk/spm/dox.html">SPM documentation &amp; support</a> page for further resources. </p> 
+  <p align="right"><a href="#top">...to top</a> </p> 
+  <p>&nbsp;</p> 
+  <hr> 
+  <p align="left"><strong><a name="spmd5bfix">SPMd5b bugs and fixes</a></strong> </p> 
+  <p>This section describes the bugs that have been reported, along with the appropriate fixes. Updated versions of appropriate SPMd5b functions are available from our anonymous FTP server in the spmd5_updates directory: <a href="spmd5_updates">spmd5_updates</a>. </p> 
+  <p>In recent update, we change the <code>spm_get</code> used in SPM2 frequently to <code>spm_select</code> used for SPM5.The updated files are provided in the above FTP link. Brief descriptions of the fixes are provided below. </p> 
+  <ul> 
+   <li> <h3><a href="../../files/matlab/spmd5/spmd.m"><code>spmd.m</code></a> </h3> (2008/02/04) <br> Cleaned up special case of missing rotation/translation parameters. </li> 
+   <li> <h3><a href="../../files/matlab/spmd5/spmd_comp_SS.m"><code>spmd_comp_SS.m</code></a> </h3> (2008/02/04) <br> 1. when the user specified covariates are among the design matrix, hide them from the design matrix <br> 2. determine whether the visible matrix is one column or not, if it is multiple column matrix, only show the maximum value for each row. However, if it is a single column matrix (vector), do not do any change. </li> 
+  </ul> 
+  <p align="right"><a href="#top">...to top</a> </p> 
+  <p>&nbsp;</p> 
+  <hr> 
+  <h2 align="left"><a name="spmd2fix">SPMd2 bugs and fixes</a></h2> 
+  <p>As of November 2nd, a number of fixes to SPMd2 have been posted and the distributed release has also been updated. (And a few more on <em>Nov 4th!</em>) If you've already downloaded SPMd, you can download all of the fixes at once here: <a href="../../files/tars/051104.tar.gz">051104.tar.gz</a>. </p> 
+  <p>Brief descriptions of the fixes are provided below; we'll post more comprehensive descriptions soon! All are contained in the <a href="./spmd2_updates">spmd2_updates/</a> directory </p> 
+  <ul> 
+   <li> <h3><a href="../../files/matlab/spmd2/spmd_stat.m"><code>spmd_stat.m</code></a> </h3> (2005/09/08) </li> 
+   <li> <h3><a href="../../files/matlab/spmd2/spmd_check_registration.m"><code>spmd_check_registration.m</code></a> </h3> (2005/11/01) v1.5<br> Previously SPMd's orthogonal viewers (Model Summary and Scan Detail views) displayed images in voxel space. Now they display images in world space. </li> 
+   <li> <h3><a href="../../files/matlab/spmd2/spmd_MD.m"><code>spmd_MD.m</code></a> </h3> (2005/11/01) v1.3<br> Model detail window now displays current voxel in both voxels (voxel space) and mm (world space). </li> 
+   <li> <h3><a href="../../files/matlab/spmd2/spmd_MD.m"><code>spmd_MD.m</code></a> </h3> (2005/11/01) v1.3<br> Model detail window now displays current voxel in both voxels (voxel space) and mm (world space). </li> 
+   <li> <h3><a href="../../files/matlab/spmd2/spmd_project_vol.m"><code>spmd_project_vol.m</code></a> </h3> (2005/11/01) v1.1<br> New function; supports the viewing of MIP's in the orthogonal viewers (Model Summary and Scan Detail views). </li> 
+   <li> <h3><a href="../../files/matlab/spmd2/spmd_comp_MS.m"><code>spmd_comp_MS.m</code></a> </h3> (2005/11/01) v1.10<br> Minor code change; should have no impact. </li> 
+   <li> <h3><a href="../../files/matlab/spmd2/spmd_orthviews.m"><code>spmd_orthviews.m</code></a> </h3> (2005/11/01) v1.6<br> Several important bug fixes regarding the "right-click jump to Model Detail": This didn't used to work in the Scan Detail view, but now it does; the voxel viewed in Model Detail was actually the voxel <em>previously</em> clicked; this lag has now been fixed. </li> 
+   <li> <h3><a href="../../files/matlab/spmd2/spmd_SS.m"><code>spmd_SS.m</code></a> </h3> (2005/11/01) v1.15<br> Moved some computation to spmd_comp_SS.m; improved naming and ballon help. <p>&nbsp;</p> </li> 
+   <li> <h3><a href="../../files/matlab/spmd2/spmd.m"><code>spmd.m</code></a> </h3> (2005/11/01) v1.3<br> Minor typos and corrections to ballon help text.<br> (2005/11/04) v1.4<br> Now simply assumes that results are in current directory, so no need to select SPM.mat file (multiple times).<br> (2007/06/05) v1.5<br> Double checking whether there is rotation and shift parameters exist </li> 
+   <li> <h3><a href="../../files/matlab/spmd2/spmd_SD.m"><code>spmd_SD.m</code></a> </h3> (2005/11/04) v1.3<br> Tiny change: Default window on residuals is now [-3,3], instead of [-5,5].<br> <br> </li> 
+   <li> <h3><a href="../../files/matlab/spmd2/spmd_comp_SS.m"><code>spmd_comp_SS.m</code></a> </h3> (2005/11/01) v1.14<br> Scan Summary computation now supports variables of no interest. Realignment parameter sought now corresponds to SPM2 naming convention. Moved some computation from spmd_SS.m.<br> (2005/11/03) v1.15<br> Major bugs in v1.14!! Now should work with all possible fMRI and non-fMRI designs. (Trouble was in code that figures out which columns to show in the Scan Summary predictor plot).<br> (2005/11/04) v1.16<br> In some settings, after selecting regression parameters the entire SPMd UI would vanish! Fixed <br> (2006/09/28) v1.17<br> Detect whether the user specified covariates exist before we do something for scan summary. </li> 
+  </ul> 
+  <hr> 
+  <h2><a name="thanks">Thanks</a></h2> 
+  <!--=================================================================--> 
+  <p>We are indebted to everyone who has tried the software and reported bugs. We appreciate Helmut Laufs, Rute Martins, Juanjo Lull for reporting bugs for SPMd5b. </p> 
+  <p align="right"><a href="#top">...to top</a> </p> 
+  <p>&nbsp;</p> 
+  <address>SPMd authors at &lt;<a href="mailto:spmd-authors@umich.edu">spmd-authors@umich.edu</a>&gt; 
+   <!-- hhmts start --> Last modified: Mon Feb 4 15:02:52 EST 2008 
+   <!-- hhmts end --> </address> 
+ 
+                                
+                                
+                            
+                        </div>

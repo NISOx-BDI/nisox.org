@@ -1,0 +1,42 @@
+To: spm@jiscmail.ac.uk
+Subject: bug fix: Bonferroni corrected p-values
+Date: Tue, 09 Oct 2001 18:50:06 -0400
+From: "Thomas E. Nichols" <nichols@umich.edu>
+
+Hi all,
+
+
+In June new functions were released to incorporate Bonferroni
+results.  These functions (silently) gave SPM corrected thresholds and
+p-values based the minimum of Bonferroni and Random Field results.
+(Both methods are valid, though conservative to differing degrees;
+hence it's OK to take the minimum of each).
+
+Due to a bug/typo, spm_P.m wasn't using Bonferroni-corrected p-values
+even if they were smaller.  Corrected thresholds are OK, but
+corrected p-values did not take advantage of the Bonferroni p-values.
+
+The only impact of this bug was that the corrected p-values in
+the tabular output are not as small as they can be:  When the Bonferroni
+corrected p-value is smaller they still used the random field p-value.
+
+
+**If** you picked up the new functions in June, please grab this fix at
+
+	ftp://ftp.fil.ion.ucl.ac.uk/spm/spm99_updates/spm_P.m
+
+Sorry for any inconvenience.
+
+
+See this message on the Bonferroni updates:
+
+	http://www.jiscmail.ac.uk/cgi-bin/wa.exe?A2=ind0106&L=spm&P=R15124
+
+-Tom
+
+
+    -- Thomas Nichols --------------------   Department of Biostatistics
+       http://www.sph.umich.edu/~nichols     University of Michigan
+       nichols@umich.edu                     1420 Washington Heights
+    --------------------------------------   Ann Arbor, MI 48109-2029
+

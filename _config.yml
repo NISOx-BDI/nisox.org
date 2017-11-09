@@ -12,8 +12,8 @@ permalink: /blog/:year/:month/:day/:title.html
 # Sections on the "people" page.
 roles:
     - {key: faculty, name: Faculty}
-    - {key: staff, name: Staff}
     - {key: postdoc, name: Researchers}
+    - {key: staff, name: Staff}
     - {key: grad, name: Graduate Students}
     - {key: collab, name: Collaborators}
     - {key: alum, name: Alumni}
@@ -36,7 +36,8 @@ navigation:
       link: /publications.html
     - title: Presentations
       link: /presentations
-    - title: Code
-      link: /code.html
+      link: /Presentations.html
+    - title: Software
+      link: /Software
     - title: Blog
       link: https://blog.nisox.org/
