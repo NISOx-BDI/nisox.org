@@ -62,9 +62,43 @@ camille:
     display_name: "Camille Maumet"
     webpage: "http://camillemaumet.com"
     github: cmaumet
-    role: alum
+    role: collab
     bio: |
-        Post-doc. 2013-2017. Now at [Inria](https://www.inria.fr/), France.
+        Camille Maumet is a research Fellow in brain imaging data sciences, focusing on data sharing and best statistical practices for meta-analyses.  She is currently a researcher at [Inria](https://www.inria.fr/) as part of the VisAGeS team of the IRISA, Inria Rennes Bretagne Atlantique.
+
+stephen:
+    display_name: Stephen Smith
+    webpage: "https://www.ndcn.ox.ac.uk/team/stephen-smith"
+    role: collab
+    bio: |
+        Stephen Smith is Professor of Biomedical Engineering and head of the Analysis Group at The Oxford University Centre for Functional Magnetic Resonance Imaging of the Brain (FMRIB). The Analysis Group, which he started in 1997, now comprises about 30 research fellows, postdocs, students and support staff, carrying out functional and structural brain image analysis and statistics research.
+
+timothy:
+    display_name: Timothy D. Johnson
+    webpage: "https://sph.umich.edu/faculty-profiles/johnson-timothy.html"
+    role: collab
+    bio: |
+        Timothy D. Johnson is  a Professor of Biostatistics. He received his Ph.D. in Biostatistics from UCLA in 1997. He was a senior statistician in the UCLA department of Biomathematics from 1997-1998 and an adjunct assistant professor from 1998-2001. He also served as a consultant to the John Wayne Cancer Institute from 1997-2000. Dr.Johnson joined the faculty at the University of Michigan in 2001, where he is also a member of the biostatistics core of the Comprehensive Cancer Center.
+
+tor: 
+    display_name: Tor Wager
+    webpage: "https://canlabweb.colorado.edu/"
+    role: collab
+    bio: |
+        Tor Wager is the director of the Cognitive and Affective Control Laboratory and Professor of Psychology and Neuroscience at the University of Colorado, Boulder. His research program focuses on the brain mechanisms underlying expectations and placebo effects, and their influences on brain systems involved in pain, emotion, and motivation. He is actively involved in the emerging field of brain-body medicine, which integrates brain activity with physiological activity in the body to promote understanding of health and disease.
+
+tal:
+    display_name: Tal Yarkoni
+    webpage: "http://talyarkoni.org/"
+    role: collab
+    bio: |
+        Tal Yarkoni is a Research Assistant Professor in the Department of Psychology at the University of Texas, where he directs the Psychoinformatics Lab. His research focuses on the development and application of new methods for acquiring, organizing, and synthesizing psychological data on a large scale. Tal's work applies techniques from behavioral psychology, functional neuroimaging, and computer science to multiple domains within psychology, with a particular focus on personality and individual differences.
+
+armin:
+    display_name: Armin Schwartzman
+    role: collab
+    bio: |
+        Armin Schwartzman is an Associate Professor at University of California. His research areas include Statistical Signal and Image Analysis and Applications in biomedicine and the environment. His specialties include research, teaching, consulting and mathematical programming.
 
 jessie:
     display_name: "Zhangdaihong (Jessie) Liu"
@@ -79,6 +113,7 @@ ruth:
     role: grad
     bio: |
         Ruth Harbord is a PhD student with the MOAC Doctoral Training Centre, University of Warwick, supervised by Thomas Nichols. She is continuing the work of Dr. Lilia Costa on effective connectivity using fMRI data and graphical models. She completed the MOAC DTC MSc in Mathematical Biology and Biophysical Chemistry in 2013 and a BSc (Hons) in Physical Science from The Open University in 2011.
+
 
 anderson:
     display_name: "Anderson Winkler"
