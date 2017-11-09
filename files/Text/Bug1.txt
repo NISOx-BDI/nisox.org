@@ -1,0 +1,31 @@
+To: spm@jiscmail.ac.uk
+Subject: FDR & masking
+Date: Tue, 07 Aug 2001 18:18:52 -0400
+From: "Thomas E. Nichols" <nichols@umich.edu>
+
+Hi all,
+
+There was a small bug in the SPM FDR code when either the
+
+	Small volume correction was used, or when
+
+	Implicit NaN masking was combined with another type of masking.
+
+
+Please pick up the three changed files to fix these problem
+
+	http://www.sph.umich.edu/~nichols/FDR/spm_uc_FDR.m
+	http://www.sph.umich.edu/~nichols/FDR/spm_P_FDR.m
+	http://www.sph.umich.edu/~nichols/FDR/spm_VOI.m
+
+
+Sorry for any trouble this may have caused.
+
+-Tom
+
+
+    -- Thomas Nichols --------------------   Department of Biostatistics
+       http://www.sph.umich.edu/~nichols     University of Michigan
+       nichols@umich.edu                     1420 Washington Heights
+    --------------------------------------   Ann Arbor, MI 48109-2029
+
