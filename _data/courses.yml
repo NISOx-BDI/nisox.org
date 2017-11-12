@@ -1,5 +1,5 @@
 #======================================================================================================================================
-# This YAML file contains all data for courses listed on the NISOx website. Data written in this file takes 
+# This YAML file contains a list of all courses listed on the NISOx website. Data written in this file takes 
 # the following fields:
 #
 # - name: (Mandatory) A machine readable name which will be used to create the URL for this course page.

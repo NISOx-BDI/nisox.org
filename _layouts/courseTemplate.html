@@ -34,7 +34,9 @@ Listed below are talks from the {{course.conf_displaytitle}} "{{course.Displayti
 <ul style="list-style-type:square">
 
 	{% for Entry in talks %}
+	  <!--We are only looking at talks associated to courses-->
       {% if Entry.fields['course'] %}
+        <!--We are only looking at talks associated to this specific course-->
       	{% if Entry.fields['course'] == course.name %}
 	      	<!--Add a line between entries-->
 	        <div id = "below" style = "clear:both;"><hr></div>
@@ -53,6 +55,7 @@ Listed below are talks from the {{course.conf_displaytitle}} "{{course.Displayti
 	          {% endif %}
 	        {% endif %}
 
+	        <!-- If the talks have times associated list the times first -->
 	        {% if Entry.fields['time'] %}
 				{{Entry.fields['time']}}:<br>
 			{% endif %}

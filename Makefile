@@ -20,7 +20,7 @@ _site/index.html: $(wildcard *.html) _includes/pubs.html _config.yml \
 	_layouts/default.html
 
 clean:
-	$(RM) -r _site _includes/pubs.html
+	$(RM) -r _site _includes/pubs.html presentations/index.html
 
 HOST := yourwebpage.com
 PATHSVR := www/

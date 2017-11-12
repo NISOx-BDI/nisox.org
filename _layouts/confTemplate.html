@@ -40,6 +40,7 @@ Author: Tom Maullin (23/10/17)
           <li> 
             <!--If there is a picture for the Entry display it-->
             {% if Entry.fields['img'] %}
+              <!--If there is a URL for the Entry make the picture a hyperlink -->
               {% if Entry | main_url%}
               <a href="{{Entry | main_url}}">
                 <img src="{{Entry.fields['img']}}" alt="{{Entry | title}}" style="width:75px;height:56px;border:1px solid black;margin:0px 10px 10px 0px;float: left;">
@@ -81,8 +82,8 @@ Author: Tom Maullin (23/10/17)
               {% endif %}
             {% endif %}
 
+            <!--Give the talks doi if there is one-->
             {% if Entry.fields['doi'] %}
-              <!--Give the talks doi-->
               doi:{{Entry |doi}}
             {% endif %}
 

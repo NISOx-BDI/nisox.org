@@ -24,12 +24,12 @@ make
 Note that `bib/pubs.bib` cannot contain any non-ASCII character or `make` will fail. To identify non-ASCII character in a document, you can use on Mac `pcregrep --color='auto' -n "[\x80-\xFF]" bib/test.bib ` (cf. [this post](https://stackoverflow.com/questions/24939813/recursively-search-in-files-for-a-range-of-unicode-characters)).
 
 ## How to update the presentations pages?
-Every time one of the `_data/conferences.yml`, `_data/courses.yml`, `_data/posters.yml` or `_data/talks.yml` files are updated, the corresponding HTML pages (located in `presentations`) have to be updated with:
+Every time one of the `_data/conferences.yml`, `_data/courses.yml`, `_data/posters.bib` or `_data/talks.bib` files are updated, the corresponding HTML pages (located in `presentations`) have to be updated with:
 ```
 make
 ```
 
-Note that none of the YAML files cannot contain any non-ASCII character or `make` will fail. To identify non-ASCII character in a document, you can use on Mac `pcregrep --color='auto' -n "[\x80-\xFF]" <write filename here> ` (cf. [this post](https://stackoverflow.com/questions/24939813/recursively-search-in-files-for-a-range-of-unicode-characters)).
+Note that none of the YAML and bib files cannot contain any non-ASCII character or `make` will fail. To identify non-ASCII character in a document, you can use on Mac `pcregrep --color='auto' -n "[\x80-\xFF]" <write filename here> ` (cf. [this post](https://stackoverflow.com/questions/24939813/recursively-search-in-files-for-a-range-of-unicode-characters)).
 
 ## Acknowlegments
 

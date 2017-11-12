@@ -31,11 +31,13 @@ TEMPLATE_ENVIRONMENT = Environment(
     trim_blocks=False)
 
 def translate_remove_brackets(to_translate, translate_to=u''):
+    #This function removes any curly brackets left over from converting a latex string to unicode.
     brackets = u'{}'
     translate_table = dict((ord(char), translate_to) for char in brackets)
     return to_translate.translate(translate_table)
 
 def _author_fmt(author):
+    #This entry formats individual author entries.
     author = u' '.join(author.first() + author.middle() + author.last())
     return translate_remove_brackets(author)
 
@@ -63,6 +65,7 @@ def _author_Shorten(authorList, numAuthors):
     return shortenedAuthorList
 
 def _andlist(ss, sep=', ', seplast=', and ', septwo=' and '):
+    #This function lists the authors.
     if len(ss) <= 1:
         return ''.join(ss)
     elif len(ss) == 2:
@@ -71,14 +74,17 @@ def _andlist(ss, sep=', ', seplast=', and ', septwo=' and '):
         return sep.join(ss[:-1]) + seplast + ss[-1]
 
 def _author_list_posters(authors):
+    #For posters we only wish to list one author and 'et al'.
     authorList = _author_Shorten(_andlist(map(_author_fmt, authors)), 1)
     return authorList
 
 def _author_list_presentations(authors):
+    #For talks we wish to list 6 authors and 'et al'.
     authorList = _author_Shorten(_andlist(map(_author_fmt, authors)), 6)
     return authorList
 
 def _multiple_authors(authors):
+    #This function tells us if there are multiple authors listed or not.
     authorList = _author_list_posters(authors)
     if ',' in authorList or 'and' in authorList or 'et al' in authorList:
         return True
@@ -93,6 +99,7 @@ def _title(entry):
     return title
 
 def _main_url(entry):
+    #This function reports the URL of an entry.
     urlfields = ('url', 'ee')
     for f in urlfields:
         if f in entry.fields:
@@ -101,6 +108,7 @@ def _main_url(entry):
     return None
 
 def _doi(entry):
+    #This function reports the doi of an entry.
     f = entry.fields
     doi = u''
     if 'doi' in f:
@@ -108,16 +116,19 @@ def _doi(entry):
     return translate_remove_brackets(doi) 
 
 def _conf(entry):
+    #This function reports the conference an entry belongs to.
     conf = entry.fields['conf']
     return conf
 
 def _month_name (monthnum):
+    #This function converts the number of a month to the months name.
     try:
         return month_name[int(monthnum)]
     except:
         return ''
 
 def _conf_details(entry):
+    #This function lists conference details for a poster entry.
     confDet = entry.fields['number'] +  u'-<b>' + entry.fields['day'] + u'</b>'
     return confDet
     
