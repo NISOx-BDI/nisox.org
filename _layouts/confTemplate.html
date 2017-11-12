@@ -21,63 +21,69 @@ Author: Tom Maullin (23/10/17)
 <!--Standalone talks section-->
 {% if conference.sections.talks == true %}
   <h3>Talks</h3>
-  <dl class="Talks">
+  <dl class="talks">
     <!--Description of section-->
     <div> This section lists {{conference.displayname}} standalone talks by NISOx and NISOx collaborators. </div>
 
     <!--List talks-->
     <ul style="list-style-type:square">
-    {% for talk in talks %}
-      {% if talk.conf == conference.name %}
-        <!--Each entry contains a talk-->
-        <dl class="TalkEntry">
+    {% for Entry in talks %}
+      {% if Entry | conf == conference.name and not Entry.fields['course']%}
+        <!--Each entry contains a Entry-->
+        <dl class="EntryEntry">
 
         <!--Add a line between entries-->
         <div id = "below" style = "clear:both;"><hr></div>
 
-        <!--The talk list element-->
+        <!--The Entry list element-->
         <div>
           <li> 
-            <!--If there is a picture for the talk display it-->
-            {% if talk.img %}
-              {% if talk.URL %}
-              <a href="{{talk.URL}}">
-                <img src="{{talk.img}}" alt="{{talk.name}}" style="width:75px;height:56px;border:1px solid black;margin:0px 10px 10px 0px;float: left;">
+            <!--If there is a picture for the Entry display it-->
+            {% if Entry.fields['img'] %}
+              {% if Entry | main_url%}
+              <a href="{{Entry | main_url}}">
+                <img src="{{Entry.fields['img']}}" alt="{{Entry | title}}" style="width:75px;height:56px;border:1px solid black;margin:0px 10px 10px 0px;float: left;">
               </a>
               {% else %}
-                <img src="{{talk.img}}" alt="{{talk.name}}" style="width:75px;height:56px;border:1px solid black;margin:0px 10px 10px 0px;float: left;">
+                <img src="{{Entry.fields['img']}}" alt="{{Entry | title}}" style="width:75px;height:56px;border:1px solid black;margin:0px 10px 10px 0px;float: left;">
               {% endif %}
             {% endif %}
 
-            {% if talk.URL %}
+            {% if Entry | main_url %}
             <!--Give the talks name and link-->
-              <a href="{{ talk.URL |escape }}">{{talk.Displaytitle}}</a> 
+              <a href="{{ Entry | main_url }}">{{Entry| title}}</a> 
             {% else %}
-              <b>{{talk.Displaytitle}}</b>
+              <b>{{Entry | title}}</b>
             {% endif %}
             <br>
 
-            <!--Display Author/Authors-->
-            {% if talk.Author %}
-              Author: {{talk.Author}}.
-            {% endif %}
-            {% if talk.Authors %}
-              Authors: {{talk.Authors}}.
-            {% endif %}
-
-            <!--Give the context of the talk if it is available-->
-            {% if talk.Context %}
-              {{talk.Context}}.
+            {% if Entry.persons['author']|multiple_authors %}
+              <!--Display Authors-->
+              Authors: {{Entry.persons['author']|author_list_pr}}.
+            {% else %}
+              <!--Display Author-->
+              Author: {{Entry.persons['author']|author_list_pr}}.
             {% endif %}
 
-            <!--Give the date of the talk if it is avaiable-->
-            {% if talk.date %}
-              {{talk.date}}.
+            <!--Give the context of the Entry if it is available-->
+            {% if Entry.fields['note'] %}
+              {{Entry.fields['note']}}.
             {% endif %}
 
-            {% if talk.URL %}
+            <!--Give the date of the Entry if it is avaiable-->
+            {% if Entry.fields['day'] %}
+                {{ Entry.fields['day'] }}
+            {% endif %}
+            {% if Entry.fields['month'] %}
+              {{Entry.fields['month'] | monthname}}
+              {% if Entry.fields['year'] %}
+                {{Entry.fields['year']}}.
+              {% endif %}
+            {% endif %}
+
+            {% if Entry.fields['doi'] %}
               <!--Give the talks doi-->
-              doi:{{talk.URL | replace("https://doi.org/", "") }}
+              doi:{{Entry |doi}}
             {% endif %}
 
           </li>
@@ -95,7 +101,7 @@ Author: Tom Maullin (23/10/17)
   {% endif %}
 {% endif %}
 
-<!--Posters section-->
+<!--posters section-->
 {% if conference.sections.posters == true %}
   <h3>Posters</h3>
 
@@ -108,37 +114,37 @@ Author: Tom Maullin (23/10/17)
       <br>
     {% endif %}
 
-  <dl class="Posters">
+  <dl class="posters">
 
   <!--List posters-->
   <ul style="list-style-type:square">
-  {% for poster in posters %}
-    {% if poster.conf == conference.name %}
+  {% for Entry in posters %}
+    {% if Entry.fields['conf'] == conference.name %}
 
       <li> 
       <!--If we have a code and day for the poster, display them-->
-      {% if poster.code %}
-        {{poster.code}}<b>-{{poster.day}}</b>
+      {% if Entry.fields['day'] %}
+        {{Entry| conf_details}}
       {% endif %} 
 
-      {% if poster.URL %}
-        <!--Poster name and link-->
-        <a href="{{ poster.URL |escape }}">{{poster.Displaytitle}}</a> <br>
+      {% if Entry | main_url %}
+      <!--Give the talks name and link-->
+        <a href="{{ Entry | main_url }}">{{Entry| title}}</a> 
       {% else %}
-        <b>{{poster.Displaytitle}}</b> <br>
+        <b>{{Entry | title}}</b>
       {% endif %}
 
-      <!--Poster Author/Authors-->
-      {% if poster.Author %}
-        Author: {{poster.Author}}.
-      {% endif %}
-      {% if poster.Authors %}
-        Authors: {{poster.Authors}}.
+      {% if Entry.persons['author']|multiple_authors %}
+      <!--Display Authors-->
+        Authors: {{Entry.persons['author']|author_list_po}}.
+      {% else %}
+        <!--Display Author-->
+        Author: {{Entry.persons['author']|author_list_po}}.
       {% endif %}
 
-      {% if poster.URL %}
-        <!--Give the posters doi-->
-        doi:{{poster.URL | replace("https://doi.org/", "") }}
+      {% if Entry.fields['doi'] %}
+      <!--Give the talks doi-->
+            doi:{{Entry |doi}}
       {% endif %}
       </li>
 
