@@ -177,7 +177,7 @@ def create_index_html(context, outputInstruct):
         #Render the template and output.
         with open(fname, 'w') as f:
             html = render_template('confTemplate.html',context)
-            f.write(html)
+            f.write(html.encode("utf8"))
 
     #Creating the main presentations page.  
     if outputInstruct == 'pres':
@@ -198,7 +198,7 @@ def create_index_html(context, outputInstruct):
         #Render the template and output.
         with open(fname, 'w') as f:
             html = render_template('courseTemplate.html',context)
-            f.write(html)
+            f.write(html.encode("utf8"))
  
  
 def main():
