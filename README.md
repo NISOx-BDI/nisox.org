@@ -58,7 +58,7 @@ The list of publications is in `bib/pubs.bib`. Typing `make` will generate `pubs
 
 ### Presentation Pages
 
-To add new presentations to the website update the `_data/conferences.yml` (if a new conference needs to be added - e.g. OHBM2018), `_data/courses.yml` (if a new course needs to be added - e.g. OHBM 2018 Introduction to imaging genetics), `_data/posters.yml` (if a new poster needs to be added) or `_data/talks.yml` (if new talks need to be added) files. Full instructions of how to do this can be found in the comments at the top of each of these files. 
+To add new presentations to the website update the `_data/conferences.yml` (if a new conference needs to be added - e.g. OHBM2018), `_data/courses.yml` (if a new course needs to be added - e.g. OHBM 2018 Introduction to imaging genetics), `_data/posters.bib` (if a new poster needs to be added) or `_data/talks.bib` (if new talks need to be added) files. Full instructions of how to do this can be found in the comments at the top of each of these files. 
 
 ### News Items and Blog Posts
 
