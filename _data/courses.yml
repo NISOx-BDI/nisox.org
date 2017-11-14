@@ -1,5 +1,5 @@
 #======================================================================================================================================
-# This YAML file contains all data for courses listed on the NISOx website. Data written in this file takes 
+# This YAML file contains a list of all courses listed on the NISOx website. Data written in this file takes 
 # the following fields:
 #
 # - name: (Mandatory) A machine readable name which will be used to create the URL for this course page.
@@ -16,21 +16,6 @@
 #
 # - Organizedby: (Optional) Who organised the course.
 #
-# - talks: (Mandatory) A list of talks from the course. The talks can take the following fields:
-#
-##      - name: (Optional) A machine readable name for this presentation. Currently only included for completeness.
-##
-##      - displaytitle: (Mandatory) This is the name that will be used when referring to this presentation in the text of the website.
-##
-##      - URL: (Optional) This must be a doi URL for the presentation.
-## 
-##      - Author/Authors: (Optional) Who wrote the presentation. If neither an Author or Authors field is provided the website will 
-##                        leave this blank.
-##
-##       - img: (Optional) An image of the presentation. Missing images will not cause any display errors or empty spaces.
-##
-##       - time: (Optional) The time the presentation was given.
-#
 # Notes: Fieldnames are case sensitive and entries with colons, question marks or obscure unicode charactors may error.
 #        To include colons and question marks in field entries, wrap said field entries in speech marks - "".
 #
@@ -46,32 +31,6 @@
   descrip: |
     The neuroimaging network paradigm has gained a lot of traction in recent years as a framework for understanding cognition. However the existing tools such as correlation matrices, graph analysis methods and time-varying connectivity have bumped into their limits. Consequently the network paradigm is a very long way from achieving its potential. In particular, currently, there are no mature answers to basic questions of: biomarker development; reliable individual network construction (crucial for the development of imaging based personalised medicine); construction and validity of time-varying networks and relating information across modalities. Thus now is a perfect moment time to present to junior scholars, a selection of major emerging techniques that go beyond the current limits. In each case a domain expert will explain the basics of the new methods, illustrate with preliminary results and outline challenges for the future.
   conf_displaytitle: "OHBM 2017"
-  talks:
-   - name: Bassett_OHBM2017
-     Displaytitle: "Community structure in networks: static, dynamic, and multimodal approaches"
-     URL: https://doi.org/10.6084/m9.figshare.5473093.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9465667/thumb.png
-     Author: Danielle S. Bassett
-   - name: Finn_OHBM2017
-     Displaytitle: "Reliable individual functional networks and their relationship to behaviour"
-     URL: https://doi.org/10.6084/m9.figshare.5473105.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9465685/thumb.png
-     Author: Emily S. Finn
-   - name: Simpson_OHBM2017
-     Displaytitle: "Multivariate Modeling and Inference for Brain Networks: ERGMs and Mixed Models"
-     URL: https://doi.org/10.6084/m9.figshare.5473126.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9465706/thumb.png
-     Author: Sean L. Simpson
-   - name: Varoquaux_OHBM2017
-     Displaytitle: "Estimating Functional Connectomes: Sparsity's Strength and Limitations"
-     URL: https://doi.org/10.6084/m9.figshare.5473138.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9465721/thumb.png
-     Author: "Gael Varoquaux"
-   - name: Woolrich_OHBM2017
-     Displaytitle: "Multimodal Static and Dynamic Connectomes"
-     URL: https://doi.org/10.6084/m9.figshare.5473141.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9465730/thumb.png
-     Author: Mark Woolrich
 
 - name: Harm2015
   conf: OHBM2015
@@ -81,62 +40,6 @@
   descrip: |
     <h4> About the meeting </h4> The volume of neuroimaging data produced is increasing steadily, as are explicit "big data" projects, where 100's or 1000's of subjects are studied and shared with the community. Even for small studies, it is increasingly required that the imaging data are shared. However the value of this quantity of data will be limited if a constellation of different methodologies are used in its preparation. For many aspects of brain imaging, the imaging and analysis techniques have matured so that best-practice options are easily identifiable.<br><h4> Meeting Purpose </h4> The purpose of the workshop is to bring together experts methodologists and leaders of neuroimaging studies large and small to discuss ways to harmonize practice. From image acquisition sequence, to quality control methods, to statistical analyses, NIMH is seeking ways to maximize the utility of shared resources. It is seeking input on how to publicize the existing tools that could be embraced to minimize site-to-site variability, and to identify shortcomings in existing tools that make it more difficult for users to produce high quality and comparable neuroimaging results. A series of short presentations will be followed by a lengthy discussion from all participants.
   conf_displaytitle: "OHBM 2015"
-  talks:
-   - name: Freund-Intro-HarmonizeThis2015
-     Displaytitle: "NIMH Workshop: Harmonize This! Hilton Hawaiian Village, OHBM Satellite meeting"
-     URL: https://doi.org/10.6084/m9.figshare.5477809.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474205/thumb.png
-     Author: Micheal Freund
-   - name: Gorgolewski-BID-HarmonizeThis2015
-     Displaytitle: "Brain Imaging Data Structure: data organization standard for neuroimaging experiments"
-     URL: Chris Gorgolewski
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474211/thumb.png
-     Author: Chris Gorgolewski
-   - name: Greve-TaskfMRI-HarmonizeThis
-     Displaytitle: "Intersite effects in task-based fMRI: the fBIRN Traveling Subjects"
-     URL: https://doi.org/10.6084/m9.figshare.5477821.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474220/thumb.png
-     Author: Douglas N. Greve
-   - name: Hibar-StructalMRI-HarmonizeThis2015
-     Displaytitle: "Coordinated Analysis of Brain Imaging, Genomic, and Clinical Data in the ENIGMA Consortium"
-     URL: https://doi.org/10.6084/m9.figshare.5477827.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474226/thumb.png
-     Author: Derrek Paul Hibar
-   - name: Kochunov-DTI-HarmonizeThis2015
-     Displaytitle: "Homogenizing data using ENIGMA-MEGA analysis"
-     URL: https://doi.org/10.6084/m9.figshare.5477830.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474232/thumb.png
-     Author: Peter Kochunov
-   - name: Milham-RestingfMRI-HarmonizeThis2015
-     Displaytitle: "Data Aggregation, Synthesis and Replication: Why Resting State fMRI Is and Is Not Ideal"
-     URL: https://doi.org/10.6084/m9.figshare.5477833.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474235/thumb.png
-     Author: Michael P. Milham
-   - name: Nichols-Intro-HarmonizeThis2015
-     Displaytitle: "Prospective Harmonization"
-     URL: https://doi.org/10.6084/m9.figshare.5477839.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474244/thumb.png
-     Author: Thomas Nichols
-   - name: Sotiras-StructMachineLearning-HarmonizeThis2015
-     Displaytitle: "Harmonizing sMRI Data via Robust Preprocessing"
-     URL: https://doi.org/10.6084/m9.figshare.5477842.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474247/thumb.png
-     Author: Aristeidis Sotiras
-   - name: Turner-Intro-HarmonizeThis2015
-     Displaytitle: "What we are trying to do"
-     URL: https://doi.org/10.6084/m9.figshare.5477845.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474250/thumb.png
-     Authors: "Jessica Turner, Thomas Nichols" 
-   - name: Viviano-MRIQC-HarmonizeThis2015
-     Displaytitle: "Assessing the quality of ongoing acquisitions"
-     URL: https://doi.org/10.6084/m9.figshare.5477851.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474253/thumb.png
-     Authors: "Joseph D Viviano, Sofia Chavez, Jon Pipitone, Aristotle N Voineskos"
-   - name: White-DTI-HarmonizeThis2015
-     Displaytitle: "Harmonizing DTI data: Mind Research Network, Oxford, and Rotterdam, a view from the trenches "
-     URL: https://doi.org/10.6084/m9.figshare.5477857.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474259/thumb.png
-     Author: Tonya White
 
 - name: Imgen2015
   conf: OHBM2015
@@ -146,42 +49,6 @@
   descrip: |
     This course will introduce the fundamentals of "Imaging Genetics," the process of modeling and understanding how genetic variation influences the structure and function of the human brain as measured through brain imaging. The course begins with a lecture on the fundamentals of genetics, including the types of variation observed in the human, the mechanism by which that variation develops, and understanding how to relate genetic variation to a measured phenotype. We will then delve more into applications of genetics to neuroimaging phenotypes with an overview of imaging phenotypes. We will provide the student with modern tools to perform associations to both common and rare variation, conduct imputation and meta-analysis, and interpret significant findings. Overall this course will provide the neuroimager who is not familiar with genetics techniques both theoretical and practical understanding of the genetics field when exploring neuroimaging phenotypes.
   conf_displaytitle: "OHBM 2015"
-  talks:
-   - name: Cichon-StructGenVar-OHBM2015
-     Displaytitle: "Structure, Measurement & Analysis of Genetic Variation"
-     URL: https://doi.org/10.6084/m9.figshare.5477869.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474268/thumb.png
-     Author: Sven Cichon
-   - name: GlahnBlangero-RareVariant-OHBM2015
-     Displaytitle: "Rare variant discovery using family based studies"
-     URL: https://doi.org/10.6084/m9.figshare.5477872.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474274/thumb.png
-     Authors: "David Glahn, John Blangero" 
-   - name: Hibar-CommVar-OHBM2015
-     Displaytitle: "Searching for common variants"
-     URL: https://doi.org/10.6084/m9.figshare.5477995.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474442/thumb.png
-     Author: Derrek Hibar
-   - name: Medland-ImputeMetaAnal-OHBM2015
-     Displaytitle: "Imputation & Meta-Analysis"
-     URL: https://doi.org/10.6084/m9.figshare.5478013.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474454/thumb.png
-     Author: Sarah Medland
-   - name: Poline-Repro-OHBM2015
-     Displaytitle: "Reproducibility of Imaging Genetics Findings: Power, candidate genes and other issues"
-     URL: https://doi.org/10.6084/m9.figshare.5478016.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474466/thumb.png
-     Author: Jean-Baptiste Poline
-   - name: Stein-BiolValid-OHBM2015
-     Displaytitle: "After the association: Functional and Biological Validation of Variants"
-     URL: https://doi.org/10.6084/m9.figshare.5478061.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474526/thumb.png
-     Author: Jason Stein
-   - name: Toro-NeuroimgPheno-OHBM2015
-     Displaytitle: "Neuroimaging phenotypes and heritability"
-     URL: https://doi.org/10.6084/m9.figshare.5478085.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9474544/thumb.png
-     Author: Roberto Toro
 
 - name: Meta2014
   conf: OHBM2014
@@ -191,37 +58,6 @@
   descrip: |
     Functional neuroimaging has provided a wealth of information on the cerebral localization of mental functions. In spite of its success, however, several limitations restrict the amount of knowledge that may be gained from each individual experiment. These include a usually rather small sample size, limited reliability of an indirect signal like BOLD fMRI and the need to base inference on relative contrasts between conditions. Such limitations have raised some concerns on the interpretability and validity neuroimaging results, but have also encouraged the development of quantitative meta-analysis approaches. Neuroimaging meta-analysis is used to summarize a vast amount of research findings across a large number of participants and diverse experimental settings. Such integration then enables statistically valid generalizations on the neural basis of psychological processes in health and disease. They also permit comparisons of different tasks or processes to each other and the modeling of interacting networks. Quantitative meta-analysis therefore represents a powerful tool to gain a synoptic view of distributed neuroimaging findings in an objective and impartial fashion, addressing some of the limitations raised above. The purpose of this course is to review the theory and practice of meta-analytic modeling and database-driven syntheses. In order to provide a comprehensive overview, this course spans both basic and advanced topics and addresses practical tips and tools to conduct meta-analytic studies in psychological and clinical applications. This broad coverage will thus provide both a deeper understanding of the methodological underpinnings as well as concrete ideas for how to apply meta-analytic techniques to advance brain science.
   conf_displaytitle: "OHBM 2014"
-  talks:
-   - name: Eickhoff-NMA-Coact-OHBM2014
-     Displaytitle: "Co-activation mapping and parcellation"
-     URL: https://doi.org/10.6084/m9.figshare.5484031.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485551/thumb.png
-     Author: Simon B. Eickhoff
-   - name: Gorgolewski-NMA-DataSharing-OHBM2014
-     Displaytitle: "Inferring mental states from imaging data: OpenFMRI, NeuroVault, and Cognitive Atlas"
-     URL: https://doi.org/10.6084/m9.figshare.5484034.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485554/thumb.png
-     Author: Chris Gorgolewski
-   - name: Laird-NMA-ALEapplied-OHBM2014
-     Displaytitle: "ALE and BrainMap"
-     URL: https://doi.org/10.6084/m9.figshare.5484037.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485557/thumb.png
-     Author: Angie Laird
-   - name: Nichols-NMA-MetaMethods-OHBM2014
-     Displaytitle: "Overview of Meta-Analysis Approaches"
-     URL: https://doi.org/10.6084/m9.figshare.5484040.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485578/thumb.png
-     Author: Thomas Nichols
-   - name: Rottschy-NMA-Planning-OHBM2014
-     Displaytitle: "How to plan and prepare a Meta-analysis"
-     URL: https://doi.org/10.6084/m9.figshare.5484052.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485584/thumb.png
-     Author: Claudia Rottschy
-   - name: Turner-NMA-ImgDatabase-OHBM2014
-     Displaytitle: "Sources of actual imaging data for mega- or meta-analyses"
-     URL: https://doi.org/10.6084/m9.figshare.5484055.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485587/thumb.png
-     Author: Jessica A. Turner
 
 - name: Imgen2014
   conf: OHBM2014
@@ -231,57 +67,6 @@
   descrip: |
     This course will introduce the fundamentals of "Imaging Genetics," the process of modeling and understanding how genetic variation influences the structure and function of the human brain as measured through brain imaging. The course begins with two lectures on the fundamentals of genetics, including the types of variation observed in the human, the mechanism by which that variation develops, and understanding how to relate genetic variation to a measured phenotype. We will then delve more into applications of genetics to neuroimaging phenotypes with an overview of imaging phenotypes and an introduction to both uni and multi-variate statistics for their analysis. Finally, we will explore how to combine datasets using meta-analysis. In the afternoon, we will have practical lectures introducing how to use software for analysis of heritability of imaging traits, association of common and rare variants to imaging traits, and meta-analysis across many sites. In addition, we will have a lecture on how to interpret the significance of genetic findings. Overall this course will provide the neuroimager who is not familiar with genetics techniques both theoretical and practical understanding of the genetics field when exploring neuroimaging phenotypes.
   conf_displaytitle: "OHBM 2014"
-  talks:
-   - name: Calhoun-ImgGen-UniMultivar-OHBM2014
-     Displaytitle: "Univariate - Multivariate Approaches: Joint Modeling of Imaging & Genetic Data"
-     URL: https://doi.org/10.6084/m9.figshare.5483986.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485518/thumb.png
-     Author: Vince D. Calhoun
-   - name: Hibar_ImgGen-CommonVar_OHBM2014
-     Displaytitle: "Searching for common variants"
-     URL: https://doi.org/10.6084/m9.figshare.5483989.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485521/thumb.png
-     Author: Derrek Paul Hibar
-   - name: Hong-ImgGen-QuantTrait-OHBM2014
-     Displaytitle: "Quatitative Traits: Heritability, Linkage & Association"
-     URL: https://doi.org/10.6084/m9.figshare.5483992.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485524/thumb.png
-     Author: L. Elliot Hong
-   - name: Kochunov-SOLAReclipse-OHBM2014
-     Displaytitle: "Starting Genetic Imaging Analyses with SOLAR-Eclipse"
-     URL: https://doi.org/10.6084/m9.figshare.5483998.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485527/thumb.png
-     Author: Peter Kochunov
-   - name: Medland-ImgGen-ImputPractial-OHBM2014
-     Displaytitle: "Imputation Practical"
-     URL: https://doi.org/10.6084/m9.figshare.5484001.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485530/thumb.png
-     Author: Sarah Medland
-   - name: Nho-ImgGen-WGSeqPractical
-     Displaytitle: "Practical Guideline for Whole Genome Sequencing"
-     URL: https://doi.org/10.6084/m9.figshare.5484004.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485533/thumb.png
-     Author: Kwangsik Nho
-   - name: Nichols-ImgGen-ImputMeta-OHBM2014
-     Displaytitle: "Imputation & Meta-analysis"
-     URL: https://doi.org/10.6084/m9.figshare.5484007.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485536/thumb.png
-     Author: Thomas Nichols
-   - name: Poline-ImgGen-Reprod-OHBM2014
-     Displaytitle: "The problem of reproducibility for Imaging genetics"
-     URL: https://doi.org/10.6084/m9.figshare.5484013.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485539/thumb.png
-     Author: Jean-Baptiste Poline
-   - name: Stein-ImgGen-InterpGenEffect-OHBM2014
-     Displaytitle: "Interpretation of Results"
-     URL: https://doi.org/10.6084/m9.figshare.5484016.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485542/thumb.png
-     Author: Jason L. Stein
-   - name: Toro-ImgGen-ImgPheno-OHBM2014
-     Displaytitle: "Neuroimaging Phenotypes for Imaging Genetics"
-     URL: https://doi.org/10.6084/m9.figshare.5484022.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485548/thumb.png
-     Author: Roberto Toro
 
 - name: Skept2013
   conf: OHBM2013
@@ -291,37 +76,6 @@
   descrip: |
     While the explosive growth of neuroimaging over the last 20 years is now a commonplace, less remarked is the similar growth of neuroimaging data analysis methodology. Indeed since the beginning of the HBM conference about 20% of the posters have been on methodology demonstrating emphatically the enduring importance of methodology. Further the intense recent interest in connectivity has put pressure on the methodology to deal coherently with the complementary information supplied by different modalities such as MEG, EEG, DTI and so on. But how to do this for those who lack the expertise without handing all responsibility to the 'quants'? This course will tackle that challenge from a number of angles. But an underlying theme will be a bottoom-up approach that starts with realistic neuroimaging data and allows the issues to thereby emerge naturally. But even though the whole neuroimaging community of necessity uses methods, only a fraction are experts. Yet rigorous science requires the scientisit to be critical of all aspects of the science and this includes methodology.
   conf_displaytitle: "OHBM 2013"
-  talks:
-   - name: Bowman-HowNotToAnalyze-OHBM2013
-     Displaytitle: "Beyond Univariate Analyses: Multivariate Modeling of Functional Neuroimaging Data"
-     URL: https://doi.org/10.6084/m9.figshare.5484142.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485686/thumb.png
-     Author: F. DuBois Bowman
-   - name: Lindquist-HowNotToAnalyze-OHBM2013
-     Displaytitle: "Efficient Modeling of fMRI Data"
-     URL: https://doi.org/10.6084/m9.figshare.5484148.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485692/thumb.png
-     Author: Martin Lindquist
-   - name: Nichols-HowNotToAnalyze-OHBM2013
-     Displaytitle: "Building Confidence in fMRI Results with Model Diagnosis"
-     URL: https://doi.org/10.6084/m9.figshare.5484154.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485698/thumb.png
-     Author: Thomas Nichols
-   - name: Reuter-HowNotToAnalyze-OHBM2013
-     Displaytitle: "Avoiding Bias in Longitudinal Image Processing"
-     URL: https://doi.org/10.6084/m9.figshare.5484157.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485701/thumb.png
-     Author: Martin Reuter
-   - name: Solo-HowNotToAnalyze-OHBM2013
-     Displaytitle: "Introduction to, Examples and (towards a) Philosophy of Skeptical Neuroimaging"
-     URL: https://doi.org/10.6084/m9.figshare.5484163.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485707/thumb.png
-     Author: Victor Solo
-   - name: Woolrich-HowNotToAnalyze-OHBM2013
-     Displaytitle: "Network Modelling and Connectivity in Functional Neuroimaging - Keeping It Real"
-     URL: https://doi.org/10.6084/m9.figshare.5484166.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485710/thumb.png
-     Author: Mark Woolrich
 
 - name: Imgen2013
   conf: OHBM2013
@@ -331,42 +85,6 @@
   descrip: |
     This course will introduce the fundamentals of "Imaging Genetics," the process of modeling and understanding genetic variation in brain image data. The course begins with a four-lecture genetics tutorial in the morning, designed to give imaging practitioners a quick overview of key genetics concepts and terminology. The remainder of the course covers how imagers can use genetic variables in their analyses. Specific topics include voxel-wise genome-wide models, joint multivariate modeling of imaging and genetic data, and heritability analyses of cortical surface and thickness data. The course concludes with two case studies highlighting current imaging genetics research.
   conf_displaytitle: "OHBM 2013"
-  talks:
-   - name: Cichon-ImgGenCourse-OHBM2013
-     Displaytitle: "Structure and Analysis of Genetic Variation"
-     URL: https://doi.org/10.6084/m9.figshare.5484172.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485716/thumb.png
-     Author: Sven Cichon
-   - name: Hibar-ImgGenCourse-OHBM2013
-     Displaytitle: "Voxelwise Gene-wide Association Methods and Multiple Testing"
-     URL: https://doi.org/10.6084/m9.figshare.5484181.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485722/thumb.png
-     Author: Derrek P. Hibar
-   - name: Hong-ImgGenCourse-OHBM2013
-     Displaytitle: "Molecular Basis of Genetic Variation"
-     URL: https://doi.org/10.6084/m9.figshare.5484307.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485860/thumb.png
-     Author: L. Elliot Hong
-   - name: Kochunov-ImgGenCourse-OHBM2013
-     Displaytitle: "Choosing Phenotypes for Multivariate association and linkage analyses"
-     URL: https://doi.org/10.6084/m9.figshare.5484313.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485875/thumb.png
-     Author: Kochunov Peter
-   - name: Ng-ImgGenCourse-OHBM2013
-     Displaytitle: "Overview of the Allen Human Brain Atlas"
-     URL: https://doi.org/10.6084/m9.figshare.5484316.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485881/thumb.png
-     Author: Lydia Ng
-   - name: Stein-ImgGenCourse-OHBM2013
-     Displaytitle: "ENIGMA & Large Scale Imaging Association"
-     URL: https://doi.org/10.6084/m9.figshare.5484346.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485965/thumb.png
-     Author: Jason L. Stein
-   - name: Winkler-ImgGenCourse-OHBM2013
-     Displaytitle: "Overview of Neuroimaging Phenotypes"
-     URL: https://doi.org/10.6084/m9.figshare.5484355.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9485992/thumb.png
-     Author: Anderson M. Winklers
 
 - name: Imgen2012
   conf: OHBM2012
@@ -376,47 +94,6 @@
   descrip: |
     This course will introduce the fundamentals of "Imaging Genetics," the process of modeling and understanding genetic variation in brain image data. The course begins with a four-lecture genetics tutorial in the morning, designed to give imaging practitioners a quick overview of key genetics concepts and terminology. The remainder of the course covers how imagers can use genetic variables in their analyses. Specific topics include voxel-wise genome-wide models, joint multivariate modeling of imaging and genetic data, and heritability analyses of cortical surface and thickness data. The course concludes with two case studies highlighting current imaging genetics research.
   conf_displaytitle: "OHBM 2012"
-  talks:
-   - name: 01_Hong-MolecularBasis
-     Displaytitle: "Molecular Basis of Genetic Variation"
-     URL: https://doi.org/10.6084/m9.figshare.5484631.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486247/thumb.png
-     Author: L. Elliot Hong
-   - name: 02_Cichon_StructureGenVar
-     Displaytitle: "Structure and Analysis of Genetic Variation"
-     URL: https://doi.org/10.6084/m9.figshare.5484637.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486253/thumb.png
-     Author: Sven Cichon
-   - name: 03_Schmitt_QuantTrait
-     Displaytitle: "Quantitative Trait Loci: Heritability, Linkage and Association"
-     URL: https://doi.org/10.6084/m9.figshare.5484643.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486262/thumb.png
-     Author: J. Eric Schmitt
-   - name: 04_Toro_NeuroimgPheno
-     Displaytitle: "Overview of neuroimaging phenotypes"
-     URL: https://doi.org/10.6084/m9.figshare.5484655.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486274/thumb.png
-     Author: Roberto Toro
-   - name: 05_Hibar_UnivarateGWAS
-     Displaytitle: "Voxelwise Gene-wide Association Methods and Multiple Testing"
-     URL: https://doi.org/10.6084/m9.figshare.5484667.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486301/thumb.png
-     Authors: "Derrek P. Hibar, Jason L. Stein, Paul M. Thompson"
-   - name: 07_Montana_MultivariateGWAS
-     Displaytitle: "Multivariate Approaches: Joint Modeling of Imaging & Genetic Data"
-     URL: https://doi.org/10.6084/m9.figshare.5484673.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486313/thumb.png
-     Author: Giovanni Montana
-   - name: 08_Stein_ENIGMA
-     Displaytitle: "ENIGMA & Large Scale Imaging Association"
-     URL: https://doi.org/10.6084/m9.figshare.5484679.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486319/thumb.png
-     Author: Jason L. Stein
-   - name: 10_Bellgrove_CaseStyd_ADHD-Scz
-     Displaytitle: "Genetics of inhibition and error processing- implications for ADHD, schizophrenia and drug abuse"
-     URL: https://doi.org/10.6084/m9.figshare.5484685.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486322/thumb.png
-     Author: Mark A. Bellgrove
 
 - name: Sign2012
   conf: OHBM2012
@@ -426,27 +103,6 @@
   descrip: |
     A typical fMRI study is a massive endevour: 100's of man-hours to prepare paradigms and train subjects; costly scanner time; and laborious data analysis to process gigabytes of image data. Yet the crucial result of a study is a list of x,y,z atlas coordinates of activation, a dataset that can be recorded on a Post-it note. Indeed, this coordinate list is the only information incorporated into a typical meta-analysis. Given the vital importance of these x,y,z coordinates, why are they never reported with confidence intervals? Wouldn't we expect some tasks to produce activation with greater spatial variability than others types of tasks? The problem is that, until very recently, there simply were no methods to quantify the uncertainty in the spatial location of activations. <br><br> The purpose of this workshop was to review the emerging work in the explicit spatial modeling of neuroimaging data. Thomas Nichols provided a short overview, itemizing the limitations of standard mass univariate models and reviewing the potential of spatial models. Alexis Roche discussed a model selection approach to fMRI that uses a hierarchical spatial generative model, resulting in inference on a network of regions while accounting for uncertainty in location. Timothy Johnson presented point process model for metaanalysis and multiple sclerosis lesion data; in addition to be more interpretable, this model provide superior classification performance relative to univariate (naive bayes) methods. Finaly, Sam Gershman showed how cognitive scientists are using spatial models with fMRI, with work that uses latent topographic sources to decode semantic representations during a memory task.
   conf_displaytitle: "OHBM 2012"
-  talks:
-   - name: Gershman_MentalRep
-     Displaytitle: "New Tools for Tracking the Dynamics of Mental Representations"
-     URL: https://doi.org/10.6084/m9.figshare.5484706.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486349/thumb.png
-     Author: Sam Gershman
-   - name: Johnson_BayesPointProc
-     Displaytitle: "Bayesian Spatial Point Process Modeling of Neuroimaging Data"
-     URL: https://doi.org/10.6084/m9.figshare.5484724.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486367/thumb.png
-     Author: Timothy D. Johnson
-   - name: Nichols_SpatMod
-     Displaytitle: "What the Mass Univariate Model Doesn't Tell You"
-     URL: https://doi.org/10.6084/m9.figshare.5484727.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486370/thumb.png
-     Author: Thomas Nichols
-   - name: Roche_BayesModelSel
-     Displaytitle: "Bayesian model selection under spatial uncertainty for functional imaging studies"
-     URL: https://doi.org/10.6084/m9.figshare.5484730.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486373/thumb.png
-     Author: Alexis Roche
 
 - name: Imgen2011
   conf: OHBM2011
@@ -456,52 +112,6 @@
   descrip: |
     This course will introduce the fundamentals of "Imaging Genetics," the process of modeling and understanding genetic variation in brain image data. The course begins with a four-lecture genetics tutorial in the morning, designed to give imaging practitioners a quick overview of key genetics concepts and terminology. The remainder of the course covers how imagers can use genetic variables in their analyses. Specific topics include voxel-wise genome-wide models, joint multivariate modeling of imaging and genetic data, and heritability analyses of cortical surface and thickness data. The course concludes with two case studies highlighting current imaging genetics research.
   conf_displaytitle: "OHBM 2011"
-  talks:
-   - name: BakkenNichols_MoleGen
-     Displaytitle: "Molecular basis of genetic variation"
-     URL: https://doi.org/10.6084/m9.figshare.5484811.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486454/thumb.png
-     Authors: "Thomas Nichols, Trygve Bakken"
-   - name: Cannon.HBM2011
-     Displaytitle: "Imaging Genetics: The Example of Schizophrenia"
-     URL: https://doi.org/10.6084/m9.figshare.5484814.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486457/thumb.png
-     Author: Tyrone D. Cannon
-   - name: glahn_genetics_OHBM2011
-     Displaytitle: "Determining Genetic Effects: Heritability, Linkage & Association"
-     URL: https://doi.org/10.6084/m9.figshare.5484919.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486568/thumb.png
-     Author: David C. Glahn
-   - name: kochunov_qtlsnptrasc
-     Displaytitle: "Multivariate Phenotypes for association and linkage"
-     URL: https://doi.org/10.6084/m9.figshare.5484928.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486574/thumb.png
-     Author: Peter Kochunov
-   - name: Macciardi
-     Displaytitle: "Structure and Analysis of Genetic Variation"
-     URL: https://doi.org/10.6084/m9.figshare.5484940.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486583/thumb.png
-     Author: Fabio Macciardi
-   - name: Saykin_ADNI_CaseStudy
-     Displaytitle: "Imaging Genetics of Alzheimer's Disease: The ADNI Experience"
-     URL: https://doi.org/10.6084/m9.figshare.5484946.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486586/thumb.png
-     Author: Andrew J. Saykin
-   - name: Stein-UnivariateApproaches
-     Displaytitle: "Univariate Approaches: Multiple Testing & Voxelwise Whole Genome Association"
-     URL: https://doi.org/10.6084/m9.figshare.5484943.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486592/thumb.png
-     Author: Jason L. Stein
-   - name: Thirion_Multivar
-     Displaytitle: "Multivariate Approaches: Joint Modeling of Imaging and Genetic Data"
-     URL: https://doi.org/10.6084/m9.figshare.5484949.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486595/thumb.png
-     Author: Bertrand Thirion
-   - name: toro-hbm2011_hl
-     Displaytitle: "Overview of neuroimaging phenotypes"
-     URL: https://doi.org/10.6084/m9.figshare.5484952.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486601/thumb.png
-     Authors: "Herve Lemaitre, Roberto Toro"
 
 - name: Skept2011
   conf: OHBM2011
@@ -511,27 +121,6 @@
   descrip: |
     Despite the surge in graphical modeling for functional and structural brain imaging data, often researchers only consider one method and just a pair of competing network models. The purpose of this workshop is to educate neuroimaging users about the "Network of Network Methods" that exists, and show the relationships between the different methods used in imaging and in other disciplines. We also will discuss how to choose the appropriate method for the data and the question at hand, and how to search large space of models that can be fit to your data.
   conf_displaytitle: "OHBM 2011"
-  talks:
-   - name: Lindquist_NetNetworks
-     Displaytitle: "The Network of Network Methods and a Case Study of SEM"
-     URL: https://doi.org/10.6084/m9.figshare.5484772.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486424/thumb.png
-     Author: Martin Lindquist
-   - name: Ramsey_BayesNets
-     Displaytitle: "Don't Fall  in Love with Your Model: Model Selection for Graphical Model"
-     URL: https://doi.org/10.6084/m9.figshare.5484790.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486436/thumb.png
-     Author: Joseph Ramsey
-   - name: Smith_NetSim
-     Displaytitle: "Don't fall in love with your method"
-     URL: https://doi.org/10.6084/m9.figshare.5484802.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486445/thumb.png
-     Author: Steve Smith
-   - name: Solo_GrangerDanger
-     Displaytitle: "The Dangers of Granger: What They Didn't Tell you about Granger Causality (in fMRI)"
-     URL: https://doi.org/10.6084/m9.figshare.5484805.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486448/thumb.png
-     Author: Victor Solo
 
 - name: Imgen2010
   conf: OHBM2010
@@ -541,53 +130,6 @@
   descrip: |
     This course will introduce the fundamentals of "Imaging Genetics," the process of modeling and understanding genetic variation in brain image data. The course begins with a four-lecture genetics tutorial in the morning, designed to give imaging practitioners a quick overview of key genetics concepts and terminology. The remainder of the course covers how imagers can use genetic variables in their analyses. Specific topics include voxel-wise genome-wide models, joint multivariate modeling of imaging and genetic data, and heritability analyses of cortical surface and thickness data. The course concludes with two case studies highlighting current imaging genetics research.
   conf_displaytitle: "OHBM 2010"
-  talks:
-   - name: Bakken
-     Displaytitle: Molecular Basis of Genetic Variation
-     Author: Trygve Bakken
-     time: "8:15 - 9:00"
-   - name: Macciardi
-     Displaytitle: Structure and Analysis of Genetic Variation
-     Author: Fabio Macciardi
-     time: "9:00 - 9:45"
-   - name: Glahn
-     Displaytitle:  "Quantitative Traits: Heritability, Linkage & Association"
-     Author: David Glahn
-     time: "10:00 - 10:45"
-   - name: Nicodemus
-     Displaytitle: "Epistasis: Machine Learning Approaches"
-     Author: Kristin Nicodemus
-     time: "10:45 - 11:30"
-   - name: Meyer-Lindenberg
-     Displaytitle: "What Brain Imaging Has to Offer Genetics, and Vice Versa"
-     Author: Andreas Meyer-Lindenberg
-     time: "11:30 - 12:00"
-   - name: Toro
-     Displaytitle: "Overview of Neuroimaging Phenotypes"
-     Author: Roberto Toro
-     time: "13:00 - 13:30"
-   - name: Stein
-     Displaytitle: "Univariate Approaches: Multiple Testing & Voxelwise WGA"
-     Author: Jason Stein
-     time: "13:30 - 14:05"
-   - name: Montana
-     Displaytitle: "Multivariate Approaches: Joint Modeling of Imaging & Genetic Data"
-     Author: Giovanni Montana
-     time: "14:05 - 14:40"
-   - name: Winkler
-     Displaytitle: " Heritability: Unique Genetic Contributions to Cortical Volume & Thickness"
-     Author: Anderson Winkler
-     time: "14:44 - 15:30"
-   - name: Buechel(1)
-     Displaytitle: "Case Study: Genetic Control of Reward System"
-     URL: https://doi.org/10.6084/m9.figshare.5485030.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9486679/thumb.png
-     Author: Christian Buchel
-     time: "15:30 - 16:00"
-   - name: Beck 
-     Displaytitle: "Case Study: Genetic Control of Aversive Processing in the Amygdala"
-     Author: Anne Beck
-     time: "16:00 - 16:30"
 
 - name: Skept2010
   conf: OHBM2010
@@ -596,19 +138,6 @@
   descrip: |
     Despite the surge in graphical modeling for functional and structural brain imaging data, often researchers only consider one method and just a pair of competing network models. The purpose of this workshop is to educate neuroimaging users about the "Network of Network Methods" that exists, and show the relationships between the different methods used in imaging and in other disciplines. We also will discuss how to choose the appropriate method for the data and the question at hand, and how to search large space of models that can be fit to your data.
   conf_displaytitle: "OHBM 2010"
-  talks:
-   - name: Henry
-     Displaytitle: "The Sound and Fury of Biostatistics"
-     Author: Roland Henry
-   - name: Nichols
-     Displaytitle: "To Estimate or Infer?"
-     Author: Thomas Nichols
-   - name: Lindquist
-     Displaytitle: "Modeling Neuroimaging Data - avoiding misspecification, bias and power loss"
-     Author: Martin Lindquist
-   - name: Woolrich
-     Displaytitle: "Getting Used to the Noise"
-     Author: Mark Woolrich
 
 - name: Imgen2009
   conf: OHBM2009
@@ -618,21 +147,3 @@
   descrip: |
     This course will introduce the fundamentals of "Imaging Genetics," the process of modeling and understanding genetic variation in brain image data. The course begins with a four-lecture genetics tutorial in the morning, designed to give imaging practitioners a quick overview of key genetics concepts and terminology. The remainder of the course covers how imagers can use genetic variables in their analyses. Specific topics include voxel-wise genome-wide models, joint multivariate modeling of imaging and genetic data, and heritability analyses of cortical surface and thickness data. The course concludes with two case studies highlighting current imaging genetics research.
   conf_displaytitle: "OHBM 2009"
-  talks:
-   - name: IntroImgGen-Tan
-     Displaytitle: "Motivation: Why Imaging Genetics?"
-     Author: Hao-Yang Tan
-   - name: IntroImgGen-Freimer
-     Displaytitle: "Genetics for Imagers: How Geneticists Model Quantitative Phenotypes"
-     URL: https://doi.org/10.6084/m9.figshare.5487166.v1
-     img: https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/9491218/thumb.png
-     Author: Nelson Freimer
-   - name: IntroImgGen-Poline
-     Displaytitle: "Databases for Managing Large Cohort Imaging Genetics Studies"
-     Author: Jean-Baptiste Poline
-   - name: IntroImgGen-Nichols
-     Displaytitle: Association Methods for Functional and Structural MRI
-     Author: Thomas Nichols
-   - name: IntroImgGen-Potkin
-     Displaytitle: "Case Study: Candidate Genes vs. GWAS for Imaging Genetics Studies of Schizophrenia"
-     Author: Steven Potkin

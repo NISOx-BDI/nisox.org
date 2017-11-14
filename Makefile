@@ -13,14 +13,14 @@ _includes/pubs.html: bib/pubs.bib bib/publications.tmpl
 	$(PYTHON) mkdir.py _includes 
 	$(PYTHON) bibble/bibble.py $+ > $@
 
-presentations/index.html: _site _data/conferences.yml _data/talks.yml _data/posters.yml _data/courses.yml 
+presentations/index.html: _data/conferences.yml _data/talks.bib _data/posters.bib _data/courses.yml 
 	$(PYTHON) presentations/presGen.py $+ > $@
 
 _site/index.html: $(wildcard *.html) _includes/pubs.html _config.yml \
 	_layouts/default.html
 
 clean:
-	$(RM) -r _site _includes/pubs.html
+	$(RM) -r _site _includes/pubs.html presentations/index.html
 
 HOST := yourwebpage.com
 PATHSVR := www/

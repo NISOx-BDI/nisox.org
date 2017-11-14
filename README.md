@@ -24,12 +24,12 @@ make
 Note that `bib/pubs.bib` cannot contain any non-ASCII character or `make` will fail. To identify non-ASCII character in a document, you can use on Mac `pcregrep --color='auto' -n "[\x80-\xFF]" bib/test.bib ` (cf. [this post](https://stackoverflow.com/questions/24939813/recursively-search-in-files-for-a-range-of-unicode-characters)).
 
 ## How to update the presentations pages?
-Every time one of the `_data/conferences.yml`, `_data/courses.yml`, `_data/posters.yml` or `_data/talks.yml` files are updated, the corresponding HTML pages (located in `presentations`) have to be updated with:
+Every time one of the `_data/conferences.yml`, `_data/courses.yml`, `_data/posters.bib` or `_data/talks.bib` files are updated, the corresponding HTML pages (located in `presentations`) have to be updated with:
 ```
 make
 ```
 
-Note that none of the YAML files cannot contain any non-ASCII character or `make` will fail. To identify non-ASCII character in a document, you can use on Mac `pcregrep --color='auto' -n "[\x80-\xFF]" <write filename here> ` (cf. [this post](https://stackoverflow.com/questions/24939813/recursively-search-in-files-for-a-range-of-unicode-characters)).
+Note that none of the YAML and bib files cannot contain any non-ASCII character or `make` will fail. To identify non-ASCII character in a document, you can use on Mac `pcregrep --color='auto' -n "[\x80-\xFF]" <write filename here> ` (cf. [this post](https://stackoverflow.com/questions/24939813/recursively-search-in-files-for-a-range-of-unicode-characters)).
 
 ## Acknowlegments
 
@@ -58,7 +58,7 @@ The list of publications is in `bib/pubs.bib`. Typing `make` will generate `pubs
 
 ### Presentation Pages
 
-To add new presentations to the website update the `_data/conferences.yml` (if a new conference needs to be added - e.g. OHBM2018), `_data/courses.yml` (if a new course needs to be added - e.g. OHBM 2018 Introduction to imaging genetics), `_data/posters.yml` (if a new poster needs to be added) or `_data/talks.yml` (if new talks need to be added) files. Full instructions of how to do this can be found in the comments at the top of each of these files. 
+To add new presentations to the website update the `_data/conferences.yml` (if a new conference needs to be added - e.g. OHBM2018), `_data/courses.yml` (if a new course needs to be added - e.g. OHBM 2018 Introduction to imaging genetics), `_data/posters.bib` (if a new poster needs to be added) or `_data/talks.bib` (if new talks need to be added) files. Full instructions of how to do this can be found in the comments at the top of each of these files. 
 
 ### News Items and Blog Posts
 
