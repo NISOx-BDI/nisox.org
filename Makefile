@@ -1,4 +1,4 @@
-PYTHON=python
+PYTHON := python
 
 # targets that aren't filenames
 .PHONY: all clean deploy

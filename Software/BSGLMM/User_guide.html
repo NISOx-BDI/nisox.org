@@ -1,0 +1,370 @@
+---
+layout: default
+title: "Software: BSGLMM"
+---
+
+<h3> User Guide </h3>
+
+<div class="column-1-content">
+                            
+                                
+                  <br>
+  <!-- p style="text-align: center;"><img alt="construction" src="under_construction.png?maxWidth=300" border="0" /></p --> 
+  <h4 style="text-align: left;">System Requirements<br> </h4> 
+  <ul> 
+   <li><a href="http://www.nvidia.co.uk/object/cuda-parallel-computing-uk.html">CUDA</a> </li> 
+   <li>UNIX compatible system</li> 
+  </ul> 
+  <p>Tested architecture: <br> </p> 
+  <p style="padding-left: 30px;" data-mce-style="padding-left: 30px;">Cuda version: CUDA 5.0</p> 
+  <p style="padding-left: 30px;" data-mce-style="padding-left: 30px;">OS: GNU/Linux</p> 
+  <p style="padding-left: 30px;" data-mce-style="padding-left: 30px;">kernel-version: 3.0.101-0.5<br> </p> 
+  <p style="padding-left: 30px;" data-mce-style="padding-left: 30px;">platform: 64-bit<br> </p> 
+  <!-- p style="text-align: center;"><img alt="micky" src="micky_construction.gif" border="0" width="300" /></p --> 
+  <p style="text-align: center;"><br> </p> 
+  <h4>Download</h4> 
+  <p>Download source code package and accompanying publication <a title="BSGLMM" href="../BSGLMM">here</a>. <br> </p> 
+  <p>NOTE: In its current version the software only supports UNIX compatible systems and requires an NVIDIA graphics card, i.e. a CUDA capable GPU.</p> 
+  <p>Download example data <a href="data_demo.dat.tar.gz">here</a> (zip-archive).<br> </p> 
+  <p><br> </p> 
+  <h4>Installation</h4> 
+  <p>Unpack the archive in a directory of your choice. You will need the latest version of GNU GCC to compile the source code.</p> 
+  <p>In order to compile the code, run the <em>Makefile</em> from inside the extracted directory with</p> 
+  <pre>$ make</pre> 
+  <p>The executable thereby created is named <em>BinCar. </em></p> 
+  <p><br> </p> 
+  <h4>Source files included in the download</h4> 
+  <ul> 
+   <li><em>main.cu</em> </li> 
+   <li><em>mcmc.cpp</em> </li> 
+   <li><em>covar.cpp</em> </li> 
+   <li><em>covarGPU.cu</em> </li> 
+   <li><em>read_data.cpp</em> </li> 
+   <li><em>cholesky.cpp</em> </li> 
+   <li><em>randgen.cpp</em> </li> 
+   <li><em>nifti1_read_write.cpp</em> </li> 
+   <li>accompanying &lt;<em>header_files</em>&gt;</li> 
+  </ul> 
+  <p><br> </p> 
+  <h4>Potential Issues during installation</h4> 
+  <ul> 
+   <li>Different version of CUDA.</li> 
+  </ul> 
+  <p style="padding-left: 60px;" data-mce-style="padding-left: 60px;">solution: Update the first lines in the <em>Makefile</em> to your CUDA version.</p> 
+  <ul> 
+   <li>Shared libraries not found.</li> 
+  </ul> 
+  <p style="padding-left: 60px;" data-mce-style="padding-left: 60px;">solution: Include the following line in your <em>.bashrc</em> file (for CUDA 5.0 in this case):</p> 
+  <pre style="padding-left: 60px;" data-mce-style="padding-left: 60px;">export LD_LIBRARY_PATH=/usr/local/cuda-5.0/lib64</pre> 
+  <h4><br> </h4> 
+  <h4><br> </h4> 
+  <h4>Running the Code</h4> 
+  <h4><br> </h4> 
+  <h4 data-mce-bogus="1">USAGE</h4> 
+  <div>
+   <br> 
+  </div> 
+  <pre>$ ./BinCar  NTypes  NCov  GPU  Design  Mask  WM  [MaxIter  BurnIn]</pre> 
+  <p>To see a short description of all intput arguments, try running the program without any command line arguments:</p> 
+  <pre>$ ./BinCar</pre> 
+  <p><br> </p> 
+  <h4>Input arguments</h4> 
+  <ul> 
+   <li>NTYPES: number of different types or groups or classes in the data set</li> 
+  </ul> 
+  <ul> 
+   <li>NCOV: total number of covariates (Note: count must include types/groups as dummy covariates)</li> 
+  </ul> 
+  <ul> 
+   <li>GPU: run code on GPU (1) or CPU (0)<br> Note: We strongly recommend running the code on a GPU. (CPU not testet! Use with caution.)</li> 
+  </ul> 
+  <ul> 
+   <li>DESIGN: Text file, tab or space separated data file that contains all input data.</li> 
+  </ul> 
+  <ul> 
+   <li>MASK: Filename of mask image (must be located in './images' directory); specify '1' to use default (mask.nii.gz).</li> 
+  </ul> 
+  <ul> 
+   <li>WM: Filename of withe matter mask image (must be located in './images' directory): specify '0' to use none and '1' to use default (avg152T1_white.nii.gz)<br> </li> 
+  </ul> 
+  <ul> 
+   <li>MAXITER (optional): Total number of iterations. Defaults to 1,000,000; use fewer for testing to save time. <br> </li> 
+  </ul> 
+  <ul> 
+   <li>BURNIN (optional): Number of burn-in iterations. Defaults to 500,000; try using half the number of MAXITER.</li> 
+  </ul> 
+  <p><br> </p> 
+  <h4>Format of input file DESIGN (<em>e.g. data.dat</em>)<br> </h4> 
+  <p>The first row of <em>data.dat</em> specifies the names of the columns (variables). All other rows contain the individual data for each subject.</p> 
+  <p>The first is subject ID, followed by one column for each type/group/class in the data. (E.g. a data set consisting of patients and healthy controls would have two columns of zeros and ones, indicating to which group each subject belongs.)</p> 
+  <p>The next columns specify covariates, one for each covariate. Important note: these covariates need to be mean-centered.</p> 
+  <p>The last column contains the file name of the image for each subject. (Note that the image file does not have a path, all images need to be stored in a subdirectory named "<em>images</em>".)</p> 
+  <p>Here are the first lines of an example data.dat file containing two classes and five additional covariates. (The full file is included in the example data bundle below.)</p> 
+  <div class="id7-wide-table-wrapper-container"><div class="doubleScroll-scroll-wrapper" style="height: 20px; overflow-x: auto; overflow-y: hidden; width: 703px;"><div class="doubleScroll-scroll" style="height: 20px; width: 826px;"></div></div><div class="table-responsive" style="overflow-x: auto; overflow-y: hidden;"><table role="presentation" style="width: 826px; height: 137px; max-width: none;" align="center" border="1" cellpadding="4"> 
+   <tbody> 
+    <tr> 
+     <td style="text-align: center;"><strong>ID</strong> </td> 
+     <td style="text-align: center;"><strong>type1</strong> </td> 
+     <td style="text-align: center;"><strong>type2</strong> </td> 
+     <td style="text-align: center;"><strong>[additional classes]</strong> </td> 
+     <td style="text-align: center;"><strong>covar1</strong> </td> 
+     <td style="text-align: center;"><strong>covar2</strong> </td> 
+     <td style="text-align: center;"><strong>covar3</strong> </td> 
+     <td style="text-align: center;"><strong>covar4</strong> </td> 
+     <td style="text-align: center;"><strong>covar5</strong> </td> 
+     <td style="text-align: center;"><strong>[additional covariates]</strong> </td> 
+     <td style="text-align: center;"><strong>image_file_name</strong> </td> 
+    </tr> 
+    <tr> 
+     <td style="text-align: center;">1001</td> 
+     <td style="text-align: center;">1</td> 
+     <td style="text-align: center;">0</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">-0.38</td> 
+     <td style="text-align: center;">-18.54</td> 
+     <td style="text-align: center;">18.24</td> 
+     <td style="text-align: center;">2.31</td> 
+     <td style="text-align: center;">-13.08</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;"><em>binLesionData_1001.nii.gz</em> </td> 
+    </tr> 
+    <tr> 
+     <td style="text-align: center;">1002</td> 
+     <td style="text-align: center;">1</td> 
+     <td style="text-align: center;">0</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">-0.38</td> 
+     <td style="text-align: center;">4.46</td> 
+     <td style="text-align: center;">-161.76</td> 
+     <td style="text-align: center;">-1.69</td> 
+     <td style="text-align: center;">4.92</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;"><em>binLesionData_1002.nii.gz</em> </td> 
+    </tr> 
+    <tr> 
+     <td style="text-align: center;">1003</td> 
+     <td style="text-align: center;">0</td> 
+     <td style="text-align: center;">1</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">0.62</td> 
+     <td style="text-align: center;">13.46</td> 
+     <td style="text-align: center;">54.24</td> 
+     <td style="text-align: center;">-0.69</td> 
+     <td style="text-align: center;">9.92</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;"><em>binLesionData_1003.nii.gz</em> </td> 
+    </tr> 
+    <tr> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">...</td> 
+    </tr> 
+   </tbody> 
+  </table></div></div> 
+  <p><br> </p> 
+  <h4>Image files <br> </h4> 
+  <ul> 
+   <li><em>mask.nii.gz</em>: whole-brain mask</li> 
+   <li><em>WM_mask.nii.gz </em>(optional): white matter mask. This must be a 8 bit (unsigned char, uint8) image file.</li> 
+   <li>&lt;<em>image_files.nii.gz&gt;</em>: binary lesion masks for each subject.</li> 
+  </ul> 
+  <p><strong>NOTE</strong>: The program expects a subdirectory named "./images" in the main directory. ALL image files (including the mask and WM files) must be in the <em>*.nii.gz</em> format and stored in this subdirectory.</p> 
+  <div>
+   <br> 
+  </div> 
+  <h5>Other input files</h5> 
+  <ul> 
+   <li><em>seed.dat</em> (optional): containing three starting seed numbers for random number generator</li> 
+  </ul> 
+  <h3><br> </h3> 
+  <h4><strong>Execution from command line - example</strong><br> </h4> 
+  <div>
+   <br> 
+  </div> 
+  <p>This is an example of how to run the code after it has been compiled:</p> 
+  <pre>$ &lt;path_to_exe_dir&gt;/BinCar 2 7 1 data.dat 1 0 10000 5000</pre> 
+  <p>For this example, input arguments used are:</p> 
+  <p>NTYPES=2; NCOV=7 (i.e. 5 covariates + 2 types); GPU=1; DESIGN=data.dat; MASK=default; WM=none; MAXITER=10,000; BURNIN=5,000.<br> </p> 
+  <p><br> </p> 
+  <p>Here is an example screenshot of the terminal output after the first 500 iterations. The first few lines give some info about which GPU's are available and used; followed by diagnostic output for every 100 iterations:</p> 
+  <p><img alt="screenshot" src="../../img/bsglmm/bsglmm_screen.png" style="display: block; margin-left: auto; margin-right: auto;" border="0"></p> 
+  <p><br> </p> 
+  <h4>Output files</h4> 
+  <h4>Terminal output during runtime</h4> 
+  <p>By default only the current number of completed iterations of the MCMC algorithm is displayed. Additional information (e.g. current parameter values, GPU times to compute parameter updates, etc.) can be displayed by un-commenting the respective lines in the source files (mostly found in <em>mcmc.cpp</em>).</p> 
+  <h4>Output files</h4> 
+  <p><br> </p> 
+  <div class="id7-wide-table-wrapper-container"><div class="doubleScroll-scroll-wrapper" style="height: 20px; overflow-x: auto; overflow-y: hidden; width: 703px;"><div class="doubleScroll-scroll" style="height: 20px; width: 844px;"></div></div><div class="table-responsive" style="overflow-x: auto; overflow-y: hidden;"><table role="presentation" style="width: 844px; height: 371px; max-width: none;" align="center" border="1" cellpadding="4"> 
+   <tbody> 
+    <tr> 
+     <td><strong>File name</strong> </td> 
+     <td style="text-align: center;"><strong>Description</strong> </td> 
+     <td><strong>Comments</strong> </td> 
+    </tr> 
+    <tr> 
+     <td> <p><em>prb_</em>&lt;<em>NAME_OF_TYPE</em>&gt;<em>.nii</em> </p> </td> 
+     <td>posterior mean probabilities for each type/group/class of data</td> 
+     <td>NAME_OF_TYPE is specified in input file DATA.DAT</td> 
+    </tr> 
+    <tr> 
+     <td><em>spatCoef_&lt;NAME_OF_COVAR&gt;.nii</em> </td> 
+     <td>posterior mean for each covariate</td> 
+     <td>incl. dummy variables for each type</td> 
+    </tr> 
+    <tr> 
+     <td> <p><em>spatCoef_&lt;NAME_OF_COVAR&gt;.Var.nii</em> </p> </td> 
+     <td>corresponding variances for each covariate</td> 
+     <td>NAME_OF_COVAR is specified in input file DATA.DAT</td> 
+    </tr> 
+    <tr> 
+     <td><em>standCoef_&lt;NAME_OF_COVAR&gt;.nii</em> </td> 
+     <td>standardised coefficients for each covariate</td> 
+     <td>posterior mean divided by posterior standard deviation and averaged over all iterations</td> 
+    </tr> 
+    <tr> 
+     <td> <p><em>total_empir_cnt.nii</em> </p> </td> 
+     <td>number of lesions per voxel across the given data set</td> 
+     <td>&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td><em>total_lesion_prb.nii</em> </td> 
+     <td>total lesion count divided by total number of subjects</td> 
+     <td>&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td><em>empir_prb_&lt;NAME_OF_TYPE&gt;.nii</em> </td> 
+     <td>empirical probability for each type</td> 
+     <td>&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td><em>bWM.nii</em> </td> 
+     <td>coefficients * WM mask</td> 
+     <td>only if a WM mask is used</td> 
+    </tr> 
+    <tr> 
+     <td><em>Qhat.dat</em> </td> 
+     <td>predictions based on uniform prior</td> 
+     <td>equal priors: 1/n for n types</td> 
+    </tr> 
+    <tr> 
+     <td><em>Qhat2.dat</em> </td> 
+     <td>predictions based on empirical prior</td> 
+     <td>proportional priors for each type: number of subjects per type divided by total number of subjects</td> 
+    </tr> 
+    <tr> 
+     <td><em>DIC.dat</em> </td> 
+     <td>diagnostics</td> 
+     <td>deviance of the expectation (DE), expectation of deviance (ED), effective degrees of freedom (PD), deviance information criterion (DIC)</td> 
+    </tr> 
+   </tbody> 
+  </table></div></div> 
+  <p><br> </p> 
+  <h5>File structure of <em>Qhat.dat </em>and <em>Qhat2.dat: </em></h5> 
+  <p><br> </p> 
+  <table role="presentation" align="center" border="1" cellpadding="4" style="max-width: none;"> 
+   <tbody> 
+    <tr> 
+     <td style="text-align: center;"><strong>ID</strong> </td> 
+     <td style="text-align: center;"><strong>prob type1</strong> </td> 
+     <td style="text-align: center;"><strong>prob type2</strong> </td> 
+     <td style="text-align: center;"> <p><strong>[additional </strong> </p> <p><strong>classes]</strong> </p> </td> 
+     <td style="text-align: center;"><strong>predicted type</strong> </td> 
+     <td style="text-align: center;"><strong>true type</strong> </td> 
+    </tr> 
+    <tr> 
+     <td style="text-align: center;">0</td> 
+     <td style="text-align: center;">0.9999</td> 
+     <td style="text-align: center;">0.0001</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">0</td> 
+     <td style="text-align: center;">0</td> 
+    </tr> 
+    <tr> 
+     <td style="text-align: center;">1</td> 
+     <td style="text-align: center;">0.9999</td> 
+     <td style="text-align: center;">0.0001</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">0</td> 
+     <td style="text-align: center;">0</td> 
+    </tr> 
+    <tr> 
+     <td style="text-align: center;">2</td> 
+     <td style="text-align: center;">0.0000</td> 
+     <td style="text-align: center;">1.0000</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">1</td> 
+     <td style="text-align: center;">1</td> 
+    </tr> 
+    <tr> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">...</td> 
+     <td style="text-align: center;">...</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <p style="text-align: left;"><br> </p> 
+  <p style="text-align: left;">The 1st column contains a running count for all subjects (starting from zero). The 2nd, 3rd, 4th, etc. columns (depending on the total number of types) give the predicted probabilities for each type. Most interesting is the second-to-last column which provides a prediction of each subject into one of the given types. For reference and comparison, the last column displays the true type as given in the input data.</p> 
+  <p><em>&nbsp;</em></p> 
+  <p><br> </p> 
+  <h4>Results</h4> 
+  <p>Posterior mean probabilities for each type/group/class of data are given in the files <em>prb_&lt;NAME_OF_TYPE&gt;.nii. </em></p> 
+  <p>The probability maps for spatial and standardised spatial coefficients can be found in <em>spatCoef_&lt;NAME_OF_COVAR&gt;.nii </em>and<em> standCoef_&lt;NAME_OF_COVAR&gt;.nii</em> respectively.</p> 
+  <p><em>Qhat.dat</em> and <em>Qhat2.dat</em> provide raw data for prediction and classification accuracy using an importance sampling approach (see Sec. 4.2 in the <a href="../BSGLMM">paper</a>). For example, the total prediction accuracy for a given data set is simply the number of correctly classified subjects (predicted type == true type) divided by the total number of subjejcts.</p> 
+  <p><br> </p> 
+  <h4>Example Output</h4> 
+  <p>Below are example slices of some of the generated output files for the same slice position (voxel 34.6 40.1 50.9)</p> 
+  <p><img alt="screenshot_empir_prb_type1.png" src="../../img/bsglmm/screenshot_empir_prb_type1.png?maxWidth=400" width="45%" border="0"> <img alt="screen_prb_type1" src="../../img/bsglmm/screenshot_prb_type1.png?maxWidth=400" width="45%" border="0"></p> 
+  <div style="text-align: left;">
+   a)
+   <em> empir_prb_type1.nii </em>          
+  </div> 
+  <div style="text-align: center;">
+   b)
+   <em> prb_type1.nii <br> </em>
+  </div> 
+  <div style="text-align: center;">
+   <br> 
+  </div> 
+  <div>
+   <img alt="screen_spatCoef_type1" src="../../img/bsglmm/screenshot_spatcoef_type1.png?maxWidth=400" width="45%" border="0"> 
+   <img alt="screen_spatCoef_type2" src="../../img/bsglmm/screenshot_spatcoef_type2.png?maxWidth=400" width="45%" border="0">
+  </div> 
+  <div style="text-align: left;">
+   <em> c) spatCoef_type1.nii </em>         
+  </div> 
+  <div style="text-align: center;">
+   d)
+   <em> spatCoef_type2.nii</em>
+  </div> 
+  <p><em>&nbsp;</em></p> 
+  <h4>Convergence Diagnostics</h4> 
+  <p>MCMC algorithms need to be monitored for convergence. Since saving the chains for all parameters, i.e. voxels, is infeasible we recommend monitoring a group of (say 10) voxels in qualitatively different regions (e.g. regions with both high and low lesion load).</p> 
+  <p>For details please see Sec. 4.4 in the <a href="../BSGLMM">paper</a>.</p> 
+  <p><br> </p> 
+  <h4>Example Data</h4> 
+  <p>Download example data here (<img alt="(ZIP or other archive)" src="../../img/zip.gif" border="0"><a href="../../files/tars/data_demo.dat.tar.gz">demo-data</a>) and extract the archive in a directory of your choice.</p> 
+  <p>This dataset contains binary lesion data from 50 subjects (<em>binLesionData_&lt;subject_ID&gt;.nii.gz</em>) with multiple sclerosis. The subjects are categorised into two disease subtypes (25 relapsing-remitting MS, 25 secondary progressive MS).</p> 
+  <p>The DESIGN file is called <em>data_demo.dat </em>and includes the following five demographic and clinical covariates: sex, age, disease duration, EDSS score, PASAT score.</p> 
+  <p>Additionally, a whole-brain mask (<em>mask.nii.gz</em>) and a white matter mask (<em>avg152T1_white.nii.gz)</em> are provided.</p> 
+  <p><br> </p> 
+  <h4>Example Classification Results</h4> 
+  <p>As both groups contain the same number of subjects, there is no difference between uniform and empirical priors and thus <em>Qhat.dat</em> and <em>Qhat2.dat</em> give the same results. For this data set prediction accuracy for classification into one of the two types is very high (98%) with only one subject (subj ID 1013) misclassified.</p> 
+  <p><br> </p> 
+  <p><br> </p> 
+  <p>&nbsp;</p> 
+ 
+                                
+                                
+                            
+                        </div>
