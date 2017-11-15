@@ -8,7 +8,8 @@ import codecs
 import latexcodec
 import os
 
-parser = bibtex.Parser()
+# Set up the path.
+PATH = os.path.dirname(os.path.abspath(__file__))
 
 _months = {
     'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 'jun': 6,
@@ -190,7 +191,7 @@ def _sortkey(entry):
 
     return year + '{:04d}'.format(_pubtypes[entry.type])
 
-def main(bibfile, template):
+def main(bibfile, template, pageObj):
 
     # Load the template.
     tenv = jinja2.sandbox.SandboxedEnvironment()
@@ -209,6 +210,9 @@ def main(bibfile, template):
     with open(template) as f:
         tmpl = tenv.from_string(f.read())
 
+    #Open the parser.
+    parser = bibtex.Parser()
+    
     # Parse the BibTeX file.
     with codecs.open(bibfile, encoding="latex") as stream:
         db = parser.parse_stream(stream)
@@ -237,9 +241,24 @@ def main(bibfile, template):
             prev_year = bib.fields['year']
             prev_type = bib.type
 
+    context = dict()
+    context['entries'] = entries
+    
+    #The pageObject dictates which page we are displaying if we are
+    #displaying research pages. It is ignored in the publications
+    #template.
+    context['pageObj'] = pageObj
 
-    out = tmpl.render(entries=entries)
-    print(out.encode("utf-8")) 
+    #Render the template
+    out = tmpl.render(context)
+    
+    if pageObj == 'Publications':
+        print(out.encode("utf-8"))
+    else:
+        #Output.
+        fname = os.path.join(os.path.dirname(PATH), 'Research', pageObj['name'], 'index.html')
+        with open(fname, 'w') as f:
+            f.write(out.encode("utf8"))
 
 if __name__ == '__main__':
     main(*sys.argv[1:])

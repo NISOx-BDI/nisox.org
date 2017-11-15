@@ -1,0 +1,111 @@
+---
+layout: default
+title: Valid Conjunction Inference with the Minimum Statistic
+---
+<div class="column-1"><div class="column-1-content">
+                            
+                                
+                                    
+
+<!--  %W% %E% -->
+<p>Quick links: <a href="#sum">Summary</a> | <a href="#art">Article</a> | <a href="#post">HBM Poster</a> | <a href="#soft">Software</a> | <a href="#pFDRpost">Related HBM Poster</a> </p>
+
+<!-- 
+	<p>Important! Please see <a href="#SPM2_FDRfix">below</a> for information on bug fix to the SPM2 Conjunction modifications </p> -->
+<h3><a name="sum">Summary</a> </h3>
+
+<hr> 
+<p>Conjunction inference in SPM2 and SPM99 is based on the minimum statistic. The inference is based on the <strong>global null</strong> hypothesis that <em>all</em> effects conjoined are null. Thus a significant result only implies one or more of the effects are non-null. </p>
+
+<p>To assert that all effects are non-zero, the null hypothesis that <em>one or more</em> of the effects are null must be tested. In the <a href="#art">paper</a> below we find the appropriate inference for this <strong>conjunction null</strong> based on the minimum statistic. It happens that the appropriate inference comes from simply comparing the minimum statistic to the usual (single image) thresholds, corrected or uncorrected; further, no assumption about independence is required, so effects like (A-C) and (B-C) can now be conjoined. </p>
+
+<p>Put another way, valid conjunction inference can be performed by creating thresholded statistic images and then creating an intersection mask. Also equivalently, at any given voxel, the maximum P-value over a set of images to conjoin is exactly the conjunction P-value (corrected or uncorrected). </p>
+
+<p>Below is an complete article, as submitted to NeuroImage (a slightly revised version is currently In Press, NeuroImage) and software modifications for SPM. Please <a href="mailto:thomas.nichols@bdi.ox.ac.uk">contact me</a> with any questions. </p>
+
+<h3><a name="art">Article</a> </h3>
+
+<hr> 
+<p>Valid Conjunction Inference with the Minimum Statistic.<br>
+   Thomas Nichols, Matthew Brett, Jesper Andersson, Tor Wager &amp; Jean-Baptiste Poline.<br>
+   NeuroImage, Volume 25, Issue 3, 15 April 2005, Pages 653-660<br>
+   <a href="http://dx.doi.org/10.1016/j.neuroimage.2004.12.005">doi:10.1016/j.neuroimage.2004.12.005</a>
+
+<h4>Abstract</h4>
+
+<p>In logic a conjunction is defined as an AND between truth statements. In neuroimaging, investigators may look for brain areas activated by task A AND by task B, or a conjunction of tasks (Price and Friston, 1997). Friston et al. 1999 introduced a minimum statistic test for conjunction. We refer to this method as the minimum statistic compared to the global null (MS/GN). The MS/GN is implemented in SPM2 and SPM99 software, and has been widely used as a test of conjunction. However, we assert that it does not have the correct null hypothesis for a test of logical AND, and further, this has led to confusion in the neuroimaging community. <br>
+   In this paper, we define a conjunction and explain the problem with the MS/GN test as a conjunction method. We present a survey of recent practice in neuroimaging which reveals that the MS/GN test is very often misinterpreted as evidence of a logical AND. We show that a correct test for a logical AND requires that all the comparisons in the conjunction are individually significant. This result holds even if the comparisons are not independent. We suggest that the revised test proposed here is the appropriate means for conjunction inference in neuroimaging. </p>
+
+<h3><a name="post">HBM 2004 Poster</a> </h3>
+
+<hr> 
+<p>When is a conjunction not a conjunction?<br>
+   Matthew Brett, Thomas Nichols, Jesper Andersson, Tor Wager &amp; Jean-Baptiste Poline.<br>
+   Poster WE 137: <a href="https://doi.org/10.6084/m9.figshare.5602744.v1">Abstract</a> | <a href="https://doi.org/10.6084/m9.figshare.5602753.v1">Poster</a></p>
+
+<h3><a name="soft">Software: Revised conjunction inference for SPM</a> </h3>
+
+<hr> 
+<p>To address the issues raised above, install the modifications below. These modifications produce a new question when performing a conjunction: <em>Null hyp. to assess?</em> Select 'Conjunction' to use the proposed fix, so that P-values are valid for rejecting the conjunction null hypothesis; or select 'Global' to use the old method, where P-values are valid for rejecting the global null of all effects being absent. (Thanks to Darren Gitelman &amp; Su Watkins for reporting this problem and helping me debug it.) </p>
+
+<p>The compressed tar file below contains the seven (7) m-files needed to implement these changes within SPM. The files will expand into a separate spm2_conj (or spm99_conj) directory. Include this directory before your spm2 directory, e.g. </p>
+
+<pre><kbd> addpath '/my/path/spm2_conj' </kbd></pre>
+
+<h3>SPM2 Modifications</h3>
+
+<p>Download: <a href="../../files/tars/spm2_conj.tgz">spm2_conj.tgz</a> (21KB) </p>
+
+<p>Files: </p>
+
+<menu>
+  <li><a href="../../files/matlab/FDR/spm_getSPM.m">spm_getSPM.m</a><br>
+     In this file the meaning of the parameter n has been changed. Previously n was simply the number of tests to conjoin. Now, abs(n) is the number of tests to conjoin, and n&lt;0 flags the use of the global null; a positive n implies the default behavior, using the (new) conjunction null. </li>
+  <li><a href="../../files/matlab/FDR/spm_uc_Bonf.m">spm_uc_Bonf.m</a><br></li>
+  <li><a href="../../files/matlab/FDR/spm_uc_FDR.m">spm_uc_FDR.m</a><br></li>
+  <li><a href="../../files/matlab/FDR/spm_uc_RF.m">spm_uc_RF.m</a><br></li>
+  <li><a href="../../files/matlab/FDR/spm_P_Bonf.m">spm_uc_Bonf.m</a><br></li>
+  <li><a href="../../files/matlab/FDR/spm_P_FDR.m">spm_uc_FDR.m</a><br></li>
+  <li><a href="../../files/matlab/FDR/spm_P_RF.m">spm_uc_RF.m</a><br></li>
+     These functions have been changed to impliment the new defintion of the argument n.</li>
+</menu>
+<p><a name="SPM2_FDRfix">Important Bug Fix!</a><br>
+   On October 16, 2004, an important bug in the Conjunction modifications for SPM2 was found and fixed. The problem was only present for 'Global Null' tests, and resulted in FDR P-values being wrong (and greater than 1!). <br>
+   On November 9, 2004, an another bug in the Conjunction modifications for SPM2 was found and fixed. Again, the problem was only present for 'Global Null' tests, but only had the impact of producing thresholds that were too high.<br>
+   If you had previously downloaded the conjunction modifications, please grab the <a href="../../files/tars/spm2_conj.tgz">whole tar file</a> again, or just the affected files (<a href="../../files/matlab/FDR/spm_getSPM.m">spm_getSPM.m</a> for the Oct 16 fix, <a href="../../files/matlab/FDR/spm_uc_FDR.m">spm_uc_FDR.m</a> for the Nov 9 fix.) </p>
+
+<h3>SPM99 Modifications</h3>
+
+<p>Download: <a href="../../files/tars/spm99_conj.tgz">spm99_conj.tgz</a> (21KB) </p>
+
+<p>Files: </p>
+
+<menu>
+  <li><a href="spm99/spm_getSPM.m">spm_getSPM.m</a><br>
+     In this file the meaning of the parameter n has been changed. For more, see comments above for spm_getSPM.m for SPM2. </li>
+  <li><a href="spm99/spm_uc_Bonf.m">spm_uc_Bonf.m</a><br></li>
+  <li><a href="spm99/spm_uc_FDR.m">spm_uc_FDR.m</a><br></li>
+  <li><a href="spm99/spm_uc_RF.m">spm_uc_RF.m</a><br></li>
+  <li><a href="spm99/spm_P_Bonf.m">spm_uc_Bonf.m</a><br></li>
+  <li><a href="spm99/spm_P_FDR.m">spm_uc_FDR.m</a><br></li>
+  <li><a href="spm99/spm_P_RF.m">spm_uc_RF.m</a><br></li>
+     These functions have been changed to impliment the new defintion of the argument n. </li>
+</menu>
+<h3><a name="pFDRpost">Related HBM 2004 Poster: Conjunctions with Sum pFDR</a> </h3>
+
+<hr> 
+<p>A related poster on conjunction is also available. While both SPM's method and the revised conjunction method use the minimum statistic (though find different P-values), there may be other possible statistics useful for conjunction inference. In this related work, we show how a modified FDR method, the Positive False Discovery Rate (pFDR), can be used to construct an alternative conjunction statistic. </p>
+
+<p>Conjunction Inference Using the Bayesian Interpretation of the Positive False Discovery Rate<br>
+   Thomas Nichols &amp; Tor Wager.<br>
+   Poster WE 260:  
+ <a href="https://doi.org/10.6084/m9.figshare.5602756.v1">Abstract</a> | <a href="https://doi.org/10.6084/m9.figshare.5602759.v1">Poster</a></p>
+
+<p>For this 'Sum pFDR' method, there is currently no software or manuscript available. </p>
+
+
+
+                                
+                                
+                            
+                        </div></div>

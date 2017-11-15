@@ -1,0 +1,214 @@
+---
+layout: default
+title: Guidelines for Presenting Neuroimaging Analyses
+---
+<br>
+<div class="column-1"><div class="column-1-content">
+                            
+                                
+                                    
+
+The methods which are used to collect and analyze fMRI, PET, SPECT, EEG and MEG data are quite varied. However, papers publishing results using such data often offer the most minimal descriptions (e.g. "Methods: SPM2 was used. Results: We found... "). The typical descriptions are deficient, in that they fail to meet a basic goal: Could another researcher, presented with an author's data, reproduce the same results presented int he paper. <br><br>
+
+The purpose of this webpage is to start a discussion on the elements of a neuroimaging experiment which must be reported. Please contact <a href="mailto:thomas.nichols@bdi.ox.ac.uk">Thomas Nichols</a> with input on other items to include, ways to structure this, and, importantly, other forum where this this discourse could best be made (e.g. a Wiki entry? a letter to an editor?). <br><br>
+
+<h3>Goal </h3>
+
+ 
+This work seeks to collect reporting guidelines for authors and reviewers of neuroimaging publications. The goal of these guidelines is to have all neuroimaging papers have sufficient methodological detail such that a reader, if presented with an author's data, could reproduce the same results presented in the paper. <br><br>
+
+A closely related goal is to recommend which aspects of the results that should be reported, and how they should be reported. <br><br>
+
+The primary goal stated first regards reporting in the methods section. The secondary goal regards the content of the results section, and possibly an on-line repository for supplementary data. To make these distinctions clear, the headings below are prefixed either 'Methods' or 'Results'. <br><br>
+
+<h3>Methods: Experimental Design </h3>
+
+ 
+<ol>
+  <li><strong>Design specification</strong>     Number of blocks, trials or experimental units per session and/or subject. <br><br>
+
+  </li>
+</ol>
+
+<h3>Methods: Data Collection </h3>
+
+ 
+<ol>
+  <li><strong>Image properties - As acquired</strong>     For voxel data (fMRI/PET/SPECT) image dimensions and voxel size. <br><br>
+
+    For fMRI data, additionally, magnet strength (Tesla), TE and TR, FOV, and interslice skip if any; image orientation (axial, sagittal, coronal, oblique; if axials co-planar w/ AC-PC, the volume coverage in terms of Z in mm); order of acquisition of slices (sequential or interleaved). Number of experimental sessions and volumes per session. <br><br>
+
+    For PET data, isotope/ligand and dose (mCi/MBq). For EEG/MEG, number of sources. <br><br>
+
+    For EEG/MEG, if reconstructed onto voxel grid, image dimensions and voxel size. If reconstructed onto surface mesh, count of mesh points and average distance. For PET/SPECT, reconstruction smoothness parameter (e.g. 'ramp filtered', 'Hanning window 15 mm cutoff'; 'OS-EM 10 iterations'). <br><br>
+
+    &nbsp;<br><br>
+
+  </li>
+  <li><strong>Pre-processing: General</strong>     For voxel data, type of motion correction used (minimally, software version; ideally, image similarity metric and optimization method used). Interpolation method. <br><br>
+
+    For fMRI, use of slice timing correction (minimally, software version; ideally, order and type of interpolant used and reference slice). <br><br>
+
+    For fMRI, use of EPI motion-susceptibility correction (minimally, software version). <br><br>
+
+    The order of the pre-processing steps should be recorded. <br><br>
+
+    &nbsp;<br><br>
+
+  </li>
+  <li><strong>Pre-processing: Intersubject registration</strong>     Intersubject registration method used. Software version <em>and</em>... <br><br>
+
+    <ul>
+      <li>Affine? 9 or 12 parameters?</li>
+      <li>Non-linear? Deformation parameterization?
+         (E.g. in AIR, a polynomial order is specified; in SPM, a DCT basis size is specified, 3x2x3). </li>
+      <li>Non-linear regularization? (E.g. in SPM, e.g. "a little"). Crucial for fluid-deformation methods. </li>
+      <li>Interpolation method? </li>
+    </ul>
+
+    Object Image information. (Image used to determine transformation to atlas) <br><br>
+
+    <ul>
+      <li>Anatomical MRI? Image properites (see above). Also, co-planar with functional acquisition? </li>
+      <li>Segmented grey image? </li>
+    </ul>
+
+    Atlas information <br><br>
+
+    <ul>
+      <li>Brain image template space, name, modality and resolution. (E.g. "SPM2's MNI, T1 2x2x2"; "SPM2's MNI Gray Matter template 2x2x2")</li>
+      <li>Coordinate space? Typically Talairach, MNI, or MNI converted to Talairach.</li>
+      <li>If MNI converted to Talairach, what method? E.g. Brett's mni2tal? </li>
+      <li>How were anatomical locations (e.g. Brodmann areas) determined? (e.g. Talairach Daemon, Talairach atlas, manual inspection of individuals' anatomy, etc.) </li>
+    </ul>
+
+    &nbsp;<br><br>
+
+  </li>
+  <li><strong>Pre-processing: Smoothing</strong>     What size smoothing kernel? <br><br>
+
+    What type of kernel (especially if non-Gaussian, or non-stationary). <br><br>
+
+    Is smoothing done separate at 1st and 2nd levels? <br><br>
+
+  </li>
+</ol>
+
+<h3>Methods: Statistical Modeling </h3>
+
+ 
+<ol>
+  <li><strong>Intrasubject fMRI Modeling Info</strong>     <ul>
+      <li>Statistical model and software version used (e.g. Multiple regression model fit with SPM2, updates as of xx/xx/xx).</li>
+      <li>Block or event; if block, duration of blocks.</li>
+      <li>Hemodynamic response function (bRF) assumed or estimated?
+         If bRF used, which (e.g. SPM's canonical bRF; SPM's gamma basis; Gamma bRF of Glover).</li>
+      <li>Additional regressors used (e.g. motion, behavioral covariates) </li>
+      <li>Drift modeling (e.g. DCT with cut off of X seconds; cubic polynomial) </li>
+      <li>Autocorrelation modeling (e.g. for SPM2, 'Approximate AR(1) autocorrelation estimated at omnibus F-significant voxels (P&lt;0.001), then pooled over whole brain'; for FSL, 'Regularized autocorrelation function estimated at each voxel'). </li>
+      <li>Estimation method: OLS, OLS with variance-correction (G-G correction or equivalent), or whitening. </li>
+      <li>Contrast construction. Exactly what terms are subtracted from what. It might be useful to always define abstract names (e.g. AUDSTIM, VISSTIM) instead of underlying psychological concepts. </li>
+    </ul>
+
+  </li>
+</ol>
+
+<ul>
+  <li><strong>2-level, modality-generic Modeling Info</strong> </li>
+</ul>
+
+<ul>
+  <li>Statistical model and software version used (e.g. 1-sample t on intrasubject contrast data, SPM2 with updates as of xx/xx/xx). </li>
+  <li>Whether first level intersubject variances are assumed to be homogeneous (SPM &amp; simple summary stat methods: yes; FSL: no). </li>
+  <li>If multiple measurements per subject, method to account for within subject correlation. (e.g. SPM: 'Within-subject variance-covariance matrix estimated at F-significant voxels (P&lt;0.001), then pooled over whole brain') 
+     (Jesper Andersson request: Variance correction corresponding to within-subject variance-covariance matrix, so simply some measure of nonsphericity.) </li>
+</ul>
+
+<ul>
+  <li><strong>Inference on Statistic Image (thresholding)</strong> </li>
+</ul>
+
+<ul>
+  <li>Type of search region considered, and the volume in voxels or CC.
+     If not whole brain, how region was found; method for constructing region should be independent of present statistic image.</li>
+  <li>If threshold used for inference and threshold used for visualization in figures is different, clearly state so and list each.</li>
+  <li>Uncorrected inference is <em>not acceptable</em>, unless a <em>single</em> voxel can be a priori identified.     Note, however, what could be acceptable are non-statistical heuristic methods which have been shown in peer-reviewed literature, for a given scanner/voxel size/TR/TE combination, to control of false positives in some fashion. E.g. the Forman et al. paper did this for the Cohen lab with the then current scanner. However, the flexibility and the longevity of such methods is limited. <br><br>
+
+    New idea: Why isn't cluster size reported in mm^3? Doesn't necessarily capture the discretness of small clusters, but without mm^3 units, results from different studies with different voxel sizes are difficult to compare. <em>(From Karsten Specht)</em> <br><br>
+
+  </li>
+  <li>Voxel-wise significance? Corrected for Familywise Error (FWE) or False Discovery Rate (FDR). 
+     If FWE found by random field theory (e.g. with SPM) list the smoothness in mm FWHM and the RESEL count.
+     If not uniquely specified by use a given software package and version, the method for finding significance (e.g. "Internal software was used to construct statistic maps and thresholded at FDR&lt;0.05 (Benjamini &amp; Hochberg 1995)". </li>
+  <li>Cluster-wise significance? If so, list cluster-defining threshold (e.g. P=0.01), and what the corrected cluster significance was (e.g. "Statistic images assessed for cluster-wise significance; with a cluster-defining threshold of P=0.01 the 0.05 FWE-corrected critical cluster size was 103.")
+     Again, if significance determined with random field theory, then smoothness and RESEL count must be supplied.</li>
+</ul>
+
+&nbsp;<br><br>
+
+<h3>Results: Statistical Modeling </h3>
+
+ 
+<ol>
+  <li><strong>Unthresholded Statistic Maps</strong>     Thresholded statistic maps can be seriously misleading. Both because they exclude sub-threshold but possibly broad patterns, and because they immediate reveal the mask. A reader automatically equates an absence of suprathreshold blob with no activation, yet they would think differently if they found there was no data in that entire region (possible due to susceptibility artifacts). <br><br>
+
+    For more on this merits of unthresholded images: Jernigan TL, Gamst AC, Fennema-Notestine C, Ostergaard AL. More "mapping" in brain mapping: statistical comparison of effects. Hum Brain Mapp. 2003 Jun;19(2):90-5. [Matthew Brett]. <br><br>
+
+  </li>
+  <li><strong>Time Course Plots</strong>     For event-related analyses minimally, and all analyses perhaps, waveforms should be plotted as figures or supplemental materials. [Alex Shackman] <br><br>
+
+  </li>
+  <li><strong>Plotting interactions</strong>     If significant interactions (e.g., Group x Condition) or other complex contrasts are observed, barplots of % signal change or the like would be helpful. If bar plots are used, error bars should be included. If the contrast is within-subjects (repeated-measures) the appropriate within-subjects (repeated-measures) errors should be used (Masson &amp; Loftus, 2003). [Alex Shackman] <br><br>
+
+  </li>
+  <li><strong>Hemisphere Effects</strong>     Inferences about significant hemispheric asymmetry require formal tests of the Hemisphere x Condition (or Hemisphere x Group) interaction (cf. Davidson &amp; Irwin, 1999; Friston, 2002; Pizzagalli, Shackman &amp; Davidson, 2003). It is inappropriate to infer from main effects (of condition or group) that are significant in only one hemisphere that there is a significant asymmetry. [Alex Shackman] <br><br>
+
+  </li>
+  <li><strong>Correlation Effects</strong>     Analyses of zero-order, partial, or part correlations between brain activity and other measures (e.g., paper-and-pencil measures, task performance) mandate the inclusion of scatter plots, preferably with CIs. [Alex Shackman] <br><br>
+
+  </li>
+  <li><strong>Maps of Standard Devation or Confidence Interval Length</strong>     There is also a wealth of information in the variance or stanadard deviation. A confidence interval for the primary effect is a scalar multiple of the standard deviation image (or, even if the CI is desired for the BOLD %change, it's very easy to compute). <br><br>
+
+  </li>
+  <li><strong>ROI Mask Data</strong>     The exact values in a ROI mask can be critically evaluated to see if the regions covered make sense. [Matthew Brett] <br><br>
+
+    Ideally, even a public library of ROI masks could be created. (Separate project!) [Rachel Mitchell] <br><br>
+
+    Here is one <a bref="http://hendrix.imm.dtu.dk/services/jerne/ninf/voi/hand_area.html">public ROI library</a>, with a <a bref="http://www.sph.sc.edu/comd/rorden/fsl/home.html">description of how it can be used</a> in FSL with Russ Poldrack's Matlab scripts. [Cbris Rorden] <br><br>
+
+  </li>
+  <li><strong>Statistical Diagnostics</strong>     To assess if the data satisify the statistical assumptions, show the diagnostic statistics that assess Normality and white noise (possibly after whitening) assumptions. [Torben Lund] <br><br>
+
+  </li>
+  <li><strong>Design Matricies &amp; Contrasts</strong>     When complex designs are used, a graphical representation of the matrix and a description of contrasts in term of columns could be provided as supplementary information. <br><br>
+
+  </li>
+</ol>
+
+<h3>Miscellaneous Issues </h3>
+
+ 
+<ol>
+  <li>Software - Nomenclature 
+    In a write up of suggested guidelines, it might help to include a simple mapping between the names a software uses (i.e. the buttons to press) and the actual statistical function carried out, for each major analysis package. [Dara Ghabremani] <br><br>
+
+  </li>
+  <li>Similar efforts in other fields 
+    <ul>
+      <li>ERPs: Picton et al, 2000, Psychophysiology. 2000 Mar;37(2):127-52 [Alexa Morcom]</li>
+    </ul>
+
+  </li>
+</ol>
+
+<h3>Acknowledgments </h3>
+
+ 
+The following people have made contributions to this effort. Max Gunther started the tbread on the SPM list, and Karsten Specht, Russ Polldrack, Kent Kiel, Mauro Pesenti, Jesper Andersson, Iain Johnstone, Robert Welsh, Dara Ghabremani, Alexa Morcom, and Lena Katz, Daniel (aka Jack) Kelly, Cyril Pernet and Alex Shackman followed with more suggestions. <br><br>
+
+
+
+                                
+                                
+                            
+                        </div></div>

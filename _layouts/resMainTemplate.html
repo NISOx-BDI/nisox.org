@@ -1,0 +1,20 @@
+---
+layout: default
+title: Research
+---
+
+The pages listed below each detail an area of research that NISOx and NISOx collaborators are interested in and have worked on. For a full list of publications please see the NISOx <a href = "../publications"> publications page </a>. <br> 
+<br>
+<h4> Research pages </h4>
+<br>
+<ul>
+	<li> <a href="../Presentations/NeuroStatWar"> NeuroImaging Statistics Warwick </a>
+{% for page in resPages %}
+	<li>
+		<a href ="../Research/{{page.name}}"> {{page.displayname}}</a>
+	</li>
+{% endfor %}
+</ul>
+<br>
+For any further queries please contact <a href="mailto:thomas.nichols@bdi.ox.ac.uk">Professor Thomas Nichols</a>.
+<br><br>

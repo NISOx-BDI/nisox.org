@@ -1,0 +1,35 @@
+- name: SpatBay
+  displayname: "Spatial Bayesian Modelling for Neuroimaging"
+  regenerate: True
+  posttext: |
+    <h4> Lectures on Spatial Point Processes </h4> In September 2010 as part of a <a href = "https://www2.warwick.ac.uk/fac/sci/statistics/crism">CRiSM</a> lecture series, Dr. Tim Johnson of the University of Michigan Biostatistics gave a set of three lectures on point processes, with practical details on how to build Bayesian models and samplers for these types of data. Lecuture notes for all three lectures are here: <a href="../../files/PDF/Johnson_SpatialPointProc.pdf">PDF</a>
+
+- name: NeuroIm
+  displayname: "Neuroimaging Meta Analysis"
+  regenerate: True
+  posttext: |
+    *Emotion Meta-Analysis Data: <a href="../../files/text/EmotionMetaAnalysis.txt"> EmotionMetaAnalysis.txt </a>
+
+- name: Imgen
+  displayname: "Imaging Genetics"
+  regenerate: True
+
+- name: clinTrial
+  displayname: "Clinical Trials fMRI"
+  regenerate: True
+
+- name: MultiTest
+  displayname: "Multiple Testing Inference"
+  regenerate: True
+
+- name: GuideFor
+  displayname: "Guidelines for Presenting Neuroimaging Analyses"
+  regenerate: False
+
+- name: ValConj
+  displayname: "Valid Conjunction Inference with the Minimum Statistic"
+  regenerate: False
+
+- name: SpatTemp
+  displayname: "Spatiotemporal Reconstruction of List Mode PET"
+  regenerate: False
