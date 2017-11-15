@@ -1,3 +1,10 @@
+#================================================================================================
+# This python script clears all script-generated research and presentation pages. It is run when
+# 'make clean' is run and any files it deletes should be reconstructed by resGen.py or presGen.py
+# when 'make' is next run.
+#
+# Author: Tom Maullin (15/11/17)
+#================================================================================================
 import sys
 from pybtex.database.input import bibtex
 import yaml

@@ -19,6 +19,7 @@ This page lists research, authored by NISOx and NISOx collaborators, concerned w
 {% endif %}
 
 
+<!-- Publication list-->
 <h4> Publications </h4>
 
 <ul>
@@ -29,29 +30,40 @@ This page lists research, authored by NISOx and NISOx collaborators, concerned w
 		<li>
 		<span class="pubtitle">
 		{%- set url = entry|main_url %} 
+
+		<!-- If there is a URL display the PDF image and URL-->
 		{%- if url %}
-		<img src="../../img/pdficon_small.png" width="16"
+			<img src="../../img/pdficon_small.png" width="16"
 			height="16" alt="PDF" />
-		<a href="{{ url|escape }}">{{ entry|title }}</a>
+			<a href="{{ url|escape }}">{{ entry|title }}</a>
+		<!-- Else just display the title in bold-->
 		{%- else %}
-		<b>{{ entry|title }}</b>
+			<b>{{ entry|title }}</b>
 		{%- endif %}
+
+		<!-- Display the authors-->
 		</span><br />
 		<span class="authors">
 			{{ entry.persons['author']|author_list }}.
 		</span>
+
+		<!-- If there is a page number display it. Else just display the journal/context.-->
 		{%if entry|pageno != ''%}
-		<span class="venuetype">{{ entry|venue_type}}{{ entry|venue -}}: {{ entry | pageno }}.</span>
+			<span class="venuetype">{{ entry|venue_type}}{{ entry|venue -}}: {{ entry | pageno }}.</span>
 		{% else %}
-		<span class="venuetype">{{ entry|venue_type}}{{ entry|venue}}.</span>
+			<span class="venuetype">{{ entry|venue_type}}{{ entry|venue}}.</span>
 		{% endif %}
+
+		<!-- If there is a doi display it -->
 		{% if entry|doi != '' %}
 			doi: {{ entry | doi}}.
 		{% endif %}
+
+		<!-- If there is a note display it -->
 		{%- if entry.fields['note'] %}
-		<span class="note">
-		{{ entry.fields['note']|escape }}.
-		</span>
+			<span class="note">
+				{{ entry.fields['note']|escape }}.
+			</span>
 		</li>
 		{%- endif %}
 	{% endif %}

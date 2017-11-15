@@ -22,11 +22,14 @@ _pubtypes = {
 }
 
 def translate_remove_brackets(to_translate, translate_to=u''):
+    #This function removes {} brackets from a string. This is needed as brackets left over from
+    #translating latex can cause issues when rendering templates. 
     brackets = u'{}'
     translate_table = dict((ord(char), translate_to) for char in brackets)
     return to_translate.translate(translate_table)
 
 def _author_fmt(author):
+    #This function formats an individual authors name.
     author = u' '.join(author.first() + author.middle() + author.last())
     return translate_remove_brackets(author)
 
@@ -54,6 +57,7 @@ def _author_Shorten(authorList):
     return shortenedAuthorList
 
 def _andlist(ss, sep=', ', seplast=', and ', septwo=' and '):
+    #This function creates a list of authors from a set of authors.
     if len(ss) <= 1:
         return ''.join(ss)
     elif len(ss) == 2:
@@ -62,10 +66,12 @@ def _andlist(ss, sep=', ', seplast=', and ', septwo=' and '):
         return sep.join(ss[:-1]) + seplast + ss[-1]
 
 def _author_list(authors):
+    #This function returns a list of authors.
     authorList = _author_Shorten(_andlist(map(_author_fmt, authors)))
     return authorList
 
 def _venue_type(entry):
+    #This function returns the type of venue that the entry we are looking at was published in.
     venuetype = ''
     if entry.type == 'inbook':
         venuetype = 'Chapter in '
@@ -76,6 +82,7 @@ def _venue_type(entry):
     return venuetype
 
 def _type(entry):
+    #This function returns the type of entry we are looking at.
     pub_type = ''
     if entry.type == 'misc':
         pub_type = 'Miscealeneous '
@@ -93,6 +100,7 @@ def _type(entry):
     return pub_type
 
 def _pageno(entry):
+    #This function returns page numbers.
     f = entry.fields
     pageno = u''
     if 'pages' in f:
@@ -100,6 +108,7 @@ def _pageno(entry):
     return translate_remove_brackets(pageno)
 
 def _doi(entry):
+    #This function returns the doi of an entry.
     f = entry.fields
     doi = u''
     if 'doi' in f:
@@ -107,6 +116,7 @@ def _doi(entry):
     return translate_remove_brackets(doi) 
 
 def _venue(entry):
+    #This function returns details about where an entry was published.
     f = entry.fields
     venue = u''
     if entry.type == 'article':
@@ -143,6 +153,7 @@ def _venue(entry):
     return venue
 
 def _title(entry):
+    #This function returns the title of an entry.
     if entry.type == 'inbook':
         title = entry.fields['chapter']
     else:
@@ -153,6 +164,7 @@ def _title(entry):
     return title
 
 def _main_url(entry):
+    #This function returns the main URL of an entry.
     urlfields = ('url', 'ee')
     for f in urlfields:
         if f in entry.fields:
@@ -180,12 +192,14 @@ def _month_match (mon):
     return _months[mon.lower()[:3]]
 
 def _month_name (monthnum):
+    #This function returns the name of a month given its number. e.g. 8 -> August
     try:
         return month_name[int(monthnum)]
     except:
         return ''
 
 def _sortkey(entry):
+    #This entry creates a key based on the year of an entry in order for the entries to be later sorted.
     e = entry.fields
     year =  '{:04d}'.format(int(e['year']))
 
@@ -252,10 +266,12 @@ def main(bibfile, template, pageObj):
     #Render the template
     out = tmpl.render(context)
     
+    #If we are creating a publications page just print out the template.
     if pageObj == 'Publications':
         print(out.encode("utf-8"))
+    #If we are looking at Research pages work out where to save them and output
+    #to there.
     else:
-        #Output.
         fname = os.path.join(os.path.dirname(PATH), 'Research', pageObj['name'], 'index.html')
         with open(fname, 'w') as f:
             f.write(out.encode("utf8"))

@@ -1,3 +1,11 @@
+#================================================================================================
+# This python script creates/regenerates all research pages which have regenerate set to True in
+# resPages.yml. It does this by making multiple calls to bibble.py to render each template. The 
+# resPages.yml file specifies which pages to create and Research.bib specifies which publications
+# should be displayed in said pages.
+#
+# Author: Tom Maullin (15/11/17)
+#================================================================================================
 import sys
 from pybtex.database.input import bibtex
 import yaml
@@ -28,7 +36,7 @@ def main():
             #If the output directory doesn't exist, create it.
             if not os.path.isdir(os.path.join(os.path.dirname(PATH), 'Research', pageObj['name'])):
                 os.mkdir(os.path.join(os.path.dirname(PATH), 'Research', pageObj['name']))
-            #Make the pages
+            #Make the pages using functions in bibble.py
             pubGen.main(os.path.join(PATH, "..", "_data","research.bib"),
                         os.path.join(PATH, "..", "_layouts","resIndvTemplate.html"),
                         pageObj)
@@ -47,11 +55,7 @@ def main():
     out = tmpl.render(context)
     
     #Output.
-    #fname = os.path.join(os.path.dirname(PATH), 'Research', 'index.html')
-    #with open(fname, 'w') as f:
-    #    f.write(out.encode("utf8"))
     print(out.encode("utf8"))
-
 
 
 if __name__ == '__main__':
