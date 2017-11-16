@@ -12,7 +12,7 @@
 		</td> 
 		<td class="publication">
 			<!-- {{entry|sortkey}} -->
-			{%- if entry.type != prev_type -%} 
+			{%- if entry.type != prev_type or entry.fields['year'] != prev_year -%} 
 			<big><strong>{{ entry|type}}</strong></big><br/>
 			{% endif %}
 			<span class="pubtitle">

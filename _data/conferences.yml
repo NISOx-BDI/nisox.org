@@ -169,3 +169,14 @@
     courses: True
   format:
     posterDaysAvailable: False
+
+- name: OHBM2004
+  displayname: OHBM 2004
+  descrip: |
+    This collection organizes posters from NISOx and NISOx collaborators at the 2004 Human Brain Mapping (HBM) conference.
+  sections:
+    talks: False
+    posters: True
+    courses: False
+  format:
+    posterDaysAvailable: False

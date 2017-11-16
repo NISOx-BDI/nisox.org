@@ -3,7 +3,7 @@ PYTHON := python
 # targets that aren't filenames
 .PHONY: all clean deploy
 
-all: _includes/pubs.html presentations/index.html _site/index.html 
+all: _includes/pubs.html presentations/index.html _site/index.html research/index.html
 
 BUILDARGS :=
 _site/index.html _site/wacas14/index.html:
@@ -11,16 +11,20 @@ _site/index.html _site/wacas14/index.html:
 
 _includes/pubs.html: bib/pubs.bib bib/publications.tmpl
 	$(PYTHON) mkdir.py _includes 
-	$(PYTHON) bibble/bibble.py $+ > $@
+	$(PYTHON) bibble/bibble.py $+ 'Publications' > $@ 
 
 presentations/index.html: _data/conferences.yml _data/talks.bib _data/posters.bib _data/courses.yml 
 	$(PYTHON) presentations/presGen.py $+ > $@
+
+research/index.html: _data/research.bib _data/resPages.yml
+	$(PYTHON) bibble/resGen.py > $@ 
 
 _site/index.html: $(wildcard *.html) _includes/pubs.html _config.yml \
 	_layouts/default.html
 
 clean:
-	$(RM) -r _site _includes/pubs.html presentations/index.html
+	$(RM) -r _site _includes/pubs.html presentations/index.html research/index.html
+	$(PYTHON) cleanupscript.py
 
 HOST := yourwebpage.com
 PATHSVR := www/
