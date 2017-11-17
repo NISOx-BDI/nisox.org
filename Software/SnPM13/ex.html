@@ -13,7 +13,7 @@ notitle: true
 <table style="max-width: 100%;">
   <tbody><tr>
     <td> 
-      <p>&nbsp;<img alt="SnPM_Central" border="0" src="../../img/snpm13/SnPM_Central.gif"></p>
+      <p>&nbsp;<img alt="SnPM_Central" border="0" src="../../img/snpm13/SnPMCentral.gif"></p>
 
     </td>
     <td width="70%"> 
@@ -174,7 +174,7 @@ notitle: true
 
 <p>In the <code>SPM</code> menu, under <code>Tools</code> -&gt; <code>SnPM</code> -&gt; <code>Specify</code>, select <code>SingleSub: Two Sample T test; 2 conditions, replications</code></p>
 
-<img src="../../img/snpm13/SnPM13_PET_start.png" style="width:100%;" border="0"> 
+<img src="../../img/snpm13/SnPM13PETstart.png" style="width:100%;" border="0"> 
 <p>Then fill in the required fields as follows:</p>
 
 <ol>
@@ -208,9 +208,9 @@ notitle: true
 
 <p style="text-align: left;">Finally, the Batch window is as below: </p>
 
-<p><img style="width:70%;" alt="Filled batch for two-sample T" src="../../img/snpm13/snpm13_pet_batch.png" border="0"></p>
+<p><img style="width:70%;" alt="Filled batch for two-sample T" src="../../img/snpm13/snpm13petbatch.png" border="0"></p>
 
-<p>The start button in SPM batch window is now green <img src="../../img/snpm13/SPM_batch_play.png" border="0">, click on it to run the job.</p>
+<p>The start button in SPM batch window is now green <img src="../../img/snpm13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
 
 <p>SnPM will now create the file SnPMcfg.mat. and show the Design Matrix in the Graphics window. </p>
 
@@ -219,21 +219,21 @@ notitle: true
 
 <p>In the <code>SPM</code> menu, under <code>Tools</code> -&gt; <code>SnPM</code>, select <code>Compute</code>.</p>
 
-<img src="../../img/snpm13/SnPM13_fMRI_compute.png" style="width:60%;" border="0"> 
+<img src="../../img/snpm13/SnPM13fMRIcompute.png" style="width:60%;" border="0"> 
 <p>Then fill in the required field as follows:</p>
 
 <ol>
   <li><code>SnPMcfg.mat configuration file</code>: Select the <code>SnPMcfg.mat</code> file just created. </li>
 </ol>
 
-<p>The start button in SPM batch window is now green <img src="../../img/snpm13/SPM_batch_play.png" border="0">, click on it to run the job.</p>
+<p>The start button in SPM batch window is now green <img src="../../img/snpm13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
 
 <!--=================================================================-->
 <h2><a name="results">Results</a></h2>
 
 <p>In the <code>SPM</code> menu, under <code>Tools</code> -&gt; <code>SnPM</code>, select <code>Inference</code>.</p>
 
-<img src="../../img/snpm13/SnPM13_fMRI_inference.png" style="width:60%;" border="0"> 
+<img src="../../img/snpm13/SnPM13fMRIinference.png" style="width:60%;" border="0"> 
 <p style="text-align: left;">The uncorrected and FWE-corrected p-values are exact, meaning if the null hypothesis is true exactly 5% of the time you'll find a P-value 0.05 or smaller (assuming 0.05 is a possible nonparameteric P-value, as the permutaiton distribution is discrete and all p-values are multiples of 1/nPerm). FDR p-values are valid based on an assumption of positive dependence between voxels; this seems to be a reasonable assumption for image data. Note that SPM's corrected p values derived from the Gaussian random field theory are only approximate. </p>
 
 <h4>Voxel-wise inference</h4>
@@ -252,13 +252,13 @@ notitle: true
 
 <p style="text-align: left;">Finally, the Batch window is as below: </p>
 
-<p><img style="width:70%;" alt="Filled batch for voxel-wise inference" src="../../img/snpm13/snpm13_pet_ex_voxelwise_fwe05.png" border="0"></p>
+<p><img style="width:70%;" alt="Filled batch for voxel-wise inference" src="../../img/snpm13/snpm13petexvoxelwisefwe05.png" border="0"></p>
 
-<p>The start button in SPM batch window is now green <img src="../../img/snpm13/SPM_batch_play.png" border="0">, click on it to run the job.</p>
+<p>The start button in SPM batch window is now green <img src="../../img/snpm13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
 
 <p>SnPM will then plot a MIP of those voxels surviving the SnPM critical threshold.</p>
 
-<p><img style="width:70%;" alt="Results: MIP and et.c." src="../../img/snpm13/snpm13_pet_ex_voxelwise_fwe05_results.png?maxWidth=500&amp;maxHeight=860" border="0"></p>
+<p><img style="width:70%;" alt="Results: MIP and et.c." src="../../img/snpm13/snpm13petexvoxelwisefwe05results.png?maxWidth=500&amp;maxHeight=860" border="0"></p>
 
 <p style="text-align: left;">The figure is titled "SnPM{Pseudo-t}"" to remind you that the variance has been smoothed and hence the intensity values listed don't follow a t distribution. The tabular listing indicates that there are 70 voxels significant at the 0.05 level; the maximum pseudo-<em>t</em> is 6.58 and it occurs at (-38, -28, 48). </p>
 
@@ -286,13 +286,13 @@ notitle: true
 
 <p style="text-align: left;">Finally, the Batch window is as below: </p>
 
-<p><img style="width:70%;" alt="Filled batch for cluster-wise inference" src="../../img/snpm13/snpm13_pet_ex_clusterwise_formpseudoT25_fwe05.png" border="0"></p>
+<p><img style="width:70%;" alt="Filled batch for cluster-wise inference" src="../../img/snpm13/snpm13petexclusterwiseformpseudoT25fwe05.png" border="0"></p>
 
-<p>The start button in SPM batch window is now green <img src="../../img/snpm13/SPM_batch_play.png" border="0">, click on it to run the job.</p>
+<p>The start button in SPM batch window is now green <img src="../../img/snpm13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
 
 <p>SnPM will then plot a MIP of those voxels surviving the SnPM critical threshold.</p>
 
-<p><img style="width:70%;" alt="Results: MIP and et.c." src="../../img/snpm13/snpm13_pet_ex_clusterwise_formpseudoT25_fwe05_results.png?maxWidth=500&amp;maxHeight=860" border="0"></p>
+<p><img style="width:70%;" alt="Results: MIP and et.c." src="../../img/snpm13/snpm13petexclusterwiseformpseudoT25fwe05results.png?maxWidth=500&amp;maxHeight=860" border="0"></p>
 
 <p style="text-align: left;">Now we see that we have identified one 561 voxel cluster as being significant at 0.005 (all significances must be multiples of 1 over the number of permutations, so this significance is really 1/216=0.0046). This means that when pseudo-<em>t</em> images from all the permutations were thresholded at 2.5, no permutation had a maximum cluster size greater than 561. </p>
 
