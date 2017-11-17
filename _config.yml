@@ -1,7 +1,9 @@
 name: NISOx
 url: http://nisox.org
 
-exclude: [bibble, _data_bib, README.md, Makefile, cleanupscript.py, _data_yml]
+exclude: [bibble, _data_bib, README.md, Makefile, cleanupscript.py, _data]
+
+include: [img, files]
 
 # colorize code snippets with the pygments module
 highlighter: rouge
@@ -33,7 +35,7 @@ navigation:
     - title: Research
       link: /Research
     - title: Publications
-      link: /publications.html
+      link: /Publications
     - title: Presentations
       link: /presentations
     - title: Software
