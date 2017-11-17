@@ -11,7 +11,7 @@ Listed here are all collaborators, former members and current members of the <b>
   <h3>{{ role.name }}</h3>
   <hr>
   <dl class="people">
-  {% for item in site.data.people %}
+  {% for item in site.data.yml.people %}
     {% assign person = item[1] %}
     {% if person.role == role.key %}
       <dt class="person">

@@ -23,7 +23,7 @@ import shutil
 PATH = os.path.dirname(os.path.abspath(__file__))
 
 # Read Research pages file
-with open(os.path.join(PATH, "_data","resPages.yml"), 'r') as stream:
+with open(os.path.join(PATH, "_data", "yml","resPages.yml"), 'r') as stream:
     #Load in the research page structure.
     resPages = yaml.load(stream)
 
@@ -34,7 +34,7 @@ with open(os.path.join(PATH, "_data","resPages.yml"), 'r') as stream:
                 shutil.rmtree(os.path.join(PATH, "research", pageObj['name']))
 
 # Read conferences file
-with open(os.path.join(PATH, "_data","conferences.yml"), 'r') as stream:
+with open(os.path.join(PATH, "_data", "yml","conferences.yml"), 'r') as stream:
     #Load in the research page structure.
     conferences = yaml.load(stream)
 
@@ -42,3 +42,7 @@ with open(os.path.join(PATH, "_data","conferences.yml"), 'r') as stream:
     for conference in conferences:
         if os.path.isdir(os.path.join(PATH, 'presentations', conference['name'])):
                 shutil.rmtree(os.path.join(PATH, "presentations", conference['name']))
+
+# Delete compiled python file.
+if os.path.isfile(os.path.join(PATH, 'bibble', 'bibble.pyc')):
+    os.remove(os.path.join(PATH, 'bibble', 'bibble.pyc'))
