@@ -20,7 +20,7 @@ title: "Software: SwE"
 
 <p>Here, we assume that the SwE toolbox has already been downloaded and installed correctly (see the <a href="User_guide">manual</a> if it is not the case).</p>
 
-<p>To start the toolbox, type <code>swe</code> in the MATLAB command window and the following GUI should appear:<img border="0" alt="swe_gui.png" src="../../img/swe/swe_gui.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p>To start the toolbox, type <code>swe</code> in the MATLAB command window and the following GUI should appear:<img border="0" alt="swegui.png" src="../../img/swe/swe_gui.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
 <p>Press the "Specify model" button of the SwE GUI and the following batch system with the SwE module "Data &amp; Design" already loaded should appear:</p>
 
@@ -82,17 +82,17 @@ title: "Software: SwE"
 
 <p>The remaining fields are similar to a classic SPM batch job and can be let unchanged for our example. The batch window should then look like this:</p>
 
-<p><img border="0" alt="Bath final" src="../../img/swe/batch_final.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p><img border="0" alt="Bath final" src="../../img/swe/batchfinal.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
 <p>Finally, push the green "Run Batch" button. An <code>SwE.mat</code> file containing all the information related to the data and design should then be created in the specified working directory and the following window showing the design matrix should appear:</p>
 
-<p><img border="0" alt="Design matrix" src="../../img/swe/design_matrix.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p><img border="0" alt="Design matrix" src="../../img/swe/designmatrix.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
 <p>To start estimating the parameters of this specified model, press the button "Run model" of the SwE GUI and select the <code>SwE.mat</code> file just created. The toolbox should then compute all the estimates needed for the analysis and update the <code>SwE.mat</code> file.</p>
 
 <p>Once the computation is done, press the "Results" button of the SwE GUI and select the updated <code>SwE.mat</code> file. The toolbox should then open the following SwE contrast manager allowing the test of several contrasts:</p>
 
-<p style="text-align: left;"><img border="0" alt="SwE contrast manager" src="../../img/swe/swe_contrast_manager.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p style="text-align: left;"><img border="0" alt="SwE contrast manager" src="../../img/swe/swecontrastmanager.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
 <p style="text-align: left;">In the contrast manager, press "Define new contrast", select F-contrast in the "type" section, enter the MATLAB command <code>eye(3)</code> in the "contrast" section, enter "Faces vs Baseline: Informed" in the "name" section and press the "OK" button. This contrast will reveal voxels that exhibit some form of event-related responses captured by at least one of the three basis functions.</p>
 
