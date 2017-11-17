@@ -23,7 +23,7 @@ import shutil
 PATH = os.path.dirname(os.path.abspath(__file__))
 
 # Read Research pages file
-with open(os.path.join(PATH, "_data","resPages.yml"), 'r') as stream:
+with open(os.path.join(PATH, "_data_yml","resPages.yml"), 'r') as stream:
     #Load in the research page structure.
     resPages = yaml.load(stream)
 
@@ -34,7 +34,7 @@ with open(os.path.join(PATH, "_data","resPages.yml"), 'r') as stream:
                 shutil.rmtree(os.path.join(PATH, "research", pageObj['name']))
 
 # Read conferences file
-with open(os.path.join(PATH, "_data","conferences.yml"), 'r') as stream:
+with open(os.path.join(PATH, "_data_yml","conferences.yml"), 'r') as stream:
     #Load in the research page structure.
     conferences = yaml.load(stream)
 

@@ -26,7 +26,7 @@ PATH = os.path.dirname(os.path.abspath(__file__))
 def main():
     
     # Read conferences Research page file
-    with open(os.path.join(PATH, "..", "_data","resPages.yml"), 'r') as stream:
+    with open(os.path.join(PATH, "..", "_data_yml","resPages.yml"), 'r') as stream:
         #Load in the research page structure.
         resPages = yaml.load(stream)
 
@@ -37,7 +37,7 @@ def main():
             if not os.path.isdir(os.path.join(os.path.dirname(PATH), 'Research', pageObj['name'])):
                 os.mkdir(os.path.join(os.path.dirname(PATH), 'Research', pageObj['name']))
             #Make the pages using functions in bibble.py
-            pubGen.main(os.path.join(PATH, "..", "_data","research.bib"),
+            pubGen.main(os.path.join(PATH, "..", "_data_bib","research.bib"),
                         os.path.join(PATH, "..", "_layouts","resIndvTemplate.html"),
                         pageObj)
 

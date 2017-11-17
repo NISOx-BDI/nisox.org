@@ -1,6 +1,6 @@
 #================================================================================================
 # This python script uses the templates in the layouts folder to generate all presentation
-# pages using the YAML files in the data folder.
+# pages using the YAML files in the YAML data folder.
 #
 # Author: Tom Maullin (23/10/17)
 #================================================================================================
@@ -224,18 +224,18 @@ def main():
     contextPres = dict()
 
     # Read talks bib file
-    talk_struct = getBibStruct(os.path.join(PATH, "..", "_data","talks.bib"));
+    talk_struct = getBibStruct(os.path.join(PATH, "..", "_data_bib","talks.bib"));
 
     # Read posters bib file 
-    poster_struct = getBibStruct(os.path.join(PATH, "..", "_data","posters.bib"));
+    poster_struct = getBibStruct(os.path.join(PATH, "..", "_data_bib","posters.bib"));
     
     # Read courses YAML file
-    with open(os.path.join(PATH, "..", "_data","courses.yml"), 'r') as stream:
+    with open(os.path.join(PATH, "..", "_data_yml","courses.yml"), 'r') as stream:
         #Load in the poster structure.
         courses_struct = yaml.load(stream)
         
     # Read conferences YAML file
-    with open(os.path.join(PATH, "..", "_data","conferences.yml"), 'r') as stream:
+    with open(os.path.join(PATH, "..", "_data_yml","conferences.yml"), 'r') as stream:
         #Load in the conference structure.
         conferences = yaml.load(stream)
 

@@ -9,14 +9,14 @@ BUILDARGS :=
 _site/index.html _site/wacas14/index.html:
 	jekyll build $(BUILDARGS)
 
-_includes/pubs.html: bib/pubs.bib bib/publications.tmpl
+_includes/pubs.html: _data_bib/pubs.bib _data_bib/publications.tmpl
 	$(PYTHON) mkdir.py _includes 
 	$(PYTHON) bibble/bibble.py $+ 'Publications' > $@ 
 
-presentations/index.html: _data/conferences.yml _data/talks.bib _data/posters.bib _data/courses.yml 
-	$(PYTHON) presentations/presGen.py $+ > $@
+presentations/index.html: _data_yml/conferences.yml _data_bib/talks.bib _data_bib/posters.bib _data_yml/courses.yml 
+	$(PYTHON) bibble/presGen.py $+ > $@
 
-research/index.html: _data/research.bib _data/resPages.yml
+research/index.html: _data_bib/research.bib _data_yml/resPages.yml
 	$(PYTHON) bibble/resGen.py > $@ 
 
 _site/index.html: $(wildcard *.html) _includes/pubs.html _config.yml \
