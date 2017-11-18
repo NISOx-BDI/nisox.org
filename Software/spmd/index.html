@@ -11,7 +11,7 @@ notitle: true
   <table cellspacing="0" cellpadding="0" width="100%" border="0" style="max-width: none;"> 
    <tbody> 
     <tr> 
-     <td valign="top" align="left" width="20%"><img height="162" alt="[SPMd]" hspace="9" width="180" align="left" border="0" src="../../img/spmd/SPMdCentral.gif"> </td> 
+     <td valign="top" align="left" width="20%"><img height="162" alt="[SPMd]" hspace="9" width="180" align="left" border="0" src="../../img/SPMd/SPMdCentral.gif"> </td> 
      <td valign="top" align="center" width="80%"> <h2 align="center">SPMd</h2> 
       <hr width="80%" size="4"> <h2 align="center">Statistical Parametric Mapping Diagnosis</h2> 
       <hr width="80%" size="4"> <h2 align="center">A toolbox for SPM</h2> <p align="center"><em>By Wen-Lin Luo, Hui Zhang &amp; Thomas Nichols</em> </p> </td> 
@@ -33,9 +33,9 @@ notitle: true
       <hr width="60%"> <a href="#spmd5bfix">SPMd5b bugs and fixes</a> 
       <hr width="60%"> <a href="#spmd2">SPMd2 </a> 
       <hr width="60%"> <a href="#spmd2fix">SPMd2 bugs and fixes</a> 
-      <hr width="60%"> <a href="./spmd_example">SPMd2 example for single condition</a> 
-      <hr width="60%"> <a href="./spmd_exss">SPMd2 example for multiple condition</a> 
-      <hr width="60%"> <a href="./spmd_exg">SPMd2 example for group data</a> 
+      <hr width="60%"> <a href="./spmdexample">SPMd2 example for single condition</a> 
+      <hr width="60%"> <a href="./spmdexss">SPMd2 example for multiple condition</a> 
+      <hr width="60%"> <a href="./spmdexg">SPMd2 example for group data</a> 
       <hr width="60%"> <a href="../../files/text/start.txt">SPMd99 manual</a> 
       <hr width="60%"> <a href="#thanks">Thanks</a> 
       <hr width="60%"> </td> 
@@ -120,7 +120,7 @@ notitle: true
   In addition to the main <a href="http://www.fil.ion.ucl.ac.uk/spm/dox.html">SPM documentation</a>, you are encouraged to read:
   <ul> 
    <li>The SPMd99 <a href="../../files/text/start.txt">manual page</a>, duplicated in the SPMd online help facility. </li> 
-   <li>The <a href="./spmd_example">example page</a>. </li> 
+   <li>The <a href="./spmdexample">example page</a>. </li> 
   </ul> 
   <p><strong>References</strong> </p> 
   <p>There are currently two versions of one paper available on the methods mbodied in SPMd. The published manuscript is available at the NeuroImage website (or <a href="mailto:thomas.nichols@bdi.ox.ac.uk">email</a> for a PDF), while the full version, as submitted is available freely on the web: </p> 
@@ -141,7 +141,7 @@ notitle: true
   <p>&nbsp;</p> 
   <hr> 
   <p align="left"><strong><a name="spmd5bfix">SPMd5b bugs and fixes</a></strong> </p> 
-  <p>This section describes the bugs that have been reported, along with the appropriate fixes. Updated versions of appropriate SPMd5b functions are available from our anonymous FTP server in the spmd5_updates directory: <a href="spmd5_updates">spmd5_updates</a>. </p> 
+  <p>This section describes the bugs that have been reported, along with the appropriate fixes. Updated versions of appropriate SPMd5b functions are available from our anonymous FTP server in the spmd5updates directory: <a href="spmd5updates">spmd5updates</a>. </p> 
   <p>In recent update, we change the <code>spm_get</code> used in SPM2 frequently to <code>spm_select</code> used for SPM5.The updated files are provided in the above FTP link. Brief descriptions of the fixes are provided below. </p> 
   <ul> 
    <li> <h3><a href="../../files/matlab/spmd5/spmd.m"><code>spmd.m</code></a> </h3> (2008/02/04) <br> Cleaned up special case of missing rotation/translation parameters. </li> 
@@ -152,7 +152,7 @@ notitle: true
   <hr> 
   <h2 align="left"><a name="spmd2fix">SPMd2 bugs and fixes</a></h2> 
   <p>As of November 2nd, a number of fixes to SPMd2 have been posted and the distributed release has also been updated. (And a few more on <em>Nov 4th!</em>) If you've already downloaded SPMd, you can download all of the fixes at once here: <a href="../../files/tars/051104.tar.gz">051104.tar.gz</a>. </p> 
-  <p>Brief descriptions of the fixes are provided below; we'll post more comprehensive descriptions soon! All are contained in the <a href="./spmd2_updates">spmd2_updates/</a> directory </p> 
+  <p>Brief descriptions of the fixes are provided below; we'll post more comprehensive descriptions soon! All are contained in the <a href="./spmd2updates">spmd2_updates/</a> directory </p> 
   <ul> 
    <li> <h3><a href="../../files/matlab/spmd2/spmd_stat.m"><code>spmd_stat.m</code></a> </h3> (2005/09/08) </li> 
    <li> <h3><a href="../../files/matlab/spmd2/spmd_check_registration.m"><code>spmd_check_registration.m</code></a> </h3> (2005/11/01) v1.5<br> Previously SPMd's orthogonal viewers (Model Summary and Scan Detail views) displayed images in voxel space. Now they display images in world space. </li> 

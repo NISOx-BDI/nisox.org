@@ -12,7 +12,7 @@ notitle: true
 <table style="max-width: 100%;">
   <tbody><tr>
     <td> 
-      <p>&nbsp;<img alt="SnPM_Central" border="0" src="../../img/snpm13/SnPMCentral.gif"></p>
+      <p>&nbsp;<img alt="SnPM_Central" border="0" src="../../img/SnPM13/SnPMCentral.gif"></p>
 
     </td>
     <td width="70%"> 
@@ -95,7 +95,7 @@ notitle: true
 
 <p>In the <code>SPM</code> menu, under <code>Tools</code> -&gt; <code>SnPM</code> -&gt; <code>Specify</code>, select <code>MultiSub: One Sample T test on diffs/contrasts</code></p>
 
-<img src="../../img/snpm13/SnPM13fMRIstart.png" style="width:100%;" border="0"> 
+<img src="../../img/SnPM13/SnPM13fMRIstart.png" style="width:100%;" border="0"> 
 <p>Then fill in the required fields as follows:</p>
 
 <ol>
@@ -119,9 +119,9 @@ notitle: true
 
 <p style="text-align: left;">Finally, the Batch window is as below: </p>
 
-<p><img style="width:70%;" alt="Filled batch for one-sample T" src="../../img/snpm13/SnPM13fMRIbatch.png" border="0"></p>
+<p><img style="width:70%;" alt="Filled batch for one-sample T" src="../../img/SnPM13/SnPM13fMRIbatch.png" border="0"></p>
 
-<p>The start button in SPM batch window is now green <img src="../../img/snpm13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
+<p>The start button in SPM batch window is now green <img src="../../img/SnPM13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
 
 <p>SnPM will now create the file SnPMcfg.mat. and show the Design Matrix in the Graphics window. </p>
 
@@ -129,18 +129,18 @@ notitle: true
 
 <p>In the <code>SPM</code> menu, under <code>Tools</code> -&gt; <code>SnPM</code>, select <code>Compute</code>.</p>
 
-<img src="../../img/snpm13/SnPM13fMRIcompute.png" style="width:60%;" border="0"> 
+<img src="../../img/SnPM13/SnPM13fMRIcompute.png" style="width:60%;" border="0"> 
 <p>Then fill in the required field as follows:</p>
 
 <ol>
   <li><code>SnPMcfg.mat configuration file</code>: Select the <code>SnPMcfg.mat</code> file just created. </li>
 </ol>
 
-<p>The start button in SPM batch window is now green <img src="../../img/snpm13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
+<p>The start button in SPM batch window is now green <img src="../../img/SnPM13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
 
 <p>The computation should take between 5 and 10 minutes depending on your computer.In one of the SnPM window, it will show the percentage of the completeness, and in the matlab window, the permutation step that is being performed will be listed. </p>
 
-<p><a name="NoSm_CompListing"><img alt="Computing Process" border="0" src="../../img/snpm13/computedemo2.gif" style="border: black 1px solid;"></a></p>
+<p><a name="NoSm_CompListing"><img alt="Computing Process" border="0" src="../../img/SnPM13/computedemo2.gif" style="border: black 1px solid;"></a></p>
 
 <p>Note that it shows how many minutes and seconds spent on each permutation. The number in parentheses is the percentage of time spent on variance smoothing. Since we choose no variance smoothing, this is 0%. </p>
 
@@ -148,7 +148,7 @@ notitle: true
 
 <p>In the <code>SPM</code> menu, under <code>Tools</code> -&gt; <code>SnPM</code>, select <code>Inference</code>.</p>
 
-<img src="../../img/snpm13/SnPM13fMRIinference.png" style="width:60%;" border="0"> 
+<img src="../../img/SnPM13/SnPM13fMRIinference.png" style="width:60%;" border="0"> 
 <h4>Cluster-wise inference</h4>
 
 <p>For cluster-wise inference with p &lt; 0.05 FWE corrected using a cluster-forming threshold of p &lt; 0.0001, fill in the required field as follows:</p>
@@ -166,13 +166,13 @@ notitle: true
 
 <p style="text-align: left;">Finally, the Batch window is as below: </p>
 
-<p><img style="width:70%;" alt="Filled batch for cluster-wise inference" src="../../img/snpm13/snpm13fmriexclusterwiseformp0001fwe05.png" border="0"></p>
+<p><img style="width:70%;" alt="Filled batch for cluster-wise inference" src="../../img/SnPM13/snpm13fmriexclusterwiseformp0001fwe05.png" border="0"></p>
 
-<p>The start button in SPM batch window is now green <img src="../../img/snpm13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
+<p>The start button in SPM batch window is now green <img src="../../img/SnPM13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
 
 <p>SnPM will then plot a MIP of those voxels surviving the SnPM critical threshold.</p>
 
-<p><img style="border: black 1px solid;width:70%;" alt="Results: MIP and et.c." src="../../img/snpm13/snpm13fmriexclusterwiseformp0001fwe05results.png?maxWidth=500&amp;maxHeight=860" border="0"></p>
+<p><img style="border: black 1px solid;width:70%;" alt="Results: MIP and et.c." src="../../img/SnPM13/snpm13fmriexclusterwiseformp0001fwe05results.png?maxWidth=500&amp;maxHeight=860" border="0"></p>
 
 <h4>Voxel-wise inference</h4>
 
@@ -190,13 +190,13 @@ notitle: true
 
 <p style="text-align: left;">Finally, the Batch window is as below: </p>
 
-<p><img style="width:70%;" alt="Filled batch for voxel-wise inference" src="../../img/snpm13/snpm13fmriexvoxelwisefwe05.png" border="0"></p>
+<p><img style="width:70%;" alt="Filled batch for voxel-wise inference" src="../../img/SnPM13/snpm13fmriexvoxelwisefwe05.png" border="0"></p>
 
-<p>The start button in SPM batch window is now green <img src="../../img/snpm13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
+<p>The start button in SPM batch window is now green <img src="../../img/SnPM13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
 
 <p>SnPM will then plot a MIP of those voxels surviving the SnPM critical threshold (this value is displayed at the bottom of the image and for this data set should be 7.92). </p>
 
-<p><img style="border: black 1px solid;width:70%;" alt="Results: MIP and et.c." src="../../img/snpm13/snpm13fmriexvoxelwisefwe05results.png?maxWidth=500&amp;maxHeight=860" border="0"></p>
+<p><img style="border: black 1px solid;width:70%;" alt="Results: MIP and et.c." src="../../img/SnPM13/snpm13fmriexvoxelwisefwe05results.png?maxWidth=500&amp;maxHeight=860" border="0"></p>
 
 <p>You can then use this value in SPM (in the RESULTS section, say 'No' to corrected height threshold, and then type in 7.9248 for the threshold) and take advantage of SPMs rendering routines (not available in SnPM). </p>
 
@@ -225,7 +225,7 @@ notitle: true
 
 <p>In the <code>SPM</code> menu, under <code>Tools</code> -&gt; <code>SnPM</code> -&gt; <code>Specify</code>, select <code>MultiSub: One Sample T test on diffs/contrasts</code></p>
 
-<img src="../../img/snpm13/SnPM13fMRIstart.png" style="width:100%;" border="0"> 
+<img src="../../img/SnPM13/SnPM13fMRIstart.png" style="width:100%;" border="0"> 
 <p>Then fill in the required fields as follows:</p>
 
 <ol>
@@ -248,9 +248,9 @@ notitle: true
 
 <p style="text-align: left;">Finally, the Batch window is as below: </p>
 
-<p><img style="width:70%;" alt="Filled batch for one-sample T" src="../../img/snpm13/SnPM13fMRIbatchvar.png" border="0"></p>
+<p><img style="width:70%;" alt="Filled batch for one-sample T" src="../../img/SnPM13/SnPM13fMRIbatchvar.png" border="0"></p>
 
-<p>The start button in SPM batch window is now green <img src="../../img/snpm13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
+<p>The start button in SPM batch window is now green <img src="../../img/SnPM13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
 
 <p>SnPM will now create the file SnPMcfg.mat and show the Design Matrix in the Graphics window. </p>
 
@@ -258,14 +258,14 @@ notitle: true
 
 <p>In the <code>SPM</code> menu, under <code>Tools</code> -&gt; <code>SnPM</code>, select <code>Compute</code>.</p>
 
-<img src="../../img/snpm13/SnPM13fMRIcompute.png" style="width:60%;" border="0"> 
+<img src="../../img/SnPM13/SnPM13fMRIcompute.png" style="width:60%;" border="0"> 
 <p>Then fill in the required field as follows:</p>
 
 <ol>
   <li><code>SnPMcfg.mat configuration file</code>: Select the <code>SnPMcfg.mat</code> file just created. </li>
 </ol>
 
-<p>The start button in SPM batch window is now green <img src="../../img/snpm13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
+<p>The start button in SPM batch window is now green <img src="../../img/SnPM13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
 
 <p>In the matlab window, the permutation step that is being performed will be listed. </p>
 
@@ -285,13 +285,13 @@ notitle: true
 
 <p style="text-align: left;">Finally, the Batch window is as below: </p>
 
-<p><img style="width:70%;" alt="Filled batch for voxel-wise inference" src="../../img/snpm13/snpm13fmriexvoxelwisefwe05var.png" border="0"></p>
+<p><img style="width:70%;" alt="Filled batch for voxel-wise inference" src="../../img/SnPM13/snpm13fmriexvoxelwisefwe05var.png" border="0"></p>
 
-<p>The start button in SPM batch window is now green <img src="../../img/snpm13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
+<p>The start button in SPM batch window is now green <img src="../../img/SnPM13/SPMbatchplay.png" border="0">, click on it to run the job.</p>
 
 <p>SnPM will then plot a MIP of those voxels surviving the SnPM critical threshold (this value is displayed at the bottom of the image and for this data set should be 5.09). Observe how there are both more suprathreshold voxels, and that the image is smoother.</p>
 
-<p><img style="border: black 1px solid;width:70%;" alt="Results: MIP and et.c." src="../../img/snpm13/snpm13fmriexvoxelwisefwe05resultsvar.png?maxWidth=500&amp;maxHeight=860" border="0"></p>
+<p><img style="border: black 1px solid;width:70%;" alt="Results: MIP and et.c." src="../../img/SnPM13/snpm13fmriexvoxelwisefwe05resultsvar.png?maxWidth=500&amp;maxHeight=860" border="0"></p>
 
 <p>Very important!!! This is <em>not</em> a t image. So you <em>cannot</em> apply this threshold to a t image in SPM. You can, however, create overlay images with the following: </p>
 
