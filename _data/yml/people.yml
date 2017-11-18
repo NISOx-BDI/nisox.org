@@ -46,7 +46,7 @@ sam:
 
 han: 
     display_name: Han Bossier
-    image: "../img/people/HanBossier.jpg"
+    image: "../img/people/hanbossier.jpg"
     role: grad
     bio: |
         Han first graduated as a master of science in experimental psychology at Ghent University. He then obtained a master of science in Statistical Data Analysis at the same university. During this period, he did an internship on data-analytical stability of fMRI results. Furthermore, he worked on fitting Probabilistic Index Models on very large datasets. Currently, he is a PhD student at the department of Data Analysis at Ghent University. As his interests grew towards methodological research in neuroscience, he now focusses on meta-analytical models and procedures in fMRI data analysis. He tries to incorporate his findings and recommendations in a broader framework of reproducibility and reliability of neuroscience.
