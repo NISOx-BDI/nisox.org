@@ -57,8 +57,8 @@ title: "Software: FDR"
 	path('/my/path/spm_fdr',path)
       </kbd>        </pre> 
    <kbd></kbd> 
-   <p>Please note changes to <tt>spm_VOI.m</tt> as of September 30, 2002. See <a href="../../files/text/Bug3.txt">this email</a>. Thanks to Ahmed Toosy for reporting this problem. </p> Download: 
-   <a href="../../files/tars/spm_fdr.tar.gz">spm_fdr.tar.gz</a> (21KB) 
+   <p>Please note changes to <tt>spm_VOI.m</tt> as of September 30, 2002. See <a href="../../files/Text/Bug3.txt">this email</a>. Thanks to Ahmed Toosy for reporting this problem. </p> Download: 
+   <a href="../../files/Tars/spmfdr.tar.gz">spm_fdr.tar.gz</a> (21KB) 
    <p>Files: </p> 
    <menu> 
     <li><a href="../../files/Matlab/FDR/spmucFDR.m"><tt>spm_uc_FDR.m</tt></a>&nbsp;<br> This new function is the core of the FDR calculations. Based on a statistic image, it finds the FDR threshold for a given q; q is the upper bound on the expected FDR, and can be thought of as 'alpha'. </li> 
@@ -68,13 +68,13 @@ title: "Software: FDR"
     <li><a href="../../files/Matlab/FDR/spmgetSPM.m"><tt>spm_getSPM.m</tt></a><br> This function required minor changes to pass on information about the (mapped) statistic image and the mask used. Also, it now asks for what type of corrected p-value (FWE or FDR) instead of just yes-no. <p>&nbsp;</p> </li> 
     <li><a href="../../files/Matlab/FDR/spmP.m"><tt>spm_P.m</tt></a>, <a href="../../files/Matlab/FDR/spmPBonf.m"><tt>spm_P_Bonf.m</tt></a>, <a href="../../files/Matlab/FDR/spmPRF.m"><tt>spm_P_RF.m</tt></a>, <a href="../../files/Matlab/FDR/spmuc.m"><tt>spm_uc.m</tt></a>, <a href="../../files/Matlab/FDR/spmucBonf.m"><tt>spm_uc_Bonf.m</tt></a>, <a href="../../files/Matlab/FDR/spmucRF.m"><tt>spm_uc_RF.m</tt></a><br> This functions are a part of recent changes to the SPM code, and, as such, can be installed in your master SPM99 directory. These functions are not specifically FDR-related, but the FDR code assumes the presence of these updated files. </li> 
    </menu> See this 
-   <a href="../../files/text/betacore.txt">note</a> on a bug fix to Matlab core function 
+   <a href="../../files/Text/betacore.txt">note</a> on a bug fix to Matlab core function 
    <tt>betainc</tt>/
    <tt>betacore.</tt> The symptom is that SPM hangs when it's determing FDR p-values. 
    <p><sup>*</sup>This tar file includes new modifications to SPM that were released June 28, 2001, in the form of the last six functions listed above. These modifications modify the (FWE) corrected p-value procedures to always take the minimum of random field and Bonferroni results. As released, SPM99 only gives random field p-values and thresholds even if Bonferroni results are more powerful. This is a minor change will, at most, reduce corrected p-values and thresholds in certain situations (typically, low degrees of freedom analyses). </p> 
    <p>&nbsp;</p> 
-   <p>Changes to <tt>spm_P.m</tt> as of October 14, 2001. See <a href="../../files/text/Bug2.txt">this email</a>. </p> 
-   <p>Changes as of August 7, 2001. See <a href="../../files/text/Bug1.txt">this email</a>. </p> 
+   <p>Changes to <tt>spm_P.m</tt> as of October 14, 2001. See <a href="../../files/Text/Bug2.txt">this email</a>. </p> 
+   <p>Changes as of August 7, 2001. See <a href="../../files/Text/Bug1.txt">this email</a>. </p> 
    <br> 
    <br> 
    <h2>Article </h2> 
