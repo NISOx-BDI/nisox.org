@@ -36,7 +36,7 @@ notitle: true
       <hr width="60%"> <a href="./spmdexample">SPMd2 example for single condition</a> 
       <hr width="60%"> <a href="./spmdexss">SPMd2 example for multiple condition</a> 
       <hr width="60%"> <a href="./spmdexg">SPMd2 example for group data</a> 
-      <hr width="60%"> <a href="../../files/text/start.txt">SPMd99 manual</a> 
+      <hr width="60%"> <a href="../../files/Text/start.txt">SPMd99 manual</a> 
       <hr width="60%"> <a href="#thanks">Thanks</a> 
       <hr width="60%"> </td> 
      <td valign="top" width="3%">&nbsp;</td> 
@@ -119,7 +119,7 @@ notitle: true
   <h2><a name="dox">Documentation</a></h2> 
   In addition to the main <a href="http://www.fil.ion.ucl.ac.uk/spm/dox.html">SPM documentation</a>, you are encouraged to read:
   <ul> 
-   <li>The SPMd99 <a href="../../files/text/start.txt">manual page</a>, duplicated in the SPMd online help facility. </li> 
+   <li>The SPMd99 <a href="../../files/Text/start.txt">manual page</a>, duplicated in the SPMd online help facility. </li> 
    <li>The <a href="./spmdexample">example page</a>. </li> 
   </ul> 
   <p><strong>References</strong> </p> 
@@ -144,27 +144,27 @@ notitle: true
   <p>This section describes the bugs that have been reported, along with the appropriate fixes. Updated versions of appropriate SPMd5b functions are available from our anonymous FTP server in the spmd5updates directory: <a href="spmd5updates">spmd5updates</a>. </p> 
   <p>In recent update, we change the <code>spm_get</code> used in SPM2 frequently to <code>spm_select</code> used for SPM5.The updated files are provided in the above FTP link. Brief descriptions of the fixes are provided below. </p> 
   <ul> 
-   <li> <h3><a href="../../files/matlab/spmd5/spmd.m"><code>spmd.m</code></a> </h3> (2008/02/04) <br> Cleaned up special case of missing rotation/translation parameters. </li> 
-   <li> <h3><a href="../../files/matlab/spmd5/spmd_comp_SS.m"><code>spmd_comp_SS.m</code></a> </h3> (2008/02/04) <br> 1. when the user specified covariates are among the design matrix, hide them from the design matrix <br> 2. determine whether the visible matrix is one column or not, if it is multiple column matrix, only show the maximum value for each row. However, if it is a single column matrix (vector), do not do any change. </li> 
+   <li> <h3><a href="../../files/Matlab/SPMd5/spmd.m"><code>spmd.m</code></a> </h3> (2008/02/04) <br> Cleaned up special case of missing rotation/translation parameters. </li> 
+   <li> <h3><a href="../../files/Matlab/SPMd5/spmdcompSS.m"><code>spmd_comp_SS.m</code></a> </h3> (2008/02/04) <br> 1. when the user specified covariates are among the design matrix, hide them from the design matrix <br> 2. determine whether the visible matrix is one column or not, if it is multiple column matrix, only show the maximum value for each row. However, if it is a single column matrix (vector), do not do any change. </li> 
   </ul> 
   <p align="right"><a href="#top">...to top</a> </p> 
   <p>&nbsp;</p> 
   <hr> 
   <h2 align="left"><a name="spmd2fix">SPMd2 bugs and fixes</a></h2> 
-  <p>As of November 2nd, a number of fixes to SPMd2 have been posted and the distributed release has also been updated. (And a few more on <em>Nov 4th!</em>) If you've already downloaded SPMd, you can download all of the fixes at once here: <a href="../../files/tars/051104.tar.gz">051104.tar.gz</a>. </p> 
+  <p>As of November 2nd, a number of fixes to SPMd2 have been posted and the distributed release has also been updated. (And a few more on <em>Nov 4th!</em>) If you've already downloaded SPMd, you can download all of the fixes at once here: <a href="../../files/Tars/051104.tar.gz">051104.tar.gz</a>. </p> 
   <p>Brief descriptions of the fixes are provided below; we'll post more comprehensive descriptions soon! All are contained in the <a href="./spmd2updates">spmd2_updates/</a> directory </p> 
   <ul> 
-   <li> <h3><a href="../../files/matlab/spmd2/spmd_stat.m"><code>spmd_stat.m</code></a> </h3> (2005/09/08) </li> 
-   <li> <h3><a href="../../files/matlab/spmd2/spmd_check_registration.m"><code>spmd_check_registration.m</code></a> </h3> (2005/11/01) v1.5<br> Previously SPMd's orthogonal viewers (Model Summary and Scan Detail views) displayed images in voxel space. Now they display images in world space. </li> 
-   <li> <h3><a href="../../files/matlab/spmd2/spmd_MD.m"><code>spmd_MD.m</code></a> </h3> (2005/11/01) v1.3<br> Model detail window now displays current voxel in both voxels (voxel space) and mm (world space). </li> 
-   <li> <h3><a href="../../files/matlab/spmd2/spmd_MD.m"><code>spmd_MD.m</code></a> </h3> (2005/11/01) v1.3<br> Model detail window now displays current voxel in both voxels (voxel space) and mm (world space). </li> 
-   <li> <h3><a href="../../files/matlab/spmd2/spmd_project_vol.m"><code>spmd_project_vol.m</code></a> </h3> (2005/11/01) v1.1<br> New function; supports the viewing of MIP's in the orthogonal viewers (Model Summary and Scan Detail views). </li> 
-   <li> <h3><a href="../../files/matlab/spmd2/spmd_comp_MS.m"><code>spmd_comp_MS.m</code></a> </h3> (2005/11/01) v1.10<br> Minor code change; should have no impact. </li> 
-   <li> <h3><a href="../../files/matlab/spmd2/spmd_orthviews.m"><code>spmd_orthviews.m</code></a> </h3> (2005/11/01) v1.6<br> Several important bug fixes regarding the "right-click jump to Model Detail": This didn't used to work in the Scan Detail view, but now it does; the voxel viewed in Model Detail was actually the voxel <em>previously</em> clicked; this lag has now been fixed. </li> 
-   <li> <h3><a href="../../files/matlab/spmd2/spmd_SS.m"><code>spmd_SS.m</code></a> </h3> (2005/11/01) v1.15<br> Moved some computation to spmd_comp_SS.m; improved naming and ballon help. <p>&nbsp;</p> </li> 
-   <li> <h3><a href="../../files/matlab/spmd2/spmd.m"><code>spmd.m</code></a> </h3> (2005/11/01) v1.3<br> Minor typos and corrections to ballon help text.<br> (2005/11/04) v1.4<br> Now simply assumes that results are in current directory, so no need to select SPM.mat file (multiple times).<br> (2007/06/05) v1.5<br> Double checking whether there is rotation and shift parameters exist </li> 
-   <li> <h3><a href="../../files/matlab/spmd2/spmd_SD.m"><code>spmd_SD.m</code></a> </h3> (2005/11/04) v1.3<br> Tiny change: Default window on residuals is now [-3,3], instead of [-5,5].<br> <br> </li> 
-   <li> <h3><a href="../../files/matlab/spmd2/spmd_comp_SS.m"><code>spmd_comp_SS.m</code></a> </h3> (2005/11/01) v1.14<br> Scan Summary computation now supports variables of no interest. Realignment parameter sought now corresponds to SPM2 naming convention. Moved some computation from spmd_SS.m.<br> (2005/11/03) v1.15<br> Major bugs in v1.14!! Now should work with all possible fMRI and non-fMRI designs. (Trouble was in code that figures out which columns to show in the Scan Summary predictor plot).<br> (2005/11/04) v1.16<br> In some settings, after selecting regression parameters the entire SPMd UI would vanish! Fixed <br> (2006/09/28) v1.17<br> Detect whether the user specified covariates exist before we do something for scan summary. </li> 
+   <li> <h3><a href="../../files/Matlab/SPMd2/spmdstat.m"><code>spmd_stat.m</code></a> </h3> (2005/09/08) </li> 
+   <li> <h3><a href="../../files/Matlab/SPMd2/spmdcheckregistration.m"><code>spmd_check_registration.m</code></a> </h3> (2005/11/01) v1.5<br> Previously SPMd's orthogonal viewers (Model Summary and Scan Detail views) displayed images in voxel space. Now they display images in world space. </li> 
+   <li> <h3><a href="../../files/Matlab/SPMd2/spmdMD.m"><code>spmd_MD.m</code></a> </h3> (2005/11/01) v1.3<br> Model detail window now displays current voxel in both voxels (voxel space) and mm (world space). </li> 
+   <li> <h3><a href="../../files/Matlab/SPMd2/spmdMD.m"><code>spmd_MD.m</code></a> </h3> (2005/11/01) v1.3<br> Model detail window now displays current voxel in both voxels (voxel space) and mm (world space). </li> 
+   <li> <h3><a href="../../files/Matlab/SPMd2/spmdprojectvol.m"><code>spmd_project_vol.m</code></a> </h3> (2005/11/01) v1.1<br> New function; supports the viewing of MIP's in the orthogonal viewers (Model Summary and Scan Detail views). </li> 
+   <li> <h3><a href="../../files/Matlab/SPMd2/spmdcompMS.m"><code>spmd_comp_MS.m</code></a> </h3> (2005/11/01) v1.10<br> Minor code change; should have no impact. </li> 
+   <li> <h3><a href="../../files/Matlab/SPMd2/spmdorthviews.m"><code>spmd_orthviews.m</code></a> </h3> (2005/11/01) v1.6<br> Several important bug fixes regarding the "right-click jump to Model Detail": This didn't used to work in the Scan Detail view, but now it does; the voxel viewed in Model Detail was actually the voxel <em>previously</em> clicked; this lag has now been fixed. </li> 
+   <li> <h3><a href="../../files/Matlab/SPMd2/spmdSS.m"><code>spmd_SS.m</code></a> </h3> (2005/11/01) v1.15<br> Moved some computation to spmd_comp_SS.m; improved naming and ballon help. <p>&nbsp;</p> </li> 
+   <li> <h3><a href="../../files/Matlab/SPMd2/spmd.m"><code>spmd.m</code></a> </h3> (2005/11/01) v1.3<br> Minor typos and corrections to ballon help text.<br> (2005/11/04) v1.4<br> Now simply assumes that results are in current directory, so no need to select SPM.mat file (multiple times).<br> (2007/06/05) v1.5<br> Double checking whether there is rotation and shift parameters exist </li> 
+   <li> <h3><a href="../../files/Matlab/SPMd2/spmdSD.m"><code>spmd_SD.m</code></a> </h3> (2005/11/04) v1.3<br> Tiny change: Default window on residuals is now [-3,3], instead of [-5,5].<br> <br> </li> 
+   <li> <h3><a href="../../files/Matlab/SPMd2/spmdcompSS.m"><code>spmd_comp_SS.m</code></a> </h3> (2005/11/01) v1.14<br> Scan Summary computation now supports variables of no interest. Realignment parameter sought now corresponds to SPM2 naming convention. Moved some computation from spmd_SS.m.<br> (2005/11/03) v1.15<br> Major bugs in v1.14!! Now should work with all possible fMRI and non-fMRI designs. (Trouble was in code that figures out which columns to show in the Scan Summary predictor plot).<br> (2005/11/04) v1.16<br> In some settings, after selecting regression parameters the entire SPMd UI would vanish! Fixed <br> (2006/09/28) v1.17<br> Detect whether the user specified covariates exist before we do something for scan summary. </li> 
   </ul> 
   <hr> 
   <h2><a name="thanks">Thanks</a></h2> 
