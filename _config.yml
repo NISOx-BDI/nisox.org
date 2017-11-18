@@ -3,8 +3,6 @@ url: http://nisox.org
 
 exclude: [bibble, _data_bib, README.md, Makefile, cleanupscript.py, _data]
 
-include: [img, files]
-
 # colorize code snippets with the pygments module
 highlighter: rouge
 
