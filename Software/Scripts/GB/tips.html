@@ -1,0 +1,379 @@
+---
+layout: default
+title: "GB: Tips"
+notitle: True
+---
+
+
+<div class="column-1"><div class="column-1-content">
+                            
+                                
+                                    
+
+<!-- $Id: GBtips.html,v 1.14 2000/02/03 03:17:04 nicholst Exp $	 -->
+<h3 align="center">GB: A Gradebook for Splus</h3>
+
+<p>&nbsp;</p>
+
+<center> 
+  <h4><a href="./">Introduction</a> | <a href="./ex">Examples</a> | Tips </h4>
+
+  <table style="max-width: 100%;">
+    <tbody>
+      <tr>
+        <td> 
+          <hr> 
+          <p>&nbsp;</p>
+
+<a name="Top"></a>           <table cellspacing="0" cols="2" cellpadding="10" width="100%" border="0" style="max-width: none;">
+            <tbody>
+              <tr>
+                <td valign="top" width="15%" bgcolor="#afafaf"><a href="#QT1">Listing Multiple Sections</a>                   <p><a href="#Save">Saving to a File</a> </p>
+
+                  <p><a href="#rost2tab">Converting Rosters to Datafiles</a> </p>
+
+                  <p><a href="#Sum">Summaries</a> </p>
+
+                  <p><a href="#Oops">Uh-oh!</a> </p>
+
+                  <p><a href="#Weird">General Weirdness</a> </p>
+
+                  <p><a href="#Andrew">Private Grade Home</a> </p>
+
+                  <p><a href="#NewGdTyp">Creating New Grade Types</a> </p>
+
+                  <p>&nbsp;</p>
+
+                </td>
+                <td valign="top" width="85%"><a name="QT1"></a>                   <h4>Listing Multiple Sections </h4>
+
+                  <hr> If you want to list all sections in a class, you just leave out the section letter... 
+                  <dl>
+                    <dd> 
+                      <kbd>GBget(202)</kbd>
+                    </dd>
+                  </dl>
+ and you'll get all sections in the class.                   <p>But if you TA two different sections and just want to list just your two sections, you can just supply a string of desired section letters... </p>
+
+                  <dl>
+                    <dd> 
+                      <kbd>GBget(202,"AF")</kbd>
+                    </dd>
+                  </dl>
+ to get sections A and F.                   <p align="right"><a href="#Top">...to the top</a> </p>
+
+                  <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Save"></a>                   <h4>Saving a Gradebook to a file </h4>
+
+                  <hr> While 
+                  <kbd>GBget</kbd>
+ can be used to display the gradebook, it can be also used to save it to a file...                   <dl>
+                    <dd><pre> 
+&gt; GBget(202,"A",File="202A.txt")
+              Sec H1 L1 L2 L3 
+    Smith.Joe   F 86  1  1  1
+    Adams.Sue   F 74  1  1  1
+      Wu.Jack   F 91  1  1  1
+Neyman.Marcus   F 72 NA  1  0
+</pre>
+                    </dd>
+                  </dl>
+ The gradebook is still displayed <em>as well as</em> written to a file.                   <p align="right"><a href="#Top">...to the top</a> </p>
+
+                  <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="rost2tab"></a>                   <h4>Converting rosters to datafiles </h4>
+
+                  <hr> The function <a href="./ex/#Ex1ez"> 
+                  <kbd>ezGBcreate</kbd>
+</a>can automatically create grade books based on comma-separated datafiles from the registrar's <a href="https://esprit.as.cmu.edu/grades/">electronic grading website</a>. Unfortunately, grad students can only get pretty-formatted rosters (after getting "proxy" access). This tip is about converting the rosters to the datafiles with the shell script                   <kbd>rost2tab</kbd>
+ .                   <p>First, download this shell script <a href="../../../files/Text/rost2tab.txt"> 
+                    <kbd>rost2tab</kbd>
+</a>make it executable with </p>
+
+                  <dl>
+                    <dd><pre> 
+chmod +x rost2tab
+</pre>
+                    </dd>
+                  </dl>
+ and put it in the directory where you will work (or in your                   <kbd>~/bin/</kbd>
+ directory).                   <p>Goto the <a href="https://esprit.as.cmu.edu/grades/">electronic grading website</a> and save your rosters to a file. <em>Don't edit the file!</em> Don't edit out header information because that's where the section letter is listed (though it's OK to edit out email headers if there are any). Also, it is OK to save all sections together in one file. Let's say I saved the file in "                     <kbd>Rost.dat</kbd>
+", then I could say </p>
+
+                  <dl>
+                    <dd><pre> 
+rost2tab Rost.dat Comm.dat
+</pre>
+                    </dd>
+                  </dl>
+ The                   <kbd>Comm.dat</kbd>
+ file will not look exactly like a registrar's comma-separated datafile, as some fields are NA, but all fields that are needed for the grade book are set.                   <p>Now you are all set to automagically create the grade book with <a href="./ex/#Ex1ez"> 
+                    <kbd>ezGBcreate</kbd>
+</a>! </p>
+
+                  <p align="right"><a href="#Top">...to the top</a> </p>
+
+                  <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Sum"></a>                   <h4>Summaries </h4>
+
+                  <hr> To quickly create a stem and leaf plots of homeworks do this.. 
+                  <dl>
+                    <dd><pre> 
+&gt; stem(GBget(202,"A")$H1)
+ 
+N = 40   Median = 83
+Quartiles = 40.5, 89.5
+ 
+Decimal point is 1 place to the right of the colon
+ 
+   0 : zzzzzzzzz
+   1 :
+   2 :
+   3 :
+   4 : 01
+   5 : 4
+   6 : 356
+   7 : 249
+   8 : 033446666789
+   9 : 0011111235
+</pre>
+                    </dd>
+                  </dl>
+ The key piece here is knowing what the column name of interest is. All homeworks are "H" then the number; Labs are "L"; Exams are "E"; Finals are "F"; the section column has label "Sec".                   <p>So, for example, to see the distribution of exam 1 scores, after the GBget call above, instead of "H1" you would use "E1". </p>
+
+                  <p align="right"><a href="#Top">...to the top</a> </p>
+
+                  <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Oops"></a>                   <h4>"Did I just delete everything?" </h4>
+
+                  <hr> The S object files are kept off in Andrew land (unless 
+                  <kbd>GRADE.HOME</kbd>
+ has been set otherwise) so you can't easily screw things up from S.                   <p>If you start using a function and you realize that you are doing something wrong or that you want to abort, just hit Control-C. </p>
+
+                  <p>It is <em>always</em> OK to hit Control-C. In fact, until you see something like </p>
+
+                  <dl>
+                    <dd> 
+                      <kbd>Wrote 'GB.202.A' to '/afs/andrew/usr/tn0o/stats'.</kbd>
+                    </dd>
+                  </dl>
+ no changes have been committed to the gradebook. This is useful to remember.                   <p>If you <em>do</em> see this message, then all is not lost: A "                     <kbd>.bak</kbd>
+" file is kept. Use the <a href="./ex#Ex4a">GBrecover</a> function to get this back. (Precisely, it swaps the                     <kbd>.bak</kbd>
+ with the current version.) </p>
+
+                  <p>Alternatively, if you go to your 
+                    <kbd>GRADE.HOME</kbd>
+ directory you will find a backup file and you can manually manipuate it as follows. Look for your grade book Splus object file. It is named something like                     <kbd>GB.202.A</kbd>
+ where                     <kbd>202</kbd>
+ is your class and                     <kbd>A</kbd>
+ is your section. The backup file is named                     <kbd>GB.202.A.bak</kbd>
+ . Assuming that the current grade book is bad, swap it with your backup file like </p>
+
+                  <dl>
+                    <dd> 
+                      <kbd>cd /afs/andrew/usr/tn0o/stats<br>
+                         mv GB.202.A GB.202.A.bad<br>
+                         mv GB.202.A.bak GB.202.A</kbd>
+                    </dd>
+                  </dl>
+ Return to Splus and run                   <kbd>GBget(202,"A")</kbd>
+ to ensure that you have restored the previous version.                   <p align="right"><a href="#Top">...to the top</a> </p>
+
+                  <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Weird"></a>                   <h4>Weirdness </h4>
+
+                  <hr> If each time you enter a grade you get a double echo... 
+                  <dl>
+                    <dd><pre> 
+                                              L1
+    Abdul-Jalil,Jazaluddin.................. 0
+0
+0
+    Casaday,Jeffrey......................... 1
+1
+1
+    Chan,Susana............................. NA
+NA
+NA
+</pre>
+                    </dd>
+                  </dl>
+ ...this is because you are using Splus with the emacs (-e) option. I don't know why this happens. It doesn't seem to have any effect on the gradebook.                   <p>The solution is to not specify the -e on the command line. If you don't and you get this weirdness anyway you most likely have "Splus" aliased to "Splus -e"; the easy solution is to disable the alias with a backslash, that is, "\Splus". </p>
+
+                  <p align="right"><a href="#Top">...to the top</a> </p>
+
+                  <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Andrew"></a>                   <h4>Private Grade Homes </h4>
+
+                  <hr> By default the grade home is located on my Andrew account in a directory that only statistics faculty and grad students can access. If you are the only person who needs to access a grade file then you can simply set the S variable GRADE.HOME to whatever directory you like, but then only you will be able to view and change the grades. Using andrew's group access control facility can allow multiple Andrew user to have access to a directory. 
+                  <p>To find out how to set up andrew groups so that you and a collection of Andrew users can all use the same GRADE.HOME directory, read <a href="GBandrewgroups">this page</a> on the AFS command pts. </p>
+
+                  <p align="right"><a href="#Top">...to the top</a> </p>
+
+                  <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="NewGdTyp"></a>                   <h4>Creating New Grade Types </h4>
+
+                  <hr> When a new grade book is created there are seven types of grades: Section, Homework, Lab, Special, Exam, Final and Overall. These are determined by a function called  
+                  <kbd>DefaultGBtypes</kbd>
+ ; by creating you own version of this function you can create grade books that have different and/or additional grade types. This section outlines how to do this.                    <p><strong>Danger!!!</strong> Do not proceed unless you are comfortable with programming in Splus! If you screw up this you can create broken grade books. Proceed carefully! </p>
+
+                  <p>Here is the default 
+                    <kbd>DefaultGBtypes</kbd>
+ function. Start by copying this to a file: </p>
+
+                  <dl>
+                    <dd><pre> 
+"DefaultGBtypes"&lt;- function()
+{
+    #
+    # "Section" ***must*** be in the first row
+    #
+ 
+    #                   Type      Column    Grade    Mult
+    #                   Name    Name/Prefix  T/F      T/F
+    Types &lt;- matrix(c("Section",  "Sec",     "F",     "F", 
+		      "Homework", "H",       "T",     "T",
+		      "Lab",      "L",       "T",     "T", 
+		      "Special",  "S",       "T",     "T", 
+		      "Exam",     "E",       "T",     "T", 
+		      "Final",    "F",       "T",     "F", 
+		      "Overall",  "OVL",     "T",     "F"), 
+		    byrow = T, ncol = 4)  
+    # row names are used to index into GBtypeC list
+    dimnames(Types) &lt;- list(1:dim(Types)[1], 
+	c("Type", "ColNm", "bGrade", "bMult"))
+    Types
+}
+</pre>
+                    </dd>
+                  </dl>
+ First study this and understand what it does. In the form of a matrix of character strings, this describes everything GB needs to know about a grade. Going across columns...                    <dl>
+                    <dt>Name</dt>
+                    <dd>Name of grade displayed in menus </dd>
+                    <dt>Column Name/Prefix</dt>
+                    <dd>A letter or few letters for column names </dd>
+                    <dt>Grade</dt>
+                    <dd>T/F, always true, except for Section </dd>
+                    <dt>Multiple</dt>
+                    <dd>T/F, does the grade have multiple instantiations. </dd>
+                  </dl>
+ So the only thing you need to do is change the definition of the                   <kbd>Types</kbd>
+ variable to alter the grades available, <strong>but</strong> take care of the following things                   <menu>
+                    <li>Section must be the first row, and it cannot be altered from it's current state. </li>
+                    <li>The matrix is defined with a 
+                      <kbd>c(...)</kbd>
+ vector, take great care that there are exactly 4 elements for each row. </li>
+                    <li>It is a <em>character</em> matrix; do not forget to put quotes around the "T" and "F" (all elements for that matter). </li>
+                    <li>Multiple grades types should have single letter column names to prevent the printing of the table from taking too much room. </li>
+                    <li>Do not alter anything else in the function!!! </li>
+                  </menu>
+ Once you have made your changes, source the file in Splus and create a new grade book. Add a grade with                   <kbd>GBaddgrade</kbd>
+ and you should see your grade types. You can also look at your matrix by examining the grade book object attributes, with                   <dl>
+                    <dd><pre> 
+attributes(get(GB.202.A,GRADE.HOME))
+</pre>
+                    </dd>
+                  </dl>
+ You should see your type definition matrix listed as                   <kbd>GBtypes</kbd>
+ .                   <dl>
+                    <lh></lh>
+                  </dl>
+<strong>Extra for Experts!</strong>                   <dl>
+                    <dd>In the attributes you will also see a list 
+                      <kbd>GBtypeC</kbd>
+ consisting of vectors of column numbers; this is the <em>key</em> to the gradebook. For each row of                       <kbd>GBtypes</kbd>
+ there is one element of                       <kbd>GBtypeC</kbd>
+ ; that element lists the columns where you can find grades of a certain grade type.                       <p>For example, the second row of 
+                        <kbd>GBtypes</kbd>
+ is "Homework"; say that the second element of                         <kbd>GBtypeC</kbd>
+ was a vector                         <kbd>3 5 6 7</kbd>
+ . This means that the first homework is in the 3rd column of the grade book data.frame, the second homework is in the 5th column, and so on. If an element of                          <kbd>GBtypeC</kbd>
+ is                         <kbd>NULL</kbd>
+ or                         <kbd>numeric(0)</kbd>
+ , then there are no grades of that type. </p>
+
+                    </dd>
+                  </dl>
+ As an example of a new                   <kbd>DefaultGBtypes</kbd>
+ function, say that I wanted to make a lean and mean grade book machine, tearing out all the grade book types I didn't use. I would create the following function:                    <dl>
+                    <dd><pre> 
+"DefaultGBtypes"&lt;- function()
+{
+    #
+    # "Section" ***must*** be in the first row
+    #
+ 
+    #                   Type      Column    Grade    Mult
+    #                   Name    Name/Prefix  T/F      T/F
+    Types &lt;- matrix(c("Section",  "Sec",     "F",     "F", 
+		      "Homework", "H",       "T",     "T",
+		      "Lab",      "L",       "T",     "T"), 
+		    byrow = T, ncol = 4)  
+    # row names are used to index into GBtypeC list
+    dimnames(Types) &lt;- list(1:dim(Types)[1], 
+	c("Type", "ColNm", "bGrade", "bMult"))
+    Types
+}
+</pre>
+                    </dd>
+                  </dl>
+ This would be appropriate if I created my final grades outside of the grade book framework and there were no exams.                   <dl>
+                    <dt>Note 1</dt>
+                    <dd>Each time you re-source the original 
+                      <kbd>GdBk.S</kbd>
+ , you will overwrite your own                       <kbd>DefaultGBtypes</kbd>
+ function; you will have to re-source your own private copy of                       <kbd>DefaultGBtypes</kbd>
+ to retain the custom grade types.                       <p>&nbsp;</p>
+
+                    </dd>
+                    <dt>Note 2</dt>
+                    <dd>Once a gradebook is created with a modified grade types, the modified 
+                      <kbd>DefaultGBtypes</kbd>
+ is not needed. That means that the head TA can make her own private                       <kbd>DefaultGBtypes</kbd>
+ , create the grade books for all the sections and then the individual TAs <em>do not</em> need to make <em>any</em> alterations to their grade book functions! The altered                       <kbd>GBtypes</kbd>
+ are recorded in the grade book object and the standard                       <kbd>GdBk</kbd>
+ functions will use them. (Cool, eh?) </dd>
+                  </dl>
+                  <p align="right"><a href="#Top">...to the top</a> </p>
+
+                  <p>&nbsp;</p>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <hr> 
+          <address><!-- hhmts start -->
+ Last modified: Mon Jul 5 12:35:37 EDT 2004 <!-- hhmts end -->
+<br>
+             <a href="http://www.sph.umich.edu/~nichols">Tom Nichols</a> (<a href="mailto:thomas.nichols@bdi.ox.ac.uk">thomas.nichols@bdi.ox.ac.uk</a>)<br>
+             <a href="http://www.sph.umich.edu/">UM Biostatistics</a>             <p>&nbsp;</p>
+
+          </address>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</center>
+
+
+                                
+                                
+                            
+                        </div></div>

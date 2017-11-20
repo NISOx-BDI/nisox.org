@@ -1,0 +1,48 @@
+---
+layout: default
+title: Bootcamp
+---
+
+<div class="column-1-content">
+                            
+                                
+                                    
+
+<h4> Useful stuff for copying and pasting </h4>
+
+<ul>
+  <li>Aliases <pre>alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias zap='rm -f'
+</pre>
+  </li>
+  <li> Bash functions <pre>lsh() {
+    ls -lat "$@" | head
+}
+lsm() {
+    ls -lat "$@" | less
+}
+</pre>
+  </li>
+  <li> Special variables in Bash functions <pre>       "$0" "$@" "$1" </pre>
+  </li>
+  <li> Making a script 
+    <ol>
+      <li> Make sure you have a ~/bin directory</li>
+      <li>Make sure ~/bin directory is in your path <pre>           .profile -  export PATH="$HOME/bin:$PATH"</pre>
+      </li>
+      <li>Create your script in ~/bin: emacs ~/bin/myscript.sh</li>
+      <li>Make it excecutable <pre>            chmod +x emacs ~/bin/myscript.sh</pre>
+      </li>
+    </ol>
+
+  </li>
+</ul>
+
+
+
+                                
+                                
+                            
+                        </div>
