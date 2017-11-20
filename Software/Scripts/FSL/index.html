@@ -1,0 +1,59 @@
+---
+layout: default
+title: "FSL"
+---
+
+<div class="column-1"><div class="column-1-content">
+                            
+                                
+                                    
+
+<p>These are random bash shell scripts for FSL that I find useful. </p>
+
+<ul>
+  <li> <a href="../../../files/Bash/CompROI.sh">CompROI.sh</a><br>
+     Computes mean value in each ROI, where ROI are defined by an integer valued atlas. Can flexibly specify ROI as a single or multiple integer values. Example usage, where values 3 and 4 in the ROI atlas define the left and right hemispheres: <pre>     CompROI.sh ROItemplate "3:L_Brain 4:R_Brain" ImgList.csv Result.csv
+</pre>
+ or, can merge multiple values into a single ROI <pre>     CompROI.sh ROItemplate "3+4:Brain" ImgList.csv Result.csv
+</pre>
+  </li>
+  <li> <a href="../../../files/Bash/Dummy.sh">Dummy.sh</a><br>
+     Creates a set of dummy variables from a categorical variable; requires R.</li>
+  <li><a name="DVARS"></a><a href="../../../files/Bash/DVARS.sh">DVARS.sh</a> | Github: <a href="https://github.com/nicholst/StandardizedDVARS/blob/master/DVARS.sh">DVARS.sh</a> <br>
+     Creates a version of tsdiffana or DVARS, the standard deviation of temporal difference images. See my notes on <a href="https://figshare.com/articles/Notes_on_Standardizing_DVARs/5616877">Standardizing DVARS</a>; on the original DVARS, see <a href="http://imaging.mrc-cbu.cam.ac.uk/imaging/DataDiagnostics">Matthew Brett's Data Diagnostics</a> and <a href="http://dx.doi.org/10.1016/j.neuroimage.2011.10.018">Power et al. (2012) NeuroImage, 59(3), 2142–54</a>.<br>
+     <b>Fix</b> as of 2017/02/19 - Was computing DVARS with standard deviation, instead of root mean square by original definition; fix has at most a small impact, increasing some DVARS values. Thanks to Chris Gorgolewski for <a href="https://github.com/nipy/nipype/issues/1821#issuecomment-280821603">pointing this out</a>. </li>
+  <li> <a href="../../../files/Bash/easythreshconj.sh">easythresh_conj.sh</a><br>
+     Based on the FSL script <code>easythresh</code>, this script takes two statistic images and does a conjunction analysis, testing the 'Conjunction Null Hypothesis. The interpretation of significant regions is that there is evidence of effects in <em>both</em> contrasts tested (not just either/or). There is no assumption of independence required between the two effects tested. For more see my <a href="../../../research/ValConj/">conjunction</a> research page.</li>
+  <li><a href="https://raw.githubusercontent.com/nicholst/FSLutils/master/fsl_fdr.sh">fsl_fdr.sh</a><br>
+     Based on a zstat, tstat or randomise P-value image creates an image of 1 minus FDR-corrected P-values; optionally creates a rendering (colored blobs on a specified background image). For example, in a Feat results directory, running <pre><code>    fsl_fdr.sh stats/zstat1 mask stats/zstat1_fdrcorrp</code> </pre>
+ will produce a 1-P<sub>FDR</sub> image called zstat1_fdrcorrp in the stats directory. To additionally create an rendered image, use the <code>-rend</code> option, like <pre><code>    fsl_fdr.sh -rend example_func rendered_thresh_zstat1_fdrcorrp \
+       stats/zstat1 mask stats/zstat1_fdrcorrp</code>    </pre>
+ For 1-P images from randomise, use the <code>-1mp</code> option, as in: <pre><code>    fsl_fdr.sh -1mp results_vox_p_tstat1 mask results_vox_corrp_tstat1</code>    </pre>
+ Finally, if you've got SPM T images, and <code>$dof</code> is the degrees-of-freedom, you can use <pre><code>    fsl_fdr.sh -Tdf $dof spmT_0001 0 spmT_0001_Pfdr</code> </pre>
+ where setting the mask name to "0" has the effect of using an implicit mask (&lt;&gt;0 means in the brain). </li>
+  <li> <a href="../../../files/Bash/fslmax.sh">fslmax.sh</a><br>
+     For 1 <em>or more</em> files it prints the maximum value in the image. Very useful when used with randomise, as in<br>
+     <pre><code>fslmax.sh *corrp*nii*</code>    </pre>
+ which will show you the best 1-minus-P for each corrected P-value image.</li>
+  <li><a href="../../../files/Bash/fslstats.sh">fslstats.sh</a><br>
+     Allows you to use of <code>fslstats</code> tool with multiple files (generalization of <code>fslmax.sh</code>).</li>
+  <li><a href="../../../files/Bash/fslinfos.sh">fslinfos.sh</a><br>
+     Allows you to use of <code>fslinfo</code> tool with multiple files, creating a tabular report for the multiple files (optionally a CSV report).</li>
+  <li><a href="../../../files/Bash/PlotPow.sh">PlotPow.sh</a><a href="PlotPow_Ex.png"><br>
+     Plots the average power spectrum of a 4D volume; specifically the power spectrum is computed voxel-wise and then averaged over the brain. Has options to detrend and high-pass to examine the effects of those operations.</li>
+  <li><a name="PlotFeatMFX"></a><a href="https://raw.githubusercontent.com/nicholst/FSLutils/master/PlotFeatMFX.sh">PlotFeatMFX.sh</a> <a href="https://raw.githubusercontent.com/nicholst/FSLutils/master/PlotFeatMFX.R">PlotFeatMFX.R</a> <br>
+     This pair of companion scripts produces a plot that visualizes a one-sample mixed effects result at a given voxel. Showing the effect magnitude for each subject and the contribution of intra- and -inter-subject variance, it explains how and why Feat FLAME mixed effects results can vary from OLS. Only <code>PlotFeatMFX.sh</code> is directly called by the user, like <pre><code>PlotFeatMFX.sh Nback.gfeat 23 37 57 </code>    </pre>
+ or <pre><code>PlotFeatMFX.sh -usemm Nback.gfeat 44 -52 42</code>    </pre>
+ but of course requires <a href="http://www.r-project.org">R</a>. </li>
+ <br>
+<a href="../../../files/PDF/PlotFeatMFXEx.pdf"><img title="PlotFeatMFX.sh PDF output" alt="PlotFeatMFX.sh output" src="../../../img/FSL/PlotFeatMFXExthumb.png" vspace="0" hspace="3" border="0"></a><img title="PlotPow.sh PNG output" alt="PlotPow.sh output" src="../../../img/FSL/PlotPowExthumb.png" vspace="0" hspace="3" border="2"></a> 
+
+</ul>
+
+<br>
+<br>
+
+                                
+                                
+                            
+                        </div></div>

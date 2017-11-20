@@ -1,0 +1,35 @@
+---
+layout: default
+title: SPM Scripts & Functions
+---
+
+<div class="column-1"><div class="column-1-content">
+                            
+
+
+	<p><span style="color:red;">Please note that since 2010 I no longer update John’s Gems, and have instead integrated them into my blog <a href="http://nisox.blog.org">Neuroimaging Tips &amp; Tools</a> . Please use the <a href="https://blog.nisox.org/tag/johns-gems/">John-Gems</a> tag in the blog to find all the Gems; you may also find it useful to search by <span class="caps">SPM</span> version specific keywords as well. </span></p>
+
+
+	<p>Here are a few popular files that were embeded in old John’s Gems &amp; the blog.</p>
+
+
+	<ul>
+	<li>CorrClusTh.m – This gives you the critical cluster size threshold for a given <span class="caps">SPM</span> result.  
+	<ul>
+	<li><span class="caps">SPM2</span>: <a href="../../../files/Matlab/Blog/scripts/spm/johnsgems2/CorrClusTh2.m">CorrClusTh.m</a> </li>
+		<li><span class="caps">SPM5</span>: <a href="../../../files/Matlab/Blog/CorrClusTh5.m">CorrClusTh.m</a> </li>
+		<li><span class="caps">SPM8</span> &amp; <span class="caps">SPM12</span>: <a href="../../../files/Matlab/Blog/CorrClusTh8.m">CorrClusTh.m</a></li>
+	</ul></li>
+	</ul>
+
+
+	<h3>Bash script to generate set of 24 motion-derived regressors</h3>
+
+
+	<ul>
+	<li><a href="../../../files/Bash/mpdiffpow24.sh">mp_diffpow24.sh</a> Takes the 6-column motion parameter text file and produces a 24-column text file.  The first 6 are copies of the input (6 rigid body motion parameters), the next 6 columns are the squares of these parameters, the next 6 columns are the temporal derivatives of the motion parameters, and the final 6 columns are the squares of of the temporal derivaties.  The result is then suitable to be added as “multiple regressors” in a first level <span class="caps">SPM</span> fMRI analysis.</li>
+	</ul>
+                                
+                                
+                            
+                        </div></div>

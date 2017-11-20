@@ -1,0 +1,473 @@
+---
+layout: default
+title: "GB: Examples"
+notitle: True
+---
+
+<div class="column-1"><div class="column-1-content">
+                            
+                                
+                                    
+
+<!-- $Id: GBex1.html,v 1.12 2000/05/13 00:05:20 nicholst Exp $	 -->
+<h3 align="center">GB: A Gradebook for Splus</h3>
+
+<p>&nbsp;</p>
+
+<h4 align="center"><a href="./">Introduction</a> | <strong>Examples</strong> | <a href="./tips">Tips</a></h4>
+
+<center></center>
+<hr> 
+<p>&nbsp;</p>
+
+<p><a name="Top"></a></p>
+
+<table cellspacing="0" cols="2" cellpadding="10" width="100%" border="0" style="max-width: none;">
+  <tbody>
+    <tr>
+      <td valign="top" width="15%" bgcolor="#afafaf"><a href="#Ex1">Creating a Gradebook</a>         <p><a href="#Ex1ez">Automagically Creating a Gradebook</a> </p>
+
+        <p><a href="#Ex2a">Entering a Grade</a> </p>
+
+        <p><a href="#Ex2b">Changing a Grade</a> </p>
+
+        <p><a href="#Ex2ba">Deleting a Grade</a> </p>
+
+        <p><a href="#Ex2">Adding a Student</a> </p>
+
+        <p><a href="#Ex2c">Changing a Student's name</a> </p>
+
+        <p><a href="#Ex3">Deleting a Student</a> </p>
+
+        <p><a href="#Ex4a">Recovering a Gradebook</a> </p>
+
+        <p><a href="#Ex4b">Deleting a Gradebook</a> </p>
+
+        <p><a href="#Ex5">Printing a Gradebook</a> </p>
+
+        <p><a href="#Ex6">Calculating Final Grades</a> </p>
+
+        <p>&nbsp;</p>
+
+      </td>
+      <td valign="top" width="85%"><a name="Ex1"></a>         <h4>Creating a New Gradebook </h4>
+
+        <hr> Before you can use GB you must create a gradebook for your class and section... 
+        <dl>
+          <dd><pre> 
+&gt; GBcreate(202,"A")
+Enter new student info (blank name to end)
+ Lastname,Firstname  : Smith,Joe
+ Soc Sec (no dashes) : 123456789
+ Email id            : jsmith
+ Lastname,Firstname  : Adams,Sue
+ Soc Sec (no dashes) : 978654321
+ Email id            : sue
+ Lastname,Firstname  : Wu,Jack
+ Soc Sec (no dashes) : 010110010
+ Email id            : wujack
+ Lastname,Firstname  : 
+Wrote 'GB.202.A' to '/afs/andrew/usr/tn0o/stats'.
+NULL
+</pre>
+          </dd>
+        </dl>
+ This would create a gradebook section A of class number 202, adding the 3 students listed.         <p align="right"><a href="#Top">...to the top</a> </p>
+
+        <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Ex1ez"></a>         <h4>Creating a New Gradebook Automagically </h4>
+
+        <hr> A new program in GdBkUtils.S, 
+        <kbd>ezGBcreate</kbd>
+ , allows you to create a gradebook directly from a comma-separated course datafile. This avoids manually typing in each student's name, social security number and email. This datafile comes from the registrar's <a href="https://esprit.as.cmu.edu/grades/">electronic grading website</a>. Unfortunately only faculty can downloaded by the comma-separated file; see this <a href="./tips/#rost2tab">tip</a> on how to convert the pretty-formatted roster files (which proxy users can download) into comma-separated files for this function.         <p>It's a good idea to wait a few weeks into the semester before creating the gradebook, that way you don't have to make a lot of changes for adds and drops. </p>
+
+        <p>The comma-separated data file should have no extra blank lines nor email headers. Say your datafile is 
+          <kbd>202.dat</kbd>
+ , then you just need to specify the course number and the section... </p>
+
+        <dl>
+          <dd><pre> 
+&gt; ezGBcreate(202,"B","202.dat")
+Creating gradebook for 202 section B with following student information
+                 Name        SS       Em 
+ 1          Smith,Joe 123456789   jsmith
+ 2          Adams,Sue 978654321      sue
+ 3            Wu,Jack 010110010   wujack
+Wrote 'GB.202.B' to '/afs/andrew/usr/tn0o/stats'.
+NULL
+</pre>
+          </dd>
+        </dl>
+ This would create a gradebook section B of class number 202. Note that the information grabbed from the datafile is displayed for you to check.         <p>Also note that 
+          <kbd>202.dat</kbd>
+ could contain listings for all of the sections; you select which section you want with the second option. </p>
+
+        <p align="right"><a href="#Top">...to the top</a> </p>
+
+        <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Ex2a"></a>         <h4>Entering a grade </h4>
+
+        <hr> To enter a grade use the function 
+        <kbd>GBaddgrade</kbd>
+ . Here I have entered the lab grades of my students, 1, 0, and NA (added late).         <dl>
+          <dd><pre> 
+GBaddgrade(202,"A")
+ 
+Enter New Grade Type (0 to exit)...
+1: Homework
+2: Lab
+3: Special
+4: Exam
+5: Final
+6: Overall
+Selection: 2
+ 
+                                          L1
+     Smith,Joe........................... 1
+     Adams,Sue........................... 0
+     Wu,Jack............................. NA
+     
+Wrote 'GB.202.A' to '/afs/andrew/usr/tn0o/stats'.
+NULL
+</pre>
+          </dd>
+        </dl>
+ GB functions only allow numeric values for grades, but note that NA is a valid number.         <p> 
+          <kbd>GBaddgrade</kbd>
+ has 4 modes, selected by the           <kbd>Type</kbd>
+ option: </p>
+
+        <menu>
+          <li> 
+            <kbd>Type="new"</kbd>
+ : Default, create a new grade </li>
+          <li> 
+            <kbd>Type="del"</kbd>
+ : Remove an existing grade </li>
+          <li> 
+            <kbd>Type="fix"</kbd>
+ : Fix a grade for one or all students </li>
+          <li> 
+            <kbd>Type="inc"</kbd>
+ : Increment a grade for one or all students </li>
+        </menu>
+ In the "incrementing" mode, the entered grade is added to an existing grade. This is is useful if more than one grader has to grade a homework.         <p>The next two sections deal with the 
+          <kbd>"fix"</kbd>
+ and           <kbd>"del"</kbd>
+ modes. </p>
+
+        <p><strong>Extra for Experts!</strong> </p>
+
+        <dl>
+          <dd>If you have your grades in a numeric vector you can avoid typing in each grade by specifying the 
+            <kbd>Gds</kbd>
+ option; for example...             <dl>
+              <dd><pre> 
+GradeVec &lt;- c(100,78,34)    
+GBaddgrade(202,"A",Gds=GradeVec)
+ 
+          &gt;&gt;&gt; Getting grades from Gds option &lt;&lt;&lt;
+ 
+Enter New Grade Type (0 to exit)...
+1: Homework
+2: Lab
+3: Special
+4: Exam
+5: Final
+6: Overall
+Selection: 2
+ 
+                                          L1
+     Smith,Joe........................... 100
+     Adams,Sue........................... 78
+     Wu,Jack............................. 34
+     
+Wrote 'GB.202.A' to '/afs/andrew/usr/tn0o/stats'.
+NULL
+</pre>
+              </dd>
+            </dl>
+ The key thing is that the grades for Lab 1 are taken directly from the numeric vector, not typed in; they are displayed in the same format as when typing them in so you can check that they are correct. <em>Warning!</em> Use of this option assumes you have the correct number and order of grades!!! You can create massive errors in your grade book if you're not careful!!! </dd>
+        </dl>
+        <p align="right"><a href="#Top">...to the top</a> </p>
+
+        <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Ex2b"></a>         <h4>Fixing a grade </h4>
+
+        <hr> To fix a grade that you've already entered use the function 
+        <kbd>GBaddgrade</kbd>
+ with the         <kbd>Type="fix"</kbd>
+ option. You will be prompted to select the grade to fix and the student (or all students). Here I will fix the NA lab grade of my last student.         <dl>
+          <dd><pre> 
+&gt; GBaddgrade(202,"A",Type="fix")
+ 
+Enter Grade to Fix (0 to exit)...
+1: L1
+Selection: 1
+ 
+Enter Student Number to Fix (0 for all students)...
+1: Smith,Joe
+2: Adams,Sue
+3: Wu,Jack
+Selection: 3
+                                         (old) L1
+      Wu,Jack............................. NA  1
+ 
+Wrote 'GB.202.A' to '/afs/andrew/usr/tn0o/stats'.
+NULL
+</pre>
+          </dd>
+        </dl>
+ There is a short cut:         <kbd>GBfixgrade(...)</kbd>
+ is equivalent to         <kbd>GBaddgrade(...,Type="fix")</kbd>
+ .         <p align="right"><a href="#Top">...to the top</a> </p>
+
+        <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Ex2ba"></a>         <h4>Deleting a grade </h4>
+
+        <hr> To delete a whole grade you also use 
+        <kbd>GBaddgrade</kbd>
+ , but with the         <kbd>Type="del"</kbd>
+ option. You will be prompted to select the grade to delete. Here I will delete the first lab.         <dl>
+          <dd><pre> 
+&gt; GBaddgrade(202,"A",Type="del")
+ 
+Enter Grade to Delete (0 to exit)...
+1: L1
+2: H1
+Selection: 1
+     
+If you sure you want to delete Lab 1 (L1) enter 'YES': YES
+Wrote 'GB.202.A' to '/afs/andrew/usr/tn0o/stats'.
+NULL
+</pre>
+          </dd>
+        </dl>
+ There is a short cut:         <kbd>GBdelgrade(...)</kbd>
+ is equivalent to         <kbd>GBaddgrade(...,Type="del")</kbd>
+ .         <p align="right"><a href="#Top">...to the top</a> </p>
+
+        <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Ex2"></a>         <h4>Adding a Student </h4>
+
+        <hr> If you have to add a student after you have already created the gradebook, you use the function 
+        <kbd>GBaddstud</kbd>
+ ...         <dl>
+          <dd><pre> 
+&gt; GBaddstud(202,"A")
+Enter new student info (blank name to end)
+ Lastname,Firstname  : Neyman,Marcus
+ Soc Sec (no dashes) : 123456789
+ Email id            : cookie
+ Lastname,Firstname  : 
+Wrote 'GB.202.A' to '/afs/andrew/usr/tn0o/stats'.
+NULL
+</pre>
+          </dd>
+        </dl>
+ This new student will have         <kbd>NA</kbd>
+ s for all of his grades.         <p>Just like 
+          <kbd>GBaddgrade</kbd>
+ ,           <kbd>GBaddstud</kbd>
+ has different modes selected by the           <kbd>Type</kbd>
+ option: </p>
+
+        <menu>
+          <li> 
+            <kbd>Type="new"</kbd>
+ : Default, create a new student </li>
+          <li> 
+            <kbd>Type="del"</kbd>
+ : Remove an existing student </li>
+          <li> 
+            <kbd>Type="fix"</kbd>
+ : Change a student's name </li>
+        </menu>
+ The next two sections deal with the         <kbd>"fix"</kbd>
+ and         <kbd>"del"</kbd>
+ modes.         <p align="right"><a href="#Top">...to the top</a> </p>
+
+        <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Ex2c"></a>         <h4>Changing a Student's name </h4>
+
+        <hr> To change the name of a student you use also the function 
+        <kbd>GBaddstud</kbd>
+ but with the         <kbd>Type="fix"</kbd>
+ option...         <dl>
+          <dd><pre> 
+&gt; GBaddstud(202,"A",Type="fix")
+ 
+Enter Student to Fix (0 to exit)...
+1: Smith,Joe
+2: Adams,Sue
+3: Wu,Jack
+4: Neyman,Marcus
+Selection: 2
+Enter student name: Lastname,Firstname
+(Adams,Sue): Adams,Samuel
+Wrote 'GB.202.A' to '/afs/andrew/usr/tn0o/stats'.
+NULL
+</pre>
+          </dd>
+        </dl>
+ This will change Sue Adams to Samuel Adams, not effecting any grades.         <p>There is a short cut: 
+          <kbd>GBfixstud(...)</kbd>
+ is equivalent to           <kbd>GBaddstud(...,Type="fix")</kbd>
+ . </p>
+
+        <p align="right"><a href="#Top">...to the top</a> </p>
+
+        <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Ex4"></a>         <h4>Deleting a Student </h4>
+
+        <hr> When a student needs to be dropped from your gradebook you also use 
+        <kbd>GBaddstud</kbd>
+ , but by setting the Type option...         <dl>
+          <dd><pre> 
+&gt; GBaddstud(202,"A",Type="del")
+ 
+Enter Student to Delete (0 to exit)...
+1: Smith,Joe
+2: Adams,Sue
+3: Wu,Jack
+4: Neyman,Marcus
+Selection: 4
+Student "Neyman,Marcus" deleted.
+Wrote 'GB.202.A' to '/afs/andrew/usr/tn0o/stats'.
+NULL
+</pre>
+          </dd>
+        </dl>
+ The Type option actually takes three options, "new", "delete", and "fix". "new" is default so you never have to specify it, and "del" uniquely specifies "delete" (infact "d" would uniquely specify it).         <p>There is a short cut: 
+          <kbd>GBdelstud(...)</kbd>
+ is equivalent to           <kbd>GBaddstud(...,Type="del")</kbd>
+ . </p>
+
+        <p align="right"><a href="#Top">...to the top</a> </p>
+
+        <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Ex4a"></a>         <h4>Recovering a Grade Book </h4>
+
+        <hr> Everytime a change is made to a gradebook a copy of the previous version is kept in a 
+        <kbd>.bak</kbd>
+ object. If you accidently add, change or delete grades or students, you can get your last version of your grade book with         <kbd>GBrecover</kbd>
+ .         <dl>
+          <dd><pre> 
+&gt; GBrecover(202,"A")
+    
+Current grade book for 202 section A has 4 students and 2 grades in it
+Backup grade book for 202 section A has 4 students and 1 grades in it
+ 
+    Are you sure you want recover backup?  y
+ 
+Backup recovered (previous grade book now backup)
+</pre>
+          </dd>
+        </dl>
+ As is alluded to in the output, the current version is not removed, it is just swapped with the backup version. That way you can examine the backup with         <kbd>GBget</kbd>
+ and see if it's what you want; if it isn't you can do         <kbd>GBrecover</kbd>
+ again and you'll get the other version back.         <p align="right"><a href="#Top">...to the top</a> </p>
+
+        <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Ex4b"></a>         <h4>Deleting a Grade Book </h4>
+
+        <hr> If you accidently create a bogus grade book, or if you have a problem when you create it with <a href="#Ex1ez"> 
+        <kbd>ezGBcreate</kbd>
+</a>, you will want to destroy the grade book. Do this with the         <kbd>GBdelete</kbd>
+ command; it tell you the size of the grade book and ask for confirmation...         <dl>
+          <dd><pre> 
+&gt; GBdelete(202,"A")
+ 
+Grade book for 202 section A has 4 students and 2 grades in it
+ 
+    Are you sure you want to delete it?  y
+    
+Deleted 'GB.665.A' from '.Data.hp'.
+</pre>
+          </dd>
+        </dl>
+<em>DANGER</em> Be sure you have the right grade book; check it with         <kbd>GBget</kbd>
+ first. If you accidently delete a grade book you can get it back right away with <a href="#Ex4a">GBrecover</a>; but if a new grade book of the same name is created you might not be able to!         <p align="right"><a href="#Top">...to the top</a> </p>
+
+        <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Ex5"></a>         <h4>Printing </h4>
+
+        <hr> To print your sections grades just use the Print flag with GBget... 
+        <dl>
+          <dd> 
+            <kbd>GBget(202,"AF",Print=T)</kbd>
+          </dd>
+        </dl>
+ A temporary file,         <kbd>/tmp/202AF.txt</kbd>
+ , will be created and printed to         <kbd>smear</kbd>
+ or the default printer that you have set with the         <kbd>PRINTER</kbd>
+ environmental variable.         <p>"AF" tells GBget to get sections A and F. If no section is specified then all sections are retrieved. </p>
+
+        <p align="right"><a href="#Top">...to the top</a> </p>
+
+        <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+<a name="Ex6"></a>         <h4>Creating Final Grades </h4>
+
+        <hr> There are three functions in 
+        <kbd>GdBkUtil.S</kbd>
+ to support creation of final grades,         <kbd>DropGd</kbd>
+ will drop grades,         <kbd>MkGrd</kbd>
+ will create a final numerical grade, and         <kbd>LetrGd</kbd>
+ will assign letter grade.         <p>Unfortunately I don't have time to give them a decent write up, so here is some help: </p>
+
+        <menu>
+          <li><a href="../../../files/Text/CreateFinal.txt">Annotated script</a> of final grade creation </li>
+          <li><a href="../../../files/Text/DropGd.txt"> 
+            <kbd>DropGd</kbd>
+</a>usage </li>
+          <li><a href="../../../files/Text/MkGrd.txt"> 
+            <kbd>MkGrd</kbd>
+</a>usage </li>
+          <li><a href="../../../files/Text/LetrGd.txt"> 
+            <kbd>LetrGd</kbd>
+</a>usage </li>
+        </menu>
+ Note that in the script above, the final grades are never returned to the grade book. The final record of class grades basically becomes a local Splus object (and a text file version of the same).         <p align="right"><a href="#Top">...to the top</a> </p>
+
+        <p>&nbsp;</p>
+
+<!-- ============================================================== -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr> 
+<address><!-- hhmts start -->
+
+  <p>&nbsp;</p>
+
+</address>
+
+
+                                
+                                
+                            
+                        </div></div>

@@ -1,0 +1,91 @@
+#!/bin/csh
+#
+# Convert pretty formatted roster files to comma-separated format
+#
+# This script heavily relies on the format of the pretty-format Roster
+# file and the tab-speparated data file.  If either of these formats
+# change in the slightest, this may break. 
+#
+# $Id: rost2tab,v 1.5 2000/02/01 18:12:49 nicholst Exp nicholst $
+
+
+#
+#
+while ($#argv)
+    switch ($argv[1])
+    case -help:
+    case -*:
+	goto Usage
+	break
+    default:
+	break
+    endsw
+    shift
+end    
+
+if (($#argv == 0) || ($#argv > 2)) \
+    goto Usage
+
+set RostFn = "$1"
+if ($#argv == 2) then
+    set CommaFn  = "$2"
+endif
+
+set TmpFn = /tmp/rost2tab.$$
+
+
+# Some awk magic to determin section...
+
+awk 'BEGIN {Sec = "NA"}; /^Run Date:/ {Sec = $7}; /^[0-9]/ {print Sec}' \
+    $RostFn > $TmpFn.Sec
+
+# Extract data lines
+
+grep '^[0-9]' $RostFn > $TmpFn
+
+cut -c 1-9   $TmpFn | sed 's/[ 	]//g' > $TmpFn.ss
+cut -c 11-36 $TmpFn | awk -F, '{print $1}' > $TmpFn.lastname
+cut -c 11-36 $TmpFn | awk -F, '{print $2}' | awk '{print $1}' > $TmpFn.firstname
+cut -c 44-46 $TmpFn | sed 's/[ 	]//g' > $TmpFn.college
+cut -c 48-50 $TmpFn | sed 's/[ 	]//g' > $TmpFn.dept
+cut -c 53    $TmpFn | sed 's/[ 	]//g' > $TmpFn.GO
+cut -c 64-71 $TmpFn | sed 's/[ 	]//g' > $TmpFn.email
+cut -c 73    $TmpFn | sed 's/[ 	]//g' > $TmpFn.Midsem
+cut -c 77    $TmpFn | sed 's/[ 	]//g' > $TmpFn.Final
+cut -c 81    $TmpFn | sed 's/[ 	]//g' > $TmpFn.Def
+
+
+cut -c 1-9   $TmpFn | awk '{print "NA"}' > $TmpFn.Sem
+cut -c 1-9   $TmpFn | awk '{print "NA"}' > $TmpFn.Class
+cut -c 1-9   $TmpFn | awk '{print "NA"}' > $TmpFn.qSca
+cut -c 1-9   $TmpFn | awk '{print "NA"}' > $TmpFn.Course
+
+
+if ($?CommaFn) then
+    paste -d , $TmpFn.Sem $TmpFn.email $TmpFn.ss \
+	       $TmpFn.lastname $TmpFn.firstname \
+               $TmpFn.college $TmpFn.dept $TmpFn.Class \
+	       $TmpFn.GO $TmpFn.qSca $TmpFn.Course $TmpFn.Sec \
+               $TmpFn.Midsem $TmpFn.Final  >  $CommaFn
+else
+    paste -d , $TmpFn.Sem $TmpFn.email $TmpFn.ss \
+	       $TmpFn.lastname $TmpFn.firstname \
+               $TmpFn.college $TmpFn.dept $TmpFn.Class \
+	       $TmpFn.GO $TmpFn.qSca $TmpFn.Course $TmpFn.Sec \
+               $TmpFn.Midsem $TmpFn.Final
+endif
+
+/bin/rm -f $TmpFn $TmpFn.*
+
+exit 0
+
+
+Usage:
+
+echo "Usage: $0 RostFileNm [CommaFileNm]"
+echo "Comments:"
+echo "           Convert pretty formatted roster to comma separated file."
+echo " "
+echo "Version:   "'$Id: rost2tab,v 1.5 2000/02/01 18:12:49 nicholst Exp nicholst $'
+
+exit 1
