@@ -16,9 +16,9 @@
         <div class="container">
           <div class="header">
             <ul class="nav nav-pills pull-right">
-              {% assign shorturl = page.url | truncate: 5 %}
+              {% assign shorturl = page.url | truncate: 6 %}
               {% for item in site.navigation %}
-                {% assign url = item.link | truncate: 5 %}
+                {% assign url = item.link | truncate: 6 %}
                 <li {% if url == shorturl %}class="active"{% endif %}>
                   <a href="{{ site.base }}{{ item.link }}">
                     {{ item.title }}
