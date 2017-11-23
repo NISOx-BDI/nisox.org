@@ -170,13 +170,46 @@
   format:
     posterDaysAvailable: False
 
+- name: OHBM2006
+  displayname: OHBM 2006
+  descrip: |
+    This collection organizes posters from NISOx and NISOx collaborators at the 2006 Human Brain Mapping (HBM) conference.
+  sections:
+    talks: True
+    posters: True
+    courses: False
+  format:
+    posterDaysAvailable: False
+
+- name: OHBM2005
+  displayname: OHBM 2005
+  descrip: |
+    This collection organizes posters from NISOx and NISOx collaborators at the 2005 Human Brain Mapping (HBM) conference.
+  sections:
+    talks: True
+    posters: True
+    courses: False
+  format:
+    posterDaysAvailable: False
+
 - name: OHBM2004
   displayname: OHBM 2004
   descrip: |
     This collection organizes posters from NISOx and NISOx collaborators at the 2004 Human Brain Mapping (HBM) conference.
   sections:
-    talks: False
+    talks: True
     posters: True
+    courses: False
+  format:
+    posterDaysAvailable: False
+
+- name: ISMRM2003
+  displayname: ISMRM 2003
+  descrip: |
+    This collection organizes posters from NISOx and NISOx collaborators at the 2003 International Society for Magnetic Resonance in Medicine (ISMRM) conference.
+  sections:
+    talks: True
+    posters: False
     courses: False
   format:
     posterDaysAvailable: False

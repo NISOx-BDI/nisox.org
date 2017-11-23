@@ -1,9 +1,41 @@
 ---
 layout: default
-title: "Software: SwE"
+title: "SwE"
+notitle: True
 ---
 
-<h3> Manual </h3>
+<table cellspacing="0" cellpadding="0" width="100%" border="0" style="max-width: none;"> 
+   <tbody> 
+    <tr> 
+     <td valign="top" align="center" width="80%"> <h2 align="center">SwE: Manual</h2> 
+      
+      <h4 align="center">Sandwich Estimator Toolbox for Longitudinal & Repeated Measures Data</h4> 
+       <h4 align="center">A toolbox for SPM</h4> <p align="center"><em>By Bryan Guillaume &amp; Thomas Nichols</em> </p> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <p>&nbsp;</p> 
+ <hr> 
+
+<table cellspacing="0" cellpadding="0" width="100%" border="0" style="max-width: none;"> 
+   <tbody> 
+    <tr> 
+     <td valign="top" align="center" width="15%" bgcolor="#D3D3D3"><br> <em>This page...</em> 
+      <hr width = "60%"> <a href="./#news"> News </a>
+      <hr width="60%"> <a href="./#intro">Introduction</a>
+      <hr width="60%"> <b> Manual </b> 
+    <hr width="60%"> <a href = "./exfmri"> FMRI worked example </a>
+      <hr width="60%"> <a href = "./download"> Download </a>
+      <hr width="60%"> <a href = "./#ref"> References </a>
+      <hr width="60%"> <a href = "./#contact"> Contact </a>
+      <hr width="60%"> </td> 
+     <td valign="top" width="3%">&nbsp;</td> 
+     <td valign="top" width="82%">
+      <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * --> 
+
+
+      
+      <div align="left"> 
 
 <div class="id7-main-content">
                     
@@ -29,8 +61,10 @@ title: "Software: SwE"
 
 <p>Each stage is handled by a separate function, callable either from the command line or the SwE GUI, as described below. Interim communication between the stages is done via <code>SwE.mat</code> files, similar to <code>SPM.mat</code> files. The setup stage (<code>swe_design</code>) launches the batch system and saves the configuration information in a <code>SwE.mat</code>. Note that the filenames of the input and created images are coded into the <code>SwE.mat</code> file, so moving or deleting the images may cause issues. The computation stage (<code>swe_cp</code>) asks you to locate a <code>SwE.mat</code> file, computes the model parameters and updates the SwE.mat file. Finally the post-processing &amp; results stage (<code>swe_result_ui</code>) asks you to locate a <code>SwE.mat</code> file and launch an interface allowing you to make inferences and display the results.</p>
 
+
+</table>
 <hr>
-<h2>Getting started</h2>
+<h3>Getting started</h3>
 
 <p>Prior to using the SwE toolbox, a version of SPM8 or SPM12 must be previously installed and launched at least once. To install and launch the SwE toolbox:</p>
 
@@ -49,7 +83,7 @@ title: "Software: SwE"
 </ol>
 
 <hr>
-<h2>Data &amp; design setup</h2>
+<h3>Data &amp; design setup</h3>
 
 <p>To start specifying the data and design, press the button "Specify model" in the SwE GUI. This will call the SPM batch system, add the SwE tab to it and load the SwE module "Data &amp; Design" (see image below).</p>
 
@@ -132,12 +166,12 @@ Note that the simulations in Guillaume et al. (in submission) seems to show that
 <p>Once the model is specified, the SwE job can be run by pressing the green "Run Batch" button. The toolbox will then create a <code>SwE.mat</code> file containing all the configuration information needed for the estimation of the model parameters.</p>
 
 <hr>
-<h2>Computation of the model parameters</h2>
+<h3>Computation of the model parameters</h3>
 
 <p>To start estimating the parameters of a specified model, press the button "Run model" of the SwE GUI and select the appropriate <code>SwE.mat</code> file. The toolbox should then compute all the estimates needed for the analysis. This may take several minutes.</p>
 
 <hr>
-<h2>Post-processing &amp; display of results</h2>
+<h3>Post-processing &amp; display of results</h3>
 
 <p>Once the computation is done, press the "Results" button of the SwE GUI and select the appropriate <code>SwE.mat</code> file. The toolbox should then open a SwE contrast manager allowing the test of several contrasts. Note that the SwE interface is very similar to the interface of a classic SPM analysis and can be used in a similar way. Nevertheless, there are some differences important to note. First, as the degrees of freedom with the SwE method may vary across voxels, for each contrast, the equivalent Z-score or chi-squared-score image are displayed instead of the traditional t-score or F-score image (note that, for each contrast, the t- or F-score image is saved in the working directory alongside the degrees of freedom image). Second, as Random Field Theory inferences have not been yet validated with the SwE method, only False Discovery Rate and uncorrected inferences are currently available in the SwE toolbox.</p>
 
@@ -151,3 +185,6 @@ Note that the simulations in Guillaume et al. (in submission) seems to show that
                     </div>
                     
                 </div>
+
+                <br>
+                <br>

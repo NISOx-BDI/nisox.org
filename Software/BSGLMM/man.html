@@ -1,9 +1,38 @@
 ---
 layout: default
-title: "Software: BSGLMM"
+title: "BSGLMM"
+notitle: True
 ---
+<table cellspacing="0" cellpadding="0" width="100%" border="0" style="max-width: none;"> 
+   <tbody> 
+    <tr> 
+     <td valign="top" align="center" width="80%"> <h2 align="center">BSGLMM: Manual</h2> 
+      
+      <h4 align="center">Bayesian Spatial Generalised Linear Mixed Model</h4> 
+        <p align="center"><em>By <a href="mailto:getian107@gmail.com">Tian Ge</a>, <a href="mailto:tdjtdj@umich.edu">Tim Johnson</a> &amp; <a href="mailto:thomas.nichols@bdi.ox.ac.uk">Tom Nichols</a> </p> </td>     </tr> 
+   </tbody> 
+  </table> 
+  <p>&nbsp;</p> 
+ <hr> 
 
-<h3> User Guide </h3>
+<table cellspacing="0" cellpadding="0" width="100%" border="0" style="max-width: none;"> 
+   <tbody> 
+    <tr> 
+     <td valign="top" align="center" width="15%" bgcolor="#D3D3D3"><br> <em>This page...</em> 
+      <hr width="60%"> <a href="./#intro">Introduction</a>
+      <hr width="60%"> <b> Manual </b> 
+    <hr width="60%"> <a href = "#ex"> Example </a>
+      <hr width="60%"> <a href = "./download"> Download </a>
+      <hr width="60%"> <a href = "./#ref"> References </a>
+      <hr width="60%"> <a href = "./#contact"> Contact </a>
+      <hr width="60%"> </td> 
+     <td valign="top" width="3%">&nbsp;</td> 
+     <td valign="top" width="82%">
+      <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * --> 
+
+
+      
+      <div align="left"> 
 
 <div class="column-1-content">
                             
@@ -27,6 +56,8 @@ title: "Software: BSGLMM"
   <p>NOTE: In its current version the software only supports UNIX compatible systems and requires an NVIDIA graphics card, i.e. a CUDA capable GPU.</p> 
   <p>Download example data <a href="data_demo.dat.tar.gz">here</a> (zip-archive).<br> </p> 
   <p><br> </p> 
+
+</table>
   <h4>Installation</h4> 
   <p>Unpack the archive in a directory of your choice. You will need the latest version of GNU GCC to compile the source code.</p> 
   <p>In order to compile the code, run the <em>Makefile</em> from inside the extracted directory with</p> 
@@ -322,7 +353,7 @@ title: "Software: BSGLMM"
   <p>The probability maps for spatial and standardised spatial coefficients can be found in <em>spatCoef_&lt;NAME_OF_COVAR&gt;.nii </em>and<em> standCoef_&lt;NAME_OF_COVAR&gt;.nii</em> respectively.</p> 
   <p><em>Qhat.dat</em> and <em>Qhat2.dat</em> provide raw data for prediction and classification accuracy using an importance sampling approach (see Sec. 4.2 in the <a href="../BSGLMM">paper</a>). For example, the total prediction accuracy for a given data set is simply the number of correctly classified subjects (predicted type == true type) divided by the total number of subjejcts.</p> 
   <p><br> </p> 
-  <h4>Example Output</h4> 
+  <h4><a name = 'ex'> Example Output<a></h4> 
   <p>Below are example slices of some of the generated output files for the same slice position (voxel 34.6 40.1 50.9)</p> 
   <p><img alt="screenshot_empir_prb_type1.png" src="../../img/BSGLMM/screenshotempirprbtype1.png?maxWidth=400" width="45%" border="0"> <img alt="screenprbtype1" src="../../img/BSGLMM/screenshotprbtype1.png?maxWidth=400" width="45%" border="0"></p> 
   <div style="text-align: left;">
