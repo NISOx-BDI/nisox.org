@@ -27,9 +27,9 @@ notitle: true
             {{ post.content }}
         </li>
     {% else %}
-        <li class="bloglink">
+        <li class="shortnews">
             <span class="date">{{ post.date | date_to_long_string }}</span>
-            <a href="{{ post.url }}">&raquo; {{ post.title }}</a>
+            {{post.excerpt | remove: '<p>' | remove: '</p>'}} <a href="{{ post.url }}"> ... see more.</a>
         </li>
     {% endif %}
 {% endfor %}
