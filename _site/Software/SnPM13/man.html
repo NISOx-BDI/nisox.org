@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NISOx: SnPM13 Manual</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/group.css" rel="stylesheet">
+        <link rel="alternate" type="application/atom+xml" title="Atom"
+            href="/blog/blog.xml">
+    </head>
+    <link rel="icon" 
+      type="image/jpeg" 
+      href="/img/cropped-nisox-logo.jpeg" />
+    <body>
+        <div class="container">
+          <div class="header">
+            <ul class="nav nav-pills pull-right">
+              
+              
+                
+                <li >
+                  <a href="/">
+                    Home
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/people">
+                    People
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/research">
+                    Research
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/publications">
+                    Publications
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/presentations">
+                    Presentations
+                  </a>
+                </li>
+              
+                
+                <li class="active">
+                  <a href="/Software">
+                    Software
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="https://blog.nisox.org/">
+                    Blog
+                  </a>
+                </li>
+              
+            </ul>
+            <a href="/">
+                <img src="/img/logo.png"
+                    srcset="/img/logo@2x.png 2x"
+                    alt="Awesome" id="logo">
+            </a>
+          </div>
+
+          
+          
+
+          <div class="column-1-content">
+                            
+                                
+                                    
+
+<table style="max-width: 100%;">
+  <tbody><tr>
+    <td> 
+      <p>&nbsp;<img alt="SnPM_Central" border="0" src="../../img/SnPM13/SnPMCentral.gif"></p>
+
+    </td>
+    <td width="70%"> 
+      <h2 align="center">SnPM13 Manual</h2>
+
+    </td>
+  </tr>
+</tbody></table>
+
+<h3 align="center"><a></a></h3>
+
+<p><br>
+   <a name="top"></a></p>
+
+<!--=================================================================-->
+<!-- * * * *   SnPM: STATISTICAL NONPARAMETRIC MAPPING  * * * * * * * -->
+<h2><a name="intro">SnPM: Statistical nonParametric Mapping</a> </h2>
+
+<p>The <cite>Statistical nonParametric Mapping</cite> toolbox provides an extensible framework for voxel level non-parametric permutation/randomisation tests of functional Neuroimaging experiments with independent observations. The SnPM toolbox provides an alternative to the Statistics section of SPM. SnPM uses the General Linear Model to construct pseudo <em>t</em>-statistic images, which are then assessed for significance using a standard non-parametric multiple comparisons procedure based on randomisation/permutation testing. It is most suitable for single subject PET/SPECT analyses, or designs with low degrees of freedom available for variance estimation. In these situations the freedom to use weighted locally pooled variance estimates, or variance smoothing, makes the non-parametric approach considerably more powerful than conventional parametric approaches, as are implemented in SPM. Further, the non-parametric approach is always valid, given only minimal assumptions. </p>
+
+<p>Because the appropriate permutations of the data labellings is highly dependent on the experimental design, different designs must be treated individually. This is handled within SnPM using a PlugIn architecture for "design modules". Currently, PlugIn modules are available for: </p>
+
+<ol type="i">
+  <li>SingleSub: Two Sample T test; 2 conditions, replications </li>
+  <li>SingleSub: Simple Regression (correlation); single covariate of interest </li>
+  <li>MultiSub: One Sample T test on diffs/contrasts; 1 condition, 1 scan per subject </li>
+  <li>MultiSub: Simple Regression (correlation); single covariate of interest, 1 scan per subject </li>
+  <li>MultiSub: Paired T test; 2 conditions, 1 scan per condition </li>
+  <li>MultiSub: Within Subject ANOVA; multiple scans/subject </li>
+  <li>2 Groups: Test diff of response; 2 conditions, 1 scan per condition </li>
+  <li>2 Groups: Two Sample T test; 1 scan per subject </li>
+  <li>&gt;2 Groups: Between Group ANOVA; 1 scan per subject</li>
+</ol>
+
+<p>The approach is described in full in Holmes (1994); Holmes (1996) and Nichols &amp; Holmes (2001). (See <a href="../SnPM13#dox">references</a>.) These pages give a brief overview of the methodology, and describe the software, it's installation and use. </p>
+
+<p>Statistical nonParametric Mapping refers to the enterprise of making statistical inferences on volumetric statistic images with minimal assumptions using non-parametric statistical techniques. SnPM refers to an implementation of Statistical nonParametric Mapping by Andrew Holmes and Tom Nichols. </p>
+
+<p>&nbsp;</p>
+
+<!-- * * * *   GETTING STARTED  * * * * * * * -->
+<h2><a name="start">Getting started</a> </h2>
+
+<!--=================================================================-->
+<p>First <a href="../SnPM13/distribution">download</a> the SnPM13 software alongside an <a href="http://www.fil.ion.ucl.ac.uk/spm/software/">SPM8 or SPM12b</a> installation, ensuring SPM is on the <code>MATLABPATH</code>. Extract the SnPM code from the archive and copy the <code>SnPM13</code> directory under <code>toolbox</code> in SPM. There is no need to add SnPM to the path as SnPM13 will automatically be loaded when SPM is started.</p>
+
+<h3>GUI usage</h3>
+
+<p>SnPM runs on top of the SPM Batch environment, and is loaded from within MatLab when starting SPM by typing <code>spm fmri</code> in the command window. This will start the SPM environment if not already done and load SnPM13 toolbox. </p>
+
+<h4>Launch SnPM13 from SPM Batch window</h4>
+
+<ul>
+  <li> Click on the <code>Batch</code> button in SPM main window</li>
+  <li> Click on the <code>SnPM</code> sub-menu in the SPM batch window, under the <code>SPM</code> -&gt; <code>Tools</code> menu <br>
+     <img style="width:400px;" src="../../img/SnPM13/SnPM13frombatch.png" border="0"></li>
+</ul>
+
+<h3>Batch usage</h3>
+
+<p>SnPM13 can also be used in batch mode using the <code>spm_jobman</code> function as any other SPM batch module. More info on <a href="http://en.wikibooks.org/wiki/SPM/Batch">SPM wikibooks</a>.</p>
+
+<!-- * * * *   OUTPUT FILES  * * * * * * * -->
+<h2><a name="start">Output files</a> </h2>
+
+<p>Image files generated by SnPM. (SnPM, like SPM, only implements single tailed tests. In the following image files, '+' or '-' correspond to 'positive' or 'negative' effects). </p>
+
+<ul>
+  <li><strong>snpmT+ &amp; snpmT-</strong>: Images of the statistic of interest (either t or pseduo-t if variance smoothing is used), positive or negative. The numbers (i.e. not NaN) saved in snpmT+ images are also saved in the SnPMt.mat file. </li>
+  <li><strong>lP+ &amp; lP-</strong>: Images of -log10(uncorrected non-parametric P-values, positive or negative).</li>
+  <li><strong>lP_FWE+ &amp; lP_FWE-</strong>: Images of -log10(FWE-corrected non-parametric P-values, positive or negative). Here, FWE-corrected non-parametric P-values are the proportion of the permutation distribution for the maximal statistic which exceeds the statistic image at the voxel. </li>
+  <li><strong>lP_FDR+ &amp; lP_FDR-</strong>: Images of -log10(FDR-corrected non-parametric P-values, positive or negative). </li>
+  <li><strong> beta_**** (from 0001 to p)</strong>: p images of p parameter estimates at each voxel for the correct permutation. These p parameters include all effects specified by the design matrix. </li>
+  <li><strong>ResMS</strong>: One image of residual mean square errors at each voxel. </li>
+</ul>
+
+<p>Matlab files generated by SnPM. </p>
+
+<ul>
+  <li><strong>SnPMcfg.mat</strong> contains a collection of strings and matrices that define an analysis, created by the Configuration protion of SnPM. Note that, in contrast to SPM's SPM.mat, the configuration and results variables are separated: SnPMcfg.mat has <em>only</em> configuration parameters and is <em>not</em> altered by model fitting and the Compute step; SnPM.mat (see next) contains results information. </li>
+  <li><strong>SnPM.mat</strong> contains a collection of strings and matrices that pertain to the analysis. Note that there is no duplication of variables from SnPMcfg.mat; hence essential matrices (e.g. contrast &amp; design) are in SnPMcfg.mat. Included are the number of voxels analyzed (S) and the image and voxel dimensions [V]. See <code>snpm_cp.m</code> for complete listing.</li>
+  <li><strong>XYZ.mat</strong> contains a 3 x N matrix of the x,y and z location of the voxels in SPMF in mm (usually referring the the standard anatomical space (Talairach and Tournoux 1988)} (0,0,0) corresponds to the centre of the voxel specified by ORIGIN in the *.hdr of the original and related data.</li>
+  <li><strong>BETA.mat</strong> contains a p x S matrix of the p parameter estimates at each of the S voxels for the correct permutation. These parameters include all effects specified by the design matrix.</li>
+  <li><strong>SnPMt.mat</strong> contains a 1 x S matrix of the statistic of interest (either t or pseudo-t if variance smoothing is used) supplied for all S voxels at locations XYZ.</li>
+  <li><strong>SnPMucp.mat</strong> contains a 1 x S matrix of the nonparametric P values of the statistic of interest supplied for all S voxels at locations XYZ.</li>
+</ul>
+
+ (For examples on how to run an analysis please refer to our <a href="../SnPM13/ex">PET</a> and <a href="../SnPM13/exnew">fMRI</a> examples.) 
+
+                                
+                                
+                            
+                        </div>
+                        <br>
+
+          <div class="footer">
+            <p>
+              <a href="https://www.bdi.ox.ac.uk">Oxford Big Data Institute</a>
+              at the
+              <a href="http://www.ox.ac.uk/">University of Oxford</a>
+            </p>
+          </div>
+
+        </div> <!-- /container -->
+
+        <!-- Support retina images. -->
+        <script type="text/javascript"
+            src="/js/srcset-polyfill.js"></script>
+    </body>
+</html>

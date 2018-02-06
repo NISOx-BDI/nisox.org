@@ -1,0 +1,60 @@
+To: spm@jiscmail.ac.uk
+Subject: FDR & large fixed effects analyses
+Date: Fri, 13 Jul 2001 11:30:50 -0400
+From: "Thomas E. Nichols" <nichols@umich.edu>
+
+
+Hi,
+
+If you have tried to use FDR with large fixed effects analyses and 
+had trouble with SPM/matlab hanging, please read this.
+
+
+It appears that a core Matlab 5 function, betainc, has trouble with large
+vectors in certain situations.  In particular, to create a p-value from a
+T statistic, spm_Tcdf calls betainc; when the degrees of freedom of the T
+are very large, and a large vector of T values has been submitted betainc,
+the function fails to converge.  Since there is no max-iteration check,
+the function basically falls into an infinite loop.
+
+However, Matlab 6 does not have this problem, seemingly due to
+a single line change to betainc, or, precisely, to a function that
+betainc calls, betacore.m.  Line 25 of betacore.m in ML5 reads
+
+	while any(abs(y(:)-yold(:)) > 4*eps*abs(y(:)))
+
+while line 25 of betacore.m in ML6 reads
+
+	while any(abs(y(:)-yold(:)) > 10*eps*abs(y(:)))
+
+Apparently, the convergence criterion of 4*eps is too strict, and
+just increasing to 10*eps fixes the problem.
+
+This problem has never been exposed before because SPM only determines
+p-values for a few voxels at a time, and doesn't usually convert a
+whole image of T's into p's.
+
+
+
+In conclusion:
+
+If you are running Matlab 5 and have a problem with FDR hanging with
+large df analyses, you probably need to modify betacore.m to match
+it's ML6 version.
+
+While Matlab is hung, hit control-C and see if the problem is in the
+function betacore.  If it is, Matlab will tell you the exact path to
+betacore.m; copy this file to some common matlab directory, and make
+the above change (change 4 to 10).  You then should be all set.
+
+-Tom
+
+PS: Thanks for Matthew Brett for finding this problem.
+
+
+    -- Thomas Nichols --------------------   Department of Biostatistics
+       http://www.sph.umich.edu/~nichols     University of Michigan
+       nichols@umich.edu                     1420 Washington Heights
+    --------------------------------------   Ann Arbor, MI 48109-2029
+
+

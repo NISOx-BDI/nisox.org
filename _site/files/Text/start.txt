@@ -1,0 +1,76 @@
+
+To install:
+
+        Extract spmd99b.tgz; it will create a spmd99b directory.
+	Add that directory to your Matlab path, either each time
+	with
+		addpath /my/path/to/spmd99b
+
+	or by changing your MATLABPATH environmental variable
+	(Linux/Unix)
+
+
+To Use:
+
+        FIRST NOTE:  SPMd-beta only works on models with independent
+		     errors, that is *no* low-pass/temporal-smoothing
+		     is permitted, and *no* AR(1)/intrinsic
+		     autocorrelation is permitted. 
+
+        1. Run "spmd"
+
+        2. After cd-ing into a directory with completed SPM results,
+           click 'Compute'.
+
+           'Diagnosis Statistics', 'Studentized Residuals', 'Both' ?
+
+                 It will ask you if you want to compute just
+                 diagnostics or studentized residuals or both.
+                 You can't do anything without diagnostics, but
+                 the residuals take a while to create (take a
+                 considerable amount of space, so you can skip
+                 them initially, though they are highly recommended).
+
+           'Use default (#) contrast?'
+
+                 In the matlab window a default contrast will be
+                 displayed; it will use to define a unit effect of
+                 interest (See PCT, http://www.sph.umich.edu/fni-stat/PCT);
+                 if that isn't the principal contrast of interest.
+
+                 The diagnostic images will appear in your analysis
+                 directory and a few .mat files will be created.
+
+        3. Click 'Temporal summaries'
+
+             Select the summaries you're interested in, or just click OK
+             to get them all.
+
+             Note the temporal cursor.
+
+        4. Click 'Spatial summaries'
+
+             Select the summaries you're interested in.
+
+
+        5. 'Temporal Detail'
+
+             For an interesting voxel, Right Click that voxel,
+             *or* click 'Temporal Detail' button.
+
+        6. 'Spatial Detail'
+
+             For an interesting time point, click 'Spatial Detail'.
+             This will bring up the residual images just before,
+             during and after the point of interest. (if you didn't
+             create residual images, you'll get a warning and
+             will see the raw data images instead)'
+
+
+Have fun!
+
+We're looking forward to your feedback... don't be shy!  Email us
+both at spmd-authors@umich.edu.
+
+Tom Nichols
+Wen-Lin Luo
