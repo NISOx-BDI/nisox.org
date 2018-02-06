@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NISOx: SPMd Example</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/group.css" rel="stylesheet">
+        <link rel="alternate" type="application/atom+xml" title="Atom"
+            href="/blog/blog.xml">
+    </head>
+    <link rel="icon" 
+      type="image/jpeg" 
+      href="/img/cropped-nisox-logo.jpeg" />
+    <body>
+        <div class="container">
+          <div class="header">
+            <ul class="nav nav-pills pull-right">
+              
+              
+                
+                <li >
+                  <a href="/">
+                    Home
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/people">
+                    People
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/research">
+                    Research
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/publications">
+                    Publications
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/presentations">
+                    Presentations
+                  </a>
+                </li>
+              
+                
+                <li class="active">
+                  <a href="/Software">
+                    Software
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="https://blog.nisox.org/">
+                    Blog
+                  </a>
+                </li>
+              
+            </ul>
+            <a href="/">
+                <img src="/img/logo.png"
+                    srcset="/img/logo@2x.png 2x"
+                    alt="Awesome" id="logo">
+            </a>
+          </div>
+
+          
+          
+
+          <div class="column-1-content">
+                            
+                                
+                                    
+
+<table cellspacing="0" cellpadding="0" width="100%" border="0" style="max-width: none;"> 
+   <tbody> 
+    <tr> 
+     <td valign="top" align="left" width="20%"><img height="162" alt="[SPMd]" hspace="9" width="180" align="left" border="0" src="../../img/SPMd/SPMdCentral.gif"> </td> 
+     <td valign="top" align="center" width="80%"> <h2 align="center">SPMd Example</h2> 
+      <hr width="80%" size="4">  <p align="center"><em>By Wen-Lin Luo, Hui Zhang &amp; Thomas Nichols</em> </p> </td> 
+    </tr> 
+   </tbody> 
+  </table>
+
+
+
+<p style="text-align: left;">&nbsp;</p>
+
+<hr width="100%" size="4"> <!--=================================================================-->
+<!-- N A V I G A T I O N - S I D E B A R - & - I N T R O  = = = = = = . r t ( W n-->
+
+<table id="AutoNumber1" bordercolor="#111111" cellspacing="0" cellpadding="0" width="100%" border="0" style="border-collapse: collapse; max-width: none;">
+  <tbody>
+    <tr>
+      <td align="center" width="33%"><a href="#Introduction">Introduction</a> </td>
+      <td align="center" width="33%"><a href="#The Example Data">Example Data</a> </td>
+      <td align="center" width="34%"><a href="#Manual">Manual</a> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table cellspacing="0" cols="2" cellpadding="0" width="100%" border="0" style="max-width: none;">
+  <tbody>
+    <tr>
+      <td valign="top" width="82%"><!--                                                      = = = = = = . r t ( W n m ) 
+ /                       -->
+<!--                                                      = = = = = = . r t ( W n m ) 
+ /                       -->
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2><a name="Introduction">Introduction</a></h2>
+
+<p>SPMd is a toolbox for SPM which you to establish the validity of inferences in fMRI modeling through diagnosis of linear model assumptions, <em>and</em> to characterize fMRI signal and artifacts through exploratory data analysis. It allows for models: </p>
+
+<ul>
+  <li>Single session</li>
+  <li>One or more conditions</li>
+  <li>Extra "nuisance" variables</li>
+  <li>With/without high pass filtering</li>
+  <li>With/without global scaling</li>
+</ul>
+
+<p>There is essentially one key restriction for SPMd with SPM2 (for historical reference, SPM99 limitations are also listed): </p>
+
+<ul>
+  <li>No multiple sessions</li>
+  <li>No low pass filtering (only for SPM99; n/a for SPM2) </li>
+  <li>No intrinsic correlation (only for SPM99; OK in SPM2)</li>
+</ul>
+
+<p>The reference is: Luo, W-L and Nichols T. E. Diagnosis and Exploration of Massively Univariate fMRI Models. NeuroImage,19:1014-1032, 2003. </p>
+
+<p>In this section, we analyze a single-subject block design fMRI data with the SPMd software. </p>
+
+<b>Note: We assume you already have a model for this dataset, which users need to run the SPM analysis for the data before using SPMd! We also assume you have already had realignment file (*.txt or *.dat) for the dataset! </b><br><br>
+
+<p><!-- Do we need the following part? -->
+ The aim of web page is: </p>
+
+<ul>
+  <li>Give an example to demonstrate the steps of an SPMd analysis by analyzing the fMRI data. <!--
+  <LI> Explain and illustrate the key role of exchangeability
+  <LI> Provide a bench mark analysis for validation of an SnPM installation
+-->
+</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<hr width="100%" size="3"> 
+<h2><a name="The Example Data">The Example Data </a></h2>
+
+<!--    L > E p a n a d i l s r t   h   e   o e o   x h n e b l t 
+   L > P o i e a b n h m r   n l s s f r v l d t o   f a   n M i s a-->
+<p>This data is from a study on faces and houses repetition effects in implicit and explicit memory tests. </p>
+
+<p>In this study, one volunteer participated in the experiment. Faces of different male and female faces and different style houses were presented to the subjects for 2s (?). If the picture is different than the previous one, click the thumb on the check board, otherwise click index finger on the check board . The subject was scanned during the experiment and his or her fMRI images were obtained. </p>
+
+<hr width="100%" size="3"> 
+<h2><a name="Manual">Manual</a></h2>
+
+<p>You need to register at <a href="spmdreg">this page</a> before downloading the SPMd software. </p>
+
+<ul>
+  <li>Follow the instructions on the above web page to download and install SPMd.</li>
+  <li>CDing a directory in which you save all SPM analysis results, </li>
+  <li>In Matlab, if you have SPM99 and SPM2, please type </li>
+</ul>
+
+<dl>
+  <dd><pre>&gt; SPMsel(2)</pre>
+  </dd>
+  <dd><pre>&gt; spmd</pre>
+  </dd>
+  <dd><pre>If you only have SPM2, please type</pre>
+  </dd>
+  <dd><pre>&gt;spmd 
+</pre>
+  </dd>
+</dl>
+<p>SPMd is split up into two components (1) <a href="#Compute">Compute</a> (2) <a href="#Visualization">Visualization</a>. </p>
+
+<center><img height="341" alt="SPMd Three components Page" width="310" border="1" src="../../img/SPMd/main.gif"> 
+  <p>&nbsp;</p>
+
+  <hr width="100%" size="2"> 
+  <p>First click on </p>
+
+  <dl>
+    <dd><pre><a name="Compute">Compute</a>      </pre>
+    </dd>
+  </dl>
+ There are three choices in Compute, (1) <a href="#Model Summary">Model summary</a> (2) <a href="#Scan Summary">Scan summary</a> (3) <a href="#Scan Detail">Scan detail</a>.   <p>(1) The following interface will appear after clicking on "<a name="Model Summary">Model Summary</a>" </p>
+
+  <p>&nbsp;</p>
+
+  <center><img height="341" alt="Select Model Summary Images" width="310" border="1" src="../../img/SPMd/compmodelsummary.gif"></center>
+  <p align="left">After clicking "GO!", a pop-up window will let you choose the SPM.mat file that you explore the data and diagnose the statistical analysis. </p>
+
+  <p align="center"><img height="426" width="456" border="0" src="../../img/SPMd/getspm.gif"> </p>
+
+  <p align="right"><a href="#top">...to top</a> </p>
+
+  <p>(2) The following interface will appear after clicking on "<a name="Scan Summary">Scan Summary</a>" </p>
+
+  <p align="center"><img height="340" width="312" border="0" src="../../img/SPMd/compscansummary.gif"> </p>
+
+  <p align="left">Before run "Scan Summary", the users run SPM and "Model Summary" first. After clicking "GO!", a pop-up window will let you choose the realignment file that you explore the data. If there is realignment file in the current directory, the software will do computing. </p>
+
+  <p align="center"><img height="160" width="418" border="0" src="../../img/SPMd/getrealignment1.gif"> </p>
+
+  <p align="left">If choosing "No", in the "Scan Summary" window, the time series of realignment parameters will not be shown. If choosing "Yes", a pop-up window will let you specify the realignment file </p>
+
+  <p align="center">&nbsp;<img height="426" width="456" border="0" src="../../img/SPMd/getrealignment2.gif"> </p>
+
+  <p align="right"><a href="#top">...to top</a> </p>
+
+  <p align="left">(3) The following interface will appear after clicking on "<a name="Scan Detail">Scan Detail</a>" </p>
+
+  <p align="center"><img height="340" width="312" border="0" src="../../img/SPMd/compscandetail.gif"> </p>
+
+  <p align="left">A pop-up window will let you specify a directory to save residuals' images. </p>
+
+  <p align="center"><img height="426" width="456" border="0" src="../../img/SPMd/saveresidual.gif"> </p>
+
+  <p align="left">This is a time-consuming section. It will cost 20 minutes or based on the users' computer system to finish all computing. </p>
+
+  <p align="right"><a href="#top">...to top</a> </p>
+
+  <hr width="100%" size="2"> 
+  <p>Second click on </p>
+
+<pre>	<a name="Visualization">Visualization</a>  </pre>
+  <p>There are four choices in Visualization, (1) <a href="#Vscan Summary">Scan Summary</a> (2) <a href="#VModel Summary">Model Summary</a> (3) <a href="#VModel detail">Model Detail</a> (4) <a href="#VScan Detail">Scan Detail</a>. </p>
+
+  <p align="left">(1) <a name="Vscan Summary">Scan Summary</a> </p>
+
+  <p align="center"><img height="340" width="312" border="0" src="../../img/SPMd/visualscansummary.gif"> </p>
+
+  <p align="left">Select summaries the users are interested in, or just click "GO!" get them all. This is an example for selecting all. </p>
+
+  <p align="center"><img height="698" width="652" border="0" src="../../img/SPMd/scansummary.gif"> </p>
+
+  <p align="left">The user can specify the scan number by clicking on specified point in the top 5 plots. </p>
+
+  <p align="right"><a href="#top">...to top</a> </p>
+
+  <p align="left">(2) <a name="VModel Summary">Model Summary</a> </p>
+
+  <p align="center">&nbsp;<img height="340" width="312" border="0" src="../../img/SPMd/visualmodelsummary.gif"> </p>
+
+  <p align="justify">The users have to DESELECT "Test Stat" and "Contrast" if there are not contrast and t images in the directory, otherwise, the software will crash. After selecting summaries the users are interested in, or just click "GO!" get them all. This is an example for selecting all except "Test Stat" and "Contrast". </p>
+
+  <p align="center"><img height="929" width="679" border="0" src="../../img/SPMd/modelsummary.gif"> </p>
+
+  <p align="left">(3) <a name="VModel detail">Model detail</a> </p>
+
+  <p align="left">For an interesting voxel, right click that voxel in "Model Summary" or click "Model details" button inside the "Visualization" menu, the following figure is the result. </p>
+
+  <p align="left">Before calling model detail, there should at least one spatial window opened, so that the spatial position could be specified. If both spatial window exist, this function will automatically select the spatial position in the most recently clicked spatial window. </p>
+
+  <p align="left">This figure includes 6 diagnostic plots: </p>
+
+  <ul>
+    <li> 
+      <p align="left"> Residual vs experimental predictor </p>
+
+    </li>
+    <li> 
+      <p align="left"> Residual vs global signal </p>
+
+    </li>
+    <li> 
+      <p align="left"> Absolute value of residual vs. experimental predictor </p>
+
+    </li>
+    <li> 
+      <p align="left"> Absolute value of residual vs. global signal </p>
+
+    </li>
+    <li> 
+      <p align="left"> Lag-1 serial plot </p>
+
+    </li>
+    <li> 
+      <p align="left"> Normality plot </p>
+
+    </li>
+  </ul>
+
+  <p align="left">and 2 time series plots: </p>
+
+  <ul>
+    <li> 
+      <p align="left"> Raw data, drift, and fitted data </p>
+
+    </li>
+    <li> 
+      <p align="left"> Standard residual vs horizontal line </p>
+
+    </li>
+  </ul>
+
+  <p align="left">Users can select any point in one plot, the corresponding point in other plots will be selected. </p>
+
+  <p align="center"><img height="698" width="652" border="0" src="../../img/SPMd/modeldetail.gif"> </p>
+
+  <p align="left">(4) <a name="VScan Detail">Scan Detail</a> </p>
+
+  <p align="left">For an interesting time point, click "Scan Detail". This will bring up the residual images just before, during and after the point of interest. (If you did not create residual images, you will get a warning and will see the raw data images instead). </p>
+
+  <p align="left">Before calling scan detail, scan summary window should be opened. </p>
+
+  <p align="center"><img height="929" width="679" border="0" src="../../img/SPMd/scandetail.gif"> </p>
+
+  <center> 
+    <p align="right"><a href="#top">...to top</a> </p>
+
+    <p>&nbsp;</p>
+
+    <p align="left">We are looking forward to your feedback... don't be shy! Email us both at <a href="mailto:spmd-authors@umich.edu">spmd-authors@umich.edu</a>. </p>
+
+    <hr> 
+    <ul style="text-align: left;">
+      <li>Back to <a href = "../spmd">main SPMd page</a> </li>
+    </ul>
+
+    <ul>
+      <li style="text-align: left;"> 
+        <address><em>SPMd</em> by Wenlin Luo &amp; Tom Nichols</a> </address>
+      </li>
+    </ul>
+
+    <p>&nbsp;</p>
+
+  </center>
+</center>
+
+
+                                
+                                
+                            
+                        </div>
+
+          <div class="footer">
+            <p>
+              <a href="https://www.bdi.ox.ac.uk">Oxford Big Data Institute</a>
+              at the
+              <a href="http://www.ox.ac.uk/">University of Oxford</a>
+            </p>
+          </div>
+
+        </div> <!-- /container -->
+
+        <!-- Support retina images. -->
+        <script type="text/javascript"
+            src="/js/srcset-polyfill.js"></script>
+    </body>
+</html>

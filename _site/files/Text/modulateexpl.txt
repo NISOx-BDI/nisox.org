@@ -1,0 +1,35 @@
+An  additional  step  can  be introduced to compensate for the effect of
+spatial  normalisation.  When  warping  a  series  of  images to match a
+template,   it   is  inevitable  that  volumetric  differences  will  be
+introduced  into  the  warped  images.  For  example,  if  one subject's
+temporal  lobe  has  half  the  volume of that of the template, then its
+volume  will  be  doubled  during  spatial normalisation. This will also
+result  in  a  doubling  of  the voxels labeled grey matter. In order to
+remove  this  confound,  the  spatially normalised grey matter (or other
+tissue  class)  is adjusted by multiplying by its relative volume before
+and  after  warping. If warping results in a region doubling its volume,
+then  the  correction will halve the intensity of the tissue label. This
+whole  procedure  has  the effect of preserving the total amount of grey
+matter signal in the normalised partitions.
+ 
+A   deformation  field  is  a  vector  field,  where  three  values  are
+associated  with  each  location  in  the  field.  The  field  maps from
+co-ordinates  in  the  normalised  image  back  to  co-ordinates  in the
+original  image.  The  value  of the field at co-ordinate [x y z] in the
+normalised  space  will  be  the  co-ordinate [x' y' z'] in the original
+volume.  The  gradient  of the deformation field at a co-ordinate is its
+Jacobian matrix, and it consists of a 3x3 matrix:
+   /                      \
+   | dx'/dx  dx'/dy dx'/dz |
+   |                       |
+   | dy'/dx  dy'/dy dy'/dz |
+   |                       |
+   | dz'/dx  dz'/dy dz'/dz |
+   \                      /
+ 
+The  value of dx'/dy is a measure of how much x' changes if y is changed
+by a tiny amount.
+ 
+The  determinant  of  the Jacobian is the measure of relative volumes of
+warped  and  unwarped  structures.  The  modulation step simply involves
+multiplying by the relative volumes.

@@ -1,0 +1,111 @@
+
+#
+# Put grades in local object "gb" (include social security numbers)
+#
+gb _ GBget(201,SS=T)
+
+
+
+#
+# Drop one homework, one lab; Dropped grades are replaced with
+# NAs; put this result in "gbD".
+#
+# Note that DropGd can prevent a specific grade (e.g. HW9)
+# from being dropped; see help below.
+#
+gbD _ DropGd(gb,list(H=1,L=1))
+
+
+#
+# Make final (Overall) grade; here Homeworks and Labs are each worth
+# 15%, exams were worth 45% and the final 25%.
+#
+# Note that all grades don't have same scale (labs are \in [0 1]);
+# to account for this I scale all lab grades by 100 with the GdWts
+# option.
+#
+# The Rnd option determines whether the overal grade is rounded or not;
+# you probably want the unrounded for making final cutoffs, but the 
+# rounded grades print nicer.
+#
+Ovl _  MkGrd(gbD,list(H=0.15, L=0.15, E=0.45, F=0.25),GdWts=list(L=100),Rnd=T)
+Ovlu _ MkGrd(gbD,list(H=0.15, L=0.15, E=0.45, F=0.25),GdWts=list(L=100),Rnd=F)
+
+
+#
+# Combine the overall grade with the rest of the gradebook
+#
+gbF _ cbind(gbD,Ovl=Ovl)
+gbFu _ cbind(gbD,Ovl=Ovlu)
+
+
+#
+# Save sorted versions of the gradebook, both rounded and unrounded
+# (really only need unrounded)
+#
+options(width=200)
+
+sink(file="FinalRank.dat")
+gbF[rev(order(gbF[["Ovl"]])),]
+sink()
+
+sink(file="FinalRankU.dat")
+gbFu[rev(order(gbFu[["Ovl"]])),]
+sink()
+
+# 
+# Here are instructions to make these print out pretty, one page
+# per section:
+#
+#  Open these files in emacs; copy and paste the column header line
+#  before the start of each section.
+#
+#  To force a page break before each section, insert a "pagefeed"
+#  character in emacs with "C-q C-l" on a line by itself.  In emacs
+#  it should look something like
+#
+#        Sarah.Andrews   A 888888888  sandrew  NA  97  .... 89
+#    ^L  
+#                      Sec    SocSec    Email  H1  H2  .... Ovl
+#         Joseph.Smith   B 999999999   jsmith 100  91  .... 85
+#
+#
+#  Use this command to print it landscape and w/ a tiny font...
+#
+#       enscript -fCourier8 -r -pFinalRank.ps FinalRank.dat
+#
+
+
+#
+# From the print out I determined that 86 and above was an A,
+# 75 and above was a B, etc.  Here's how to translate the 
+# numeric grades into leter grades:
+# 
+FG  _ LetrGd(Ovl,c(86,75,65,60,0))
+
+
+#
+# Now we can make the final-final version of the gradebook:
+#
+gbF _ cbind(gbD,Ovl=Ovl,FG=FG)
+
+
+#
+# Now dump the final version to a file
+#
+sink(file="Final.dat")
+gbF
+sink()
+
+#
+# Edit the file Final.dat: put in ^L's page breaks and headers
+# 
+# Print with
+#    enscript -fCourier8 -r -pFinal.ps Final.dat
+#
+
+
+#
+# And you're done!
+#
+

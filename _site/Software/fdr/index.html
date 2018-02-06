@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NISOx: Software: FDR</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/group.css" rel="stylesheet">
+        <link rel="alternate" type="application/atom+xml" title="Atom"
+            href="/blog/blog.xml">
+    </head>
+    <link rel="icon" 
+      type="image/jpeg" 
+      href="/img/cropped-nisox-logo.jpeg" />
+    <body>
+        <div class="container">
+          <div class="header">
+            <ul class="nav nav-pills pull-right">
+              
+              
+                
+                <li >
+                  <a href="/">
+                    Home
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/people">
+                    People
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/research">
+                    Research
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/publications">
+                    Publications
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/presentations">
+                    Presentations
+                  </a>
+                </li>
+              
+                
+                <li class="active">
+                  <a href="/Software">
+                    Software
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="https://blog.nisox.org/">
+                    Blog
+                  </a>
+                </li>
+              
+            </ul>
+            <a href="/">
+                <img src="/img/logo.png"
+                    srcset="/img/logo@2x.png 2x"
+                    alt="Awesome" id="logo">
+            </a>
+          </div>
+
+          
+          
+          <h2>Software: FDR</h2>
+          
+
+          <h3> False Discovery Rate </h3>
+
+<div class="column-1"><div class="column-1-content">
+                            
+                                
+                                     
+  <div class="feature"> 
+   <p>False Discovery Rate (FDR) is a new approach to the multiple comparisons problem. Instead of controlling the chance of <em>any</em> false positives (as Bonferroni or random field methods do), FDR controls the expected <em>proportion</em> of false positives among suprathreshold voxels. A FDR threshold is determined from the observed p-value distribution, and hence is adaptive to the amount of signal in your data. </p> 
+   <p>FDR is more sensitive than traditional methods simply because it is using a more lenient metric for false positives. However, if there is truly no signal anywhere in the brain, a FDR-controlling method has the same control as standard methods. That is, if the null hypothesis is true everywhere, a FDR procedure will control the chance of a false positive anywhere in the brain at the specified level. (In technical terms, FDR methods have weak control of Familywise Type I error; for more on the standard Familywise approach, see Nichols &amp; Hayasaka, <a href="https://www.ncbi.nlm.nih.gov/pubmed/14599004">Controlling the Familywise Error Rate in Functional Neuroimaging: A Comparative Review</a>, Stat. Meth. in Med. Research, 12(5): 419-446, 2003.) </p> 
+   <p>Below is software, in the form of an extension to SPM, and an article introducing FDR to the neuroimaging community. Please feel free to <a href="mailto:thomas.nichols@bdi.ox.ac.uk">contact me</a> with any questions. </p> 
+   <p>&nbsp;</p> 
+   <center>
+    New: 
+    <a href="#Slides">Slides</a> showing impact of signal extent. 
+   </center> 
+   <br> 
+   <br> 
+   <h2>Software: FDR inference in Matlab </h2> 
+   <hr> 
+   <p>The following function will supply p-value thresholds which control the expected FDR at a specified rate. </p> 
+   <menu> 
+    <li><a href="../../files/Matlab/FDR/FDR.m"><tt>FDR.m</tt></a>&nbsp;<br> This function takes a vector of p-values and a FDR rate. It returns two p-value thresholds, one based on an assumption of independence or positive dependence, and one that makes no assumptions about how the tests are correlated. For imaging data, an assumption of positive dependence is reasonable, so it should be OK to use the first (more sensitive) threshold. <p>Here is one example of how to use this function with a T image.<br> <br> </p> <pre> 
+      Timg     = % read t image, with df degrees of freedom
+      Timg(~isfinite(Timg(:))) = [];
+ 
+      P        = 1-cdf('T',Timg(:),df);
+ 
+      [pID pN] = FDR(P,0.05);
+ 
+      tID      = icdf('T',1-pID,df)     % T threshold, indep or pos. correl.
+      tN       = icdf('T',1-pN,df)      % T threshold, no correl. assumptions
+      </pre> </li> 
+   </menu> 
+   <br> 
+   <br> 
+   <h2>Software: FDR for multiple images </h2> 
+   <hr> 
+   <p>Use this Matlab function, <a href="../../files/Matlab/FDR/multFDR.m"><tt>multFDR.m</tt></a>, to find a common FDR threshold for a set of images. It will return a single common t threshold as well as a set of individual t thresholds for comparison. </p> 
+   <p>It requires SPM99 or SPM2, but can be used with any Analyze-format <em>T</em> image. </p> 
+   <p><br> <br> </p> 
+   <h2>Software: Illustrating the FDR threshold </h2> 
+   <hr> 
+   <p>Use this Matlab function, <a href="../../files/Matlab/FDR/FDRill.m"><tt>FDRill.m</tt></a>, to evaluate an image's t distribution and observe the PP-plot graph that determines the FDR threshold. </p> 
+   <p>It requires SPM99 or SPM2, but can be used with any Analyze-format <em>T</em> image. </p> 
+   <p><br> <br> </p> 
+   <h2>Software: Extending SPM99 for FDR inference</h2> 
+   <hr> 
+   <p><em>(Note: SPM2 already includes FDR, so no patches are needed.) </em> </p> 
+   <p><a href="http://www.fil.ion.ucl.ac.uk/spm">SPM</a> provides corrected p-values based on Familywise (Type I) Error control; a Familywise Error (FWE) is one or more false positive anywhere in the brain. The following new and modified SPM m-files will add a column of FDR-corrected p-values to SPM output and allow for the specification of FDR-corrected thresholds. Otherwise it does not alter SPM's behavior<sup>*</sup>. </p> 
+   <p>The compressed tar file below contains the 11 m-files needed to implement FDR within SPM. The files will expand into a separate <tt>spm_fdr</tt> directory. Include this directory before your spm99 directory, e.g. </p> 
+   <pre><kbd> 
+	path('/my/path/spm_fdr',path)
+      </kbd>        </pre> 
+   <kbd></kbd> 
+   <p>Please note changes to <tt>spm_VOI.m</tt> as of September 30, 2002. See <a href="../../files/Text/Bug3.txt">this email</a>. Thanks to Ahmed Toosy for reporting this problem. </p> Download: 
+   <a href="../../files/Tars/spmfdr.tar.gz">spm_fdr.tar.gz</a> (21KB) 
+   <p>Files: </p> 
+   <menu> 
+    <li><a href="../../files/Matlab/FDR/spmucFDR.m"><tt>spm_uc_FDR.m</tt></a>&nbsp;<br> This new function is the core of the FDR calculations. Based on a statistic image, it finds the FDR threshold for a given q; q is the upper bound on the expected FDR, and can be thought of as 'alpha'. </li> 
+    <li><a href="../../files/Matlab/FDR/spmPFDR.m"><tt>spm_P_FDR.m</tt></a><br> This new function provides the inversion of spm_uc_FDR, providing a p-value for a given statistic value. Note, since FDR is based on the empirical distribution of the p-values, the natural "corrected p-values" are not necessarily monotonic; monotonicity is enforced, but sometimes this results in odd p-values (e.g. there might be many voxels with different statistic values that share the same p-value). <p>&nbsp;</p> </li> 
+    <li><a href="../../files/Matlab/FDR/spmlist.m"><tt>spm_list.m</tt></a><br> This SPM function required the most substantial changes, as it generates the tabular output of statistic values and corrected and uncorrected p-values. There is now an additional column for FDR-corrected p-values, and the footer now reflects the FDR of the threshold and an upper bound on expected number of false positives (among the suprathreshold voxels, conditional on the number of suprathreshold voxels). </li> 
+    <li><a href="../../files/Matlab/FDR/spmVOI.m"><tt>spm_VOI.m</tt></a><br> This function required minor changes to pass on information about the mask used. </li> 
+    <li><a href="../../files/Matlab/FDR/spmgetSPM.m"><tt>spm_getSPM.m</tt></a><br> This function required minor changes to pass on information about the (mapped) statistic image and the mask used. Also, it now asks for what type of corrected p-value (FWE or FDR) instead of just yes-no. <p>&nbsp;</p> </li> 
+    <li><a href="../../files/Matlab/FDR/spmP.m"><tt>spm_P.m</tt></a>, <a href="../../files/Matlab/FDR/spmPBonf.m"><tt>spm_P_Bonf.m</tt></a>, <a href="../../files/Matlab/FDR/spmPRF.m"><tt>spm_P_RF.m</tt></a>, <a href="../../files/Matlab/FDR/spmuc.m"><tt>spm_uc.m</tt></a>, <a href="../../files/Matlab/FDR/spmucBonf.m"><tt>spm_uc_Bonf.m</tt></a>, <a href="../../files/Matlab/FDR/spmucRF.m"><tt>spm_uc_RF.m</tt></a><br> This functions are a part of recent changes to the SPM code, and, as such, can be installed in your master SPM99 directory. These functions are not specifically FDR-related, but the FDR code assumes the presence of these updated files. </li> 
+   </menu> See this 
+   <a href="../../files/Text/betacore.txt">note</a> on a bug fix to Matlab core function 
+   <tt>betainc</tt>/
+   <tt>betacore.</tt> The symptom is that SPM hangs when it's determing FDR p-values. 
+   <p><sup>*</sup>This tar file includes new modifications to SPM that were released June 28, 2001, in the form of the last six functions listed above. These modifications modify the (FWE) corrected p-value procedures to always take the minimum of random field and Bonferroni results. As released, SPM99 only gives random field p-values and thresholds even if Bonferroni results are more powerful. This is a minor change will, at most, reduce corrected p-values and thresholds in certain situations (typically, low degrees of freedom analyses). </p> 
+   <p>&nbsp;</p> 
+   <p>Changes to <tt>spm_P.m</tt> as of October 14, 2001. See <a href="../../files/Text/Bug2.txt">this email</a>. </p> 
+   <p>Changes as of August 7, 2001. See <a href="../../files/Text/Bug1.txt">this email</a>. </p> 
+   <br> 
+   <br> 
+   <h2>Article </h2> 
+   <hr> 
+   <p>Thresholding of Statistical Maps in Functional Neuroimaging Using the False Discovery Rate.<br> Christopher R. Genovese, Nicole A. Lazar, Thomas E. Nichols (2002).<br> <em>NeuroImage</em> <strong>15</strong>:870-878. </p> 
+   <p>Download: <a href="http://dx.doi.org/10.1006/nimg.2001.1037">Published Version</a> | <a href="https://doi.org/10.6084/m9.figshare.5572453.v1">Preprint</a> </p> 
+   <p>Note on the preprint: The preprint reflected the current results at the time of submission. Since then, the independence FDR result of 1995 (BH 1995; in the above paper, "c(V)=1" on pg 9) has been shown to be more general (BY 2001). In particular, a technical condition known as <em>positive regression dependency</em> is sufficient to use the 1995 result. Examples of this condition include multivariate normal data where the covariance matrix has all positive elements; this seems a reasonable assumption for imaging, and hence the code above uses the c(V)=1 result. </p> 
+   <p>BH 1995: Y. Benjamini and Y Hochberg. Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing. J. Roy Stat Soc, Ser B. 57:289-300. </p> 
+   <p>BY 2001: Y. Benjamini and D. Yekutieli. The Control of the false discovery rate in multiple testing under dependency. The Annals of Statistics, 29(4):1165-1188, 2001. Preprint verison available at <a href="http://www.math.tau.ac.il/~ybenja/">http://www.math.tau.ac.il/~ybenja/</a> under "Papers" </p> 
+   <p><br> <br> </p> 
+   <h2><a id="Slides" name="Slides">Presentation Slides</a> </h2> 
+   <hr> 
+   <p>
+    <!--  These <a href="ENAR2002.ppt" _mce_href="ENAR2002.ppt">PowerPoint slides</a> are from a talk --> 
+    <!--  presented March 18, 2002, at the ENAR Meeting in Alexandra, VA. --> 
+    <!--  They illustrate how the FDR threshold will be lower with greater --> 
+    <!--  extent of activation.<div  _mce_tmp="1"> --> These <a href="https://doi.org/10.6084/m9.figshare.5572468.v1">PowerPoint slides</a> are from a talk presented Feburary 6, 2004, at the Department of Statistical Science at Southern Methodist University, Dallas, TX. They illustrate how the FDR threshold will be lower with greater extent of activation. </p> 
+   <p><br> <br> </p> 
+   <h2>FDR Citations in Neuroimaging </h2> 
+   <hr> 
+   <p>&nbsp;</p> 
+   <menu> 
+    <li>Ellis SP, Underwood MD, Arango V, &amp; Mann JJ.<br> Mixed models and multiple comparisons in analysis of human neurochemical maps.<br> Psychiatry Research: Neuroimaging 99(2):111-119, AUG 28 2000. </li> 
+    <li>Rombouts S A R B, Barkhof F, van Meel C S, Scheltens P.<br> Alterations in brain activation during cholinergic enhancement with rivastigmine in Alzheimer's disease.<br> Journal of Neurology, Neurosurgery &amp; Psychiatry, 2002 73: 665-671. 
+     <!-- Cited GLN --> </li> 
+    <li>Konishi S, Uchida I, Okuaki T, Machida T, Shirouzu I, Miyashita Y<br> Neural correlates of recency judgment<br> Journal of Neuroscience, 22 (21): 9549-9555, 2002 
+     <!-- Cited GLN --> </li> 
+    <li>Tregellas JR, Tanabe JL, Miller DE, Freedman R<br> Monitoring eye movements during fMRI tasks with echo planar images.<br> HUMAN BRAIN MAPPING 17 (4): 237-243 DEC 2002. 
+     <!-- Cited GLN --> </li> 
+    <li>Wilke M, Schmithorst VJ, Holland SK.<br> Assessment of spatial normalization of whole-brain magnetic resonance images in children.<br> Human Brain Mapping 17 (1): 48-60 SEP 2002 
+     <!-- Cited GLN; check if they use it --> 
+     <!--    <LI>Desai M, Mangoubi R, Shah J, et al.<BR> --> 
+     <!--        Functional MRI activity characterization using response time --> 
+     <!--        shift estimates from curve evolution.<BR> --> 
+     <!--        IEEE T MED IMAGING 21 (11): 1402-1412 NOV 2002    --> 
+     <!--        <! E- Cited GLN, but don't it -->  </li> 
+    <li>Bor D, Duncan J, Wiseman RJ, et al.<br> Encoding strategies dissociate prefrontal activity from working memory demand.<br> NEURON 37 (2): 361-367 JAN 23 2003 
+     <!-- Cited GLN; check if they used it --> </li> 
+    <li>Stanley DA, Rubin N<br> fMRI activation in response to illusory contours and salient regions in the human Lateral Occipital Complex.<br> NEURON 37 (2): 323-331 JAN 23 2003 
+     <!-- Cited GLN; check if they use it --> </li> 
+    <li>Haline E. Schendan, Meghan M. Searl, Rebecca J. Melrose, and Chantal E. Stern<br> An fMRI Study of the Role of the Medial Temporal Lobe in Implicit and Explicit Sequence Learning<br> Neuron, Vol. 37, 1013 1025, March 27, 2003 
+     <!--  Used FDR&lt;0.05; looks a bit messy; maybe should have been higher --> </li> 
+    <li>CY Sylvester and TD Wager and SC Lacey and L Hernandez and TE Nichols and EE Smith and J Jonides <br> Switching attention and resolving interference: fMRI measures of executive functions.<br> Neuropsychologia, 2003 41(3):357-370. 
+     <!-- Cited GLN --> 
+     <!--  Used it, with a complicated thresholding scheme. --> </li> 
+    <li>Davis, M. H. &amp; Johnsrude, I. S.<br> "Hierarchical processing in spoken language comprehension"<br> Journal of Neuroscience, 23(8), 3423-3431, 2003. </li> 
+    <li>Alle Meije Wink &amp; Jos B. T. M. Roerdink<br> Denoising functional MR images: a comparison of wavelet denoising and Gaussian smoothing <br> IEEE Transactions on Medical Imaging 23(3): 374-387, March 2004. 
+     <!-- Cited GLN --> 
+     <!--   Useds FDR for wavelet thresholding? --> </li> 
+    <li>Eun Yeon Joo, Woo Suk Tae, Jee Hyun Kim, Byung Tae Kim &amp; Seung Bong Hong<br> Glucose hypometabolism of hypothalamus and thalamus in narcolepsy<br> Ann Neurology 56(3):437-440, September 2004. 
+     <!-- Cited GLN -->  </li> 
+    <li>Davis, M. H., Meunier, F., and Marslen-Wilson, W.D. <br> "Neural responses to morphological, syntactic and semantic properties of single words: an fMRI study." <br> Brain and Language, 89, 439-449, 2004. </li> 
+    <li>Woo Suk Tae, Eun Yeon Joo, Jee Hyun Kim, Sun Jung Han, et al.<br> Cerebral perfusion changes in mesial temporal lobe epilepsy: SPM analysis of ictal and interictal SPECT<br> NeuroImage 24: 101-110, January 2005. 
+     <!-- Cited GLN --> </li> 
+    <li>Daselaar SM, Rombouts SARB, Veltman DJ, Raaijmakers JGW, Jonker C.<br> Similar network activated by young and old adults during the acquisition of a motor sequence.<br> Neurobiology of Aging, 24, 1013-1019, 2003. 
+     <!-- Cited GLN --> 
+     <!--   Used 0.005 FDR threshold  --> </li> 
+    <li>Rhodri Cusack, Matthew Brett &amp; Katja Osswald.<br> An Evaluation of the Use of Magnetic Field Maps to Undistort Echo-Planar Images<br> NeuroImage 18(1):127-142, 2003<br> 
+     <!-- Cited GLN --> 
+     <!--   Used FDR&lt;0.02 --> </li> 
+    <li>Jacobs, J., Hwang-Grodzins, G., Curran, T., and Kahana, M.J. (2006). EEG oscillations and recognition memory: Theta correlates of memory retrieval and decision making. <br> NeuroImage, 32, 978-987. 
+     <!-- Cited GLN --> 
+     <!--   Used FDR&lt;0.05 --> </li> 
+    <li>Langers, D.R.M., Jansen, J.F.A. &amp; Backes, W.H. <br> Enhanced signal detection in neuroimaging by means of regional control of the global false discovery rate. <br> NeuroImage 38, 43-56 (2007). 
+     <!-- developed local FDR --> </li> 
+   </menu> If you know of other papers which have used FDR thresholds, please 
+   <a href="mailto:thomas.nichols@bdi.ox.ac.uk">send me the reference</a>
+   <a>! </a> 
+  </div> 
+  <div></div> 
+  <div></div> 
+  <div></div> 
+ 
+                                
+                                
+                            
+                        </div></div>
+
+          <div class="footer">
+            <p>
+              <a href="https://www.bdi.ox.ac.uk">Oxford Big Data Institute</a>
+              at the
+              <a href="http://www.ox.ac.uk/">University of Oxford</a>
+            </p>
+          </div>
+
+        </div> <!-- /container -->
+
+        <!-- Support retina images. -->
+        <script type="text/javascript"
+            src="/js/srcset-polyfill.js"></script>
+    </body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NISOx: Software: BHPGM</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/group.css" rel="stylesheet">
+        <link rel="alternate" type="application/atom+xml" title="Atom"
+            href="/blog/blog.xml">
+    </head>
+    <link rel="icon" 
+      type="image/jpeg" 
+      href="/img/cropped-nisox-logo.jpeg" />
+    <body>
+        <div class="container">
+          <div class="header">
+            <ul class="nav nav-pills pull-right">
+              
+              
+                
+                <li >
+                  <a href="/">
+                    Home
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/people">
+                    People
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/research">
+                    Research
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/publications">
+                    Publications
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/presentations">
+                    Presentations
+                  </a>
+                </li>
+              
+                
+                <li class="active">
+                  <a href="/Software">
+                    Software
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="https://blog.nisox.org/">
+                    Blog
+                  </a>
+                </li>
+              
+            </ul>
+            <a href="/">
+                <img src="/img/logo.png"
+                    srcset="/img/logo@2x.png 2x"
+                    alt="Awesome" id="logo">
+            </a>
+          </div>
+
+          
+          
+          <h2>Software: BHPGM</h2>
+          
+
+          <div class="column-1-content">
+                                      
+                 
+<h3> User Guide </h3>          
+<br>
+<h4>System Requirements<br>
+  </h4>
+
+<ul>
+  <li>UNIX compatible system</li>
+  <li>C libraries: blaswrap, f2c, clapack</li>
+</ul>
+
+<div>Tested architecture:</div>
+
+<div>OS: GNU/Linux</div>
+
+<div>kernel-version: 3.0.101-0.5</div>
+
+<div>platform: 64-bit</div>
+
+<h4>Download</h4>
+
+<p>Download source code package and accompanying publication <a href="../BHPGM">here</a>.<br>
+  </p>
+
+<h4>Installation</h4>
+
+<p>Unpack the archive in a directory of your choice. You will need the latest version of GNU GCC to compile the source code.</p>
+
+<p>In order to compile the code, run the Makefile from inside the extracted directory with</p>
+
+<pre>$ make</pre>
+<p>The executable thereby created is named <em>HPGRF</em>.</p>
+
+<h4>&nbsp;</h4>
+
+<h4>Running the Code<br>
+  </h4>
+
+<pre>$ ./HPGRF model.args</pre>
+<p>The executable expects as input argument a text file (here named <em>model.args</em>) which specifies the following parameters:</p>
+
+<ul>
+  <li><em>dataname</em> ... path and filename of point data; the format for each row must be: subject ID x- y- z-coord. group label (see <em>example_pointdata.dat</em> in the download for reference)<br>
+     important: point locations must be transformed such that all of points are located in the first octant!<br>
+    </li>
+  <li><em>savename</em> ... name of output/results folder <br>
+    </li>
+  <li><em>numOfJumps</em> ... number of latent points of the gamma random field (must be larger than the number of points in the input data)<br>
+    </li>
+  <li><em>totalIters</em> ... total number of iterations for the MCMC chain<br>
+    </li>
+  <li><em>burnin</em> ... number of iterations during burn-in<br>
+    </li>
+  <li><em>recStep</em> ... number of iterations between consecutive draws from the posterior<br>
+    </li>
+  <li>[a range of parameters for MCMC update functions] ... recommended: leave them as they are<br>
+    </li>
+  <li><em>predict</em> ... set to 1 if the program should perform prediction/classification<br>
+    </li>
+  <li><em>preddataname</em> ... path and filename of point data that should be classified; same format as input data<br>
+    </li>
+</ul>
+
+<div></div>
+
+<p>In addition, the program expects to find the following files in the same directory as the executable:</p>
+
+<ul>
+  <li><em>brainmask.nii ... </em>whole-brain mask</li>
+  <li><em>Amygdala_L.nii / Amygdala_R.nii</em> ... region-specifc masks; if a whole-brain analysis should be performed, copy the whole-brain mask into these two files (the files must still be named Amygdala_L.nii and Amygdala_R.nii)</li>
+</ul>
+
+<div>&nbsp;</div>
+
+<div></div>
+
+<h4>Output</h4>
+
+<p>The program will create the following output files:</p>
+
+<ul>
+  <li>mean and SD of individual posterior intensities for each group/class in the input data</li>
+  <li>mean and SD of shared, population-level intensity</li>
+  <li>confusion matrix and classification probabilities based on LOOCV for the data specified for prediction</li>
+  <li>parameter traces </li>
+</ul>
+
+
+
+                                
+                                
+                            
+                        </div>
+
+          <div class="footer">
+            <p>
+              <a href="https://www.bdi.ox.ac.uk">Oxford Big Data Institute</a>
+              at the
+              <a href="http://www.ox.ac.uk/">University of Oxford</a>
+            </p>
+          </div>
+
+        </div> <!-- /container -->
+
+        <!-- Support retina images. -->
+        <script type="text/javascript"
+            src="/js/srcset-polyfill.js"></script>
+    </body>
+</html>
