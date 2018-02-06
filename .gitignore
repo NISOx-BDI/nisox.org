@@ -1,2 +1,3 @@
-_site
 .pyc
+bibble/*.pyc
+bibble/__pycache__/
