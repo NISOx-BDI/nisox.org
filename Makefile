@@ -3,7 +3,7 @@ PYTHON := python
 # targets that aren't filenames
 .PHONY: all clean deploy
 
-all: publications/index.html presentations/index.html _site/index.html research/index.html
+all: publications/index.html presentations/index.html research/index.html _site/index.html
 
 BUILDARGS :=
 _site/index.html _site/wacas14/index.html:
