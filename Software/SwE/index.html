@@ -38,9 +38,9 @@ notitle: True
 <h2><a name="intro">Introduction</a> </h2> 
       <dl></dl> 
       <div align="left"> 
-          The SwE toolbox is a toolbox for longitudinal and repeated measures neuroimaging data. It fits a simple "marginal model" with no need for per-subject dummy variables, and instead of iterative computation of variance components it uses the noniterative "sandwich estimator" to find standard errors. There is no need to have a balanced design, and in fact, singleton subjects can be modeled along with subjects with multiple measures.  As no per-subject dummy variables are used, covariates can be between-subject (e.g. age, sex).
+          The SwE toolbox is a toolbox for longitudinal and repeated measures neuroimaging data. It fits a simple "marginal model" with no need for per-subject dummy variables, and instead of iterative computation of variance components it uses the noniterative "sandwich estimator" to find standard errors. There is no need to have a balanced design, and in fact, singleton subjects can be modelled along with subjects with multiple measures.  As no per-subject dummy variables are used, covariates can be between-subject (e.g. age, sex).
 
-The core work is descrived in Guillaume et al. (2014), with improved small sample adjustments as well as a Wild Bootstrap for non-parametric inferences covered in Guillaume &amp; Nichols (2015) and Guillaume (2015).
+The core work is described in Guillaume et al. (2014), with improved small sample adjustments as well as a Wild Bootstrap for non-parametric inferences covered in Guillaume &amp; Nichols (2015) and Guillaume (2015).
        </div> 
 
 
@@ -54,8 +54,8 @@ It is implemented as a Matlab toolbox for SPM8 or SPM12. <br> <br>
 		   	<p>
 		    <ul> 
 		     <li>Despite having no explicit specification, <em>all</em> possible random effects are accounted for through the use of an unstructured error covariance.</li> 
-		     <li>For moderate sample sizes, the "Hom"ogeneous sandwich estimator assumes each subject in a group shares the same visit-based covariance strucutre.</li> 
-		     <li>For large sample sizes, the "Het"ergoeneous (tranditional) sandwhich estimator doesn't even assume common covariance over subjects.</li> 
+		     <li>For moderate sample sizes, the "Hom"ogeneous sandwich estimator assumes each subject in a group shares the same visit-based covariance structure.</li> 
+		     <li>For large sample sizes, the "Het"ergoeneous (traditional) sandwich estimator doesn't even assume common covariance over subjects.</li> 
 		     <li>When comparing multiple groups, each group automatically has its own covariance structure.</li> 
 		    </ul> </p></li> 
 		   <li><b>No convergence problems</b><br> <p>The population model is estimated with Ordinary Least Squares, meaning that the method is non-iterative and thus is immune to convergence failures not uncommon in complex mixed effects models.</p></li> 
@@ -64,7 +64,7 @@ It is implemented as a Matlab toolbox for SPM8 or SPM12. <br> <br>
 		    <ul> 
 		     <li>Toolbox for widely used SPM software</li> 
 		     <li>While the traditional sandwich estimator techniques often assume large samples, SwE implements carefully evaluated (and in some cases novel) degrees of freedom estimator and small sample adjustments.</li> 
-		     <li>Familywise error-corrected voxel and cluster inferences are available with the Wild Boostrap, avoiding any parametric (e.g. random field theory) distributional assumptions.</li> 
+		     <li>Familywise error-corrected voxel and cluster inferences are available with the Wild Bootstrap, avoiding any parametric (e.g. random field theory) distributional assumptions.</li> 
 		    </ul> </p></li> 
 
 
