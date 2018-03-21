@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NISOx: Software: BHICP</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/group.css" rel="stylesheet">
+        <link rel="alternate" type="application/atom+xml" title="Atom"
+            href="/blog/blog.xml">
+    </head>
+    <link rel="icon" 
+      type="image/jpeg" 
+      href="/img/cropped-nisox-logo.jpeg" />
+    <body>
+        <div class="container">
+          <div class="header">
+            <ul class="nav nav-pills pull-right">
+              
+              
+                
+                <li >
+                  <a href="/">
+                    Home
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/people">
+                    People
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/research">
+                    Research
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/publications">
+                    Publications
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/presentations">
+                    Presentations
+                  </a>
+                </li>
+              
+                
+                <li class="active">
+                  <a href="/Software">
+                    Software
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="https://blog.nisox.org/">
+                    Blog
+                  </a>
+                </li>
+              
+            </ul>
+            <a href="/">
+                <img src="/img/logo.png"
+                    srcset="/img/logo@2x.png 2x"
+                    alt="Awesome" id="logo">
+            </a>
+          </div>
+
+          
+          
+          <h2>Software: BHICP</h2>
+          
+
+          <h3> User Guide </h3>
+
+<div class="column-1-content">
+<br>
+<h4>1) System requirements</h4>
+
+<ul>
+  <li>Mac OS X 64-bit (Software for other Unix-based machines on the way)</li>
+</ul>
+
+
+<h4>2) Installation</h4>
+
+<p>Download the required files from the <a href="../">BHICP Software</a> page. From terminal, move to the BHICP folder and run the included Makefile with:</p>
+
+<p>&nbsp;<em>$ make</em>&nbsp;</p>
+
+<p>This should create the executable file <em>CoxClusterProcess.</em></p>
+
+<h4><em>3) </em>Running the software</h4>
+
+
+<h4>Input files</h4>
+
+<p>The following input files are required<em>:</em></p>
+
+<ul>
+  <li><em><strong>&lt;data_name&gt;.dat</strong>: The file containing the foci coordinates. </em>  </li>
+  <li><em><strong>newpars.txt</strong>: The file containing simulation details: prior distributions, MCMC running time, etc.</em>  </li>
+  <li><em><strong>seed.dat</strong>: The file containing the seed for random number generations.</em>  </li>
+</ul>
+
+<h4>Data format</h4>
+
+<p>The following guidelines must be taken into consideration when generating the data file containing the foci:</p>
+
+<ul>
+  <li>The file consists of 5 columns.</li>
+  <li>The first column contains the study (contrast) ID number, ranging from 1 to the total number of studies in the sample.</li>
+  <li>Columns 3,4 and 5 contain the x,y and z coordinates of the focus, always in MNI voxel space. Since 2mm voxels are used, columns 2 and 4 should range between 1 and 91, while column 4 should range from 1 to 109.</li>
+  <li>Column 5 contains the study type number. If no discrimination between types is done, set column 5 to one.</li>
+</ul>
+
+<p>Overall the file should look like:</p>
+
+<table role="presentation" border="1" cellpadding="4" align="center" class="sitebuilder_sortable" id="sortableTable_20730" style="max-width: none;">
+  <tbody>
+    <tr class="odd">
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">74.5</td>
+      <td style="text-align: center;">56</td>
+      <td style="text-align: center;">35.5</td>
+      <td style="text-align: center;">1</td>
+    </tr>
+    <tr class="even">
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">63</td>
+      <td style="text-align: center;">70</td>
+      <td style="text-align: center;">24</td>
+      <td style="text-align: center;">1</td>
+    </tr>
+    <tr class="odd">
+      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">67</td>
+      <td style="text-align: center;">59</td>
+      <td style="text-align: center;">17.5</td>
+      <td style="text-align: center;">1</td>
+    </tr>
+    <tr class="even">
+      <td style="text-align: center;">2</td>
+      <td style="text-align: center;">12.5</td>
+      <td style="text-align: center;">56</td>
+      <td style="text-align: center;">34</td>
+      <td style="text-align: center;">1</td>
+    </tr>
+    <tr class="odd">
+      <td style="text-align: center;">2</td>
+      <td style="text-align: center;">18.5</td>
+      <td style="text-align: center;">43.5</td>
+      <td style="text-align: center;">39</td>
+      <td style="text-align: center;">1</td>
+    </tr>
+    <tr class="even">
+      <td style="text-align: center;">...</td>
+      <td style="text-align: center;">...</td>
+      <td style="text-align: center;">...</td>
+      <td style="text-align: center;">...</td>
+      <td style="text-align: center;">...</td>
+    </tr>
+    <tr class="odd">
+      <td style="text-align: center;">...</td>
+      <td style="text-align: center;">...</td>
+      <td style="text-align: center;">...</td>
+      <td style="text-align: center;">...</td>
+      <td style="text-align: center;">...</td>
+    </tr>
+    <tr class="even">
+      <td style="text-align: center;">137</td>
+      <td style="text-align: center;">54</td>
+      <td style="text-align: center;">60</td>
+      <td style="text-align: center;">27</td>
+      <td style="text-align: center;">1</td>
+    </tr>
+    <tr class="odd">
+      <td style="text-align: center;">137</td>
+      <td style="text-align: center;">33</td>
+      <td style="text-align: center;">61.5</td>
+      <td style="text-align: center;">25.5</td>
+      <td style="text-align: center;">1</td>
+    </tr>
+    <tr class="even">
+      <td style="text-align: center;">137</td>
+      <td style="text-align: center;">48</td>
+      <td style="text-align: center;">41.5</td>
+      <td style="text-align: center;">36</td>
+      <td style="text-align: center;">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Execution</h4>
+
+<p>Once all input files are created, type the following command in terminal to execute the software:</p>
+
+<p>&nbsp;<em>$ ./CoxClusterProcess &lt;results_folder&gt; &lt;data_name&gt;.dat newpars.txt</em></p>
+
+<p>where:</p>
+
+<ul>
+  <li><strong>&lt;results_folder&gt; </strong>is the subfolder of folder <em>simresults</em> where posterior draws will be stored<br>
+    </li>
+  <li><strong>&lt;data_name&gt;.dat </strong>is the file containing the foci<br>
+    </li>
+  <li><strong>newpars.txt</strong>: is the file containing the simulation details</li>
+</ul>
+
+<h4>4) Results</h4>
+
+<p>All the results are stored in the directory <strong><em>.../BHICP/simresults/&lt;results_folder&gt;</em></strong><em>. </em><span data-mce-bogus="true">A detailed description of the output files generated during execution will become available soon.</span><br>
+  </p>
+
+                                
+                                
+                            
+                        </div>
+
+          <div class="footer">
+            <p>
+              <a href="https://www.bdi.ox.ac.uk">Oxford Big Data Institute</a>
+              at the
+              <a href="http://www.ox.ac.uk/">University of Oxford</a>
+            </p>
+          </div>
+
+        </div> <!-- /container -->
+
+        <!-- Support retina images. -->
+        <script type="text/javascript"
+            src="/js/srcset-polyfill.js"></script>
+    </body>
+</html>

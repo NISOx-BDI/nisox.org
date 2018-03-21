@@ -1,0 +1,42 @@
+MkGrd(Tab,Wts,GdWts=numeric(0),Rnd=T)
+
+ This function sums (optionally weighted) means of specified grade
+ types to form a grade.
+
+
+ Tab   is a gradebook, such as returned from GBget
+
+
+ Wts   is a list identifying how to weight each different grade
+       type; the weights must sum to one.  The names of each
+       element are taken from the gradebook column names without
+       any numbers.  An example is
+
+           Wts = list(H=0.2, L=0.2, E=.3, F=.3)
+
+       which specifies that homeworks are worth 20%, labs 20%,
+       exams (average exam score) is work 30% and the final is worth
+       30%.
+
+
+ GdWts is an optional list describing how to weight *individual* grades.
+       Each element must either be a numeric scalar or vector.  If
+       it is a scalar, then all grades of the specified type are
+       scaled by that quantity.  If it is a vector, then there must
+       be one element for each grade of that type.
+
+       For example, 
+
+            GdWts = list(L=100, E=100/c(100,150))
+
+       specifies that labs should be scaled up by a factor of 100
+       (appropriate if the labs are entered as zero-one) and that
+       the second exam score should be scaled down by a factor of
+       0.66667 (appropriate if the second exam was out of 150
+       points, but the two exams have equal value).
+
+
+ Rnd   If rnd is true, the grades are rounded to the nearest
+       integer. 
+
+ $Id: GdBkUtil.S,v 1.5 2000/02/02 21:31:53 nicholst Exp $

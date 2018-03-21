@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NISOx: GB: A Gradebook for Splus</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/group.css" rel="stylesheet">
+        <link rel="alternate" type="application/atom+xml" title="Atom"
+            href="/blog/blog.xml">
+    </head>
+    <link rel="icon" 
+      type="image/jpeg" 
+      href="/img/cropped-nisox-logo.jpeg" />
+    <body>
+        <div class="container">
+          <div class="header">
+            <ul class="nav nav-pills pull-right">
+              
+              
+                
+                <li >
+                  <a href="/">
+                    Home
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/people">
+                    People
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/research">
+                    Research
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/publications">
+                    Publications
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="/presentations">
+                    Presentations
+                  </a>
+                </li>
+              
+                
+                <li class="active">
+                  <a href="/Software">
+                    Software
+                  </a>
+                </li>
+              
+                
+                <li >
+                  <a href="https://blog.nisox.org/">
+                    Blog
+                  </a>
+                </li>
+              
+            </ul>
+            <a href="/">
+                <img src="/img/logo.png"
+                    srcset="/img/logo@2x.png 2x"
+                    alt="Awesome" id="logo">
+            </a>
+          </div>
+
+          
+          
+
+          <div class="column-1"><div class="column-1-content">
+                            
+
+<h3 align="center">GB: A Gradebook for Splus</h3>
+                                
+                                    
+
+<!-- Based on  GB.html,v 1.9 2000/07/11 01:45:30 nicholst Exp	 -->
+<!-- @(#)index.html	1.4 Tom Nichols 04/10/31 -->
+
+<p>&nbsp;</p>
+
+<h4 align="center"><strong>Introduction</strong>| <a href="./ex">Examples</a>| <a href="./tips">Tips</a> </h4>
+
+<hr> 
+<p>&nbsp;</p>
+
+<p><a name="Top"></a></p>
+
+<table cellspacing="0" cols="2" cellpadding="10" width="100%" border="0" style="max-width: none;">
+  <tbody>
+    <tr>
+      <td valign="top" width="15%" bgcolor="#afafaf"><a href="#GetGo">Getting Started</a>         <p><a href="#PageExp">Document Structure</a> </p>
+
+        <p><a href="#"></a> </p>
+
+        <p>&nbsp;</p>
+
+      </td>
+      <td valign="top" width="85%"><a name="GetGo"></a>         <h4>Getting Started </h4>
+
+        <hr> This documentation is example-oriented. Read through this Introduction and the Simple Examples to get started; read through the Tips once you have played with the GB functions.  
+        <p>Here are the two keys to using GB: </p>
+
+        <menu>
+          <li>First time only, in Splus you must enter <br>
+             
+            <dl>
+              <dd> 
+                <kbd>source("/afs/sph.umich.edu/n/nichols/S/GdBk.S")</kbd>
+              </dd>
+            </dl>
+          </li>
+        </menu>
+        <dl></dl>
+        <dl>
+          <dd> 
+            <kbd>source("/afs/sph.umich.edu/n/nichols/S/GdBkUtil.S")</kbd>
+          </dd>
+        </dl>
+ in order to compile the GB functions into your .Data.hp directory         <p>&nbsp;</p>
+
+ If you don't have access to the SPH network, the two files are here: <a href="../../../files/SPlus/GdBk.S">GdBk.S</a> <a href="../../../files/SPlus/GdBkUtil.S">GdBkUtil.S</a>         <p>&nbsp;</p>
+
+ The grades are stored in a Splus data frame with extra attributes. You don't directly access this data frame; it's stored on Andrew, hence the need to klog.         <p>If there's one other key to GB it's that until you see a message like </p>
+
+        <dl>
+          <dd> 
+            <kbd>Wrote 'GB.202.A' to '/afs/sph.umich.edu/n/nichols/Sgrades'.</kbd>
+          </dd>
+        </dl>
+ you can hit Control-C to abort and no changes will be saved.         <p align="right"><a href="#Top">...to the top</a> </p>
+
+        <p>&nbsp;</p>
+
+<a name="PageExp"></a>         <h4>About this Document </h4>
+
+        <hr> Use the links along the top to move around from section to section; Use the links in the left column to move within a page. 
+        <p>GB was orginally developed at Carnegie Mellon Statistics department, and subsequently modified to be used at the University of Michigan; some of the documentation may make references to aspects of either computing environment. </p>
+
+        <p align="right"><a href="#Top">...to the top</a> </p>
+
+        <p>&nbsp;</p>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr> 
+
+                                
+                                
+                            
+                        </div></div>
+
+          <div class="footer">
+            <p>
+              <a href="https://www.bdi.ox.ac.uk">Oxford Big Data Institute</a>
+              at the
+              <a href="http://www.ox.ac.uk/">University of Oxford</a>
+            </p>
+          </div>
+
+        </div> <!-- /container -->
+
+        <!-- Support retina images. -->
+        <script type="text/javascript"
+            src="/js/srcset-polyfill.js"></script>
+    </body>
+</html>
