@@ -38,10 +38,9 @@ notitle: True
 <h2><a name="intro">Introduction</a> </h2> 
       <dl></dl> 
       <div align="left"> 
-          The SwE toolbox is a toolbox for longitudinal and repeated measures neuroimaging data. It fits a simple "marginal model" with no need for per-subject dummy variables, and instead of iterative computation of variance components it uses the noniterative "sandwich estimator" to find standard errors. There is no need to have a balanced design, and in fact, singleton subjects can be modelled along with subjects with multiple measures.  As no per-subject dummy variables are used, covariates can be between-subject (e.g. age, sex).
-
+<P>          The SwE toolbox is a toolbox for longitudinal and repeated measures neuroimaging data. It fits a simple "marginal model" with no need for per-subject dummy variables, and instead of iterative computation of variance components it uses the noniterative "sandwich estimator" to find standard errors. </P><P>
 The core work is described in Guillaume et al. (2014), with improved small sample adjustments as well as a Wild Bootstrap for non-parametric inferences covered in Guillaume &amp; Nichols (2015) and Guillaume (2015).
-       </div> 
+</P       </div> 
 
 
 It is implemented as a Matlab toolbox for SPM8 or SPM12. <br> <br>
@@ -57,6 +56,8 @@ It is implemented as a Matlab toolbox for SPM8 or SPM12. <br> <br>
 		     <li>For moderate sample sizes, the "Hom"ogeneous sandwich estimator assumes each subject in a group shares the same visit-based covariance structure.</li> 
 		     <li>For large sample sizes, the "Het"ergoeneous (traditional) sandwich estimator doesn't even assume common covariance over subjects.</li> 
 		     <li>When comparing multiple groups, each group automatically has its own covariance structure.</li> 
+		     <li>Different from usual approaches in SPM and FSL, it doesn't require per-subject dummy variables, and so allows between-subject covariates like age and sex.</li>
+		     <li>There is no need to have a balanced design, and in fact, singleton subjects can be modeled along with subjects with multiple measures. </li>
 		    </ul> </p></li> 
 		   <li><b>No convergence problems</b><br> <p>The population model is estimated with Ordinary Least Squares, meaning that the method is non-iterative and thus is immune to convergence failures not uncommon in complex mixed effects models.</p></li> 
 		   <li><b>Built for neuroimaging</b> 
