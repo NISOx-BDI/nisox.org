@@ -110,7 +110,7 @@ notitle: True
 
 <p>Highlight the field "Small sample adjustments" and select the type of bias corrective factor to be applied to the residuals prior their use in the estimation of the SwE. Based on extensive simulations in Guillaume et al. (2014) [<a href="https://www.ncbi.nlm.nih.gov/pubmed/24650594">PDF</a>] and Guillaume (2015) [<a href="https://orbi.uliege.be/bitstream/2268/186284/1/thesisFinalVersion_BryanGuillaume.pdf">PDF</a>], we recommend leaving the Small sample adjustments to the default value, "type C2". </p>
 
-<p>Highlight the field "Degrees of freedom type" and select the "approx" option. Again, based on extensive simulations,  we suggest using the default value, "approx III". (The "approx II" Degrees of freedom type may be better than "approx III" but is only safe if using a balanced design).</p>
+<p>Highlight the field "Degrees of freedom type" to select the type of estimation used for degrees of freedom. Again, based on extensive simulations,  we suggest using the default value, "approx III". (The "approx II" Degrees of freedom type may be better than "approx III" but is only safe if using a balanced design).</p>
 
 <p>Highlight the field "Subjects", press the "Edit value" button and specify the vector of subjects. In our example, this can be done by using the MATLAB command <code>kron(ones(1,3),1:12)</code>.</p>
 
