@@ -32,6 +32,8 @@
     talks: True  
     posters: True
     courses: False
+  format:
+    posterDaysAvailable: True
 
 - name: OHBM2017 
   displayname: OHBM 2017

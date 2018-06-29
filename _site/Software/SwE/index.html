@@ -109,16 +109,15 @@
 
 
       
-      <div align="left"> 
-      	<h2><a name="news">News</a> </h2> 
-        	<ul> 
-		   <li>As of September 2015, better small sample adjustments have been added as well as the Wild Bootstrap to make non-parametric inferences with the Sandwich Estimator. <br>
-		   (A paper covering these new developments is in preparations; please see <a href = "http://www.sciencedirect.com/science/article/pii/S1053811914001761">Dr. Guillaume's thesis</a> for full details.)</li> 
-		  </ul> 
-      </div> <h2><a name="intro">Introduction</a> </h2> 
+<h2><a name="intro">Introduction</a> </h2> 
       <dl></dl> 
       <div align="left"> 
-          The SwE toolbox is a toolbox for longitudinal and repeated measures neuroimaging data. It uses a marginal model with the sandwich estimator of standard errors. It is implemented as a Matlab toolbox for SPM8 or SPM12. <br> <br>
+<P>          The SwE toolbox is a toolbox for longitudinal and repeated measures neuroimaging data. It fits a simple "marginal model" with no need for per-subject dummy variables, and instead of iterative computation of variance components it uses the noniterative "sandwich estimator" to find standard errors. </P><P>
+The core work is described in Guillaume et al. (2014), with improved small sample adjustments as well as a Wild Bootstrap for non-parametric inferences covered in Guillaume &amp; Nichols (2015) and Guillaume (2015).
+</P       </div> 
+
+
+It is implemented as a Matlab toolbox for SPM8 or SPM12. <br> <br>
 
           For the SwE manual click <a href = "./man">here</a>. To download SwE click <a href = "./download">here</a>. Alternatively, check GitHub for history and latest version: <a href="https://github.com/BryanGuillaume/SwE-toolbox/releases">SwE Repo</a>. <br><br>
       </div> 
@@ -128,9 +127,11 @@
 		   	<p>
 		    <ul> 
 		     <li>Despite having no explicit specification, <em>all</em> possible random effects are accounted for through the use of an unstructured error covariance.</li> 
-		     <li>For moderate sample sizes, the "Hom"ogeneous sandwich estimator assumes each subject in a group shares the same visit-based covariance strucutre.</li> 
-		     <li>For large sample sizes, the "Het"ergoeneous (tranditional) sandwhich estimator doesn't even assume common covariance over subjects.</li> 
+		     <li>For moderate sample sizes, the "Hom"ogeneous sandwich estimator assumes each subject in a group shares the same visit-based covariance structure.</li> 
+		     <li>For large sample sizes, the "Het"ergoeneous (traditional) sandwich estimator doesn't even assume common covariance over subjects.</li> 
 		     <li>When comparing multiple groups, each group automatically has its own covariance structure.</li> 
+		     <li>Different from usual approaches in SPM and FSL, it doesn't require per-subject dummy variables, and so allows between-subject covariates like age and sex.</li>
+		     <li>There is no need to have a balanced design, and in fact, singleton subjects can be modeled along with subjects with multiple measures. </li>
 		    </ul> </p></li> 
 		   <li><b>No convergence problems</b><br> <p>The population model is estimated with Ordinary Least Squares, meaning that the method is non-iterative and thus is immune to convergence failures not uncommon in complex mixed effects models.</p></li> 
 		   <li><b>Built for neuroimaging</b> 
@@ -138,7 +139,7 @@
 		    <ul> 
 		     <li>Toolbox for widely used SPM software</li> 
 		     <li>While the traditional sandwich estimator techniques often assume large samples, SwE implements carefully evaluated (and in some cases novel) degrees of freedom estimator and small sample adjustments.</li> 
-		     <li>Familywise error-corrected voxel and cluster inferences are available with the Wild Boostrap, avoiding any parametric (e.g. random field theory) distributional assumptions.</li> 
+		     <li>Familywise error-corrected voxel and cluster inferences are available with the Wild Bootstrap, avoiding any parametric (e.g. random field theory) distributional assumptions.</li> 
 		    </ul> </p></li> 
 
 
@@ -151,8 +152,9 @@
 <h3><a name="ref">References</a> </h3> 
 
   <ul> 
-     <li><a target="_blank" href="http://www.sciencedirect.com/science/article/pii/S1053811914001761">Fast and accurate modelling of longitudinal and repeated measures neuroimaging data<i class="new-window-link" title="Link opens in a new window"></i></a><em>, </em> NeuroImage 94:2870302, 2014.<br> This is the original paper, covering parametric inference and basic small sample adjustments</li> 
-     <li>New small sample adjustments and the Wild Bootstrap are described in:<a href="https://figshare.com/articles/Non-parametric_Inference_for_Longitudinal_and_Repeated-Measures_Neuroimaging_Data_with_the_Wild_Bootstrap/5478229">OHBM2015 poster</a>, <a href="http://orbi.ulg.be/handle/2268/186284">thesis</a> and paper (in preparation).</li> 
+     <li>Guillaume, B., Hua, X., Thompson, P. M., Waldorp, L., & Nichols, T. E. (2014). Fast and accurate modelling of longitudinal and repeated measures neuroimaging data. <em>NeuroImage</em>, 94, 287–302. <a target="_blank" href="http://doi.org/10.1016/j.neuroimage.2014.03.029">doi:10.1016/j.neuroimage.2014.03.029</a></li> 
+     <li>Guillaume, B., Nichols, T. E. (2015). Non-parametric Inference for Longitudinal and Repeated-Measures Neuroimaging Data with the Wild Bootstrap. Poster presented at the Organization for Human Brain Mapping (OHBM) in Hawaii, 14-18, 2015. <a href="https://figshare.com/articles/Non-parametric_Inference_for_Longitudinal_and_Repeated-Measures_Neuroimaging_Data_with_the_Wild_Bootstrap/5478229">PDF</a>.</li>
+     <li>Guillaume, B. (2015). Accurate Non-Iterative Modelling and Inference of Longitudinal Neuroimaging Data. Thesis, Maastricht University / University of Liège. <a href="http://orbi.ulg.be/handle/2268/186284">PDF</a>.</li> 
     </ul>
 
  <h3><a name="contact">Contact</a> </h3> 
