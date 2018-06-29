@@ -24,6 +24,17 @@
 # Author: Tom Maullin (23/10/17) 
 #===================================================================================================================================
 
+- name: OHBM2018
+  displayname: OHBM 2018
+  descrip: | 
+    This collection organizes a number of different talks from NISOx and NISOx collaborators at the 2018 Organization for Human Brain Mapping (OHBM) in Singapore, 17-21 June.
+  sections: 
+    talks: True  
+    posters: True
+    courses: False
+  format:
+    posterDaysAvailable: True
+
 - name: OHBM2017 
   displayname: OHBM 2017
   descrip: | 

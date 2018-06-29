@@ -34,8 +34,10 @@ def main():
     for pageObj in resPages:
         if pageObj['regenerate']:
             #If the output directory doesn't exist, create it.
-            if not os.path.isdir(os.path.join(os.path.dirname(PATH), 'Research', pageObj['name'])):
-                os.mkdir(os.path.join(os.path.dirname(PATH), 'Research', pageObj['name']))
+            if not os.path.isdir(os.path.join(os.path.dirname(PATH), 'research')):
+                os.mkdir(os.path.join(os.path.dirname(PATH), 'research'))
+            if not os.path.isdir(os.path.join(os.path.dirname(PATH), 'research', pageObj['name'])):
+                os.mkdir(os.path.join(os.path.dirname(PATH), 'research', pageObj['name']))
             #Make the pages using functions in bibble.py
             pubGen.main(os.path.join(PATH, "..", "_data", "bib","research.bib"),
                         os.path.join(PATH, "..", "_layouts","resIndvTemplate.html"),

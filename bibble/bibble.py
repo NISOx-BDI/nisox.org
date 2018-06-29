@@ -272,7 +272,7 @@ def main(bibfile, template, pageObj):
     #If we are looking at Research pages work out where to save them and output
     #to there.
     else:
-        fname = os.path.join(os.path.dirname(PATH), 'Research', pageObj['name'], 'index.html')
+        fname = os.path.join(os.path.dirname(PATH), 'research', pageObj['name'], 'index.html')
         with open(fname, 'w') as f:
             f.write(out.encode("utf8"))
 
