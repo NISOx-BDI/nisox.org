@@ -54,12 +54,12 @@ notitle: True
 <p>The SwE toolbox implements the Sandwich Estimator (SwE) method described in Guillaume et al. (in submission) allowing the analysis of longitudinal and repeated measures data in neuroimaging. An analysis with the SwE toolbox can be decomposed into three stages:</p>
 
 <ol>
-  <li>Data &amp; design setup (<code>swe_design</code>)</li>
-  <li>Computation of the model parameters (<code>swe_cp</code>)</li>
-  <li>Post-processing &amp; display of results (<code>swe_result_ui</code>)</li>
+  <li>Data &amp; design setup (<code>swe_design</code>.)</li>
+  <li>Computation of the model parameters (<code>swe_cp</code>.)</li>
+  <li>Post-processing &amp; display of results (<code>swe_result_ui</code>.)</li>
 </ol>
 
-<p>Each stage is handled by a separate function, callable either from the command line or the SwE GUI, as described below. Interim communication between the stages is done via <code>SwE.mat</code> files, similar to <code>SPM.mat</code> files. The setup stage (<code>swe_design</code>) launches the batch system and saves the configuration information in a <code>SwE.mat</code>. Note that the filenames of the input and created images are coded into the <code>SwE.mat</code> file, so moving or deleting the images may cause issues. The computation stage (<code>swe_cp</code>) asks you to locate a <code>SwE.mat</code> file, computes the model parameters and updates the SwE.mat file. Finally the post-processing &amp; results stage (<code>swe_result_ui</code>) asks you to locate a <code>SwE.mat</code> file and launch an interface allowing you to make inferences and display the results.</p>
+<p>Each stage is handled by a separate function, callable either from the command line or the SwE GUI, as described below. Interim communication between the stages is done via <code>SwE.mat</code> files, similar to <code>SPM.mat</code> files. The setup stage (<code>swe_design</code>.) launches the batch system and saves the configuration information in a <code>SwE.mat</code>. Note that the filenames of the input and created images are coded into the <code>SwE.mat</code> file, so moving or deleting the images may cause issues. The computation stage (<code>swe_cp</code>.) asks you to locate a <code>SwE.mat</code> file, computes the model parameters and updates the SwE.mat file. Finally the post-processing &amp; results stage (<code>swe_result_ui</code>.) asks you to locate a <code>SwE.mat</code> file and launch an interface allowing you to make inferences and display the results.</p>
 
 
 </table>
@@ -69,7 +69,7 @@ notitle: True
 <p>Prior to using the SwE toolbox, a version of SPM8 or SPM12 must be previously installed and launched at least once. To install and launch the SwE toolbox:</p>
 
 <ol>
-  <li>Unzip the <code>SwE.zip</code> file into a folder of your choice (e.g., <code>…/whatever</code>).</li>
+  <li>Unzip the <code>SwE.zip</code> file into a folder of your choice (e.g., <code>…/whatever</code>.).</li>
   <li>Start MATLAB and add the folder "SwE" into your path, either using:
     <ul>
       <li>For old MATLAB versions, File &gt; Set Path &gt; Add Folder</li>
@@ -173,9 +173,228 @@ Note that the simulations in Guillaume et al. (in submission) seems to show that
 <hr>
 <h3>Post-processing &amp; display of results</h3>
 
-<p>Once the computation is done, press the "Results" button of the SwE GUI and select the appropriate <code>SwE.mat</code> file. The toolbox should then open a SwE contrast manager allowing the test of several contrasts. Note that the SwE interface is very similar to the interface of a classic SPM analysis and can be used in a similar way. Nevertheless, there are some differences important to note. First, as the degrees of freedom with the SwE method may vary across voxels, for each contrast, the equivalent Z-score or chi-squared-score image are displayed instead of the traditional t-score or F-score image (note that, for each contrast, the t- or F-score image is saved in the working directory alongside the degrees of freedom image). Second, as Random Field Theory inferences have not been yet validated with the SwE method, only False Discovery Rate and uncorrected inferences are currently available in the SwE toolbox.</p>
+<p>Once the computation is done, press the "Results" button of the SwE GUI and select the appropriate <code>SwE.mat</code> file. For a parametric analysis, the toolbox should then open a SwE contrast manager allowing the test of several contrasts. For a wild bootstrap analysis, the toolbox will display the positive contrast which was computed. </p>
 
+ <p> Note that the SwE interface is very similar to the interface of a classic SPM analysis and can be used in a similar way. Nevertheless, there are some differences important to note. First, as the degrees of freedom with the SwE method may vary across voxels, for each contrast, the equivalent Z-score or chi-squared-score image are displayed instead of the traditional t-score or F-score image (note that, for each parametric contrast, the t- or F-score image is saved in the working directory alongside the degrees of freedom image). Second, as Random Field Theory inferences have not been yet validated with the SwE method, only False Discovery Rate and uncorrected inferences are currently available in the SwE toolbox for parametric inference.</p>
 
+ <p> A full list of files output files, alongside a brief description of each file are given in the tables below: </p>
+ <br>
+ <h4> Parametric analyses </h4>
+ 
+ For a parametric analyses run on input given as '.mat' files, the below files are output.
+  <br> <br>
+  <table width="100%" border="1" style="max-width: none;">
+  <tr>
+    <th>Filename</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>swe_vox_mask.mat</code></td>
+    <td>This is the mask used during the analysis. (In previous versions of the toolbox this map was known as <code>mask.mat</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_beta_bb.mat</code></td>
+    <td>This the the beta map for this analyis. <br> (In previous versions of the toolbox this map was known as <code>beta.mat</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_cov.mat</code></td>
+    <td>This is the covariance map for the beta values given in <code>swe_vox_beta_bb.mat</code>. (In previous versions of the toolbox this map was known as <code>cov_beta.mat</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_cov_vv.mat</code></td>
+    <td>This is the covariance map for between visits. (In previous versions of the toolbox this map was known as <code>cov_vis.mat</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_cov_g_bb.mat</code></td>
+    <td>This contains the between beta covariance maps for each group. (In previous versions of the toolbox this map was known as <code>cov_beta_g.mat</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_c{c#}.mat</code></td>
+    <td>This is the voxelwise parametric statistic map (T or F) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was not recorded.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{zT|xF}stat_c{c#}.mat</code></td>
+    <td>This is the voxelwise parametric equivalent statistic map (Z or Chi squared) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>score.mat</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_lp_c{c#}</code></td>
+    <td>This is the log10 map of the voxelwise uncorrected P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>spmUncP_{#}.mat</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_edf_c{c#}.mat</code></td>
+    <td>This is the error degrees of freedom map for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>edf_{c#}.mat</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_beta_c{c#}.mat</code></td>
+    <td>This is the beta map for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>con_{c#}.mat</code>.)</td>
+  </tr>
+</table> 
+<br> 
+
+For parametric analyses run on input given as '.img' or '.nii' files, the below files are output.<br> <br>
+
+<table width="100%" border="1" style="max-width: none;">
+  <tr>
+    <th>Filename</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>swe_vox_mask.nii</code></td>
+    <td>This is the mask used during the analysis. (In previous versions of the toolbox this map was known as <code>mask.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_beta_b{b#}.nii</code></td>
+    <td>This the the <code>{b#}</code>th beta map for this analyis. (In previous versions of the toolbox this map was known as <code>beta_{b#}.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_resid_y{y#}.nii</code></td>
+    <td>This is the parametric residual map calculated for scan <code>{y#}</code>. (In previous versions of the toolbox this map was known as <code>ResI_{y#}.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_cov_b{b1#}_b{b2#}.nii</code></td>
+    <td>This is the covariance map between beta <code>{b1#}</code> and beta <code>{b2#}</code>. (In previous versions of the toolbox this map was known as <code>cov_beta_{b1#}_{b2#}.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_cov_g{g#}_b{b1#}_b{b2#}.nii</code></td>
+    <td>This is the covariance map for group <code>{#g}</code> between beta <code>{#b1}</code> and beta <code>{#b2}</code>. (In previous versions of the toolbox this map was known as <code>cov_beta_g_{g#}_{b1#}_{b2#}.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_cov_g{g#}_v{v1#}_v{v2#}.nii</code></td>
+    <td>This is the covariance map for group <code>{#g}</code> between visit <code>{#v1}</code> and visit <code>{#v2}</code>. (In previous versions of the toolbox this map was known as <code>cov_vis_{g#}_{v1#}_{v2#}.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_edf_c{c#}.nii</code></td>
+    <td>This is the error degrees of freedom map for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>edf_{c#}.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_lp_c{c#}.nii</code></td>
+    <td>This is the log10 map of the voxelwise uncorrected P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>spmUncP_{c#}.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_c{c#}.nii</code></td>
+    <td>This is the voxelwise parametric statistic map (T or F) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>spm?_{c#}.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{zT|xF}stat_c{c#}.nii</code></td>
+    <td>This is the voxelwise parametric equivalent statistic map (Z or Chi Square) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>score.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_beta_c{c#}.nii</code></td>
+    <td>This is the beta map for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>con_{c#}.nii</code>.)</td>
+  </tr>
+
+</table>
+
+<br> <br>
+
+<h4>Non-Parametric analyses</h4>
+<br>
+
+For non-parametric analyses run on input given as '.mat' files, the below files are output.<br> <br>
+
+<table width="100%" border="1" style="max-width: none;">
+  <tr>
+    <th>Filename</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>swe_vox_mask.mat</code></td>
+    <td>This is the mask used during the analysis. (In previous versions of the toolbox this map was known as <code>mask.mat</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_beta_bb.mat</code></td>
+    <td>This is the beta map. (In previous versions of the toolbox this map was known as <code>beta.mat</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_c{c#}.mat</code></td>
+    <td>This is the voxelwise parametric statistic map (T or F) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was not recorded.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{zT|xF}stat_c{c#}.mat</code></td>
+    <td>This is the voxelwise parametric equivalent statistic map (Z or Chi Squared) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>score.mat</code> for <code>{c#}=001</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{zT|xF}stat-WB_c{c#}.mat</code></td>
+    <td>This is the voxelwise non-parametric equivalent statistic map (Z or Chi Square) for contrast <code>{c#}</code>, derived from the non-parametric uncorrected P values in <code>swe_vox_{T|F}stat_lp-WB_c{c#}.mat</code>. (In previous versions of the toolbox this map was not recorded.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_lp-WB_c{c#}.mat</code></td>
+    <td>This is the log10 map of the voxelwise uncorrected P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>luncP_{pn}.mat</code>*.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_lpFWE-WB_c{c#}.mat</code></td>
+    <td>This is the log10 map of the voxelwise bootstrap-calculated FWE P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lfwerP_{pn}.mat</code>*.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_lpFDR-WB_c{c#}.mat</code></td>
+    <td>This is the log10 map of the voxelwise bootstrap-calculated FDR P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lfdrP_{pn}.mat</code>*.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_clustere_{T|F}stat_lpFWE-WB_c{c#}.mat</code></td>
+    <td>This is the log10 map of the clusterwise bootstrap-calculated FWE P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lclusterFwerP_{pn}_perElement.mat</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_resid_y{y#}.mat</code></td>
+    <td>These are the wild-bootstrap generated residuals obtained for scan <code>{y#}</code>. (In previous versions of the toolbox this map was known as <code>ResWB_{y#}.mat</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_fit_y{y#}.mat</code></td>
+    <td>These are the fitted values obtained for scan <code>{y#}</code> calculated using the wild-bootstrap generated residuals given in <code>swe_vox_resid_y{y#}.mat</code>. (In previous versions of the toolbox this map was known as <code>YfittedWB_{y#}.mat</code>.)</td>
+  </tr>
+</table>
+
+<br> 
+For non-parametric analyses run on input given as '.img' or '.nii' files, the below files are output.<br> <br>
+
+<table width="100%" border="1" style="max-width: none;">
+  <tr>
+    <th>Filename</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>swe_vox_mask.nii</code></td>
+    <td>This is the mask used during the analysis. (In previous versions of the toolbox this map was known as <code>mask.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_c{c#}.nii</code></td>
+    <td>This is the voxelwise parametric statistic map (T or F) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was not recorded.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{zT|xF}stat_c{c#}.nii</code></td>
+    <td>This is the voxelwise parametric equivalent statistic map (Z or Chi Squared) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>score.nii</code> for <code>{c#}=001</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{zT|xF}stat-WB_c{c#}.nii</code></td>
+    <td>This is the voxelwise non-parametric equivalent statistic map (Z or Chi Square) for contrast <code>{c#}</code>, derived from the non-parametric uncorrected P values in <code>swe_vox_{T|F}stat_lp-WB_c{c#}.nii</code>. (In previous versions of the toolbox this map was not recorded.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_lp-WB_c{c#}.nii</code></td>
+    <td>This is the log10 map of the voxelwise uncorrected P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lP{+-}.nii</code>*.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_lpFWE-WB_c{c#}.nii</code></td>
+    <td>This is the log10 map of the voxelwise bootstrap-calculated FWE P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lP_FWE{+-}.nii</code>*.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_lpFDR-WB_c{c#}.nii</code></td>
+    <td>This is the log10 map of the voxelwise bootstrap-calculated FDR P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lP_FDR{+-}.nii</code>*.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_clustere_{T|F}stat_lpFWE-WB_c{c#}.nii</code></td>
+    <td>This is the log10 map of the clusterwise bootstrap-calculated FWE P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lP_clusterFWE{+-}.nii</code>*.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_resid_y{y#}.nii</code></td>
+    <td>These are the wild-bootstrap generated residuals obtained for scan <code>{y#}</code>. (In previous versions of the toolbox this map was known as <code>ResWB_{y#}.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_fit_y{y#}.nii</code></td>
+    <td>These are the fitted values obtained for scan <code>{y#}</code> calculated using the wild-bootstrap generated residuals given in <code>swe_vox_resid_y{y#}.nii</code>. (In previous versions of the toolbox this map was known as <code>YfittedWB_{y#}.nii</code>.)</td>
+  </tr>
+</table>
+<br> 
+
+*Note: For non-parametric analyses <code>{c#}</code> is <code>001</code> for activation and <code>002</code> for deactivation. In previous versions of the toolbox these were represented with either a +/- or p/n.
 
                                 
                                 
