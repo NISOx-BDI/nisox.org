@@ -334,11 +334,11 @@ For non-parametric analyses run on input given as '.mat' files, the below files 
     <td>This is the log10 map of the clusterwise bootstrap-calculated FWE P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lclusterFwerP_{pn}_perElement.mat</code>.)</td>
   </tr>
   <tr>
-    <td><code>swe_vox_resid_y{y#}.mat</code></td>
+    <td><code>swe_vox_resid_y{y#}.mat</code>&#10013;</td>
     <td>These are the wild-bootstrap generated residuals obtained for scan <code>{y#}</code>. (In previous versions of the toolbox this map was known as <code>ResWB_{y#}.mat</code>.)</td>
   </tr>
   <tr>
-    <td><code>swe_vox_fit_y{y#}.mat</code></td>
+    <td><code>swe_vox_fit_y{y#}.mat</code>&#10013;</td>
     <td>These are the fitted values obtained for scan <code>{y#}</code> calculated using the wild-bootstrap generated residuals given in <code>swe_vox_resid_y{y#}.mat</code>. (In previous versions of the toolbox this map was known as <code>YfittedWB_{y#}.mat</code>.)</td>
   </tr>
 </table>
@@ -384,17 +384,19 @@ For non-parametric analyses run on input given as '.img' or '.nii' files, the be
     <td>This is the log10 map of the clusterwise bootstrap-calculated FWE P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lP_clusterFWE{+-}.nii</code>*.)</td>
   </tr>
   <tr>
-    <td><code>swe_vox_resid_y{y#}.nii</code></td>
+    <td><code>swe_vox_resid_y{y#}.nii</code>&#10013;</td>
     <td>These are the wild-bootstrap generated residuals obtained for scan <code>{y#}</code>. (In previous versions of the toolbox this map was known as <code>ResWB_{y#}.nii</code>.)</td>
   </tr>
   <tr>
-    <td><code>swe_vox_fit_y{y#}.nii</code></td>
+    <td><code>swe_vox_fit_y{y#}.nii</code>&#10013;</td>
     <td>These are the fitted values obtained for scan <code>{y#}</code> calculated using the wild-bootstrap generated residuals given in <code>swe_vox_resid_y{y#}.nii</code>. (In previous versions of the toolbox this map was known as <code>YfittedWB_{y#}.nii</code>.)</td>
   </tr>
 </table>
 <br> 
 
 *Note: For non-parametric analyses <code>{c#}</code> is <code>001</code> for activation and <code>002</code> for deactivation. In previous versions of the toolbox these were represented with either a +/- or p/n.
+<br><br>
+&#10013; These maps will be removed once an analysis has been run. They will only be retained if an analysis is ended prematurely.
 
                                 
                                 
