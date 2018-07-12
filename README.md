@@ -10,7 +10,7 @@ Because we are using a submodule, the repository has to be cloned with the recur
 git clone --recursive git@github.com:NISOx-BDI/NISOx-BDI.github.io.git
 ```
 
-To run the website locally, you will also need to install the dependencies: [Python][], [Pybtex][] (`pip install pybtex`), and [Jekyll][] (`gem install jekyll`).
+To run the website locally, you will also need to install the dependencies: [Python][], [Pybtex][] (`pip install pybtex`), [Jinja2][] (`pip install jinja2`) and [Jekyll][] (`gem install jekyll`).
 
 ## How to update the website?
 Except for the page including the publication list (cf. [below](#how-to-update-the-publication-list))  and the presentation pages (cf. [section 'How to update the presentations pages?'](#How to update the presentations pages?)), any new change pushed to the `master` branch of the current repository will automatically be reflected on the website. It is stronly advised to preview the changes locally before pushing to GitHub (cf. [section 'building'](#building)).
