@@ -13,7 +13,8 @@ permalink: /news/:year/:month/:day/:title.html
 roles:
     - {key: faculty, name: Faculty}
     - {key: postdoc, name: Researchers}
-    - {key: staff, name: Staff}
+# We currently have no staff
+#    - {key: staff, name: Staff}
     - {key: grad, name: Graduate Students}
     - {key: collab, name: Collaborators}
     - {key: alum, name: Alumni}
