@@ -41,8 +41,10 @@
     This collection organizes a number of different talks from NISOx and NISOx collaborators at the 2017 Organization for Human Brain Mapping (OHBM) in Vancouver, 25-29 June.
   sections: 
     talks: True  
-    posters: False
+    posters: True
     courses: True
+  format:
+    posterDaysAvailable: True
 
 - name: OHBM2016 
   displayname: OHBM 2016
