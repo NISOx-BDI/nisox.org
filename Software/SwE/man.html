@@ -183,7 +183,7 @@ Note that the simulations in Guillaume et al. (in submission) seems to show that
 
 <p>Once the computation is done, press the "Results" button of the SwE GUI and select the appropriate <code>SwE.mat</code> file. For a parametric analysis, the toolbox should then open a SwE contrast manager allowing the test of several contrasts. For a wild bootstrap analysis, the toolbox will display the positive contrast which was computed. </p>
 
- <p> Note that the SwE interface is very similar to the interface of a classic SPM analysis and can be used in a similar way. Nevertheless, there are some differences important to note. First, as the degrees of freedom with the SwE method may vary across voxels, for each contrast, the equivalent Z-score or chi-squared-score image are displayed instead of the traditional t-score or F-score image (note that, for each parametric contrast, the t- or F-score image is saved in the working directory alongside the degrees of freedom image). Second, as Random Field Theory inferences have not been yet validated with the SwE method, only False Discovery Rate and uncorrected inferences are currently available in the SwE toolbox for parametric inference.</p>
+ <p> Note that the SwE interface is very similar to the interface of a classic SPM analysis and can be used in a similar way. Nevertheless, there are some differences important to note. First, as the degrees of freedom with the SwE method may vary across voxels, for each contrast, the equivalent Z-score or 1-degree-of-freedom chi-squared image are displayed instead of the traditional t-score or F-score image (note that, for each parametric contrast, the t- or F-score image is saved in the working directory alongside the degrees of freedom image). Second, as Random Field Theory inferences have not been yet validated with the SwE method, only False Discovery Rate and uncorrected inferences are currently available in the SwE toolbox for parametric inference.</p>
 
  <p> A full list of files output files, alongside a brief description of each file are given in the tables below: </p>
  <br>
@@ -222,7 +222,7 @@ Note that the simulations in Guillaume et al. (in submission) seems to show that
   </tr>
   <tr>
     <td><code>swe_vox_{zT|xF}stat_c{c#}.mat</code></td>
-    <td>This is the voxelwise parametric equivalent statistic map (Z or Chi squared) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>score.mat</code>.)</td>
+    <td>This is the voxelwise parametric equivalent statistic map (Z or 1-DF Chi-squared) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>score.mat</code>.)</td>
   </tr>
   <tr>
     <td><code>swe_vox_{T|F}stat_lp_c{c#}</code></td>
@@ -284,7 +284,7 @@ For parametric analyses run on input given as '.img' or '.nii' files, the below 
   </tr>
   <tr>
     <td><code>swe_vox_{zT|xF}stat_c{c#}.nii</code></td>
-    <td>This is the voxelwise parametric equivalent statistic map (Z or Chi Square) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>score.nii</code>.)</td>
+    <td>This is the voxelwise parametric equivalent statistic map (Z or 1-DF Chi-Squared) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>score.nii</code>.)</td>
   </tr>
   <tr>
     <td><code>swe_vox_beta_c{c#}.nii</code></td>
@@ -319,11 +319,11 @@ For non-parametric analyses run on input given as '.mat' files, the below files 
   </tr>
   <tr>
     <td><code>swe_vox_{zT|xF}stat_c{c#}.mat</code></td>
-    <td>This is the voxelwise parametric equivalent statistic map (Z or Chi Squared) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>score.mat</code> for <code>{c#}=001</code>.)</td>
+    <td>This is the voxelwise parametric equivalent statistic map (Z or 1-DF Chi-Squared) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>score.mat</code> for <code>{c#}=001</code>.)</td>
   </tr>
   <tr>
     <td><code>swe_vox_{zT|xF}stat-WB_c{c#}.mat</code></td>
-    <td>This is the voxelwise non-parametric equivalent statistic map (Z or Chi Square) for contrast <code>{c#}</code>, derived from the non-parametric uncorrected P values in <code>swe_vox_{T|F}stat_lp-WB_c{c#}.mat</code>. (In previous versions of the toolbox this map was not recorded.)</td>
+    <td>This is the voxelwise non-parametric equivalent statistic map (Z or 1-DF Chi-Squared) for contrast <code>{c#}</code>, derived from the non-parametric uncorrected P values in <code>swe_vox_{T|F}stat_lp-WB_c{c#}.mat</code>. (In previous versions of the toolbox this map was not recorded.)</td>
   </tr>
   <tr>
     <td><code>swe_vox_{T|F}stat_lp-WB_c{c#}.mat</code></td>
@@ -369,11 +369,11 @@ For non-parametric analyses run on input given as '.img' or '.nii' files, the be
   </tr>
   <tr>
     <td><code>swe_vox_{zT|xF}stat_c{c#}.nii</code></td>
-    <td>This is the voxelwise parametric equivalent statistic map (Z or Chi Squared) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>score.nii</code> for <code>{c#}=001</code>.)</td>
+    <td>This is the voxelwise parametric equivalent statistic map (Z or 1-DF Chi-Squared) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>score.nii</code> for <code>{c#}=001</code>.)</td>
   </tr>
   <tr>
     <td><code>swe_vox_{zT|xF}stat-WB_c{c#}.nii</code></td>
-    <td>This is the voxelwise non-parametric equivalent statistic map (Z or Chi Square) for contrast <code>{c#}</code>, derived from the non-parametric uncorrected P values in <code>swe_vox_{T|F}stat_lp-WB_c{c#}.nii</code>. (In previous versions of the toolbox this map was not recorded.)</td>
+    <td>This is the voxelwise non-parametric equivalent statistic map (Z or 1-DF Chi-Squared) for contrast <code>{c#}</code>, derived from the non-parametric uncorrected P values in <code>swe_vox_{T|F}stat_lp-WB_c{c#}.nii</code>. (In previous versions of the toolbox this map was not recorded.)</td>
   </tr>
   <tr>
     <td><code>swe_vox_{T|F}stat_lp-WB_c{c#}.nii</code></td>
