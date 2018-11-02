@@ -229,10 +229,6 @@ Note that the simulations in Guillaume et al. (in submission) seems to show that
     <td>This is the log10 map of the voxelwise uncorrected P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>spmUncP_{#}.mat</code>.)</td>
   </tr>
   <tr>
-    <td><code>swe_vox_edf_c{c#}.mat</code></td>
-    <td>This is the error degrees of freedom map for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>edf_{c#}.mat</code>.)</td>
-  </tr>
-  <tr>
     <td><code>swe_vox_beta_c{c#}.mat</code></td>
     <td>This is the beta map for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>con_{c#}.mat</code>.)</td>
   </tr>
@@ -271,20 +267,20 @@ For parametric analyses run on input given as '.img' or '.nii' files, the below 
     <td>This is the covariance map for group <code>{#g}</code> between visit <code>{#v1}</code> and visit <code>{#v2}</code>. (In previous versions of the toolbox this map was known as <code>cov_vis_{g#}_{v1#}_{v2#}.nii</code>.)</td>
   </tr>
   <tr>
-    <td><code>swe_vox_edf_c{c#}.nii</code></td>
-    <td>This is the error degrees of freedom map for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>edf_{c#}.nii</code>.)</td>
-  </tr>
-  <tr>
-    <td><code>swe_vox_{T|F}stat_lp_c{c#}.nii</code></td>
-    <td>This is the log10 map of the voxelwise uncorrected P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>spmUncP_{c#}.nii</code>.)</td>
-  </tr>
-  <tr>
     <td><code>swe_vox_{T|F}stat_c{c#}.nii</code></td>
     <td>This is the voxelwise parametric statistic map (T or F) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>spm?_{c#}.nii</code>.)</td>
   </tr>
   <tr>
+    <td><code>swe_vox_edf_c{c#}.nii</code></td>
+    <td>This is the error degrees of freedom map for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>edf_{c#}.nii</code>.)</td>
+  </tr>
+  <tr>
     <td><code>swe_vox_{zT|xF}stat_c{c#}.nii</code></td>
     <td>This is the voxelwise parametric equivalent statistic map (Z or 1-DF Chi-Squared) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>score.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_lp_c{c#}.nii</code></td>
+    <td>This is the log10 map of the voxelwise uncorrected P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>spmUncP_{c#}.nii</code>.)</td>
   </tr>
   <tr>
     <td><code>swe_vox_beta_c{c#}.nii</code></td>
@@ -314,6 +310,14 @@ For non-parametric analyses run on input given as '.mat' files, the below files 
     <td>This is the beta map. (In previous versions of the toolbox this map was known as <code>beta.mat</code>.)</td>
   </tr>
   <tr>
+    <td><code>swe_vox_fit_y{y#}.mat</code>&#10013;</td>
+    <td>These are the fitted values obtained for scan <code>{y#}</code> calculated using the wild-bootstrap generated residuals given in <code>swe_vox_resid_y{y#}.mat</code>. (In previous versions of the toolbox this map was known as <code>YfittedWB_{y#}.mat</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_resid_y{y#}.mat</code>&#10013;</td>
+    <td>These are the wild-bootstrap generated residuals obtained for scan <code>{y#}</code>. (In previous versions of the toolbox this map was known as <code>ResWB_{y#}.mat</code>.)</td>
+  </tr>
+  <tr>
     <td><code>swe_vox_{T|F}stat_c{c#}.mat</code></td>
     <td>This is the voxelwise parametric statistic map (T or F) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was not recorded.)</td>
   </tr>
@@ -341,14 +345,6 @@ For non-parametric analyses run on input given as '.mat' files, the below files 
     <td><code>swe_clustere_{T|F}stat_lpFWE-WB_c{c#}.mat</code></td>
     <td>This is the log10 map of the clusterwise bootstrap-calculated FWE P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lclusterFwerP_{pn}_perElement.mat</code>.)</td>
   </tr>
-  <tr>
-    <td><code>swe_vox_resid_y{y#}.mat</code>&#10013;</td>
-    <td>These are the wild-bootstrap generated residuals obtained for scan <code>{y#}</code>. (In previous versions of the toolbox this map was known as <code>ResWB_{y#}.mat</code>.)</td>
-  </tr>
-  <tr>
-    <td><code>swe_vox_fit_y{y#}.mat</code>&#10013;</td>
-    <td>These are the fitted values obtained for scan <code>{y#}</code> calculated using the wild-bootstrap generated residuals given in <code>swe_vox_resid_y{y#}.mat</code>. (In previous versions of the toolbox this map was known as <code>YfittedWB_{y#}.mat</code>.)</td>
-  </tr>
 </table>
 
 <br> 
@@ -364,8 +360,20 @@ For non-parametric analyses run on input given as '.img' or '.nii' files, the be
     <td>This is the mask used during the analysis. (In previous versions of the toolbox this map was known as <code>mask.nii</code>.)</td>
   </tr>
   <tr>
+    <td><code>swe_vox_fit_y{y#}.nii</code>&#10013;</td>
+    <td>These are the fitted values obtained for scan <code>{y#}</code> calculated using the wild-bootstrap generated residuals given in <code>swe_vox_resid_y{y#}.nii</code>. (In previous versions of the toolbox this map was known as <code>YfittedWB_{y#}.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_resid_y{y#}.nii</code>&#10013;</td>
+    <td>These are the wild-bootstrap generated residuals obtained for scan <code>{y#}</code>. (In previous versions of the toolbox this map was known as <code>ResWB_{y#}.nii</code>.)</td>
+  </tr>
+  <tr>
     <td><code>swe_vox_{T|F}stat_c{c#}.nii</code></td>
     <td>This is the voxelwise parametric statistic map (T or F) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was not recorded.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_edf_c{c#}.nii</code></td>
+    <td>This is the error degrees of freedom map for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>edf_{c#}.nii</code>.)</td>
   </tr>
   <tr>
     <td><code>swe_vox_{zT|xF}stat_c{c#}.nii</code></td>
@@ -390,14 +398,6 @@ For non-parametric analyses run on input given as '.img' or '.nii' files, the be
   <tr>
     <td><code>swe_clustere_{T|F}stat_lpFWE-WB_c{c#}.nii</code></td>
     <td>This is the log10 map of the clusterwise bootstrap-calculated FWE P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lP_clusterFWE{+-}.nii</code>*.)</td>
-  </tr>
-  <tr>
-    <td><code>swe_vox_resid_y{y#}.nii</code>&#10013;</td>
-    <td>These are the wild-bootstrap generated residuals obtained for scan <code>{y#}</code>. (In previous versions of the toolbox this map was known as <code>ResWB_{y#}.nii</code>.)</td>
-  </tr>
-  <tr>
-    <td><code>swe_vox_fit_y{y#}.nii</code>&#10013;</td>
-    <td>These are the fitted values obtained for scan <code>{y#}</code> calculated using the wild-bootstrap generated residuals given in <code>swe_vox_resid_y{y#}.nii</code>. (In previous versions of the toolbox this map was known as <code>YfittedWB_{y#}.nii</code>.)</td>
   </tr>
 </table>
 <br> 
