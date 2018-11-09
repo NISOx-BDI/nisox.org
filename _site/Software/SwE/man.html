@@ -167,7 +167,7 @@
 <hr>
 <h3>Data &amp; design setup</h3>
 
-<p>To start specifying the data and design, press the button "Specify model" in the SwE GUI. This will call the SPM batch system, add the SwE tab to it and load the SwE module "Data &amp; Design" (see image below).</p>
+<p>To start specifying the data and design, press the button "Specify model" in the SwE GUI. This will call the SPM batch system, add the SwE tab to it and load the SwE module "Specify Model" (see image below).</p>
 
 <p><img border="0" alt="SwE batch" width="400" src="../../img/SwE/batch.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
@@ -221,13 +221,69 @@ Note that the simulations in Guillaume et al. (in submission) seems to show that
   </li>
   <li>Covariates:
     <ul>
-      <li>Allow the construction of the design matrix by entering several covariates in the ordering of the scans. Note that the toolbox does not currently offer an automatic construction of the design matrix. The entire design matrix must be specified by adding covariates one by one.</li>
+      <li>Allow the construction of the design matrix by entering several covariates in the ordering of the scans. In this setting, the entire design matrix must be specified by adding covariates one by one.</li>
     </ul>
 
+  </li>
+  <li>Multiple Covariates:
+    <ul>
+      <li>Allow the construction of the design matrix by entering a <code>`.txt`/`.mat`</code>file containing predefined covariates.</li>
+    </ul>
   </li>
   <li>Masking:
     <ul>
       <li>Similar to a SPM design.</li>
+    </ul>
+
+  </li>
+    <li>Non-Parametric Wild Bootstrap:
+    <ul>
+      <li>Select whether to do a Non-Parametric Wild Bootstrap (options are "Yes" or "No"). If "Yes" is selected, the following fields must be filled in: </li>
+
+      <ul>
+        <li>
+          Small sample adjustments:
+          <ul>
+          <li> Small sample adjustment applied to the residuals before wild bootstrap resampling. The default of "type C2" is recommended.
+          </li>
+          </ul>
+        </li>
+        <li>
+          Number of Bootstraps:
+          <ul>
+          <li> This sets the number of bootstraps (nB). This will notably set the number of possible FWER-corrected p-values to nB+1 and set the minimum possible FWER-corrected p-value to 1/(nB+1).
+          </li>
+          </ul>
+        </li>
+        <li>
+          Type of SwE:
+          <ul>
+          <li> This offers a choice of unrestricted and restricted SwE respectively. An unrestricted SwE is obtained using the residuals of an unrestricted model (not imposing the null hypothesis), whilst a restricted SwE is obtained using a restricted model. An unrestricted SwE is the recommended default.
+          </li>
+          </ul>
+        </li>
+        <li>
+          Statistic Type:
+          <ul>
+          <li> The statistic type and contrast to be used when thresholding.
+          </li>
+          </ul>
+        </li>
+        <li>
+          Inference type:
+          <ul>
+            <li>
+            Voxelwise Inference: This will calculate voxelwise FWE p values using a bootstrap. If selected, no additional input is required.
+            </li>
+            <li>
+            Clusterwise Inference: This will calculate voxelwise and clusterwise FWE p values using a bootstrap. If selected, a cluster forming threshold will be required and a surface mask will be required if the input is surface data.
+            </li>
+            <li>
+            TFCE Inference: This will calculate voxelwise and TFCE FWE p values and TFCE uncorrected P values using a bootstrap. If selected, TFCE E and H values will be required.
+            </li>
+          </ul>
+        </li>
+      </ul>
     </ul>
 
   </li>
