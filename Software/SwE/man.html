@@ -187,9 +187,9 @@ Note that the simulations in Guillaume et al. (in submission) seems to show that
 
  <p> A full list of files output files, alongside a brief description of each file are given in the tables below: </p>
  <br>
- <h4> Parametric analyses </h4>
+ <h4> Parametric Voxelwise analyses </h4>
  
- For a parametric analyses run on input given as '.mat' files, the below files are output.
+ For parametric voxelwise analyses run on input given as '.mat' files, the below files are output.
   <br> <br>
   <table width="100%" border="1" style="max-width: none;">
   <tr>
@@ -295,10 +295,10 @@ For parametric analyses run on input given as '.img' or '.nii' files, the below 
 
 <br> <br>
 
-<h4>Non-Parametric analyses</h4>
+<h4>Non-Parametric Clusterwise analyses</h4>
 <br>
 
-For non-parametric analyses run on input given as '.mat' files, the below files are output.<br> <br>
+For non-parametric clusterwise analyses run on input given as '.mat' files, the below files are output.<br> <br>
 
 <table width="100%" border="1" style="max-width: none;">
   <tr>
@@ -352,7 +352,7 @@ For non-parametric analyses run on input given as '.mat' files, the below files 
 </table>
 
 <br> 
-For non-parametric analyses run on input given as '.img' or '.nii' files, the below files are output.<br> <br>
+For non-parametric clusterwise analyses run on input given as '.img' or '.nii' files, the below files are output.<br> <br>
 
 <table width="100%" border="1" style="max-width: none;">
   <tr>
@@ -401,6 +401,67 @@ For non-parametric analyses run on input given as '.img' or '.nii' files, the be
   </tr>
 </table>
 <br> 
+                                
+ <h4>Non-Parametric TFCE analyses</h4>
+<br>
+
+For non-parametric TFCE analyses run on input given as '.img' or '.nii' files, the below files are output.<br> <br>
+
+<table width="100%" border="1" style="max-width: none;">
+  <tr>
+    <th>Filename</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>swe_vox_mask.nii</code></td>
+    <td>This is the mask used during the analysis. (In previous versions of the toolbox this map was known as <code>mask.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_c{c#}.nii</code></td>
+    <td>This is the voxelwise parametric statistic map (T or F) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was not recorded.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{zT|xF}stat_c{c#}.nii</code></td>
+    <td>This is the voxelwise parametric equivalent statistic map (Z or 1-DF Chi-Squared) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>score.nii</code> for <code>{c#}=001</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{zT|xF}stat-WB_c{c#}.nii</code></td>
+    <td>This is the voxelwise non-parametric equivalent statistic map (Z or 1-DF Chi-Squared) for contrast <code>{c#}</code>, derived from the non-parametric uncorrected P values in <code>swe_vox_{T|F}stat_lp-WB_c{c#}.nii</code>. (In previous versions of the toolbox this map was not recorded.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_lp-WB_c{c#}.nii</code></td>
+    <td>This is the log10 map of the voxelwise uncorrected P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lP{+-}.nii</code>*.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_lpFWE-WB_c{c#}.nii</code></td>
+    <td>This is the log10 map of the voxelwise bootstrap-calculated FWE P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lP_FWE{+-}.nii</code>*.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_lpFDR-WB_c{c#}.nii</code></td>
+    <td>This is the log10 map of the voxelwise bootstrap-calculated FDR P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lP_FDR{+-}.nii</code>*.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_tfce_c{c#}.nii</code></td>
+    <td>This is the parametric TFCE statistic for contrast <code>{c#}</code>.</td>
+  </tr>
+  <tr>
+    <td><code>swe_tfce_lp-WB_c{c#}.nii</code></td>
+    <td>This is the log10 map of the TFCE bootstrap-calculated uncorrected P values for contrast <code>{c#}</code>.</td>
+  </tr>
+  <tr>
+    <td><code>swe_tfce_lpFWE-WB_c{c#}.nii</code></td>
+    <td>This is the log10 map of the TFCE bootstrap-calculated FWE P values for contrast <code>{c#}</code>.</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_resid_y{y#}.nii</code>&#10013;</td>
+    <td>These are the wild-bootstrap generated residuals obtained for scan <code>{y#}</code>. (In previous versions of the toolbox this map was known as <code>ResWB_{y#}.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_fit_y{y#}.nii</code>&#10013;</td>
+    <td>These are the fitted values obtained for scan <code>{y#}</code> calculated using the wild-bootstrap generated residuals given in <code>swe_vox_resid_y{y#}.nii</code>. (In previous versions of the toolbox this map was known as <code>YfittedWB_{y#}.nii</code>.)</td>
+  </tr>
+</table>
+<br> 
 
 *Note: For non-parametric analyses <code>{c#}</code> is <code>001</code> for activation and <code>002</code> for deactivation. In previous versions of the toolbox these were represented with either a +/- or p/n.
 <br><br>
@@ -408,6 +469,15 @@ For non-parametric analyses run on input given as '.img' or '.nii' files, the be
 
                                 
                                 
+                            
+                        </div></div>
+                        
+                    </div>
+                    
+                </div>
+
+                <br>
+                <br>                               
                             
                         </div></div>
                         

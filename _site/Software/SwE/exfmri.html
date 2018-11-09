@@ -131,15 +131,15 @@
 
 <p>Here, we assume that the SwE toolbox has already been downloaded and installed correctly (see the <a href="Userguide">manual</a> if it is not the case).</p>
 
-<p>To start the toolbox, type <code>swe</code> in the MATLAB command window and the following GUI should appear:<img border="0" alt="swegui.png" src="../../img/SwE/swegui.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p>To start the toolbox, type <code>swe</code> in the MATLAB command window and the following GUI should appear:<img border="0" alt="swegui.png" src="../../img/SwE/SwE-main-menu.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
 <p>Press the "Specify model" button of the SwE GUI and the following batch system with the SwE module "Data &amp; Design" already loaded should appear:</p>
 
-<p><img border="0" alt="Batch" src="../../img/SwE/batch.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p><img border="0" alt="Batch" src="../../img/SwE/SwE-batch-editor.png?maxWidth=788" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
-<p>Highlight the field "Directory", press the button "Select files" and select the directory where the files of the analysis will be created.</p>
+<p>Highlight the field "Directory", press the button "Specify" and select the directory where the files of the analysis will be created.</p>
 
-<p>Highlight the field "Scan", press the button "Select files" and select in numerical order the 36 contrasts images (con_0003.img, con_0004.img,..., con_0038.img) that can be found in the folder "cons_informed" of the downloaded file "face_rfx.zip". Note that the ordering of the scans is important as other variables (Groups, Visits and Subjects) must follow the same ordering. The correspondance of each of these scans is shown in the following table:</p>
+<p>Highlight the field "Scans", press the button "Specify" and select in numerical order the 36 contrasts images (con_0003.img, con_0004.img,..., con_0038.img) that can be found in the folder "cons_informed" of the downloaded file "face_rfx.zip". Note that the ordering of the scans is important as other variables (Groups, Visits and Subjects) must follow the same ordering. The correspondance of each of these scans is shown in the following table:</p>
 
 <p>
   </p><table border="1" cellspacing="0" cellpadding="0" align="center" style="max-width: 100%;">
@@ -179,21 +179,27 @@
 
 <p></p>
 
-<p>For our example, we may assume that all the subjects share a common covariance matrix. Therefore, highlight the field "SwE type" and select the "modified SwE". Then, highlight the field "Groups", press the "Edit value" button and enter a vector of 1 by, for example, using the MATLAB command <code>ones(36,1)</code>.</p>
+<p>For our example, we may assume that all the subjects share a common covariance matrix. Therefore, highlight the field "SwE type" and select "*Modified" from the "Current Item: SwE type" box. Then, highlight the field "Groups" item under "SwE type", press the "Specify" button and enter a column vector containing 36 ones by, for example, using the MATLAB command <code>ones(36,1)</code>.</p>
 
-<p>Highlight the field "Visits", press the "Edit value" button and enter a vector of visit/repeated-measure categories. For our example, there are 3 repeated-measures categories corresponding to the canonical HRF, the temporal derivative and the dispersion derivative. This can be specified by using the MATLAB command <code>kron((1:3),ones(1,12))</code>.</p>
+<p>Highlight the field "Visits", press the "Specify" button and enter a vector of visit/repeated-measure categories. For our example, there are three repeated-measures categories corresponding to 1) the canonical HRF, 2) the temporal derivative and 3) the dispersion derivative. This can be specified by using the MATLAB command <code>kron((1:3),ones(1,12))</code>, which will generate a column vector containing 12 ones, 12 twos, and 12 threes.</p>
 
 <p>Highlight the field "Small sample adjustments" and select the type of bias corrective factor to be applied to the residuals prior their use in the estimation of the SwE. Based on extensive simulations in Guillaume et al. (2014) [<a href="https://www.ncbi.nlm.nih.gov/pubmed/24650594">PDF</a>] and Guillaume (2015) [<a href="https://orbi.uliege.be/bitstream/2268/186284/1/thesisFinalVersion_BryanGuillaume.pdf">PDF</a>], we recommend leaving the Small sample adjustments to the default value, "type C2". </p>
 
 <p>Highlight the field "Degrees of freedom type" to select the type of estimation used for degrees of freedom. Again, based on extensive simulations,  we suggest using the default value, "approx III". (The "approx II" Degrees of freedom type may be better than "approx III" but is only safe if using a balanced design).</p>
 
-<p>Highlight the field "Subjects", press the "Edit value" button and specify the vector of subjects. In our example, this can be done by using the MATLAB command <code>kron(ones(1,3),1:12)</code>.</p>
+<p>Highlight the field "Subjects", press the "Specify" button and specify the vector of subjects. In our example, this can be done by again using the MATLAB command <code>kron(ones(1,3),1:12)</code>, which generates a column vector containin 1, 2, 3,&nbsp;.&nbsp;.&nbsp;,12 three times</p>
 
-<p>Highlight the field "Covariates", press "New: Covariate", highlight the field "Vector", press the "edit value" button and enter your first covariate. Then, highlight the field "Name", press the "edit value" button and enter a name for your first covariate. This process can be repeated several times to add all the covariates needed to construct the design matrix. In our example, 3 covariates defining the canonical HRF, the temporal derivative and the dispersion derivative can be specified by entering the following MATLAB commands: <code>kron([1 0 0],ones(1,12))</code>, <code>kron([0 1 0],ones(1,12))</code> and <code>kron([0 0 1],ones(1,12))</code>, respectively.</p>
+<p>Next you need to specify the three covariates.  To create a covariate, first click the "Covariates" field, then click "New: Covariate" in the lower box.  That will add a section above for the new covariate.  Click on the "Name" field, then on the "Specify" button, and enter the covariate name.  The first covariate is "Canonical HRF".  Next, you click the "Vector" field, then the "Specify" button to enter the vector for the covariate, which for the canonical HRF function is <code>kron([1 0 0],ones(1,12))</code>.</p>
 
-<p>The remaining fields are similar to a classic SPM batch job and can be let unchanged for our example. The batch window should then look like this:</p>
+<p>There are three covariates, so you need to repeat the process for the covariate for the temporal derivative and for the dispersion derivative.</p>
 
-<p><img border="0" alt="Bath final" src="../../img/SwE/batchfinal.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p>Highlight the field "Covariates" again, press "New: Covariate"; click the "Name" field and enter the name of the second covariate, "Temporal derivative".  Click the "Vector" field, and enter the vector, which for the temporal derivative is, <code>kron([0 1 0],ones(1,12))</code>.</p> 
+
+<p>Highlight the field "Covariates" one last time, press "New: Covariate"; click the "Name" field and enter the name of the second covariate, "Dispersion derivative".  Click the "Vector" field, and enter the vector, which for the temporal derivative is, <code>kron([0 0 1],ones(1,12))</code>.</p> 
+
+<p>The remaining fields are similar to a classic SPM batch job and can be left unchanged for our example. The batch window should then look like this:</p>
+
+<p><img border="0" alt="Bath final" src="../../img/SwE/SwE-model.png" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
 <p>Finally, push the green "Run Batch" button. An <code>SwE.mat</code> file containing all the information related to the data and design should then be created in the specified working directory and the following window showing the design matrix should appear:</p>
 
