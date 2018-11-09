@@ -56,11 +56,11 @@ notitle: True
 
 <p>Here, we assume that the SwE toolbox has already been downloaded and installed correctly (see the <a href="Userguide">manual</a> if it is not the case).</p>
 
-<p>To start the toolbox, type <code>swe</code> in the MATLAB command window and the following GUI should appear:<img border="0" alt="swegui.png" src="../../img/SwE/SwE-main-menu.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p>To start the toolbox, type <code>swe</code> in the MATLAB command window and the following GUI should appear:</p><img border="0" alt="swegui.png" src="../../img/SwE/SwE-main-menu.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"><br>
 
 <p>Press the "Specify model" button of the SwE GUI and the following batch system with the SwE module "Data &amp; Design" already loaded should appear:</p>
 
-<p><img border="0" alt="Batch" src="../../img/SwE/SwE-batch-editor.png?maxWidth=788" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p><img border="0" alt="Batch" src="../../img/SwE/batch.png" style="display: block; margin-left: auto; margin-right: auto;" width="400"></p>
 
 <p>Highlight the field "Directory", press the button "Specify" and select the directory where the files of the analysis will be created.</p>
 
@@ -124,17 +124,17 @@ notitle: True
 
 <p>The remaining fields are similar to a classic SPM batch job and can be left unchanged for our example. The batch window should then look like this:</p>
 
-<p><img border="0" alt="Bath final" src="../../img/SwE/SwE-model.png" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p><img border="0" alt="Bath final" src="../../img/SwE/batchfinal.png" style="display: block; margin-left: auto; margin-right: auto;" width="400"></p>
 
 <p>Finally, push the green "Run Batch" button. An <code>SwE.mat</code> file containing all the information related to the data and design should then be created in the specified working directory and the following window showing the design matrix should appear:</p>
 
-<p><img border="0" alt="Design matrix" src="../../img/SwE/designmatrix.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p><img border="0" alt="Design matrix" src="../../img/SwE/designmatrix.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;" width = "400"></p>
 
 <p>To start estimating the parameters of this specified model, press the button "Run model" of the SwE GUI and select the <code>SwE.mat</code> file just created. The toolbox should then compute all the estimates needed for the analysis and update the <code>SwE.mat</code> file.</p>
 
 <p>Once the computation is done, press the "Results" button of the SwE GUI and select the updated <code>SwE.mat</code> file. The toolbox should then open the following SwE contrast manager allowing the test of several contrasts:</p>
 
-<p style="text-align: left;"><img border="0" alt="SwE contrast manager" src="../../img/SwE/swecontrastmanager.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p style="text-align: left;"><img border="0" alt="SwE contrast manager" src="../../img/SwE/swecontrastmanager.png?maxWidth=300" width = "400" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
 <p style="text-align: left;">In the contrast manager, press "Define new contrast", select F-contrast in the "type" section, enter the MATLAB command <code>eye(3)</code> in the "contrast" section, enter "Faces vs Baseline: Informed" in the "name" section and press the "OK" button. This contrast will reveal voxels that exhibit some form of event-related responses captured by at least one of the three basis functions.</p>
 
@@ -142,19 +142,19 @@ notitle: True
 
 <p style="text-align: left;">Once the computation is done, press the "FDR" button, validate "0.05" as a FDR p-value, validate "0" as extent threshold and the toolbox should display the following result:</p>
 
-<p style="text-align: left;"><img border="0" alt="result1" src="../../img/SwE/result1.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p style="text-align: left;"><img border="0" alt="result1" src="../../img/SwE/result1.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;" width = "400" ></p>
 
 <p style="text-align: left;">Note that, like this, it is difficult to visualise where the effects are exactly. Therefore, in order to see better which areas of the brain are activated, you can press the "whole brain" button and a list summarising the most important activations in the brain should appear:</p>
 
-<p style="text-align: left;"><img border="0" alt="result2" src="../../img/SwE/result2.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p style="text-align: left;"><img border="0" alt="result2" src="../../img/SwE/result2.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;" width = "400" ></p>
 
 <p style="text-align: left;">You can also select "sections" in the "overlay" menu and select the image <code>single_subj_T1.nii</code> situated in the subfolder "canonical" of your SPM8 or SPM12 main folder. You should then get the following display:</p>
 
-<p style="text-align: left;"><img border="0" alt="result3" src="../../img/SwE/result3.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p style="text-align: left;"><img border="0" alt="result3" width = "400"  src="../../img/SwE/result3.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
 <p style="text-align: left;">You can navigate through it in order to see more pricesely the areas of activation. Note that you may also want to impose a more restrective threshold. To do so, go into "Contrasts" &gt; "Significance level" &gt; "Change..." as shown below:</p>
 
-<p style="text-align: left;"><img border="0" alt="result4" src="../../img/SwE/result4.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p style="text-align: left;"><img border="0" alt="result4" width = "400" src="../../img/SwE/result4.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
 <p style="text-align: left;">Then, you can reselect an FDR correction (button "FDR"), change the significance level (e.g., 0.01) and eventually the extent threshold (e.g., 10 voxels) or select an uncorrected threshold instead (button "none").</p>
 
@@ -170,44 +170,14 @@ notitle: True
 
 <p>Testing the three new contrasts and using a FDR correction at 0.05 level of significance, you should get the three following displays:</p>
 
-<p><img border="0" width = "230" alt="canonical" src="../../img/SwE/can.png?maxWidth=300" style="float: left;"><img border="0" width = "230"  alt="temporal" src="../../img/SwE/temp.png?maxWidth=300" style="float: left;"><img border="0" width = "230"  alt="dispersion" src="../../img/SwE/disp.png?maxWidth=300" style="float: left;"></p>
+<p><img border="0" width = "700" alt="canonical" src="../../img/SwE/cantempdisp.png?maxWidth=300" style="float: left;"></p>
+
+
 
 <p><br>
   </p>
-
 <p><br>
   </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
 <p><br>
   </p>
 
