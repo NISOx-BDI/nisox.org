@@ -131,15 +131,15 @@
 
 <p>Here, we assume that the SwE toolbox has already been downloaded and installed correctly (see the <a href="Userguide">manual</a> if it is not the case).</p>
 
-<p>To start the toolbox, type <code>swe</code> in the MATLAB command window and the following GUI should appear:<img border="0" alt="swegui.png" src="../../img/SwE/swegui.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p>To start the toolbox, type <code>swe</code> in the MATLAB command window and the following GUI should appear:</p><img border="0" alt="swegui.png" src="../../img/SwE/SwE-main-menu.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"><br>
 
-<p>Press the "Specify model" button of the SwE GUI and the following batch system with the SwE module "Data &amp; Design" already loaded should appear:</p>
+<p>Press the "Specify model" button of the SwE GUI and the following batch system with the SwE module "Specify Model" already loaded should appear:</p>
 
-<p><img border="0" alt="Batch" src="../../img/SwE/batch.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p><img border="0" alt="Batch" src="../../img/SwE/batch.png" style="display: block; margin-left: auto; margin-right: auto;" width="400"></p>
 
-<p>Highlight the field "Directory", press the button "Select files" and select the directory where the files of the analysis will be created.</p>
+<p>Highlight the field "Directory", press the button "Specify" and select the directory where the files of the analysis will be created.</p>
 
-<p>Highlight the field "Scan", press the button "Select files" and select in numerical order the 36 contrasts images (con_0003.img, con_0004.img,..., con_0038.img) that can be found in the folder "cons_informed" of the downloaded file "face_rfx.zip". Note that the ordering of the scans is important as other variables (Groups, Visits and Subjects) must follow the same ordering. The correspondance of each of these scans is shown in the following table:</p>
+<p>Highlight the field "Scans", press the button "Specify" and select in numerical order the 36 contrasts images (con_0003.img, con_0004.img,..., con_0038.img) that can be found in the folder "cons_informed" of the downloaded file "face_rfx.zip". Note that the ordering of the scans is important as other variables (Groups, Visits and Subjects) must follow the same ordering. The correspondance of each of these scans is shown in the following table:</p>
 
 <p>
   </p><table border="1" cellspacing="0" cellpadding="0" align="center" style="max-width: 100%;">
@@ -179,51 +179,57 @@
 
 <p></p>
 
-<p>For our example, we may assume that all the subjects share a common covariance matrix. Therefore, highlight the field "SwE type" and select the "modified SwE". Then, highlight the field "Groups", press the "Edit value" button and enter a vector of 1 by, for example, using the MATLAB command <code>ones(36,1)</code>.</p>
+<p>For our example, we may assume that all the subjects share a common covariance matrix. Therefore, highlight the field "SwE type" and select "*Modified" from the "Current Item: SwE type" box. Then, highlight the field "Groups" item under "SwE type", press the "Specify" button and enter a column vector containing 36 ones by, for example, using the MATLAB command <code>ones(36,1)</code>.</p>
 
-<p>Highlight the field "Visits", press the "Edit value" button and enter a vector of visit/repeated-measure categories. For our example, there are 3 repeated-measures categories corresponding to the canonical HRF, the temporal derivative and the dispersion derivative. This can be specified by using the MATLAB command <code>kron((1:3),ones(1,12))</code>.</p>
+<p>Highlight the field "Visits", press the "Specify" button and enter a vector of visit/repeated-measure categories. For our example, there are three repeated-measures categories corresponding to 1) the canonical HRF, 2) the temporal derivative and 3) the dispersion derivative. This can be specified by using the MATLAB command <code>kron((1:3),ones(1,12))</code>, which will generate a column vector containing 12 ones, 12 twos, and 12 threes.</p>
 
 <p>Highlight the field "Small sample adjustments" and select the type of bias corrective factor to be applied to the residuals prior their use in the estimation of the SwE. Based on extensive simulations in Guillaume et al. (2014) [<a href="https://www.ncbi.nlm.nih.gov/pubmed/24650594">PDF</a>] and Guillaume (2015) [<a href="https://orbi.uliege.be/bitstream/2268/186284/1/thesisFinalVersion_BryanGuillaume.pdf">PDF</a>], we recommend leaving the Small sample adjustments to the default value, "type C2". </p>
 
 <p>Highlight the field "Degrees of freedom type" to select the type of estimation used for degrees of freedom. Again, based on extensive simulations,  we suggest using the default value, "approx III". (The "approx II" Degrees of freedom type may be better than "approx III" but is only safe if using a balanced design).</p>
 
-<p>Highlight the field "Subjects", press the "Edit value" button and specify the vector of subjects. In our example, this can be done by using the MATLAB command <code>kron(ones(1,3),1:12)</code>.</p>
+<p>Highlight the field "Subjects", press the "Specify" button and specify the vector of subjects. In our example, this can be done by again using the MATLAB command <code>kron(ones(1,3),1:12)</code>, which generates a column vector containin 1, 2, 3,&nbsp;.&nbsp;.&nbsp;,12 three times</p>
 
-<p>Highlight the field "Covariates", press "New: Covariate", highlight the field "Vector", press the "edit value" button and enter your first covariate. Then, highlight the field "Name", press the "edit value" button and enter a name for your first covariate. This process can be repeated several times to add all the covariates needed to construct the design matrix. In our example, 3 covariates defining the canonical HRF, the temporal derivative and the dispersion derivative can be specified by entering the following MATLAB commands: <code>kron([1 0 0],ones(1,12))</code>, <code>kron([0 1 0],ones(1,12))</code> and <code>kron([0 0 1],ones(1,12))</code>, respectively.</p>
+<p>Next you need to specify the three covariates.  To create a covariate, first click the "Covariates" field, then click "New: Covariate" in the lower box.  That will add a section above for the new covariate.  Click on the "Name" field, then on the "Specify" button, and enter the covariate name.  The first covariate is "Canonical HRF".  Next, you click the "Vector" field, then the "Specify" button to enter the vector for the covariate, which for the canonical HRF function is <code>kron([1 0 0],ones(1,12))</code>.</p>
 
-<p>The remaining fields are similar to a classic SPM batch job and can be let unchanged for our example. The batch window should then look like this:</p>
+<p>There are three covariates, so you need to repeat the process for the covariate for the temporal derivative and for the dispersion derivative.</p>
 
-<p><img border="0" alt="Bath final" src="../../img/SwE/batchfinal.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p>Highlight the field "Covariates" again, press "New: Covariate"; click the "Name" field and enter the name of the second covariate, "Temporal derivative".  Click the "Vector" field, and enter the vector, which for the temporal derivative is, <code>kron([0 1 0],ones(1,12))</code>.</p> 
+
+<p>Highlight the field "Covariates" one last time, press "New: Covariate"; click the "Name" field and enter the name of the second covariate, "Dispersion derivative".  Click the "Vector" field, and enter the vector, which for the temporal derivative is, <code>kron([0 0 1],ones(1,12))</code>.</p> 
+
+<p>The remaining fields are similar to a classic SPM batch job and can be left unchanged for our example. The batch window should then look like this:</p>
+
+<p><img border="0" alt="Bath final" src="../../img/SwE/batchfinal.png" style="display: block; margin-left: auto; margin-right: auto;" width="400"></p>
 
 <p>Finally, push the green "Run Batch" button. An <code>SwE.mat</code> file containing all the information related to the data and design should then be created in the specified working directory and the following window showing the design matrix should appear:</p>
 
-<p><img border="0" alt="Design matrix" src="../../img/SwE/designmatrix.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p><img border="0" alt="Design matrix" src="../../img/SwE/designmatrix.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;" width = "400"></p>
 
 <p>To start estimating the parameters of this specified model, press the button "Run model" of the SwE GUI and select the <code>SwE.mat</code> file just created. The toolbox should then compute all the estimates needed for the analysis and update the <code>SwE.mat</code> file.</p>
 
 <p>Once the computation is done, press the "Results" button of the SwE GUI and select the updated <code>SwE.mat</code> file. The toolbox should then open the following SwE contrast manager allowing the test of several contrasts:</p>
 
-<p style="text-align: left;"><img border="0" alt="SwE contrast manager" src="../../img/SwE/swecontrastmanager.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p style="text-align: left;"><img border="0" alt="SwE contrast manager" src="../../img/SwE/swecontrastmanager.png?maxWidth=300" width = "400" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
 <p style="text-align: left;">In the contrast manager, press "Define new contrast", select F-contrast in the "type" section, enter the MATLAB command <code>eye(3)</code> in the "contrast" section, enter "Faces vs Baseline: Informed" in the "name" section and press the "OK" button. This contrast will reveal voxels that exhibit some form of event-related responses captured by at least one of the three basis functions.</p>
 
-<p style="text-align: left;">Now, press the "Done" button in the SwE contrast manager, press the "none" button (section "apply masking"), accept "Faces vs Baseline: Informed" as title for comparison and the toolbox will compute the inferences images (i.e. the F-score image <code>spmF_0001.img</code>, the equivalent chi-squared-score image <code>spmX_0001.img</code> and the degrees of freedom image <code>edf_0001.img</code>) in the working directory. Note that it can take several minutes for F-contrasts with a rank superior to 1, like it is the case here.</p>
+<p style="text-align: left;">Now, press the "Done" button in the SwE contrast manager, press the "none" button (section "apply masking"), accept "Faces vs Baseline: Informed" as title for comparison and the toolbox will compute the inferences images (i.e. the F-score image <code>swe_vox_Fstat_c01.nii</code>, the equivalent chi-squared-score image <code>swe_vox_xFstat_c01.nii</code> and the degrees of freedom image <code>swe_vox_edf_c01.nii</code>) in the working directory. Note that it can take several minutes for F-contrasts with a rank superior to 1, like it is the case here.</p>
 
 <p style="text-align: left;">Once the computation is done, press the "FDR" button, validate "0.05" as a FDR p-value, validate "0" as extent threshold and the toolbox should display the following result:</p>
 
-<p style="text-align: left;"><img border="0" alt="result1" src="../../img/SwE/result1.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p style="text-align: left;"><img border="0" alt="result1" src="../../img/SwE/result1.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;" width = "400" ></p>
 
 <p style="text-align: left;">Note that, like this, it is difficult to visualise where the effects are exactly. Therefore, in order to see better which areas of the brain are activated, you can press the "whole brain" button and a list summarising the most important activations in the brain should appear:</p>
 
-<p style="text-align: left;"><img border="0" alt="result2" src="../../img/SwE/result2.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p style="text-align: left;"><img border="0" alt="result2" src="../../img/SwE/result2.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;" width = "400" ></p>
 
 <p style="text-align: left;">You can also select "sections" in the "overlay" menu and select the image <code>single_subj_T1.nii</code> situated in the subfolder "canonical" of your SPM8 or SPM12 main folder. You should then get the following display:</p>
 
-<p style="text-align: left;"><img border="0" alt="result3" src="../../img/SwE/result3.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p style="text-align: left;"><img border="0" alt="result3" width = "400"  src="../../img/SwE/result3.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
 <p style="text-align: left;">You can navigate through it in order to see more pricesely the areas of activation. Note that you may also want to impose a more restrective threshold. To do so, go into "Contrasts" &gt; "Significance level" &gt; "Change..." as shown below:</p>
 
-<p style="text-align: left;"><img border="0" alt="result4" src="../../img/SwE/result4.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p style="text-align: left;"><img border="0" alt="result4" width = "400" src="../../img/SwE/result4.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
 <p style="text-align: left;">Then, you can reselect an FDR correction (button "FDR"), change the significance level (e.g., 0.01) and eventually the extent threshold (e.g., 10 voxels) or select an uncorrected threshold instead (button "none").</p>
 
@@ -239,44 +245,14 @@
 
 <p>Testing the three new contrasts and using a FDR correction at 0.05 level of significance, you should get the three following displays:</p>
 
-<p><img border="0" width = "230" alt="canonical" src="../../img/SwE/can.png?maxWidth=300" style="float: left;"><img border="0" width = "230"  alt="temporal" src="../../img/SwE/temp.png?maxWidth=300" style="float: left;"><img border="0" width = "230"  alt="dispersion" src="../../img/SwE/disp.png?maxWidth=300" style="float: left;"></p>
+<p><img border="0" width = "700" alt="canonical" src="../../img/SwE/cantempdisp.png?maxWidth=300" style="float: left;"></p>
+
+
 
 <p><br>
   </p>
-
 <p><br>
   </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
-<p><br>
-  </p>
-
 <p><br>
   </p>
 

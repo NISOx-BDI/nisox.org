@@ -74,7 +74,7 @@ notitle: True
 
 <br>
 <br>
-<p>Alternatively, to run the SwE toolbox in standalone mode, do the following:</p>.
+<p>Alternatively, to run the SwE toolbox in standalone mode, do the following:</p>
 <ol>
 
   <li>Unzip the <code>SwE.zip</code> file into the SPM toolboxes folder (i.e. <code>{path to spm}/toolbox/</code>).</li>
@@ -87,15 +87,15 @@ notitle: True
     </ul>
 
   </li>
-  <li>Launch the SwE toolbox by typing <code>swe</code> in the command window and the following GUI should appear:<img border="0" alt="swegui.png" src="../../img/SwE/swegui.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;">This SwE GUI has three buttons allowing to launch the three stages of an SwE analysis. Each of these stages is detailed below.</li>
+  <li>Launch the SwE toolbox by typing <code>swe</code> in the command window and the following GUI should appear:<br><br><img border="0" alt="swegui.png" src="../../img/SwE/SwE-main-menu.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"><br><br>This SwE GUI has three buttons allowing to launch the three stages of an SwE analysis. Each of these stages is detailed below.</li>
 </ol>
 
 <hr>
 <h3>Data &amp; design setup</h3>
 
-<p>To start specifying the data and design, press the button "Specify model" in the SwE GUI. This will call the SPM batch system, add the SwE tab to it and load the SwE module "Data &amp; Design" (see image below).</p>
+<p>To start specifying the data and design, press the button "Specify model" in the SwE GUI. This will call the SPM batch system, add the SwE tab to it and load the SwE module "Specify Model" (see image below).</p>
 
-<p><img border="0" alt="SwE batch" src="../../img/SwE/swebatch.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
+<p><img border="0" alt="SwE batch" width="400" src="../../img/SwE/batch.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
 <p>This module contains several fields that have to be filled in:</p>
 
@@ -147,13 +147,69 @@ Note that the simulations in Guillaume et al. (in submission) seems to show that
   </li>
   <li>Covariates:
     <ul>
-      <li>Allow the construction of the design matrix by entering several covariates in the ordering of the scans. Note that the toolbox does not currently offer an automatic construction of the design matrix. The entire design matrix must be specified by adding covariates one by one.</li>
+      <li>Allow the construction of the design matrix by entering several covariates in the ordering of the scans. In this setting, the entire design matrix must be specified by adding covariates one by one.</li>
     </ul>
 
+  </li>
+  <li>Multiple Covariates:
+    <ul>
+      <li>Allow the construction of the design matrix by entering a <code>`.txt`/`.mat`</code>file containing predefined covariates.</li>
+    </ul>
   </li>
   <li>Masking:
     <ul>
       <li>Similar to a SPM design.</li>
+    </ul>
+
+  </li>
+    <li>Non-Parametric Wild Bootstrap:
+    <ul>
+      <li>Select whether to do a Non-Parametric Wild Bootstrap (options are "Yes" or "No"). If "Yes" is selected, the following fields must be filled in: </li>
+
+      <ul>
+        <li>
+          Small sample adjustments:
+          <ul>
+          <li> Small sample adjustment applied to the residuals before wild bootstrap resampling. The default of "type C2" is recommended.
+          </li>
+          </ul>
+        </li>
+        <li>
+          Number of Bootstraps:
+          <ul>
+          <li> This sets the number of bootstraps (nB). This will notably set the number of possible FWER-corrected p-values to nB+1 and set the minimum possible FWER-corrected p-value to 1/(nB+1).
+          </li>
+          </ul>
+        </li>
+        <li>
+          Type of SwE:
+          <ul>
+          <li> This offers a choice of unrestricted and restricted SwE respectively. An unrestricted SwE is obtained using the residuals of an unrestricted model (not imposing the null hypothesis), whilst a restricted SwE is obtained using a restricted model. An unrestricted SwE is the recommended default.
+          </li>
+          </ul>
+        </li>
+        <li>
+          Statistic Type:
+          <ul>
+          <li> The statistic type and contrast to be used when thresholding.
+          </li>
+          </ul>
+        </li>
+        <li>
+          Inference type:
+          <ul>
+            <li>
+            Voxelwise Inference: This will calculate voxelwise FWE p values using a bootstrap. If selected, no additional input is required.
+            </li>
+            <li>
+            Clusterwise Inference: This will calculate voxelwise and clusterwise FWE p values using a bootstrap. If selected, a cluster forming threshold will be required and a surface mask will be required if the input is surface data.
+            </li>
+            <li>
+            TFCE Inference: This will calculate voxelwise and TFCE FWE p values and TFCE uncorrected P values using a bootstrap. If selected, TFCE E and H values will be required.
+            </li>
+          </ul>
+        </li>
+      </ul>
     </ul>
 
   </li>
@@ -187,9 +243,9 @@ Note that the simulations in Guillaume et al. (in submission) seems to show that
 
  <p> A full list of files output files, alongside a brief description of each file are given in the tables below: </p>
  <br>
- <h4> Parametric analyses </h4>
+ <h4> Parametric Voxelwise analyses </h4>
  
- For a parametric analyses run on input given as '.mat' files, the below files are output.
+ For parametric voxelwise analyses run on input given as '.mat' files, the below files are output.
   <br> <br>
   <table width="100%" border="1" style="max-width: none;">
   <tr>
@@ -295,10 +351,10 @@ For parametric analyses run on input given as '.img' or '.nii' files, the below 
 
 <br> <br>
 
-<h4>Non-Parametric analyses</h4>
+<h4>Non-Parametric Clusterwise analyses</h4>
 <br>
 
-For non-parametric analyses run on input given as '.mat' files, the below files are output.<br> <br>
+For non-parametric clusterwise analyses run on input given as '.mat' files, the below files are output.<br> <br>
 
 <table width="100%" border="1" style="max-width: none;">
   <tr>
@@ -352,7 +408,7 @@ For non-parametric analyses run on input given as '.mat' files, the below files 
 </table>
 
 <br> 
-For non-parametric analyses run on input given as '.img' or '.nii' files, the below files are output.<br> <br>
+For non-parametric clusterwise analyses run on input given as '.img' or '.nii' files, the below files are output.<br> <br>
 
 <table width="100%" border="1" style="max-width: none;">
   <tr>
@@ -401,6 +457,67 @@ For non-parametric analyses run on input given as '.img' or '.nii' files, the be
   </tr>
 </table>
 <br> 
+                                
+ <h4>Non-Parametric TFCE analyses</h4>
+<br>
+
+For non-parametric TFCE analyses run on input given as '.img' or '.nii' files, the below files are output.<br> <br>
+
+<table width="100%" border="1" style="max-width: none;">
+  <tr>
+    <th>Filename</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>swe_vox_mask.nii</code></td>
+    <td>This is the mask used during the analysis. (In previous versions of the toolbox this map was known as <code>mask.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_c{c#}.nii</code></td>
+    <td>This is the voxelwise parametric statistic map (T or F) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was not recorded.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{zT|xF}stat_c{c#}.nii</code></td>
+    <td>This is the voxelwise parametric equivalent statistic map (Z or 1-DF Chi-Squared) for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>score.nii</code> for <code>{c#}=001</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{zT|xF}stat-WB_c{c#}.nii</code></td>
+    <td>This is the voxelwise non-parametric equivalent statistic map (Z or 1-DF Chi-Squared) for contrast <code>{c#}</code>, derived from the non-parametric uncorrected P values in <code>swe_vox_{T|F}stat_lp-WB_c{c#}.nii</code>. (In previous versions of the toolbox this map was not recorded.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_lp-WB_c{c#}.nii</code></td>
+    <td>This is the log10 map of the voxelwise uncorrected P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lP{+-}.nii</code>*.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_lpFWE-WB_c{c#}.nii</code></td>
+    <td>This is the log10 map of the voxelwise bootstrap-calculated FWE P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lP_FWE{+-}.nii</code>*.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_{T|F}stat_lpFDR-WB_c{c#}.nii</code></td>
+    <td>This is the log10 map of the voxelwise bootstrap-calculated FDR P values for contrast <code>{c#}</code>. (In previous versions of the toolbox this map was known as <code>lP_FDR{+-}.nii</code>*.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_tfce_c{c#}.nii</code></td>
+    <td>This is the parametric TFCE statistic for contrast <code>{c#}</code>.</td>
+  </tr>
+  <tr>
+    <td><code>swe_tfce_lp-WB_c{c#}.nii</code></td>
+    <td>This is the log10 map of the TFCE bootstrap-calculated uncorrected P values for contrast <code>{c#}</code>.</td>
+  </tr>
+  <tr>
+    <td><code>swe_tfce_lpFWE-WB_c{c#}.nii</code></td>
+    <td>This is the log10 map of the TFCE bootstrap-calculated FWE P values for contrast <code>{c#}</code>.</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_resid_y{y#}.nii</code>&#10013;</td>
+    <td>These are the wild-bootstrap generated residuals obtained for scan <code>{y#}</code>. (In previous versions of the toolbox this map was known as <code>ResWB_{y#}.nii</code>.)</td>
+  </tr>
+  <tr>
+    <td><code>swe_vox_fit_y{y#}.nii</code>&#10013;</td>
+    <td>These are the fitted values obtained for scan <code>{y#}</code> calculated using the wild-bootstrap generated residuals given in <code>swe_vox_resid_y{y#}.nii</code>. (In previous versions of the toolbox this map was known as <code>YfittedWB_{y#}.nii</code>.)</td>
+  </tr>
+</table>
+<br> 
 
 *Note: For non-parametric analyses <code>{c#}</code> is <code>001</code> for activation and <code>002</code> for deactivation. In previous versions of the toolbox these were represented with either a +/- or p/n.
 <br><br>
@@ -408,6 +525,15 @@ For non-parametric analyses run on input given as '.img' or '.nii' files, the be
 
                                 
                                 
+                            
+                        </div></div>
+                        
+                    </div>
+                    
+                </div>
+
+                <br>
+                <br>                               
                             
                         </div></div>
                         
