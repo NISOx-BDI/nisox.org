@@ -121,7 +121,7 @@
 
 <p>Henson, R.N.A, Shallice, T., Gorno-Tempini, M.-L. &amp; Dolan, R.J (2002). Face repetition effects in implicit and explicit memory tests as measured by fMRI. Cerebral Cortex, 12, 178-186.</p>
 
-<p>The same dataset has also been analyzed by SPM in Section 30.4 of the SPM8 manual (the manual and the dataset can be found <a href="http://www.fil.ion.ucl.ac.uk/spm/data/face_rfx/">here</a>). More precisely, the dataset consists of 36 contrast images obtained after using an "informed" basis set (consisting of the canonical HRF and its two partial derivatives with respect to time and dispersion) in single-subject fMRI analyses applied on 12 subject fMRI scans.</p>
+<p>The same dataset has also been analyzed by SPM in Section 30.4 of the SPM12 manual (the manual and the dataset can be found <a href="http://www.fil.ion.ucl.ac.uk/spm/data/face_rfx/">here</a>). More precisely, the dataset consists of 36 contrast images obtained after using an "informed" basis set (consisting of the canonical HRF and its two partial derivatives with respect to time and dispersion) in single-subject fMRI analyses applied on 12 subject fMRI scans.</p>
 
 <hr>
 
@@ -223,7 +223,7 @@
 
 <p style="text-align: left;"><img border="0" alt="result2" src="../../img/SwE/result2.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
-<p style="text-align: left;">You can also select "sections" in the "overlay" menu and select the image <code>single_subj_T1.nii</code> situated in the subfolder "canonical" of your SPM8 or SPM12 main folder. You should then get the following display:</p>
+<p style="text-align: left;">You can also select "sections" in the "overlay" menu and select the image <code>single_subj_T1.nii</code> situated in the subfolder "canonical" of your SPM12 main folder. You should then get the following display:</p>
 
 <p style="text-align: left;"><img border="0" alt="result3" src="../../img/SwE/result3.png?maxWidth=300" style="display: block; margin-left: auto; margin-right: auto;"></p>
 
@@ -289,7 +289,7 @@
 <p><br>
   </p>
 
-<p>Note here that, overall, the areas of activation obtained with the SwE method are similar to those obtained with the SPM procedure (see Section 30.4 of the SPM8 manual). Nevertheless, if we look more in details, we can observe differences between the two methods. This is mainly due to these three facts:</p>
+<p>Note here that, overall, the areas of activation obtained with the SwE method are similar to those obtained with the SPM procedure (see Section 30.4 of the manual). Nevertheless, if we look more in details, we can observe differences between the two methods. This is mainly due to these three facts:</p>
 
 <ol>
   <li>Here, FDR corrections are used while it was Random Field Theory corrections with the SPM procedure. Note that the FDR correction can be enabled in a classic SPM analysis by setting the SPM global variable <code>defaults.stats.topoFDR</code> to 0 instead of 1. Note also that, in order to make a more objective comparison, one can use an uncorrected threshold (with the same significance level) for both methods and compare the results.</li>
