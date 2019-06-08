@@ -6,6 +6,14 @@ tom_n:
     bio: |
         Thomas Nichols is a Wellcome Trust Senior Research Fellow in Basic Biomedical Science and the Professor of Neuroimaging Statistics at the Oxford Big Data Institute. He previously was a Professor in the Warwick Department of Statistics and WMG, and before that the Director of Modelling & Genetics at the GlaxoSmithKline Clinical Imaging Centre at Hammersmith Hospital in London, where he worked on statistical methods for fMRI in the context of clinical trials, and integrating genetic data into brain image analyses. Before coming to the UK he was an Associate Professor of Biostatistics at the University of Michigan, and in 2001 received his Ph.D. in statistics from Carnegie Mellon University where he also trained in cognitive neuroscience. He has been active in the field of functional neuroimaging since 1992, when he worked at the University of Pittsburgh's PET Center as a programmer and statistician. Dr. Nichols' research focuses on modelling and inference of neuroimaging data, including PET, fMRI & M/EEG.
 
+marco:
+    display_name: "Macro Palma"
+    image: "../img/people/MarcoPalma.jpg"
+    github: marcopalma3
+    role: grad
+    bio: |
+        Marco Palma is a PhD student in Statistics at the University of Warwick on the OxWaSP CDT program, supervised by Thomas Nichols, Shahin Tavakoli and Julia Brettschneider. He is interested in developing high dimensional inferential methods for neuroimaging and is currently working on brain age estimation from structural imaging. He earned a Master’s degree in Statistical Sciences from the University of Bologna, with the final thesis written at LMU - Munich about regression models for multivariate functional data with application to brain images. In addition, as a student admitted to the Collegio Superiore in Bologna he had the opportunity to apply statistical methods in an interdisciplinary environment, working on several topics ranging from pain medicine to translation studies.
+
 soroosh:
     display_name: "Soroosh Afyouni"
     image: "../img/people/SorooshAfyouni.jpg"
