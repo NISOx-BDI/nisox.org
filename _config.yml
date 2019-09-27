@@ -1,5 +1,5 @@
 name: NISOx
-url: http://nisox.org
+url: https://nisox.org
 
 exclude: [bibble, _data_bib, README.md, Makefile, cleanupscript.py, _data]
 
