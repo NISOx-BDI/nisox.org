@@ -33,6 +33,10 @@
   posttext: |
     *Emotion Meta-Analysis Data: <a href="../../files/Text/EmotionMetaAnalysis.txt"> EmotionMetaAnalysis.txt </a>
 
+- name: Lesion
+  displayname: "Lesion Modelling"
+  regenerate: True
+
 - name: Imgen
   displayname: "Imaging Genetics"
   regenerate: True
