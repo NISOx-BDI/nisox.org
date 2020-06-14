@@ -1,0 +1,374 @@
+h01290
+s 00002/00002/00146
+d D 1.13 04/11/09 20:28:39 nichols 13 12
+c fixed URL (fni-stat -> ni-stat)
+e
+s 00007/00005/00141
+d D 1.12 02/12/19 23:08:17 nichols 12 11
+c revised opening.
+e
+s 00012/00001/00134
+d D 1.11 02/12/19 23:02:34 nichols 11 10
+c added note about change
+e
+s 00008/00010/00127
+d D 1.10 02/12/16 17:21:41 nichols 10 9
+c Done!
+e
+s 00003/00003/00134
+d D 1.9 02/12/14 18:27:59 nichols 9 8
+c typo
+e
+s 00067/00002/00070
+d D 1.8 02/12/14 18:00:16 nichols 8 7
+c Added dox on enhanced orthviews
+e
+s 00002/00002/00070
+d D 1.7 02/12/04 12:35:02 nichols 7 6
+c Updated file names
+e
+s 00006/00003/00066
+d D 1.6 02/11/29 17:31:33 nichols 6 5
+c updated to included real pctile fus... now free of the stat toolbox
+e
+s 00004/00001/00065
+d D 1.5 02/06/21 15:39:25 nichols 5 4
+c Moved to fni-stat
+e
+s 00002/00002/00064
+d D 1.4 02/06/04 22:28:59 nichols 4 3
+c Thanks Torben!
+e
+s 00012/00007/00054
+d D 1.3 02/04/23 17:18:40 nichols 3 2
+c Added bette footer today.
+c Other stuff before today?
+e
+s 00002/00002/00059
+d D 1.2 02/01/14 19:00:43 nichols 2 1
+c *** empty log message ***
+e
+s 00061/00000/00000
+d D 1.1 02/01/07 15:55:34 nichols 1 0
+c 
+e
+u
+U
+f b 
+f e 0
+t
+T
+I 1
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<!--  %W% %E% -->
+<html> <head>
+<title>Percent Change Threshold</title>
+I 5
+D 13
+<BASE href="http://www.sph.umich.edu/fni-stat/PCT/index.html">
+E 13
+I 13
+<BASE href="http://www.sph.umich.edu/ni-stat/PCT/index.html">
+E 13
+E 5
+</head>
+
+<body>
+<h1>Percent Change Threshold<HR></h1>
+
+The Percent Change Threshold (PCT) is a way to characterize the
+D 12
+variability and sensitivity of functional neuroimaging data.  Its
+definition is trivial---it is the half-width of a confidence
+D 3
+interval---but there subtle aspects to creating PCT images.<P>
+E 3
+I 3
+interval for an effect of interest---but there subtle aspects to
+creating PCT images.<P> 
+E 12
+I 12
+variability and sensitivity of functional neuroimaging data.  PCT is
+the minimum significant percent change for an effect of interest, and
+is just a scalar multiple of the coefficient of variation (standard
+deviation divided by mean).  While its definition is trivial,
+constructing PCT images from linear models requires carefully scaled
+predictors and contrasts.<P>
+E 12
+E 3
+
+Below there is code (as an add-in to SPM99) for creating PCT images
+D 6
+and a draft describing the use of PCT images.<P>
+E 6
+I 6
+and a draft describing the use of PCT images.  The gzipped-tar file
+will create a PCT directory; if you place this in your spm99/toolbox
+directory, you should get a PCT option on the toolbox plugin.<P>
+E 6
+
+Please send <a href="mailto:nichols@umich.edu">me</a> feedback on the
+paper and the software.<P>
+
+
+<BR><BR>
+
+D 8
+<h2>Software: PCT for SPM<HR></h2><P>
+E 8
+I 8
+<a name="download"><h2>Software: PCT for SPM<HR></h2><a><P>
+E 8
+
+D 4
+Download:  <a href="spm_pct.tar.gz">spm_fdr.tar.gz</a> (21KB)<P>
+E 4
+I 4
+D 6
+Download:  <a href="spm_pct.tar.gz">spm_pct.tar.gz</a> (21KB)<P>
+E 6
+I 6
+Download:  <a href="spm_pct.tgz">spm_pct.tgz</a> (21KB)<P>
+E 6
+E 4
+
+Files:
+<menu>
+  <li><a href="PCT.m"><tt>PCT.m</tt></a>
+D 7
+  <li><a href="PCT_ui.m"><tt>PCT_ui.m</tt></a>&nbsp<BR>
+E 7
+I 7
+  <li><a href="PCTcalc.m"><tt>PCTcalc.m</tt></a>&nbsp<BR>
+E 7
+      These functions create PCT images.
+  <li><a href="spm_antimode.m"><tt>spm_antimode.m</tt></a>
+  <li><a href="spm_histvol.m"><tt>spm_histvol.m</tt></a>
+  <li><a href="spm_iqr.m"><tt>spm_iqr.m</tt></a>
+  <li><a href="spm_mode.m"><tt>spm_mode.m</tt></a>
+  <li><a href="spm_orthviews.m"><tt>spm_orthviews.m</tt></a>
+  <li><a href="spm_prctile.m"><tt>spm_prctile.m</tt></a><BR>
+I 6
+  <li><a href="spm_prctile_vol.m"><tt>spm_prctile_vol.m</tt></a><BR>
+I 8
+  <li><a href="spm_project_vol.m"><tt>spm_project_vol.m</tt></a><BR>
+E 8
+E 6
+I 5
+  <li><a href="spm_grand_mean.m"><tt>spm_grand_mean.m</tt></a><BR>
+  <li><a href="betacore.m"><tt>betacore.m</tt></a><BR>
+E 5
+      These function support the creation of PCT images.
+</menu>
+
+I 11
+<font color="red">Important:</font> If you downloaded the PCT software
+before December 19th, please get the current version.  An error was
+causing most contrasts (those expressing differences) to have PCT
+images with 1/2 the correct intensity.<P>  
+
+E 11
+(More documentation soon!)<P>
+
+<BR><BR>
+
+D 3
+<h2>Preprint<HR></h2> <P>
+D 2
+On Confidence Intervals for Functional Neuroimaging.<BR>
+E 2
+I 2
+Visualizing Variance with Percent Change Threshold Images.<BR>
+E 2
+Thomas E. Nichols<BR>
+<em>Neuroimage</em>, in submission.<P>
+E 3
+I 3
+<h2>Tech Note: Visualizing Variance with Percent Change Threshold Images<HR></h2> <P>
+E 3
+
+Download: <a href="PCT.pdf">PCT.pdf</a><P>
+
+I 8
+
+E 8
+<BR><BR>
+
+I 8
+<a name="orthviews"><h2>Supporting Software<HR></h2></a> <P>
+E 8
+
+I 8
+The above tech report relied heavily on a modified
+<tt>spm_orthviews</tt>, as given <a href="#download">above</a>.  A brief overview of the
+features are given here.  To use, just make sure that the PCT
+directory is in your matlab search path before spm99, and then just
+use 'Display', 'CheckReg' or 'Results->Overlays->Sections' as usual.
+
+<menu>
+  <li>Image name.<BR> The image name is now displayed atop the 3-views.<P>
+  <li>Current voxel value.<BR>  In the lower right of the 3-view display
+      is shown the value of the current voxel.<P>
+  <li>Easy colorbars.<BR>  To add color bars, just type
+      <tt>spm_orthviews('addcolorbar')</tt> (Note American spelling :)<P>
+  <li>Easy windowing of colorbars.<BR>  Once you have added colorbars
+      to your orthogonal viewer, you can right click on the color bar
+      to change the intensity window.  To pick a value to be the new
+      maximal intensity, put the cursor over that intensity, right
+      click, and then select 'Set max'; same for 'Set min'.  You can
+      also type a value manually ('Manual'). You can also 
+      set the same intensity window set for all views by using the
+D 9
+      lower set of menu options you .<P>
+E 9
+I 9
+      lower set of menu options.<P>
+I 11
+
+      (Note that this will not work with the hot-metal colorbar seen
+      in the results window overlay sections orthoview.  This colorbar
+      isn't placed by spm_orthviews and hence doesn't have this
+      dynamic windowing option).<P>
+      
+E 11
+E 9
+  <li>Crosshair gap.<BR> In order to better see the current voxel the
+      cross hairs do not meet at an  "X".  You can change
+      the magnitude of the gap with
+      <tt>spm_orthviews('xhairsgap',p)</tt>, where p is the gap size
+      in fraction of the crosshair (default is 0.05).<P>
+  <li>Viewing Maximum Intensity Projections (MIPs)<BR> Instead of
+      orthogonal slices, you can view a MIP of an image.  Bring up
+      whatever images you like and then use the command
+      <tt>spm_orthviews('mipify',hdl)</tt>, where hdl is the image
+D 9
+      number.  It will take a moment, but you have the MIP of the
+E 9
+I 9
+      number.  It will take a moment, but you will have the MIP of the
+E 9
+      image instead of slices. (Of course, clicking around on a MIP is
+      quicker than clicking around orthogonal slices, since the image
+      data only needs to be loaded once).  To go back to the normal
+      viewer just issue the mipify command again.<P>
+
+      Note, unlike the MIP's in the results window, this shows you the
+      MIP of <em>everything</em>, not just the voxels that survived
+      the various intensity and cluster thresholds.<P> 
+  <li>Dual colorbar labeling.<BR>You can add a second scale to an
+      existing colorbar with the
+      command <tt>spm_orthviews('colorbar2',hdl,x)</tt>, where hdl is
+      the image number (1 if using 'Display', or the image number in English
+      reading order if using 'CheckReg') and x is the scale
+      factor. You will then get two values displayed in the lower
+      right, the lower value corresponding to the second scale.<P>
+
+      This is <em>very</em> useful for PCT.  Say you create a PCT for
+D 10
+      uncorrected alpha=0.05, and you happen to know that your
+      corrected threshold (Bonferroni/FDR/RFT, whatever) is, say,
+      4.2.  You add a color bar which will show you the uncorrected PCT.
+      You just need to know what the ratio between the corrected
+      and uncorrected threshold.  Here the ratio (the value x above)
+      it would be 
+      <tt>4.2/spm_invNcdf(1-0.05)</tt>   or
+      <tt>4.2/spm_invTcdf(1-0.05,df)</tt> where df is your T degrees
+      of freedom.<P>
+E 10
+I 10
+      uncorrected alpha=0.05 (threshold, say, 1.96), and you happen to
+      know that your corrected threshold (Bonferroni/FDR/RFT,
+      whatever) is, say, 4.2.  You add a colorbar which will show you 
+      the uncorrected PCT.  To get a corrected color axis you just
+      need to know what the ratio between the corrected and
+      uncorrected threshold.  Here the ratio (the value x above) 
+      would be 4.2/1.96 = 2.14.<P>
+E 10
+</menu>
+
+
+
+<BR><BR>
+
+E 8
+<hr>
+D 3
+<address></address>
+E 3
+I 3
+<small>
+E 3
+<!-- hhmts start -->
+D 2
+Last modified: Mon Jan  7 15:55:24 EST 2002
+E 2
+I 2
+D 3
+Last modified: Mon Jan 14 19:00:38 EST 2002
+E 3
+I 3
+D 4
+Last modified: Tue Apr 23 17:18:00 EDT 2002
+E 4
+I 4
+D 5
+Last modified: Tue Jun  4 22:28:47 EDT 2002
+E 5
+I 5
+D 6
+Last modified: Fri Jun 21 15:39:12 EDT 2002
+E 6
+I 6
+D 7
+Last modified: Fri Nov 29 17:30:53 EST 2002
+E 7
+I 7
+D 8
+Last modified: Wed Dec  4 12:34:52 EST 2002
+E 8
+I 8
+D 9
+Last modified: Sat Dec 14 17:59:49 EST 2002
+E 9
+I 9
+D 10
+Last modified: Sat Dec 14 18:26:39 EST 2002
+E 10
+I 10
+D 11
+Last modified: Mon Dec 16 17:20:42 EST 2002
+E 11
+I 11
+D 12
+Last modified: Thu Dec 19 23:02:20 EST 2002
+E 12
+I 12
+D 13
+Last modified: Thu Dec 19 23:07:41 EST 2002
+E 13
+I 13
+Last modified: Tue Nov  9 20:28:07 EST 2004
+E 13
+E 12
+E 11
+E 10
+E 9
+E 8
+E 7
+E 6
+E 5
+E 4
+E 3
+E 2
+<!-- hhmts end -->
+I 3
+</small>
+<P>
+<A HREF="http://www.sph.umich.edu/~nichols">Tom Nichols</A>&nbsp&nbsp
+<A HREF="mailto:nichols@umich.edu">nichols@umich.edu</A><br>
+<A href="http://www.sph.umich.edu/biostat/">UM Biostatistics</A></P>
+</address>
+
+E 3
+</body> </html>
+E 1
