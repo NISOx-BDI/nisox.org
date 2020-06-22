@@ -36,6 +36,8 @@
 - name: Lesion
   displayname: "Lesion Modelling"
   regenerate: True
+  pretext:  |
+     <h3>Video presentation of OHBM 2020 Poster #1217, "Modelling Lesion Masks: Comparison of Classical, Bias-Adjusted and Bayesian Regression Methods", by Petya Kindalova et al.: [<a href="https://figshare.com/articles/Modelling_Lesion_Masks_Comparison_of_Classical_Bias-Adjusted_and_Bayesian_Regression_Methods/12531275">ppsx</a>]
 
 - name: Imgen
   displayname: "Imaging Genetics"
